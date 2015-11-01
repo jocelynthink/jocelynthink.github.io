@@ -19,7 +19,7 @@
 0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。
 文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。
 每当运行">
-<meta property="og:updated_time" content="2015-10-28T13:51:44.209Z">
+<meta property="og:updated_time" content="2015-10-28T13:53:14.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unix-1">
 <meta name="twitter:description" content="UNIX基本知识1
@@ -99,18 +99,18 @@
 <li>0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。</li>
 <li>文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。</li>
 <li>每当运行一个新的程序时，所有的shell都会为其打开三个文件描述符：标准输入、标准输出以及标准出错。可以这三个描述符重定向到某一文件：<br>ls &gt; file.lst</li>
-<li>在<unistd.h>中定义：<br> 标准输入文件描述符：STDIN_FILENO    0<br> 标准输出文件描述符：STDOUT_FILENO  1</unistd.h></li>
-<li>在<stdio.h>中定义：<br> 标准输入文件：stdin<br> 标准输出文件：stdout</stdio.h></li>
-<li>程序(program)是存放磁盘文件中的可执行文件。使用6个exec函数中的一个由内核将程序读入存储器、并使其执行。<br> 程序的执行实例被称为进程（process）。某些操作系统用任务表示正在被执行的程序。<br> 每个UNIX进程都一定有一个唯一的数字标示符，称为进程ID（process ID）。进程ID总是一非负整数。<br> getid()：获取进程ＩＤ；</li>
+<li>在<unistd.h>中定义：<br>标准输入文件描述符：STDIN_FILENO    0<br>标准输出文件描述符：STDOUT_FILENO  1</unistd.h></li>
+<li>在<stdio.h>中定义：<br>标准输入文件：stdin<br>标准输出文件：stdout</stdio.h></li>
+<li>程序(program)是存放磁盘文件中的可执行文件。使用6个exec函数中的一个由内核将程序读入存储器、并使其执行。<br>程序的执行实例被称为进程（process）。某些操作系统用任务表示正在被执行的程序。<br>每个UNIX进程都一定有一个唯一的数字标示符，称为进程ID（process ID）。进程ID总是一非负整数。<br>getid()：获取进程ＩＤ；</li>
 <li><unistd.h>保护了许多UNIX系统服务的函数原型</unistd.h></li>
-<li>gituid ： 返回用户ID<br> gitgid ：返回组ID</li>
-<li>UNIX三个版本：ANSI C，POSIX，XPG3；<br> ANSI：美国国家标准学会，它是由制造商和用户组成的非赢利性组织。<br> POSIX：计算机环境的可移植操作系统界面（Protable Operating System Interface of Computer Environment）<br> XPG3：X/Open是一个国际计算机制造商，提出来一个7卷本可移植性指南X/Open Portability Guide 。</li>
+<li>gituid ： 返回用户ID<br>gitgid ：返回组ID</li>
+<li>UNIX三个版本：ANSI C，POSIX，XPG3；<br>ANSI：美国国家标准学会，它是由制造商和用户组成的非赢利性组织。<br>POSIX：计算机环境的可移植操作系统界面（Protable Operating System Interface of Computer Environment）<br>XPG3：X/Open是一个国际计算机制造商，提出来一个7卷本可移植性指南X/Open Portability Guide 。</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cigauzytb00012whhaxbyldr0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cigga7kve0002xghh15k11tes" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,6 +118,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/11/01/unix-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          unix-2
+        
+      </div>
+    </a>
   
   
     <a href="/2015/10/23/makedown/" id="article-nav-older" class="article-nav-link-wrap">
@@ -144,7 +153,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -154,6 +163,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/11/01/unix-2/">unix-2</a>
+          </li>
         
           <li>
             <a href="/2015/10/28/unix-1/">unix-1</a>
