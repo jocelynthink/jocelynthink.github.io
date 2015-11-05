@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | Hexo</title>
+  <title>unix-3 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="最基本的编译文件方法g++ -c xxx.cpp -o xxx./xxxC++编译多个文件 makefile
+逐步编译：g++ -c APCluster.cppAPCluster.h //生成APCluster.o 中间文件g++ -c example.cppAPCluster.h  //生成example.o中间文件g++ -o main APCluster.o example.o
+makefi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unix-3">
+<meta property="og:url" content="http://yoursite.com/2015/11/05/unix-3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="最基本的编译文件方法g++ -c xxx.cpp -o xxx./xxxC++编译多个文件 makefile
+逐步编译：g++ -c APCluster.cppAPCluster.h //生成APCluster.o 中间文件g++ -c example.cppAPCluster.h  //生成example.o中间文件g++ -o main APCluster.o example.o
+makefi">
+<meta property="og:updated_time" content="2015-11-05T08:47:30.887Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="unix-3">
+<meta name="twitter:description" content="最基本的编译文件方法g++ -c xxx.cpp -o xxx./xxxC++编译多个文件 makefile
+逐步编译：g++ -c APCluster.cppAPCluster.h //生成APCluster.o 中间文件g++ -c example.cppAPCluster.h  //生成example.o中间文件g++ -o main APCluster.o example.o
+makefi">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,134 +66,55 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/11/05/unix-3/" class="archive-article-date">
-  <time datetime="2015-11-05T08:46:53.000Z" itemprop="datePublished">Nov 5</time>
+        <section id="main"><article id="post-unix-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/05/unix-3/" class="article-date">
+  <time datetime="2015-11-05T08:46:53.000Z" itemprop="datePublished">2015-11-05</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/11/05/unix-3/">unix-3</a>
+    <h1 class="article-title" itemprop="name">
+      unix-3
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/11/01/unix-2/" class="archive-article-date">
-  <time datetime="2015-11-01T08:53:25.000Z" itemprop="datePublished">Nov 1</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/11/01/unix-2/">unix-2</a>
-    </h1>
-  
+        <p>最基本的编译文件方法<br>g++ -c xxx.cpp -o xxx<br>./xxx<br>C++编译多个文件 makefile</p>
+<p>逐步编译：<br>g++ -c APCluster.cppAPCluster.h //生成APCluster.o 中间文件<br>g++ -c example.cppAPCluster.h  //生成example.o中间文件<br>g++ -o main APCluster.o example.o</p>
+<p>makefile:<br>GNU的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，上面编译对应的makefile如下：<br>main: APCluster.oexample.o        //main为最终可执行文件<br> g++ -o main APCluster.o example.o //或者g++APCluster.o example.o-omain应该也行<br>APCluster.o :APCluster.cppAPCluster.h   //定义依赖关系<br> g++ -c APCluster.cppAPCluster.h   //如何生成目标文件的操作系统命令，一定要以一个tab键作为开头,<br>                                   //-c只激活预处理，编译，和汇编，也就是他只把程序做成obj文件*.o<br>example.o: example.cpp APCluster.h<br> g++ -c example.cppAPCluster.h    //APCluster.h可以不要，因为上句已经指明，会自动链接<br>clean:                             //定义makeclean指令<br> rm main APCluster.o example.o<br>我们可以把这个内容保存在名字为“makefile”或“Makefile”的文件中，然后在该目录下直接输入命令“make”就可以生成执行文件edit。如果要删除执行文件和所有的中间目标文件，那么，只要简单地执行一下“make clean”就可以了。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/10/28/unix-1/" class="archive-article-date">
-  <time datetime="2015-10-28T13:48:54.000Z" itemprop="datePublished">Oct 28</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/28/unix-1/">unix-1</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/10/23/makedown/" class="archive-article-date">
-  <time datetime="2015-10-23T07:40:59.000Z" itemprop="datePublished">Oct 23</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="ciglzpwyq000160hh9eyi1r0t" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/23/makedown/">makedown</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/10/22/github/" class="archive-article-date">
-  <time datetime="2015-10-22T09:37:50.000Z" itemprop="datePublished">Oct 22</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/22/github/">github</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/10/22/hello-world/" class="archive-article-date">
-  <time datetime="2015-10-22T09:20:01.533Z" itemprop="datePublished">Oct 22</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/22/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/2015/11/01/unix-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">unix-2</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
+
 </section>
         
           <aside id="sidebar">
