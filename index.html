@@ -61,6 +61,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-二叉树-借助栈的非递归版本实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/23/二叉树-借助栈的非递归版本实现/" class="article-date">
+  <time datetime="2015-11-23T14:18:20.000Z" itemprop="datePublished">2015-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/23/二叉树-借助栈的非递归版本实现/">二叉树--借助栈的非递归版本实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前面实现了二叉树，和栈，现在将二者结合，实现二叉树的非递归版本遍历算法</p>
+<p>在实现的过程中，主要是 “<em>，&amp;，-&gt;，.” 这几个的区别以及含义：
+</em>：间接访问，操作符访问其操作数所表示的地址<br>&amp;：取地址，操作符产生变量的地址，它是一个指针常量。<br>-&gt;： 访问结构指针成员，对应于&amp;<br>.：访问结构成员，对应于*</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define STACK_INIT_SIZE 100</span></span><br><span class="line"><span class="comment">#define STACKINCREMENT 10</span></span><br><span class="line"></span><br><span class="line">typedef struct SqStack&#123;</span><br><span class="line">	char *base;</span><br><span class="line">	char *top;</span><br><span class="line">	int stacksize;</span><br><span class="line">&#125;SqStack;</span><br><span class="line"></span><br><span class="line">int InitStack(SqStack &amp;S);</span><br><span class="line">int DestroyStack(SqStack &amp;S);</span><br><span class="line">int ClearStack(SqStack &amp;S);</span><br><span class="line">int StackEmpty(SqStack &amp;S);</span><br><span class="line">int StackLength(SqStack S);</span><br><span class="line">int GetTop (SqStack &amp;S,char &amp;e);</span><br><span class="line">int Push(SqStack &amp;S,char &amp;e);</span><br><span class="line">int Pop(SqStack &amp;S,char &amp;e);</span><br><span class="line">int StackTraverse(SqStack S);</span><br><span class="line"></span><br><span class="line">int InitStack(SqStack &amp;S)&#123;</span><br><span class="line">	S.base = (char *) malloc (STACK_INIT_SIZE * sizeof(char));</span><br><span class="line">	<span class="keyword">if</span>(!S.base)</span><br><span class="line">		<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">	S.top = S.base;</span><br><span class="line">	S.stacksize = STACK_INIT_SIZE;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int GetTop(SqStack &amp;S,char &amp;e)&#123;</span><br><span class="line">	<span class="keyword">if</span>(S.top == S.base)</span><br><span class="line">		<span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">	e = *(S.top -<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int push(SqStack &amp;S,char &amp;e)&#123;</span><br><span class="line">	<span class="keyword">if</span>(S.top - S.base &gt;= S.stacksize)&#123;</span><br><span class="line">		S.base = (char *) realloc(S.base,(S.stacksize + STACKINCREMENT)*sizeof(char));</span><br><span class="line">		<span class="keyword">if</span>(!S.base)</span><br><span class="line">			<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">		S.top = S.base + S.stacksize;</span><br><span class="line">		S.stacksize += STACKINCREMENT;</span><br><span class="line">	&#125;</span><br><span class="line">	*S.top++ = e;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">int Pop(SqStack &amp;S,char &amp;e)&#123;</span><br><span class="line">	<span class="keyword">if</span>(S.top == S.base)</span><br><span class="line">		<span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">	e = *--S.top;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int StackLength(SqStack S)&#123;</span><br><span class="line">	<span class="built_in">return</span> S.top - S.base;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int StackTraverse(SqStack S)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	<span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; StackLength(S);i++)&#123;</span><br><span class="line">		ch = *(S.top - <span class="number">1</span> - i);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c "</span>,ch);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int StackEmpty(SqStack &amp;S)&#123;</span><br><span class="line">	<span class="keyword">if</span>(S.top == S.base)&#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int ClearStack(SqStack &amp;S)&#123;</span><br><span class="line">	 S.top = S.base; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int DestroyStack(SqStack &amp;S)&#123;</span><br><span class="line">	free(S.base);</span><br><span class="line">	S.base = NULL;</span><br><span class="line">	S.top = NULL;</span><br><span class="line">	S.stacksize = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	char ch;</span><br><span class="line">	int i;</span><br><span class="line">	SqStack S;</span><br><span class="line">	InitStack(S);</span><br><span class="line">	char a[<span class="number">5</span>]=&#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		push(S,a[i]);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	StackTraverse(S);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,StackLength(S));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">	/*清空栈*/</span><br><span class="line">	<span class="keyword">while</span>( !StackEmpty(S) )&#123;</span><br><span class="line">		Pop(S,ch);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c "</span>,ch);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/23/二叉树-借助栈的非递归版本实现/" data-id="cihc1xvzh0004yohhz4xgridu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-栈实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/23/栈实现/" class="article-date">
@@ -89,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="cihc1c0i10002o4hhxqu0lb91" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="cihc1xvzc0002yohhaj7qt801" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="cihc1c0i10003o4hh2ho2coql" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="cihc1xvze0003yohho9lf9pxp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="cihc1c0il0009o4hh7jn6734k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="cihc1xvzy000ayohhnh0ddi9d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="cihc1c0i10001o4hh2b0yl60t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="cihc1xvz90001yohhchgpb1jq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -270,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="cihc1c0ib0004o4hhqgjqhhbe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="cihc1xvzj0005yohh1s4vfspy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -309,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="cihc1c0ib0005o4hh7sg34wu1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="cihc1xvzl0006yohhpiu5451p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -379,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/01/unix-2/" data-id="cihc1c0ib0006o4hhawz7tq12" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/01/unix-2/" data-id="cihc1xvzp0007yohhoy7f7m17" class="article-share-link">Share</a>
       
       
     </footer>
@@ -427,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cihc1c0ib0007o4hhyptu6cr9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cihc1xvzs0008yohhuskc35lt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -481,7 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cihc1c0il0008o4hhfa0uz683" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cihc1xvzu0009yohhswbltyb6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,48 +530,10 @@
 
 
   
-    <article id="post-github" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/22/github/" class="article-date">
-  <time datetime="2015-10-22T09:37:50.000Z" itemprop="datePublished">2015-10-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/22/github/">github</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="github">github</h2><ul>
-<li>git是一个分布式的版本控制系统。</li>
-<li>github可以托管各种git库，并提供一个web界面。</li>
-<li>github的独特之处在于从另外一个项目进行分支的简易性。</li>
-<li>首先点击项目站点的“fork”的按钮，然后将代码检出并将修改加入到刚才分出的代码库中，最后通过内建的“pull request”机制向项目负责人申请代码合并。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/22/github/" data-id="cihc1c0gn0000o4hh0algb149" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
@@ -548,7 +549,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -558,6 +559,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/11/23/二叉树-借助栈的非递归版本实现/">二叉树--借助栈的非递归版本实现</a>
+          </li>
         
           <li>
             <a href="/2015/11/23/栈实现/">栈实现</a>
@@ -573,10 +578,6 @@
         
           <li>
             <a href="/2015/11/20/赫夫曼树/">赫夫曼树</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/12/unix-4/">unix-4</a>
           </li>
         
       </ul>
