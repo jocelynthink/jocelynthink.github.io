@@ -61,6 +61,115 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-unix-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/05/unix-3/" class="article-date">
+  <time datetime="2015-11-05T08:46:53.000Z" itemprop="datePublished">2015-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/05/unix-3/">unix-3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最基本的编译文件方法<br>g++ -c xxx.cpp -o xxx<br>./xxx<br>C++编译多个文件 makefile</p>
+<p>逐步编译：<br>g++ -c APCluster.cppAPCluster.h //生成APCluster.o 中间文件<br>g++ -c example.cppAPCluster.h  //生成example.o中间文件<br>g++ -o main APCluster.o example.o</p>
+<p>makefile:<br>GNU的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，上面编译对应的makefile如下：<br>main: APCluster.oexample.o        //main为最终可执行文件<br> g++ -o main APCluster.o example.o //或者g++APCluster.o example.o-omain应该也行<br>APCluster.o :APCluster.cppAPCluster.h   //定义依赖关系<br> g++ -c APCluster.cppAPCluster.h   //如何生成目标文件的操作系统命令，一定要以一个tab键作为开头,<br>                                   //-c只激活预处理，编译，和汇编，也就是他只把程序做成obj文件*.o<br>example.o: example.cpp APCluster.h<br> g++ -c example.cppAPCluster.h    //APCluster.h可以不要，因为上句已经指明，会自动链接<br>clean:                             //定义makeclean指令<br> rm main APCluster.o example.o<br>我们可以把这个内容保存在名字为“makefile”或“Makefile”的文件中，然后在该目录下直接输入命令“make”就可以生成执行文件edit。如果要删除执行文件和所有的中间目标文件，那么，只要简单地执行一下“make clean”就可以了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="cihewcoo9000abshhgg1ekjif" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-unix-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/01/unix-2/" class="article-date">
+  <time datetime="2015-11-01T08:53:25.000Z" itemprop="datePublished">2015-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/01/unix-2/">unix-2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不带缓存  指的是每个read和write都调用内核中的一个系统调用。</p>
+<h3 id="文件描述符">文件描述符</h3><pre><code><span class="number">1.</span>  对于内核而言 ，所有打开文件都是由文件描述符应用。文件描述符是一个非负整数。当打开一个现存文件或者创建一个新文件时，内核向进程返回一个文件描述符。。
+<span class="number">2.</span>  UNIX shell使用文件描述符<span class="number">0</span>与进程的标准输入相结合；文件描述符<span class="number">1</span>与进程的标准输出相结合，文件描述符<span class="number">2</span>与标准出错相结合。
+<span class="number">3.</span>  在POSIX<span class="number">.1</span>中，在头文件&lt;unistd.h&gt; 中， <span class="number">0</span> ----STDIN_FILENO,<span class="number">1</span> -----STDOUT_FILENO ,<span class="number">2</span> -----STDERR_FILENO.
+</code></pre><h3 id="open函数">open函数</h3><pre><code><span class="number">1.</span> 功能：打开或创建一个文件；
+<span class="number">2.</span> 在&lt;fcntl.h&gt;中定义： O_RDONLY 只读打开；O_WRONLY 只写打开 ； O_RDWR  读、写打开。
+<span class="number">3.</span> O_APPEND 每次都写到文件的尾端；O_CREAT 若此文件不存在则创建他； O_EXCL 如果同时指定了O_CREAT，则出错；O_TRUNC 清空；O_NONBLOCK 设置后续的IO操作为非阻塞；O_SYNC 每次IO操作都等到物理I/O操作完成。
+<span class="number">4.</span> 由open返回的文件描述符一定是最小的未用的操作符数字。
+<span class="number">5.</span> 文件名 NAME_MAX是<span class="number">14</span>，当文件名的长度超过<span class="number">14</span>的时候，由_POSIX_NO_TRUNC来决定是截取文件名或返回出出错，其值为真，返回初出错。
+</code></pre><h3 id="creat函数">creat函数</h3><pre><code><span class="number">1.</span> 功能：创建一个新文件。
+<span class="number">2.</span> 相当于等效的：open（pathname,O_WRONLY|O_CREAT|O_TRUNC，mode）；
+</code></pre><h3 id="close_函数">close 函数</h3><pre><code><span class="number">1.</span> 功能：关闭一个文件
+<span class="number">2.</span> 关闭一个文件时也释放该进程在该文件上的所有记录锁。
+</code></pre><h3 id="lseek函数">lseek函数</h3><pre><code><span class="number">1.</span> <span class="keyword">off_t</span> lseek(<span class="keyword">int</span> fileds,<span class="keyword">off_t</span> offset,<span class="keyword">int</span> whence);
+<span class="number">2.</span> 判断lseek的值是否为-<span class="number">1</span>，来确定文件的偏移是否正确
+<span class="number">3.</span> whence是SEEK_SET：该文件的位移量设置为距文件开始处offset个字节；
+<span class="number">4.</span> whence是SEEK_CUR：相对于当前位置的偏移量；
+<span class="number">5.</span> whence是SEEK_END：相对文件尾端的位移量。
+</code></pre><h3 id="read函数">read函数</h3><pre><code><span class="number">1.</span> 功能：从打开文件中读取数据
+<span class="number">2.</span> <span class="keyword">ssize_t</span> read(in fileds,<span class="keyword">void</span> buff,<span class="keyword">size_t</span> nbytes);
+<span class="number">3.</span> read成功，则返回读到的字节数，如果已经到达文件的尾端，则返回<span class="number">0</span>；
+<span class="number">4.</span> <span class="preprocessor">### write函数</span>
+</code></pre><p>功能：向文件写数据</p>
+<pre><code><span class="number">1.</span> <span class="keyword">ssize_t</span> write(<span class="keyword">int</span> fielses,<span class="keyword">const</span> <span class="keyword">void</span> buff,<span class="keyword">size_t</span> nbytes);
+<span class="number">2.</span> write出错的一个常见原因是：磁盘已写满，或者超过了对一个给定进程的文件长度限制。
+<span class="number">3.</span> 通常是O_APPEND的选项，每次写操作之前，将文件位移量设置在文件的当前结尾处。
+</code></pre><h3 id="文件共享">文件共享</h3><pre><code>文件描述符标志：只用于一个进程的一个描述符
+文件状态标志：适用于指向该给定文件表项的任何进程中的所有描述符。
+</code></pre><h3 id="原子操作">原子操作</h3><pre><code><span class="number">1.</span> 添加至一个文件
+<span class="number">2.</span> 任何一个要求多于<span class="number">1</span>个函数调用的操作都不能成为原子操作，因为在两个函数调用之间，内核可能会临时挂起该进程。
+<span class="number">3.</span> 原子操作指的是由多步组成的操作，如果该操作原子地执行，则或者执行完所有步，或者一步也不执行，不可能只执行所有步的一个子集。
+</code></pre><h3 id="dup和dup2函数">dup和dup2函数</h3><pre><code><span class="number">1</span>. int <span class="function"><span class="title">dup</span><span class="params">(int filedes)</span></span>
+<span class="number">2</span>. int <span class="function"><span class="title">dup2</span><span class="params">(int filedes,int filedes2)</span></span>
+<span class="number">3</span>. 由dup返回的新文件描述符一定是当前可用文件描述符中最小的数值。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/01/unix-2/" data-id="cihewcooc000bbshhqtyil7c6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-unix-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/28/unix-1/" class="article-date">
@@ -99,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cihea3fkg000ankhhumjdif5i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cihewcoof000cbshht3ug7bzq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cihea3fkj000bnkhhbdvxborz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cihewcooh000dbshh8tktot08" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/22/github/" data-id="cihea3fib0000nkhh9cm859lk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/22/github/" data-id="cihewcola0000bshh8mpw3pfy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +333,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -236,6 +345,14 @@
       <ul>
         
           <li>
+            <a href="/2015/11/25/图/">图的邻接矩阵表示方法</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/25/二叉树-借助于队列的层次遍历版本实现/">二叉树-借助于队列的层次遍历版本实现</a>
+          </li>
+        
+          <li>
             <a href="/2015/11/25/队列/">队列实现</a>
           </li>
         
@@ -245,14 +362,6 @@
         
           <li>
             <a href="/2015/11/23/二叉树-借助栈的非递归版本实现/">二叉树--借助栈的非递归版本实现</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/23/栈实现/">栈实现</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/20/二叉树/">二叉树</a>
           </li>
         
       </ul>
