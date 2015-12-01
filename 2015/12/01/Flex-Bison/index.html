@@ -3,30 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>unix-1 | make everyday conut--Jocelyn Blag</title>
+  <title>Flex Bison | make everyday conut--Jocelyn Blag</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="UNIX基本知识1
-每个进程都一个工程目录(working directory),或称为当前工作目录 (current working)。所有相对路径名都是从工作目录开始解释。进程可以用chdir函数更改其工作目录。
-0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。
-文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。
-每当运行">
+  <meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="unix-1">
-<meta property="og:url" content="http://yoursite.com/2015/10/28/unix-1/index.html">
+<meta property="og:title" content="Flex Bison">
+<meta property="og:url" content="http://yoursite.com/2015/12/01/Flex-Bison/index.html">
 <meta property="og:site_name" content="make everyday conut--Jocelyn Blag">
-<meta property="og:description" content="UNIX基本知识1
-每个进程都一个工程目录(working directory),或称为当前工作目录 (current working)。所有相对路径名都是从工作目录开始解释。进程可以用chdir函数更改其工作目录。
-0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。
-文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。
-每当运行">
-<meta property="og:updated_time" content="2015-10-28T13:53:14.795Z">
+<meta property="og:description">
+<meta property="og:updated_time" content="2015-12-01T09:14:38.963Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="unix-1">
-<meta name="twitter:description" content="UNIX基本知识1
-每个进程都一个工程目录(working directory),或称为当前工作目录 (current working)。所有相对路径名都是从工作目录开始解释。进程可以用chdir函数更改其工作目录。
-0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。
-文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。
-每当运行">
+<meta name="twitter:title" content="Flex Bison">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="make everyday conut--Jocelyn Blag" type="application/atom+xml">
   
@@ -76,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-unix-1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Flex-Bison" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/28/unix-1/" class="article-date">
-  <time datetime="2015-10-28T13:48:54.000Z" itemprop="datePublished">2015-10-28</time>
+    <a href="/2015/12/01/Flex-Bison/" class="article-date">
+  <time datetime="2015-12-01T09:14:38.000Z" itemprop="datePublished">2015-12-01</time>
 </a>
     
   </div>
@@ -90,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      unix-1
+      Flex Bison
     </h1>
   
 
@@ -98,23 +86,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="UNIX基本知识1">UNIX基本知识1</h2><ol>
-<li>每个进程都一个工程目录(working directory),或称为当前工作目录 (current working)。所有相对路径名都是从工作目录开始解释。进程可以用chdir函数更改其工作目录。</li>
-<li>0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。</li>
-<li>文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。</li>
-<li>每当运行一个新的程序时，所有的shell都会为其打开三个文件描述符：标准输入、标准输出以及标准出错。可以这三个描述符重定向到某一文件：<br>ls &gt; file.lst</li>
-<li>在<unistd.h>中定义：<br>标准输入文件描述符：STDIN_FILENO    0<br>标准输出文件描述符：STDOUT_FILENO  1</unistd.h></li>
-<li>在<stdio.h>中定义：<br>标准输入文件：stdin<br>标准输出文件：stdout</stdio.h></li>
-<li>程序(program)是存放磁盘文件中的可执行文件。使用6个exec函数中的一个由内核将程序读入存储器、并使其执行。<br>程序的执行实例被称为进程（process）。某些操作系统用任务表示正在被执行的程序。<br>每个UNIX进程都一定有一个唯一的数字标示符，称为进程ID（process ID）。进程ID总是一非负整数。<br>getid()：获取进程ＩＤ；</li>
-<li><unistd.h>保护了许多UNIX系统服务的函数原型</unistd.h></li>
-<li>gituid ： 返回用户ID<br>gitgid ：返回组ID</li>
-<li>UNIX三个版本：ANSI C，POSIX，XPG3；<br>ANSI：美国国家标准学会，它是由制造商和用户组成的非赢利性组织。<br>POSIX：计算机环境的可移植操作系统界面（Protable Operating System Interface of Computer Environment）<br>XPG3：X/Open是一个国际计算机制造商，提出来一个7卷本可移植性指南X/Open Portability Guide 。</li>
-</ol>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cihnigtv2000jm0hhpbs3h3vw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/01/Flex-Bison/" data-id="cihnigtno0000m0hh74c576vu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -123,19 +99,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/01/unix-2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/12/01/图-有向无环图的拓扑排序/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          unix-2
+          图--有向无环图的拓扑排序
         
       </div>
     </a>
   
   
-    <a href="/2015/10/23/makedown/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/11/29/图-关节点和重连通分量/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">makedown</div>
+      <div class="article-nav-title">图--关节点和重连通分量</div>
     </a>
   
 </nav>

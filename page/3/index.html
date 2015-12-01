@@ -3,30 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>unix-1 | make everyday conut--Jocelyn Blag</title>
+  <title>make everyday conut--Jocelyn Blag</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="UNIX基本知识1
-每个进程都一个工程目录(working directory),或称为当前工作目录 (current working)。所有相对路径名都是从工作目录开始解释。进程可以用chdir函数更改其工作目录。
-0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。
-文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。
-每当运行">
-<meta property="og:type" content="article">
-<meta property="og:title" content="unix-1">
-<meta property="og:url" content="http://yoursite.com/2015/10/28/unix-1/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="make everyday conut--Jocelyn Blag">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="make everyday conut--Jocelyn Blag">
-<meta property="og:description" content="UNIX基本知识1
-每个进程都一个工程目录(working directory),或称为当前工作目录 (current working)。所有相对路径名都是从工作目录开始解释。进程可以用chdir函数更改其工作目录。
-0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。
-文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。
-每当运行">
-<meta property="og:updated_time" content="2015-10-28T13:53:14.795Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="unix-1">
-<meta name="twitter:description" content="UNIX基本知识1
-每个进程都一个工程目录(working directory),或称为当前工作目录 (current working)。所有相对路径名都是从工作目录开始解释。进程可以用chdir函数更改其工作目录。
-0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。
-文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。
-每当运行">
+<meta name="twitter:title" content="make everyday conut--Jocelyn Blag">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="make everyday conut--Jocelyn Blag" type="application/atom+xml">
   
@@ -76,7 +63,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-unix-1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-unix-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/28/unix-1/" class="article-date">
   <time datetime="2015-10-28T13:48:54.000Z" itemprop="datePublished">2015-10-28</time>
@@ -89,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      unix-1
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/28/unix-1/">unix-1</a>
     </h1>
   
 
@@ -120,29 +109,111 @@
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2015/11/01/unix-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          unix-2
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/10/23/makedown/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">makedown</div>
-    </a>
-  
-</nav>
+</article>
 
+
+  
+    <article id="post-makedown" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/23/makedown/" class="article-date">
+  <time datetime="2015-10-23T07:40:59.000Z" itemprop="datePublished">2015-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/23/makedown/">makedown</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Markdown语法规范">Markdown语法规范</h2><h3 id="特殊字符自动转换">特殊字符自动转换</h3><pre><code>在html中，有两个字符需要特殊处理：&lt;  和 &amp;。
+&lt; 符号用于起始标签， &amp; 符号用于标记HTML实体。
+要使用原型的话，必须使用 &amp;lt<span class="comment">; 和 &amp;amp;</span>
+
+在makedown中，可以直接使用&lt; 和 &amp;，makedown会自动将其装换为html能识别的特殊字符
+</code></pre><h3 id="段落和换行">段落和换行</h3><pre><code>一个Makedown段落是由一个或多个连续的文本行组成，它的前后要有一个以上的空行。不同段落不该用空格和制表符来缩进。
+如果确实要依赖Makedown来插入<span class="tag">&lt;<span class="title">br</span>/&gt;</span>标签的话，在插入处先按入两个以上的空格然后回车。
+</code></pre><h3 id="标题">标题</h3><pre><code><span class="string">'='</span> 最高阶标题
+<span class="string">'-'</span> 第二阶标题
+<span class="string">'#'</span> 在行首插入<span class="number">1</span>到<span class="number">6</span>个<span class="preprocessor">#，对应的标题<span class="number">1</span>到<span class="number">6</span>阶</span>
+</code></pre><h3 id="区块引用Blockquotes">区块引用Blockquotes</h3><pre><code><span class="string">'&gt;'</span> 在每行的最前面加入&gt;,或者在整个段落的最前面加上&gt;，区块引用可以嵌套，也可以是使用其他的Makedown语法，表壳标题、列表、代码区块等。
+</code></pre><h3 id="列表">列表</h3><pre><code>Makedown支持有序列表和无序列表；
+无序列表使用星号、加号或者减号最为列表标记：*，+，-；
+有序列表则使用数字接着一个英文句点：<span class="number">1.</span> ,<span class="number">2.</span> ,...；
+列表标记通常放在最左边，但是其实也可以缩进，最多<span class="number">3</span>个空格；
+项目标记后面则一定要接着至少一个空格或制表符。
+在列表内项目内放进引用，那&gt;就需要缩进；
+如果要放代码区块的话，该区块就需要缩进两侧。
+</code></pre><h3 id="代码区块">代码区块</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cihnigtv2000km0hhvwjixy61" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
   
 </article>
 
+
+  
+    <article id="post-github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/22/github/" class="article-date">
+  <time datetime="2015-10-22T09:37:50.000Z" itemprop="datePublished">2015-10-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/22/github/">github</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="github">github</h2><ul>
+<li>git是一个分布式的版本控制系统。</li>
+<li>github可以托管各种git库，并提供一个web界面。</li>
+<li>github的独特之处在于从另外一个项目进行分支的简易性。</li>
+<li>首先点击项目站点的“fork”的按钮，然后将代码检出并将修改加入到刚才分出的代码库中，最后通过内建的“pull request”机制向项目负责人申请代码合并。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/10/22/github/" data-id="cihnigtvh000mm0hht18232m4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 </section>
         
           <aside id="sidebar">
