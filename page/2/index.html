@@ -65,6 +65,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/25/图/" class="article-date">
+  <time datetime="2015-11-25T12:33:38.000Z" itemprop="datePublished">2015-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/25/图/">图--邻接矩阵实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>图：多对多的关系<br>存储结构：1）邻接矩阵<br>          2）邻接表<br>          3) 十字链表：是有向图的另一种链式存储结构。是将有向图的邻接表和邻接矩阵结合起来的一种链表<br>          4) 邻接多重表：是无向图的另一种链式存储结构。</p>
+<p>实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//图的邻接矩阵表示方法</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> INF INT_MAX</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> MAX_VERTEX_NUM <span class="number">20</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span>&#123;DG,DN,UDG,UDN&#125; GraphKind;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> VRType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> InfoType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> VertexType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">	VRType adj; <span class="comment">//VRType是顶点关系类型，对无权图 用1 或 0 表示相邻否</span></span><br><span class="line">				<span class="comment">//对于带权图，则为权值类型</span></span><br><span class="line">	InfoType *info;</span><br><span class="line">&#125;ArcCell, AdjMaxtrix[MAX_VERTEX_NUM][MAX_VERTEX_NUM];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">	VertexType vexs[MAX_VERTEX_NUM];</span><br><span class="line">	AdjMaxtrix arcs;</span><br><span class="line">	<span class="keyword">int</span> vexnum, arcnum;</span><br><span class="line">	GraphKind kind;</span><br><span class="line">&#125;MGraph;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> graph[<span class="number">6</span>][<span class="number">6</span>] = &#123;</span><br><span class="line">	INF, <span class="number">5</span>, INF, <span class="number">7</span>, INF, INF,</span><br><span class="line">	INF, INF, <span class="number">4</span>, INF, INF, INF,</span><br><span class="line">	<span class="number">8</span>, INF, INF, INF, INF, <span class="number">9</span>,</span><br><span class="line">	INF, INF, <span class="number">5</span>, INF, INF, <span class="number">6</span>,</span><br><span class="line">	INF, INF, INF, <span class="number">5</span>, INF, INF,</span><br><span class="line">	<span class="number">3</span>, INF, INF, INF, <span class="number">1</span>, INF</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">createDG</span><span class="params">(MGraph &amp;M)</span></span>&#123;</span><br><span class="line">	M.vexnum = <span class="number">6</span>;</span><br><span class="line">	M.arcnum = <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M.vexnum; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M.vexnum; j++)&#123;</span><br><span class="line">				M.arcs[i][j].adj = graph[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DisplayMatix</span><span class="params">(MGraph &amp;G)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; G.vexnum; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (G.arcs[i][j].adj == INF)&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"oo "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d "</span>, G.arcs[i][j].adj);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	MGraph G;</span><br><span class="line">	createDG(G);</span><br><span class="line">	DisplayMatix(G);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/25/图/" data-id="cihog72np0005o0hhbcf9souj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-二叉树-借助于队列的层次遍历版本实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/25/二叉树-借助于队列的层次遍历版本实现/" class="article-date">
@@ -93,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/25/二叉树-借助于队列的层次遍历版本实现/" data-id="ciho4c18k000glkhhyj09vda1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/25/二叉树-借助于队列的层次遍历版本实现/" data-id="cihog72ok000ho0hhfhuqi3hm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -131,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/25/队列/" data-id="ciho4c17p0001lkhhien2ugt5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/25/队列/" data-id="cihog72np0001o0hhl56ph4e7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/24/线索二叉树/" data-id="ciho4c17p0003lkhh8lpkpw4s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/24/线索二叉树/" data-id="cihog72np0003o0hhlzh7kazw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/23/二叉树-借助栈的非递归版本实现/" data-id="ciho4c18k000flkhh27iqfehw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/23/二叉树-借助栈的非递归版本实现/" data-id="cihog72ok000go0hhka2ekqn8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="ciho4c17p0004lkhhffvcnrn1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="cihog72np0004o0hhw6m4w0bf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="ciho4c18k000elkhh4am5zs4v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="cihog72ok000fo0hhz0y5ugq5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -331,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="ciho4c18z000mlkhh7aaygbkf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="cihog72p0000no0hhvyy8ul6n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -370,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="ciho4c17p0002lkhhjsng7lmy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="cihog72np0002o0hhtog8pfob" class="article-share-link">Share</a>
       
       
     </footer>
@@ -428,46 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="ciho4c18z000hlkhhi4k0veos" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-unix-3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/05/unix-3/" class="article-date">
-  <time datetime="2015-11-05T08:46:53.000Z" itemprop="datePublished">2015-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/05/unix-3/">unix-3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最基本的编译文件方法<br>g++ -c xxx.cpp -o xxx<br>./xxx<br>C++编译多个文件 makefile</p>
-<p>逐步编译：<br>g++ -c APCluster.cppAPCluster.h //生成APCluster.o 中间文件<br>g++ -c example.cppAPCluster.h  //生成example.o中间文件<br>g++ -o main APCluster.o example.o</p>
-<p>makefile:<br>GNU的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，上面编译对应的makefile如下：<br>main: APCluster.oexample.o        //main为最终可执行文件<br> g++ -o main APCluster.o example.o //或者g++APCluster.o example.o-omain应该也行<br>APCluster.o :APCluster.cppAPCluster.h   //定义依赖关系<br> g++ -c APCluster.cppAPCluster.h   //如何生成目标文件的操作系统命令，一定要以一个tab键作为开头,<br>                                   //-c只激活预处理，编译，和汇编，也就是他只把程序做成obj文件*.o<br>example.o: example.cpp APCluster.h<br> g++ -c example.cppAPCluster.h    //APCluster.h可以不要，因为上句已经指明，会自动链接<br>clean:                             //定义makeclean指令<br> rm main APCluster.o example.o<br>我们可以把这个内容保存在名字为“makefile”或“Makefile”的文件中，然后在该目录下直接输入命令“make”就可以生成执行文件edit。如果要删除执行文件和所有的中间目标文件，那么，只要简单地执行一下“make clean”就可以了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="ciho4c18z000ilkhh686rznmq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="cihog72p0000io0hhoy5lhe1y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -496,7 +495,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -506,6 +505,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/12/02/图-最短路径-Dijkstra/">图-最短路径-Dijkstra</a>
+          </li>
         
           <li>
             <a href="/2015/12/02/图-有向无环图的关键路径/">图-有向无环图的关键路径</a>
@@ -521,10 +524,6 @@
         
           <li>
             <a href="/2015/11/29/图-关节点和重连通分量/">图--关节点和重连通分量</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/29/图-最小生成树-Kruskal算法/">图--最小生成树--Kruskal算法</a>
           </li>
         
       </ul>
