@@ -5,16 +5,22 @@
   
   <title>图-最短路径-Dijkstra | make everyday conut--Jocelyn Blag</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="单源点的最短路径：给定带权有向图G和源点v，求从源点v到G中其余各顶点的最短路径。
+Dijkstra提出一个按路径长度递增的次序产生最短路径的算法。
+算法描述：1）S为已找到从v出发的最短路径终点的集合，它的初始状态为空寂。那么从v出发到图上其余各顶点vi可能达到的最短路径长度的初值为：D[i] = arcs[Locate Vex(G,v)][i]2）选择vj，使得D[j] = Min{D[i]}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图-最短路径-Dijkstra">
 <meta property="og:url" content="http://yoursite.com/2015/12/02/图-最短路径-Dijkstra/index.html">
 <meta property="og:site_name" content="make everyday conut--Jocelyn Blag">
-<meta property="og:description">
-<meta property="og:updated_time" content="2015-12-02T06:43:57.865Z">
+<meta property="og:description" content="单源点的最短路径：给定带权有向图G和源点v，求从源点v到G中其余各顶点的最短路径。
+Dijkstra提出一个按路径长度递增的次序产生最短路径的算法。
+算法描述：1）S为已找到从v出发的最短路径终点的集合，它的初始状态为空寂。那么从v出发到图上其余各顶点vi可能达到的最短路径长度的初值为：D[i] = arcs[Locate Vex(G,v)][i]2）选择vj，使得D[j] = Min{D[i]}">
+<meta property="og:updated_time" content="2015-12-02T09:58:16.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图-最短路径-Dijkstra">
-<meta name="twitter:description">
+<meta name="twitter:description" content="单源点的最短路径：给定带权有向图G和源点v，求从源点v到G中其余各顶点的最短路径。
+Dijkstra提出一个按路径长度递增的次序产生最短路径的算法。
+算法描述：1）S为已找到从v出发的最短路径终点的集合，它的初始状态为空寂。那么从v出发到图上其余各顶点vi可能达到的最短路径长度的初值为：D[i] = arcs[Locate Vex(G,v)][i]2）选择vj，使得D[j] = Min{D[i]}">
   
     <link rel="alternative" href="/atom.xml" title="make everyday conut--Jocelyn Blag" type="application/atom+xml">
   
@@ -86,11 +92,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>单源点的最短路径：给定带权有向图G和源点v，求从源点v到G中其余各顶点的最短路径。</p>
+<p>Dijkstra提出一个按路径长度递增的次序产生最短路径的算法。</p>
+<p>算法描述：<br>1）S为已找到从v出发的最短路径终点的集合，它的初始状态为空寂。那么从v出发到图上其余各顶点vi可能达到的最短路径长度的初值为：<br>D[i] = arcs[Locate Vex(G,v)][i]<br>2）选择vj，使得D[j] = Min{D[i]}<br>vj就是当前求得的一条从v出发的最短路径的终点。S= SU{j}。<br>3）修改从v出发到集合V-S上任一顶点vk可达的最短路径长度。<br>4）重复上述操作，求得从v到图上其余各顶点的最短路径是依路径长度递增的序列。</p>
+<p>dist记录从源点到其他各顶点当前的最短距离，其初值为diat[i]=cost[v][i],从S之外的顶点集合V-S中选出一个顶点Vu，使得dist[u]的值最小。<br>于是从源点到达Vu只通过s中的顶点，把u加入集合s中调整dist中的记录从源点到V-S中每个顶点Vj的距离：<br>从原来的dist[j]和dist[u]+cost[u][j]中选择较小的值作为新的dist[j].</p>
+<p>path用于保存最短路径长度。path[i]保存从源点v到终点Vi当前最短路径中的前一个顶点的编号，它的初值为源点v的编号或-1(表示无边)。</p>
+<p>算法实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//图的邻接矩阵表示方法</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> INF INT_MAX</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> MAX_VERTEX_NUM <span class="number">20</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span>&#123; DG, DN, UDG, UDN &#125; GraphKind;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> VRType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> InfoType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> VertexType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">	VRType adj; <span class="comment">//VRType是顶点关系类型，对无权图 用1 或 0 表示相邻否</span></span><br><span class="line">	<span class="comment">//对于带权图，则为权值类型</span></span><br><span class="line">	InfoType *info;</span><br><span class="line">&#125;ArcCell, AdjMaxtrix[MAX_VERTEX_NUM][MAX_VERTEX_NUM];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">	VertexType vexs[MAX_VERTEX_NUM];</span><br><span class="line">	AdjMaxtrix arcs;</span><br><span class="line">	<span class="keyword">int</span> vexnum, arcnum;</span><br><span class="line">	GraphKind kind;</span><br><span class="line">&#125;MGraph;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> graph[<span class="number">6</span>][<span class="number">6</span>] = &#123;</span><br><span class="line">	INF, INF, <span class="number">10</span>, INF, <span class="number">30</span>, <span class="number">100</span>,</span><br><span class="line">	INF, INF, <span class="number">5</span>, INF, INF, INF,</span><br><span class="line">	INF, INF, INF, <span class="number">50</span>, INF, INF,</span><br><span class="line">	INF, INF, INF, INF, INF, <span class="number">10</span>,</span><br><span class="line">	INF, INF, INF, <span class="number">20</span>, INF, <span class="number">60</span>,</span><br><span class="line">	INF, INF, INF, INF, INF, INF</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">createDG</span><span class="params">(MGraph &amp;M)</span></span>&#123;</span><br><span class="line">	M.vexnum = <span class="number">6</span>;</span><br><span class="line">	M.arcnum = <span class="number">10</span>;</span><br><span class="line">	<span class="comment">//顶点的信息</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M.vexnum; i++)&#123;</span><br><span class="line">		M.vexs[i] = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//边的权重等信息</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M.vexnum; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M.vexnum; j++)&#123;</span><br><span class="line">			M.arcs[i][j].adj = graph[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DisplayMatix</span><span class="params">(MGraph &amp;G)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; G.vexnum; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (G.arcs[i][j].adj == INF)&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"oo "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d "</span>, G.arcs[i][j].adj);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dist[<span class="number">6</span>];<span class="comment">//dist记录从源点到其他各顶点当前的最短距离，</span></span><br><span class="line"><span class="keyword">int</span> path[<span class="number">6</span>];<span class="comment">//path用于保存最短路径长度。path[i]保存从源点v到终点Vi当前最短路径中的前一个顶点的编号，它的初值为源点v的编号或-1(表示无边)。</span></span><br><span class="line"><span class="keyword">int</span> final[MAX_VERTEX_NUM];<span class="comment">//是否找到最短路径</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_DIJ</span><span class="params">(MGraph G, <span class="keyword">int</span> v0)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> min,v;</span><br><span class="line">	<span class="keyword">for</span> ( v = <span class="number">0</span>; v &lt; G.vexnum; ++v)&#123;</span><br><span class="line">		final[v] = <span class="literal">false</span>;</span><br><span class="line">		dist[v] = G.arcs[v0][v].adj;</span><br><span class="line">		<span class="keyword">if</span> (G.arcs[v0][v].adj == INF)&#123;</span><br><span class="line">			path[v] = -<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			path[v] = v0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	path[v0] = <span class="number">0</span>;</span><br><span class="line">	final[v0] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; G.vexnum; ++i)&#123;</span><br><span class="line">		min = INF;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; ++w)&#123;</span><br><span class="line">			<span class="keyword">if</span> (!final[w])</span><br><span class="line">				<span class="keyword">if</span> (dist[w] &lt; min)&#123;</span><br><span class="line">					v = w;</span><br><span class="line">					min = dist[w];</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (v != -<span class="number">1</span>)&#123;</span><br><span class="line">			final[v] = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; ++w)&#123;</span><br><span class="line">				<span class="keyword">if</span> (!final[w] &amp;&amp; G.arcs[v][w].adj &lt; INF &amp;&amp; (min + G.arcs[v][w].adj &lt; dist[w]))&#123;</span><br><span class="line">					dist[w] = min + G.arcs[v][w].adj;</span><br><span class="line">					path[w] = v;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> pre;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Dijkstra算法求解如下：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (i != v0)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"v%d -&gt; v%d:"</span>, v0, i);</span><br><span class="line">			<span class="keyword">if</span> (final[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d   "</span>,dist[i]);</span><br><span class="line">				pre = i;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"逆序输出 : "</span>);</span><br><span class="line">				<span class="keyword">while</span> (pre != v0)&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%d,"</span>, pre);</span><br><span class="line">					pre = path[pre];</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,pre);</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"不存在\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	MGraph G;</span><br><span class="line">	createDG(G);</span><br><span class="line">	DisplayMatix(G);</span><br><span class="line">	ShortestPath_DIJ(G, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Dijkstra/" data-id="cihog72o4000ao0hh0vnhctrd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Dijkstra/" data-id="cihoxd6cv000c0ghh0o1318y8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -98,6 +110,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/12/02/图-最短路径-Floyed/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          图-最短路径-Floyed
+        
+      </div>
+    </a>
   
   
     <a href="/2015/12/02/图-有向无环图的关键路径/" id="article-nav-older" class="article-nav-link-wrap">
@@ -124,7 +145,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -136,6 +157,14 @@
       <ul>
         
           <li>
+            <a href="/2015/12/02/查找/">查找</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/02/图-最短路径-Floyed/">图-最短路径-Floyed</a>
+          </li>
+        
+          <li>
             <a href="/2015/12/02/图-最短路径-Dijkstra/">图-最短路径-Dijkstra</a>
           </li>
         
@@ -145,14 +174,6 @@
         
           <li>
             <a href="/2015/12/01/图-有向无环图的拓扑排序/">图--有向无环图的拓扑排序</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/01/Flex-Bison/">Flex Bison</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/29/图-关节点和重连通分量/">图--关节点和重连通分量</a>
           </li>
         
       </ul>
