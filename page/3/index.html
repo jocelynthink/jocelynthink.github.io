@@ -65,6 +65,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-线索二叉树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/24/线索二叉树/" class="article-date">
+  <time datetime="2015-11-24T07:51:15.000Z" itemprop="datePublished">2015-11-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/24/线索二叉树/">线索二叉树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>线性化：对一个非线性结构进行线性化操作，使得每个结点在这个线性序列中有且仅有一个直接前驱和直接后继。<br>方法：在每个结点上增加两个指针域fwd和bkwd，分别指示结点在任一次遍历序列时得到的前驱和后继信息。</p>
+<p>LTag：0： lchild域指示结点的左孩子 1 ：lchild域指示结点的前驱；<br>RTag：0： rchild域指示结点的右孩子 1： rchild域指示结点的后继。</p>
+<p>以这种结构构成的二叉链表作为二叉树的的存储结构，叫做线索链表，其中指向结点前驱和后继的指针，叫做线索。<br>加上线索的二叉树称之为线索二叉树。<br>线索话：对二叉树以某种次序遍历使其变为线索二叉树的过程。<br>在线索树上进行遍历，只要先找到序列中的第一个结点，然后依次找到结点的后继直至其后继为空为止。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"></span><br><span class="line">//输入是：abc<span class="comment">##de#f##g###</span></span><br><span class="line"></span><br><span class="line">typedef enum &#123; Link, Thread &#125; PointerTag; //Link==<span class="number">0</span> 指针 Thread==<span class="number">1</span>线索</span><br><span class="line"></span><br><span class="line">typedef struct B<span class="keyword">in</span>ThrNode</span><br><span class="line">&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct B<span class="keyword">in</span>ThrNode *lchild, *rchild;</span><br><span class="line">	PointerTag LTag, RTag;</span><br><span class="line">&#125;B<span class="keyword">in</span>ThrNode, *B<span class="keyword">in</span>ThrTree;</span><br><span class="line">B<span class="keyword">in</span>ThrTree pre;</span><br><span class="line"></span><br><span class="line">//<span class="string">'#'</span>表示根节点</span><br><span class="line">void createB<span class="keyword">in</span>Tree(B<span class="keyword">in</span>ThrTree &amp;T)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	scanf_s(<span class="string">"%c"</span>, &amp;ch);</span><br><span class="line">	<span class="keyword">if</span> (ch == <span class="string">'#'</span>)&#123;</span><br><span class="line">		T = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!(T = (B<span class="keyword">in</span>ThrNode*)malloc(sizeof(B<span class="keyword">in</span>ThrNode))))&#123;</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		T-&gt;data = ch;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"数据%c\n"</span>, T-&gt;data);</span><br><span class="line">		createB<span class="keyword">in</span>Tree(T-&gt;lchild);</span><br><span class="line">		createB<span class="keyword">in</span>Tree(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="keyword">in</span>Threading(B<span class="keyword">in</span>ThrTree p)&#123;</span><br><span class="line">	<span class="keyword">if</span> (p)&#123;</span><br><span class="line">		<span class="keyword">in</span>Threading(p-&gt;lchild);// 左子树线索化</span><br><span class="line">		<span class="keyword">if</span> (!p-&gt;lchild)&#123;       //前驱线索化</span><br><span class="line">			p-&gt;LTag = Thread;</span><br><span class="line">			p-&gt;lchild = pre;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			p-&gt;LTag = Link;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!pre-&gt;rchild)&#123;      //后继线索化</span><br><span class="line">			pre-&gt;RTag = Thread;</span><br><span class="line">			pre-&gt;rchild = p;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			pre-&gt;RTag = Link;</span><br><span class="line">		&#125;</span><br><span class="line">		pre = p;</span><br><span class="line">		<span class="keyword">in</span>Threading(p-&gt;rchild); //右子树线索化</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int InOrderThreading(B<span class="keyword">in</span>ThrTree &amp;Thrt, B<span class="keyword">in</span>ThrTree T)&#123;</span><br><span class="line">	<span class="keyword">if</span> (!(Thrt = (B<span class="keyword">in</span>ThrTree)malloc(sizeof(B<span class="keyword">in</span>ThrNode))))</span><br><span class="line">		<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">	Thrt-&gt;LTag = Link;   //建立结点</span><br><span class="line">	Thrt-&gt;RTag = Thread;</span><br><span class="line">	Thrt-&gt;rchild = Thrt;   //右指针回退</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!T)</span><br><span class="line">		Thrt-&gt;lchild = Thrt;  //若二叉树空，则左指针回退</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		Thrt-&gt;lchild = T;</span><br><span class="line">		pre = Thrt;</span><br><span class="line">		<span class="keyword">in</span>Threading(T);         //中序遍历进行中序线索化</span><br><span class="line">		pre-&gt;rchild = Thrt;     //最后一个结点线索化</span><br><span class="line">		pre-&gt;RTag = Thread;</span><br><span class="line">		Thrt-&gt;rchild = pre; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">int output_data(B<span class="keyword">in</span>ThrTree T)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n%s\t%c\t%s"</span>, T-&gt;LTag == Link ? <span class="string">"Link"</span> : <span class="string">"Thread"</span>, T-&gt;data, T-&gt;RTag == <span class="number">0</span> ? <span class="string">"Link"</span> : <span class="string">"Thread"</span>);</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">int InOrderTravese_Thr(B<span class="keyword">in</span>ThrTree T,int (*visit)(B<span class="keyword">in</span>ThrTree h))&#123;</span><br><span class="line">	B<span class="keyword">in</span>ThrTree p;</span><br><span class="line">	p = T-&gt;lchild;</span><br><span class="line">	<span class="keyword">while</span> (p != T)&#123;</span><br><span class="line">		<span class="keyword">while</span> (p-&gt;LTag == Link)</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		visit(p);</span><br><span class="line">		<span class="keyword">while</span> (p-&gt;RTag == Thread &amp;&amp; p-&gt;rchild != T)&#123;</span><br><span class="line">			p = p-&gt;rchild;</span><br><span class="line">			visit(p);</span><br><span class="line">		&#125;</span><br><span class="line">		p = p-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	B<span class="keyword">in</span>ThrTree T, Thrt;</span><br><span class="line">	createB<span class="keyword">in</span>Tree(T);</span><br><span class="line">	<span class="keyword">if</span> (!InOrderThreading(Thrt, T))&#123;</span><br><span class="line">		<span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!InOrderTravese_Thr(Thrt,output_data))&#123;</span><br><span class="line">		<span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/24/线索二叉树/" data-id="cihuby59c0005p0hhumqg5nwh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-二叉树-借助栈的非递归版本实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/23/二叉树-借助栈的非递归版本实现/" class="article-date">
@@ -94,7 +133,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/23/二叉树-借助栈的非递归版本实现/" data-id="cihubte9v000mzshh21ixtasz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/23/二叉树-借助栈的非递归版本实现/" data-id="cihuby5ap000mp0hhnekenha6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="cihubte8h0006zshhahqsw876" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="cihuby59e0006p0hhwsvqqbvh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="cihubte9q000lzshhuy6piycp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="cihuby5al000lp0hhq0cfaqkq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="cihubteag000tzshhsxothtx0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="cihuby5b9000tp0hhlrqc6hh3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="cihubte8b0004zshhhm094ivo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="cihuby5920004p0hhfl4bda0k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -313,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="cihubtea2000ozshh6s7u8z7w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="cihuby5aw000op0hhwav1uxnh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -352,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="cihubtea4000pzshh5dvcdo6k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="cihuby5ay000pp0hh7r7hoagu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -422,7 +461,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/01/unix-2/" data-id="cihubtea6000qzshher1cd26l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/01/unix-2/" data-id="cihuby5b1000qp0hhnfgokzou" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,61 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cihubtea9000rzshhfhhlfa0c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-makedown" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/23/makedown/" class="article-date">
-  <time datetime="2015-10-23T07:40:59.000Z" itemprop="datePublished">2015-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/23/makedown/">makedown</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Markdown语法规范">Markdown语法规范</h2><h3 id="特殊字符自动转换">特殊字符自动转换</h3><pre><code>在html中，有两个字符需要特殊处理：&lt;  和 &amp;。
-&lt; 符号用于起始标签， &amp; 符号用于标记HTML实体。
-要使用原型的话，必须使用 &amp;lt<span class="comment">; 和 &amp;amp;</span>
-
-在makedown中，可以直接使用&lt; 和 &amp;，makedown会自动将其装换为html能识别的特殊字符
-</code></pre><h3 id="段落和换行">段落和换行</h3><pre><code>一个Makedown段落是由一个或多个连续的文本行组成，它的前后要有一个以上的空行。不同段落不该用空格和制表符来缩进。
-如果确实要依赖Makedown来插入<span class="tag">&lt;<span class="title">br</span>/&gt;</span>标签的话，在插入处先按入两个以上的空格然后回车。
-</code></pre><h3 id="标题">标题</h3><pre><code><span class="string">'='</span> 最高阶标题
-<span class="string">'-'</span> 第二阶标题
-<span class="string">'#'</span> 在行首插入<span class="number">1</span>到<span class="number">6</span>个<span class="preprocessor">#，对应的标题<span class="number">1</span>到<span class="number">6</span>阶</span>
-</code></pre><h3 id="区块引用Blockquotes">区块引用Blockquotes</h3><pre><code><span class="string">'&gt;'</span> 在每行的最前面加入&gt;,或者在整个段落的最前面加上&gt;，区块引用可以嵌套，也可以是使用其他的Makedown语法，表壳标题、列表、代码区块等。
-</code></pre><h3 id="列表">列表</h3><pre><code>Makedown支持有序列表和无序列表；
-无序列表使用星号、加号或者减号最为列表标记：*，+，-；
-有序列表则使用数字接着一个英文句点：<span class="number">1.</span> ,<span class="number">2.</span> ,...；
-列表标记通常放在最左边，但是其实也可以缩进，最多<span class="number">3</span>个空格；
-项目标记后面则一定要接着至少一个空格或制表符。
-在列表内项目内放进引用，那&gt;就需要缩进；
-如果要放代码区块的话，该区块就需要缩进两侧。
-</code></pre><h3 id="代码区块">代码区块</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cihubteab000szshhroixlyfv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cihuby5b4000rp0hhvl16p44d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -553,7 +538,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -565,11 +550,15 @@
       <ul>
         
           <li>
+            <a href="/2015/12/06/B树实现/">B树实现</a>
+          </li>
+        
+          <li>
             <a href="/2015/12/05/迷宫问题/">迷宫问题</a>
           </li>
         
           <li>
-            <a href="/2015/12/05/动态查找-AVL树/">动态查找-AVL树--</a>
+            <a href="/2015/12/05/动态查找-AVL树/">动态查找-AVL树</a>
           </li>
         
           <li>
@@ -578,10 +567,6 @@
         
           <li>
             <a href="/2015/12/03/动态查找-BST树/">动态查找-BST树</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/02/静态查找/">静态查找</a>
           </li>
         
       </ul>
