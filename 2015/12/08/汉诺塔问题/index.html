@@ -5,16 +5,19 @@
   
   <title>汉诺塔问题 | make everyday conut--Jocelyn Blag</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述：假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。现在要求将X轴上的那个圆盘移至塔座Z上规则：1)每次只能移动一个圆盘；2)圆盘可以插在想，X、Y、Z的任一塔座上；3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。实现12345678910111213141516171819202122232425262728#include &amp;lt;">
+  <meta name="description" content="主要用到递归的思想
+问题描述：假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。现在要求将X轴上的那个圆盘移至塔座Z上规则：1)每次只能移动一个圆盘；2)圆盘可以插在想，X、Y、Z的任一塔座上；3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。实现12345678910111213141516171819202122232425262728#in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="汉诺塔问题">
 <meta property="og:url" content="http://yoursite.com/2015/12/08/汉诺塔问题/index.html">
 <meta property="og:site_name" content="make everyday conut--Jocelyn Blag">
-<meta property="og:description" content="问题描述：假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。现在要求将X轴上的那个圆盘移至塔座Z上规则：1)每次只能移动一个圆盘；2)圆盘可以插在想，X、Y、Z的任一塔座上；3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。实现12345678910111213141516171819202122232425262728#include &amp;lt;">
-<meta property="og:updated_time" content="2015-12-08T03:46:09.297Z">
+<meta property="og:description" content="主要用到递归的思想
+问题描述：假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。现在要求将X轴上的那个圆盘移至塔座Z上规则：1)每次只能移动一个圆盘；2)圆盘可以插在想，X、Y、Z的任一塔座上；3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。实现12345678910111213141516171819202122232425262728#in">
+<meta property="og:updated_time" content="2015-12-08T06:44:39.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汉诺塔问题">
-<meta name="twitter:description" content="问题描述：假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。现在要求将X轴上的那个圆盘移至塔座Z上规则：1)每次只能移动一个圆盘；2)圆盘可以插在想，X、Y、Z的任一塔座上；3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。实现12345678910111213141516171819202122232425262728#include &amp;lt;">
+<meta name="twitter:description" content="主要用到递归的思想
+问题描述：假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。现在要求将X轴上的那个圆盘移至塔座Z上规则：1)每次只能移动一个圆盘；2)圆盘可以插在想，X、Y、Z的任一塔座上；3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。实现12345678910111213141516171819202122232425262728#in">
   
     <link rel="alternative" href="/atom.xml" title="make everyday conut--Jocelyn Blag" type="application/atom+xml">
   
@@ -86,12 +89,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>问题描述：<br>假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。<br>现在要求将X轴上的那个圆盘移至塔座Z上<br>规则：<br>1)每次只能移动一个圆盘；<br>2)圆盘可以插在想，X、Y、Z的任一塔座上；<br>3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。<br>实现<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">han</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> A, <span class="keyword">char</span> B, <span class="keyword">char</span> C)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>  num = <span class="number">1</span>;	</span><br><span class="line">	<span class="keyword">if</span> (n&lt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		han(n - <span class="number">1</span>, X, Z, Y);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; num++ &lt;&lt; <span class="string">"move disk "</span> &lt;&lt; n-<span class="number">1</span> &lt;&lt;<span class="string">" from "</span>&lt;&lt; A &lt;&lt; <span class="string">" to "</span> &lt;&lt; C &lt;&lt; endl;</span><br><span class="line">		han(n - <span class="number">1</span>, Y, X, Z);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;<span class="comment">//输入盘子个数 </span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"n="</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">	han(n, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>主要用到递归的思想</p>
+<p>问题描述：<br>假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。<br>现在要求将X轴上的那个圆盘移至塔座Z上<br>规则：<br>1)每次只能移动一个圆盘；<br>2)圆盘可以插在想，X、Y、Z的任一塔座上；<br>3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。<br>实现<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">han</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> X, <span class="keyword">char</span> Y, <span class="keyword">char</span> Z)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>  num = <span class="number">1</span>;	</span><br><span class="line">	<span class="keyword">if</span> (n&lt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		han(n - <span class="number">1</span>, X, Z, Y);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; num++ &lt;&lt; <span class="string">"move disk "</span> &lt;&lt; n-<span class="number">1</span> &lt;&lt;<span class="string">" from "</span>&lt;&lt; A &lt;&lt; <span class="string">" to "</span> &lt;&lt; C &lt;&lt; endl;</span><br><span class="line">		han(n - <span class="number">1</span>, Y, X, Z);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;<span class="comment">//输入盘子个数 </span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"n="</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">	han(n, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/08/汉诺塔问题/" data-id="cihwuhi3d0006ighh1ubc3ppw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/08/汉诺塔问题/" data-id="cihx1yrsp0007mkhhz4ctpsfs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -99,6 +103,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/12/08/约瑟夫环/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          约瑟夫环
+        
+      </div>
+    </a>
   
   
     <a href="/2015/12/06/B树实现/" id="article-nav-older" class="article-nav-link-wrap">
@@ -125,7 +138,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -135,6 +148,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/12/08/约瑟夫环/">约瑟夫环</a>
+          </li>
         
           <li>
             <a href="/2015/12/08/汉诺塔问题/">汉诺塔问题</a>
@@ -150,10 +167,6 @@
         
           <li>
             <a href="/2015/12/05/迷宫问题/">迷宫问题</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/05/动态查找-AVL树/">动态查找-AVL树</a>
           </li>
         
       </ul>

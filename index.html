@@ -65,6 +65,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-约瑟夫环" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/08/约瑟夫环/" class="article-date">
+  <time datetime="2015-12-08T06:47:55.000Z" itemprop="datePublished">2015-12-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/08/约瑟夫环/">约瑟夫环</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用链表实现约瑟夫环的求解<br>约瑟夫环<br>约瑟夫环（约瑟夫问题）是一个数学的应用问题：已知n个人（以编号1，2，3…n分别表示）围坐在一张圆桌周围。从编号为k的人开始报数，数到m的那个人出列；他的下一个人又从1开始报数，数到m的那个人又出列；依此规律重复下去，直到圆桌周围的人全部出列。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> node&#123;</span><br><span class="line">	<span class="keyword">int</span> num;</span><br><span class="line">	<span class="keyword">int</span> pwd;</span><br><span class="line">	node *next;</span><br><span class="line">&#125;lnode, *joseph;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	joseph s = (joseph)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(lnode)), p = (joseph)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(lnode));</span><br><span class="line">	<span class="keyword">int</span> n, i = <span class="number">0</span>, m;</span><br><span class="line">	scanf_s(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">	scanf_s(<span class="string">"%d"</span>, &amp;p-&gt;pwd);</span><br><span class="line">	p-&gt;num = <span class="number">1</span>;</span><br><span class="line">	p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	s = p;</span><br><span class="line">	s-&gt;next = p;</span><br><span class="line">	p-&gt;next = s;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">		p-&gt;next = (joseph)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(node));</span><br><span class="line">		scanf_s(<span class="string">"%d"</span>, &amp;p-&gt;next-&gt;pwd);</span><br><span class="line">		p-&gt;next-&gt;num = i + <span class="number">1</span>;</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">		p-&gt;next = s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)&#123;</span><br><span class="line">		s = s-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	i = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (n &gt; <span class="number">1</span>)&#123;</span><br><span class="line">		p = (joseph)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(lnode));</span><br><span class="line">		<span class="keyword">if</span> (i%m == <span class="number">0</span>)&#123;</span><br><span class="line">			m = s-&gt;next-&gt;pwd;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>, s-&gt;next-&gt;num);</span><br><span class="line">			p = s-&gt;next;</span><br><span class="line">			s-&gt;next = p-&gt;next;</span><br><span class="line">			<span class="built_in">free</span>(p);</span><br><span class="line">			n--;</span><br><span class="line">			i = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			i++;</span><br><span class="line">			s = s-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, s-&gt;num);</span><br><span class="line">	<span class="built_in">free</span>(s);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/08/约瑟夫环/" data-id="cihx1yrsl0006mkhh5aynen1u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-汉诺塔问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/08/汉诺塔问题/" class="article-date">
@@ -87,12 +124,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>问题描述：<br>假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。<br>现在要求将X轴上的那个圆盘移至塔座Z上<br>规则：<br>1)每次只能移动一个圆盘；<br>2)圆盘可以插在想，X、Y、Z的任一塔座上；<br>3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。<br>实现<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">han</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> A, <span class="keyword">char</span> B, <span class="keyword">char</span> C)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>  num = <span class="number">1</span>;	</span><br><span class="line">	<span class="keyword">if</span> (n&lt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		han(n - <span class="number">1</span>, X, Z, Y);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; num++ &lt;&lt; <span class="string">"move disk "</span> &lt;&lt; n-<span class="number">1</span> &lt;&lt;<span class="string">" from "</span>&lt;&lt; A &lt;&lt; <span class="string">" to "</span> &lt;&lt; C &lt;&lt; endl;</span><br><span class="line">		han(n - <span class="number">1</span>, Y, X, Z);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;<span class="comment">//输入盘子个数 </span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"n="</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">	han(n, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>主要用到递归的思想</p>
+<p>问题描述：<br>假设有3个命名为X、Y、Z的塔座，在塔座上用n个直径大小各不相同、依次到大为1,2…的n个圆盘。<br>现在要求将X轴上的那个圆盘移至塔座Z上<br>规则：<br>1)每次只能移动一个圆盘；<br>2)圆盘可以插在想，X、Y、Z的任一塔座上；<br>3)任何时刻都不能将一个较大的圆盘，压在较小的圆盘之上。<br>实现<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">han</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> X, <span class="keyword">char</span> Y, <span class="keyword">char</span> Z)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>  num = <span class="number">1</span>;	</span><br><span class="line">	<span class="keyword">if</span> (n&lt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		han(n - <span class="number">1</span>, X, Z, Y);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; num++ &lt;&lt; <span class="string">"move disk "</span> &lt;&lt; n-<span class="number">1</span> &lt;&lt;<span class="string">" from "</span>&lt;&lt; A &lt;&lt; <span class="string">" to "</span> &lt;&lt; C &lt;&lt; endl;</span><br><span class="line">		han(n - <span class="number">1</span>, Y, X, Z);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;<span class="comment">//输入盘子个数 </span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"n="</span> &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">	han(n, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/08/汉诺塔问题/" data-id="cihwuhi3d0006ighh1ubc3ppw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/08/汉诺塔问题/" data-id="cihx1yrsp0007mkhhz4ctpsfs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/06/B树实现/" data-id="cihwuhi2n0000ighhgiuu4c1q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/06/B树实现/" data-id="cihx1yrqr0000mkhhuqj2hzsj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/06/动态插入-AVL树/" data-id="cihwuhi4s000mighhn9thvnzu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/06/动态插入-AVL树/" data-id="cihx1yru0000nmkhhowkzer5q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/05/迷宫问题/" data-id="cihwuhi340003ighhvuoppt3y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/05/迷宫问题/" data-id="cihx1yrsd0003mkhhmlrctwyr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/05/动态查找-AVL树/" data-id="cihwuhi4o000lighhuna2th4s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/05/动态查找-AVL树/" data-id="cihx1yrtw000mmkhhvaasc50b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/04/排序/" data-id="cihwuhi3i0008ighhyuny89kg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/04/排序/" data-id="cihx1yrsu0009mkhhl4h98p7w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/03/动态查找-BST树/" data-id="cihwuhi4m000kighhiw2yuh72" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/03/动态查找-BST树/" data-id="cihx1yrtt000lmkhhli4bq9wl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -359,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/静态查找/" data-id="cihwuhi2y0001ighhbrsj88fz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/02/静态查找/" data-id="cihx1yrrt0001mkhho5m950q7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,49 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Floyed/" data-id="cihwuhi43000eighhj2fkhqs0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-图-最短路径-Dijkstra" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/02/图-最短路径-Dijkstra/" class="article-date">
-  <time datetime="2015-12-02T06:43:57.000Z" itemprop="datePublished">2015-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/02/图-最短路径-Dijkstra/">图-最短路径-Dijkstra</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>单源点的最短路径：给定带权有向图G和源点v，求从源点v到G中其余各顶点的最短路径。</p>
-<p>Dijkstra提出一个按路径长度递增的次序产生最短路径的算法。</p>
-<p>算法描述：<br>1）S为已找到从v出发的最短路径终点的集合，它的初始状态为空寂。那么从v出发到图上其余各顶点vi可能达到的最短路径长度的初值为：<br>D[i] = arcs[Locate Vex(G,v)][i]<br>2）选择vj，使得D[j] = Min{D[i]}<br>vj就是当前求得的一条从v出发的最短路径的终点。S= SU{j}。<br>3）修改从v出发到集合V-S上任一顶点vk可达的最短路径长度。<br>4）重复上述操作，求得从v到图上其余各顶点的最短路径是依路径长度递增的序列。</p>
-<p>dist记录从源点到其他各顶点当前的最短距离，其初值为diat[i]=cost[v][i],从S之外的顶点集合V-S中选出一个顶点Vu，使得dist[u]的值最小。<br>于是从源点到达Vu只通过s中的顶点，把u加入集合s中调整dist中的记录从源点到V-S中每个顶点Vj的距离：<br>从原来的dist[j]和dist[u]+cost[u][j]中选择较小的值作为新的dist[j].</p>
-<p>path用于保存最短路径长度。path[i]保存从源点v到终点Vi当前最短路径中的前一个顶点的编号，它的初值为源点v的编号或-1(表示无边)。</p>
-<p>算法实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//图的邻接矩阵表示方法</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> INF INT_MAX</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> MAX_VERTEX_NUM <span class="number">20</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span>&#123; DG, DN, UDG, UDN &#125; GraphKind;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> VRType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> InfoType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> VertexType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">	VRType adj; <span class="comment">//VRType是顶点关系类型，对无权图 用1 或 0 表示相邻否</span></span><br><span class="line">	<span class="comment">//对于带权图，则为权值类型</span></span><br><span class="line">	InfoType *info;</span><br><span class="line">&#125;ArcCell, AdjMaxtrix[MAX_VERTEX_NUM][MAX_VERTEX_NUM];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">	VertexType vexs[MAX_VERTEX_NUM];</span><br><span class="line">	AdjMaxtrix arcs;</span><br><span class="line">	<span class="keyword">int</span> vexnum, arcnum;</span><br><span class="line">	GraphKind kind;</span><br><span class="line">&#125;MGraph;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> graph[<span class="number">6</span>][<span class="number">6</span>] = &#123;</span><br><span class="line">	INF, INF, <span class="number">10</span>, INF, <span class="number">30</span>, <span class="number">100</span>,</span><br><span class="line">	INF, INF, <span class="number">5</span>, INF, INF, INF,</span><br><span class="line">	INF, INF, INF, <span class="number">50</span>, INF, INF,</span><br><span class="line">	INF, INF, INF, INF, INF, <span class="number">10</span>,</span><br><span class="line">	INF, INF, INF, <span class="number">20</span>, INF, <span class="number">60</span>,</span><br><span class="line">	INF, INF, INF, INF, INF, INF</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">createDG</span><span class="params">(MGraph &amp;M)</span></span>&#123;</span><br><span class="line">	M.vexnum = <span class="number">6</span>;</span><br><span class="line">	M.arcnum = <span class="number">10</span>;</span><br><span class="line">	<span class="comment">//顶点的信息</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M.vexnum; i++)&#123;</span><br><span class="line">		M.vexs[i] = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//边的权重等信息</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M.vexnum; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M.vexnum; j++)&#123;</span><br><span class="line">			M.arcs[i][j].adj = graph[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DisplayMatix</span><span class="params">(MGraph &amp;G)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; G.vexnum; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (G.arcs[i][j].adj == INF)&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"oo "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d "</span>, G.arcs[i][j].adj);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dist[<span class="number">6</span>];<span class="comment">//dist记录从源点到其他各顶点当前的最短距离，</span></span><br><span class="line"><span class="keyword">int</span> path[<span class="number">6</span>];<span class="comment">//path用于保存最短路径长度。path[i]保存从源点v到终点Vi当前最短路径中的前一个顶点的编号，它的初值为源点v的编号或-1(表示无边)。</span></span><br><span class="line"><span class="keyword">int</span> final[MAX_VERTEX_NUM];<span class="comment">//是否找到最短路径</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShortestPath_DIJ</span><span class="params">(MGraph G, <span class="keyword">int</span> v0)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> min,v;</span><br><span class="line">	<span class="keyword">for</span> ( v = <span class="number">0</span>; v &lt; G.vexnum; ++v)&#123;</span><br><span class="line">		final[v] = <span class="literal">false</span>;</span><br><span class="line">		dist[v] = G.arcs[v0][v].adj;</span><br><span class="line">		<span class="keyword">if</span> (G.arcs[v0][v].adj == INF)&#123;</span><br><span class="line">			path[v] = -<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			path[v] = v0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	path[v0] = <span class="number">0</span>;</span><br><span class="line">	final[v0] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; G.vexnum; ++i)&#123;</span><br><span class="line">		min = INF;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; ++w)&#123;</span><br><span class="line">			<span class="keyword">if</span> (!final[w])</span><br><span class="line">				<span class="keyword">if</span> (dist[w] &lt; min)&#123;</span><br><span class="line">					v = w;</span><br><span class="line">					min = dist[w];</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (v != -<span class="number">1</span>)&#123;</span><br><span class="line">			final[v] = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; G.vexnum; ++w)&#123;</span><br><span class="line">				<span class="keyword">if</span> (!final[w] &amp;&amp; G.arcs[v][w].adj &lt; INF &amp;&amp; (min + G.arcs[v][w].adj &lt; dist[w]))&#123;</span><br><span class="line">					dist[w] = min + G.arcs[v][w].adj;</span><br><span class="line">					path[w] = v;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> pre;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Dijkstra算法求解如下：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (i != v0)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"v%d -&gt; v%d:"</span>, v0, i);</span><br><span class="line">			<span class="keyword">if</span> (final[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d   "</span>,dist[i]);</span><br><span class="line">				pre = i;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"逆序输出 : "</span>);</span><br><span class="line">				<span class="keyword">while</span> (pre != v0)&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%d,"</span>, pre);</span><br><span class="line">					pre = path[pre];</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,pre);</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"不存在\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	MGraph G;</span><br><span class="line">	createDG(G);</span><br><span class="line">	DisplayMatix(G);</span><br><span class="line">	ShortestPath_DIJ(G, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Dijkstra/" data-id="cihwuhi47000fighhfq9p9axw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Floyed/" data-id="cihx1yrtd000fmkhh97utzj9h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -467,7 +463,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -477,6 +473,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/12/08/约瑟夫环/">约瑟夫环</a>
+          </li>
         
           <li>
             <a href="/2015/12/08/汉诺塔问题/">汉诺塔问题</a>
@@ -492,10 +492,6 @@
         
           <li>
             <a href="/2015/12/05/迷宫问题/">迷宫问题</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/05/动态查找-AVL树/">动态查找-AVL树</a>
           </li>
         
       </ul>
