@@ -65,6 +65,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-图的遍历-java实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/03/图的遍历-java实现/" class="article-date">
+  <time datetime="2016-03-03T14:10:01.000Z" itemprop="datePublished">2016-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/03/图的遍历-java实现/">图的遍历--java实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在看数据结构，之前用c实现，现在用java实现图的算法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Graph &#123;</span><br><span class="line">	<span class="keyword">private</span> final <span class="keyword">int</span> V;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> E;</span><br><span class="line">	<span class="keyword">private</span> Bag&lt;Integer&gt;[]  adj;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(<span class="keyword">int</span> V)</span></span>&#123;</span><br><span class="line">		StdOut.println(V);</span><br><span class="line">		<span class="keyword">this</span>.V = V;</span><br><span class="line">		<span class="keyword">this</span>.E = <span class="number">0</span>;</span><br><span class="line">		adj = (Bag&lt;Integer&gt;[]) <span class="keyword">new</span> Bag[V];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>;v &lt; V;v++)&#123;</span><br><span class="line">			adj[v]  = <span class="keyword">new</span> Bag&lt;Integer&gt;();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(In in)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">this</span>(in.readInt());</span><br><span class="line">		<span class="keyword">int</span> E = in.readInt();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>;i &lt; E;i ++)&#123;</span><br><span class="line">			<span class="keyword">int</span> v = in.readInt();</span><br><span class="line">			<span class="keyword">int</span> w = in.readInt();</span><br><span class="line">			addEdge(v,w);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">V</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> V;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">E</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> E;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">		adj[v].add(w);</span><br><span class="line">		adj[w].add(v);</span><br><span class="line">		E++;</span><br><span class="line">	&#125;</span><br><span class="line">	Iterable&lt;Integer&gt; adj(<span class="keyword">int</span> v)&#123;</span><br><span class="line">		<span class="keyword">return</span> adj[v];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">		String s = V + <span class="string">" vertices"</span> + E+<span class="string">" edges\n"</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>;v &lt; V;v++)&#123;</span><br><span class="line">			s += v + <span class="string">": "</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> w:<span class="keyword">this</span>.adj(v))</span><br><span class="line">				s+= w + <span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">degree</span><span class="params">(Graph G,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> degree = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> w : G.adj(v))</span><br><span class="line">			degree++;</span><br><span class="line">		<span class="keyword">return</span> degree;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxDegree</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V();v++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(degree(G,v) &gt; max)</span><br><span class="line">				max = degree(G,v);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> max;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">avgDegree</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">2.0</span>*G.E()/G.V();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">numberOfSelfLoops</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> w : G.adj(v))</span><br><span class="line">				<span class="keyword">if</span>(v==w)</span><br><span class="line">					count ++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> count/<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再次基础上，实现深度优先搜索遍历<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BreadthFirstPaths</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span>[] edgeTo;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> s;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BreadthFirstPaths</span><span class="params">(Graph G,<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">		marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">		edgeTo = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">		<span class="keyword">this</span>.s = s;</span><br><span class="line">		bfs(G,s);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(Graph G,<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">		Queue&lt;Integer&gt; queue = <span class="keyword">new</span> Queue&lt;Integer&gt;();</span><br><span class="line">		marked[s] = <span class="keyword">true</span>;</span><br><span class="line">		queue.enqueue(s);</span><br><span class="line">		<span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">			<span class="keyword">int</span> v = queue.dequeue();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> w : G.adj(v))&#123;</span><br><span class="line">				<span class="keyword">if</span>(!marked[w])</span><br><span class="line">				&#123;</span><br><span class="line">					edgeTo[w] = v;</span><br><span class="line">					marked[w] = <span class="keyword">true</span>;</span><br><span class="line">					queue.enqueue(w);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">hasPathTo</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> marked[v];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> Iterable&lt;Integer&gt; pathTo(<span class="keyword">int</span> v)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!hasPathTo(v))</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		Stack&lt;Integer&gt; path = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x = v; x != s; x = edgeTo[x])&#123;</span><br><span class="line">			path.push(x);</span><br><span class="line">		&#125;</span><br><span class="line">		path.push(s);</span><br><span class="line">		<span class="keyword">return</span> path;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Graph G = <span class="keyword">new</span> Graph(<span class="keyword">new</span> In(args[<span class="number">0</span>]));</span><br><span class="line">		<span class="keyword">int</span> s = Integer.parseInt(args[<span class="number">1</span>]);</span><br><span class="line">		BreadthFirstPaths search = <span class="keyword">new</span> BreadthFirstPaths(G,s);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v++)&#123;</span><br><span class="line">			StdOut.print(s + <span class="string">" to "</span> + v + <span class="string">": "</span>);</span><br><span class="line">			<span class="keyword">if</span>(search.hasPathTo(v))&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> x : search.pathTo(v))</span><br><span class="line">					<span class="keyword">if</span>(x==s) </span><br><span class="line">						StdOut.print(x);</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">						StdOut.print(<span class="string">"-"</span> + x);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				StdOut.print(<span class="string">"null"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			StdOut.println();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/03/图的遍历-java实现/" data-id="cilcdfv0a000bm8hh0vr9rchz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-nginx服务器的搭建" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/02/nginx服务器的搭建/" class="article-date">
@@ -87,11 +126,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ol>
+<li>系统<br>ubuntu14.04</li>
+</ol>
+<p>2.安装依赖的软件包<br>1)首先可以更新一下源 sudo apt-get update<br>2)安装pcre<br>     sudo apt-get install libpcre3 libpcre3-dev<br>3)安装zlib<br>     sudo apt-get install zlib1g-dev<br>3)安装 openssl<br>     ubuntu14.04 默认安装了 openssl</p>
+<p>3.下载 nginx源码包 nginx-1.9.12.tar.gz</p>
+<p>4.创建目录，并下载解压<br>     tar -zxvf nginx-1.9.12.tar.gz</p>
+<p>5.解压之后，目录下有个configure可执行文件<br>在目录下输入 ./configure生成makefile文件</p>
+<p>6.开始编译文件，输入 make install 可以完成安装</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/02/nginx服务器的搭建/" data-id="cilavkjn6000w4whhs4g87t4m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/02/nginx服务器的搭建/" data-id="cilcdfv1l000xm8hhzo4ho85s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/17/设计模式/" data-id="cilavkjl000054whhot5cuas2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/17/设计模式/" data-id="cilcdfuzf0005m8hhji4dj4ez" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/08/约瑟夫环/" data-id="cilavkjlf00074whhcaohionl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/08/约瑟夫环/" data-id="cilcdfuzv0007m8hh4up44txj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/08/汉诺塔问题/" data-id="cilavkjlf00084whh0cn0b9v9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/08/汉诺塔问题/" data-id="cilcdfuzv0008m8hhak7ppdfr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/06/B树实现/" data-id="cilavkjft00004whhfe8lgte0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/06/B树实现/" data-id="cilcdfuy40000m8hh9qe68n8g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -314,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/06/动态插入-AVL树/" data-id="cilavkjmq000o4whh3bih7393" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/06/动态插入-AVL树/" data-id="cilcdfv16000pm8hh3q4m0z8j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/05/迷宫问题/" data-id="cilavkjkk00034whh11j327n3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/05/迷宫问题/" data-id="cilcdfuzf0003m8hh71bkhk7y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -388,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/05/动态查找-AVL树/" data-id="cilavkjmq000n4whh3e2my4zx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/05/动态查找-AVL树/" data-id="cilcdfv16000om8hh70a15nmy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -427,45 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/04/排序/" data-id="cilavkjlf000a4whhh3irm7n5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-动态查找-BST树" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/03/动态查找-BST树/" class="article-date">
-  <time datetime="2015-12-03T02:33:34.000Z" itemprop="datePublished">2015-12-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/03/动态查找-BST树/">动态查找-BST树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="动态查找">动态查找</h1><p>特点：表结构本身是在查找过程中动态生成的即对于给定值key，若表中存在其关键字等于key的记录，则查找成功，<br>否则插入关键字等于key的记录。</p>
-<h3 id="二叉搜索树(二叉排序树)Binary_Sort_Tree(BST)">二叉搜索树(二叉排序树)Binary Sort Tree(BST)</h3><p>定义：一棵空树，或者是具有下列性质的二叉树：<br>1）若它的左子树不为空，则左子树上所有结点的值均小于它的根节点的值<br>2）若它的右子树不为空，则右子树上所有结点的值均大于它的根节点的值<br>3）它的左右子树也分别为二叉排序树。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/03/动态查找-BST树/" data-id="cilavkjmb000m4whhx41a64nd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/04/排序/" data-id="cilcdfuzv000am8hhqk6mvxqx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -494,7 +503,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -504,6 +513,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/03/图的遍历-java实现/">图的遍历--java实现</a>
+          </li>
         
           <li>
             <a href="/2016/03/02/nginx服务器的搭建/">nginx服务器的搭建</a>
@@ -519,10 +532,6 @@
         
           <li>
             <a href="/2015/12/08/汉诺塔问题/">汉诺塔问题</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/06/B树实现/">B树实现</a>
           </li>
         
       </ul>
