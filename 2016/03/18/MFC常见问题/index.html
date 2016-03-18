@@ -3,30 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>github | make everyday conut--Jocelyn Blag</title>
+  <title>MFC常见问题 | make everyday conut--Jocelyn Blag</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="github
-git是一个分布式的版本控制系统。
-github可以托管各种git库，并提供一个web界面。
-github的独特之处在于从另外一个项目进行分支的简易性。
-首先点击项目站点的“fork”的按钮，然后将代码检出并将修改加入到刚才分出的代码库中，最后通过内建的“pull request”机制向项目负责人申请代码合并。">
+  <meta name="description" content="在MFC程序中，可以用以下几种方法来获取命令行参数。为方便说明，我们假设执行了命令：C:\test\app.exe -1 -2
+方法一::GetCommandLine();将获取到 “C:\test\app.exe”  -1 -2
+方法二for (int i=0;i&amp;lt;argc;i++){
+argv[i];将依次得到C:\test\app.exe  -1  -2}
+方法三AfxGetApp()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github">
-<meta property="og:url" content="http://yoursite.com/2015/10/22/github/index.html">
+<meta property="og:title" content="MFC常见问题">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/MFC常见问题/index.html">
 <meta property="og:site_name" content="make everyday conut--Jocelyn Blag">
-<meta property="og:description" content="github
-git是一个分布式的版本控制系统。
-github可以托管各种git库，并提供一个web界面。
-github的独特之处在于从另外一个项目进行分支的简易性。
-首先点击项目站点的“fork”的按钮，然后将代码检出并将修改加入到刚才分出的代码库中，最后通过内建的“pull request”机制向项目负责人申请代码合并。">
-<meta property="og:updated_time" content="2015-10-22T09:52:35.820Z">
+<meta property="og:description" content="在MFC程序中，可以用以下几种方法来获取命令行参数。为方便说明，我们假设执行了命令：C:\test\app.exe -1 -2
+方法一::GetCommandLine();将获取到 “C:\test\app.exe”  -1 -2
+方法二for (int i=0;i&amp;lt;argc;i++){
+argv[i];将依次得到C:\test\app.exe  -1  -2}
+方法三AfxGetApp()">
+<meta property="og:updated_time" content="2016-03-18T07:58:19.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github">
-<meta name="twitter:description" content="github
-git是一个分布式的版本控制系统。
-github可以托管各种git库，并提供一个web界面。
-github的独特之处在于从另外一个项目进行分支的简易性。
-首先点击项目站点的“fork”的按钮，然后将代码检出并将修改加入到刚才分出的代码库中，最后通过内建的“pull request”机制向项目负责人申请代码合并。">
+<meta name="twitter:title" content="MFC常见问题">
+<meta name="twitter:description" content="在MFC程序中，可以用以下几种方法来获取命令行参数。为方便说明，我们假设执行了命令：C:\test\app.exe -1 -2
+方法一::GetCommandLine();将获取到 “C:\test\app.exe”  -1 -2
+方法二for (int i=0;i&amp;lt;argc;i++){
+argv[i];将依次得到C:\test\app.exe  -1  -2}
+方法三AfxGetApp()">
   
     <link rel="alternative" href="/atom.xml" title="make everyday conut--Jocelyn Blag" type="application/atom+xml">
   
@@ -76,10 +76,10 @@ github的独特之处在于从另外一个项目进行分支的简易性。
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-github" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-MFC常见问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/10/22/github/" class="article-date">
-  <time datetime="2015-10-22T09:37:50.000Z" itemprop="datePublished">2015-10-22</time>
+    <a href="/2016/03/18/MFC常见问题/" class="article-date">
+  <time datetime="2016-03-18T07:44:46.000Z" itemprop="datePublished">2016-03-18</time>
 </a>
     
   </div>
@@ -90,7 +90,7 @@ github的独特之处在于从另外一个项目进行分支的简易性。
         
   
     <h1 class="article-title" itemprop="name">
-      github
+      MFC常见问题
     </h1>
   
 
@@ -98,17 +98,34 @@ github的独特之处在于从另外一个项目进行分支的简易性。
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="github">github</h2><ul>
-<li>git是一个分布式的版本控制系统。</li>
-<li>github可以托管各种git库，并提供一个web界面。</li>
-<li>github的独特之处在于从另外一个项目进行分支的简易性。</li>
-<li>首先点击项目站点的“fork”的按钮，然后将代码检出并将修改加入到刚才分出的代码库中，最后通过内建的“pull request”机制向项目负责人申请代码合并。</li>
-</ul>
+        <p>在MFC程序中，可以用以下几种方法来获取命令行参数。<br>为方便说明，我们假设执行了命令：C:\test\app.exe -1 -2</p>
+<p>方法一<br>::GetCommandLine();<br>将获取到 “C:\test\app.exe”  -1 -2</p>
+<p>方法二<br>for (int i=0;i&lt;<strong>argc;i++)<br>{
+</strong>argv[i];<br>将依次得到C:\test\app.exe  -1  -2<br>}</p>
+<p>方法三<br>AfxGetApp()-&gt;m_lpCmdLine;<br>将获取到 -1 -2</p>
+<p>让MFC程序在命令行运行，并传入参数，之后直接自动退出程序</p>
+<p>1.MFC主窗口调用某个子dialog<br>int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct){<br>    SetTimer(1, 1000, 0);<br>}<br>2.利用向导添加WM_TIMER的事件处理函数。<br>void CMainFrame::OnTimer(UINT nIDEvent)<br>{<br>    //首先停止计数器<br>    KillTimer(1);<br>    /<em>添加你想要调用的子Dialog,并执行子Dialog</em>/<br>    PetriNetMC plg;<br>    plg.DoModal();</p>
+<pre><code>CFrameWn<span class="number">d::</span>OnTimer(nIDEvent)<span class="comment">;</span>
+</code></pre><p>}</p>
+<p>3.在子Dialog的类中，利用向导添加OnInitDialog()函数，就是在显示Dialog前处理一下问题<br>BOOL PetriNetMC::OnInitDialog(){<br>    CDialog::OnInitDialog();</p>
+<pre><code><span class="comment">/*这句话，可以获取父窗口的指针*/</span>
+CMainFrame *<span class="function"><span class="title">pMain</span>=<span class="params">(CMainFrame*)</span><span class="title">AfxGetApp</span><span class="params">()</span>-&gt;</span>m_pMainWnd;
+<span class="comment">/*添加要处理的事件*/</span>
+
+<span class="comment">/*可以不用显示子窗口，直接退出程序*/</span>
+pMain-&gt;DestroyWindow();
+
+<span class="keyword">return</span> TRUE; 
+</code></pre><p>}</p>
+<ol>
+<li>注意：<br>在这个过程中，可以从命令行获取参数，存入到父窗口即主窗口的成员变量中，在子窗口中调用pMain-&gt;xxx就可以获取该成员变量。</li>
+</ol>
+<p>总结：<br>以上，就可以实现，在命令行直接调用一个MFC程序，并且自动执行，最后自动退出程序。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/22/github/" data-id="cilxez59v00113shhrppvdxut" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/18/MFC常见问题/" data-id="cilxez5ab00143shhki2umh1m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -117,15 +134,11 @@ github的独特之处在于从另外一个项目进行分支的简易性。
     
 <nav id="article-nav">
   
-    <a href="/2015/10/23/makedown/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          makedown
-        
-      </div>
-    </a>
   
+    <a href="/2016/03/17/c-继承多态/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">c++继承多态</div>
+    </a>
   
 </nav>
 

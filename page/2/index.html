@@ -65,6 +65,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-动态插入-AVL树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/06/动态插入-AVL树/" class="article-date">
+  <time datetime="2015-12-06T09:15:32.000Z" itemprop="datePublished">2015-12-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/06/动态插入-AVL树/">动态插入-AVL数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="二叉平衡树(Balanced_Binary_Tree_或_Height-Balanced_Tree)(AVL)">二叉平衡树(Balanced Binary Tree 或 Height-Balanced Tree)(AVL)</h2><p>定义：它是一棵空树，或者是具有下列性质的二叉树：<br>它的左子树和右子树都是平衡二叉树，且左子树和右子树的深度之差的绝对值不超过1.<br>二叉树上的节点的平衡因子BF(Balance Factor)定义为该结点的左子树的深度减去它的右子树的深度，则平衡二叉树上所有结点的平衡因子只可能是-1、0和1。</p>
+<p>AVL树的实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> LH +<span class="number">1</span><span class="comment">//左边高</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> EH <span class="number">0</span><span class="comment">//一样高</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> RH -<span class="number">1</span><span class="comment">//右边高</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BSTNode&#123;</span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="keyword">int</span> bf;<span class="comment">//平衡因子</span></span><br><span class="line">	<span class="keyword">struct</span> BSTNode *lchild, *rchild;</span><br><span class="line">&#125;BSTNode, *BSTree;<span class="comment">//平衡二叉排序树结构的定义</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">R_Rotate</span><span class="params">(BSTree &amp;p)</span></span><br><span class="line"></span>&#123;<span class="comment">//对以*p为根的二叉排序树做右旋处理，处理之后p指向新的树根结点</span></span><br><span class="line">	BSTree lc;</span><br><span class="line">	lc = p-&gt;lchild;</span><br><span class="line">	p-&gt;lchild = lc-&gt;rchild;</span><br><span class="line">	lc-&gt;rchild = p; p = lc;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">L_Rotate</span><span class="params">(BSTree &amp;p)</span></span><br><span class="line"></span>&#123;<span class="comment">//对以*p为根的二叉排序树做左旋处理，处理之后p指向新的树根结点</span></span><br><span class="line">	BSTree rc;</span><br><span class="line">	rc = p-&gt;rchild;</span><br><span class="line">	p-&gt;rchild = rc-&gt;lchild;</span><br><span class="line">	rc-&gt;lchild = p; p = rc;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LeftBalance</span><span class="params">(BSTree &amp;T)</span></span><br><span class="line"></span>&#123;<span class="comment">//对已*T为根的二叉排序树做左平衡旋转处理</span></span><br><span class="line">	BSTree lc, rd;</span><br><span class="line">	lc = T-&gt;lchild;</span><br><span class="line">	<span class="keyword">switch</span> (lc-&gt;bf)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> LH:T-&gt;bf = lc-&gt;bf = EH;</span><br><span class="line">		R_Rotate(T);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> RH:rd = lc-&gt;rchild;</span><br><span class="line">		<span class="keyword">switch</span> (rd-&gt;bf)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> LH:T-&gt;bf = RH; lc-&gt;bf = EH;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> EH:T-&gt;bf = lc-&gt;bf = EH;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> RH:T-&gt;bf = EH; lc-&gt;bf = RH;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		rd-&gt;bf = EH;</span><br><span class="line">		L_Rotate(T-&gt;lchild);</span><br><span class="line">		R_Rotate(T);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RightBalance</span><span class="params">(BSTree &amp;T)</span></span><br><span class="line"></span>&#123;<span class="comment">//对已*T为根的二叉排序树做右平衡旋转处理</span></span><br><span class="line">	BSTree lc, rd;</span><br><span class="line">	lc = T-&gt;rchild;</span><br><span class="line">	<span class="keyword">switch</span> (lc-&gt;bf)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> RH:T-&gt;bf = lc-&gt;bf = EH;</span><br><span class="line">		L_Rotate(T);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> LH:rd = lc-&gt;lchild;</span><br><span class="line">		<span class="keyword">switch</span> (rd-&gt;bf)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> RH:T-&gt;bf = LH; lc-&gt;bf = EH;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> LH:T-&gt;bf = EH; lc-&gt;bf = RH;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> EH:T-&gt;bf = lc-&gt;bf = EH;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		rd-&gt;bf = EH;</span><br><span class="line">		R_Rotate(T-&gt;rchild);</span><br><span class="line">		L_Rotate(T);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">InsertAVL</span><span class="params">(BSTree &amp;T, <span class="keyword">int</span> key, <span class="keyword">bool</span> &amp;taller)</span></span><br><span class="line"></span>&#123;<span class="comment">//若在平衡二叉排序树中不存在与关键字key相等的结点，则将关键字插入树中</span></span><br><span class="line">	<span class="comment">//布尔变量taller表示树是否“长高”</span></span><br><span class="line">	<span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		T = (BSTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BSTNode));</span><br><span class="line">		T-&gt;data = key; T-&gt;bf = EH;<span class="comment">//叶子结点其平衡因子肯定为0</span></span><br><span class="line">		T-&gt;lchild = T-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">		taller = <span class="number">1</span>;<span class="comment">//树长高了</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (key == T-&gt;data)</span><br><span class="line">		&#123;<span class="comment">//如果树中已存放此关键字则不予插入</span></span><br><span class="line">			taller = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (key&lt;T-&gt;data)</span><br><span class="line">		&#123;<span class="comment">//关键字小于根结点则插入其左子树中</span></span><br><span class="line">			<span class="keyword">if</span> (!InsertAVL(T-&gt;lchild, key, taller))</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (taller)</span><br><span class="line">			&#123;<span class="comment">//如果树长高了，判断是否平衡</span></span><br><span class="line">				<span class="keyword">switch</span> (T-&gt;bf)</span><br><span class="line">				&#123;</span><br><span class="line">				<span class="keyword">case</span> LH:LeftBalance(T);<span class="comment">//不平衡时调用左平衡函数，使左子树平衡</span></span><br><span class="line">					taller = <span class="number">0</span>; <span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> EH:T-&gt;bf = LH; taller = <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> RH:T-&gt;bf = EH; taller = <span class="number">0</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;<span class="comment">//插入右子树中</span></span><br><span class="line">			<span class="keyword">if</span> (!InsertAVL(T-&gt;rchild, key, taller))</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (taller)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">switch</span> (T-&gt;bf)</span><br><span class="line">				&#123;</span><br><span class="line">				<span class="keyword">case</span> LH:T-&gt;bf = EH; taller = <span class="number">0</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> EH:T-&gt;bf = RH; taller = <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> RH:RightBalance(T); taller = <span class="number">0</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createAVL</span><span class="params">(BSTree &amp;T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">10</span>] = &#123; <span class="number">4</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">6</span> &#125;;</span><br><span class="line">	<span class="keyword">bool</span> taller = <span class="literal">false</span>;</span><br><span class="line">	T = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">		InsertAVL(T, a[i],taller);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderAVL</span><span class="params">(BSTree T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T)&#123;</span><br><span class="line">		InOrderAVL(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, T-&gt;data);</span><br><span class="line">		InOrderAVL(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	BSTree T;</span><br><span class="line">	createAVL(T);</span><br><span class="line">	InOrderAVL(T);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/06/动态插入-AVL树/" data-id="cilxez590000q3shh90lln7hq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-迷宫问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/05/迷宫问题/" class="article-date">
@@ -91,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/05/迷宫问题/" data-id="cilwb7j850003lghhkpc2ych0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/05/迷宫问题/" data-id="cilxez56u00033shhh3bvrh66" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/05/动态查找-AVL树/" data-id="cilwb7j9y000plghhle0qwpwh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/05/动态查找-AVL树/" data-id="cilxez590000p3shh6odq3v8p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/04/排序/" data-id="cilwb7j8r000blghhpeat65hi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/04/排序/" data-id="cilxez57p000b3shhnsn46a5a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/03/动态查找-BST树/" data-id="cilwb7j9t000olghhkmib8hg7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/03/动态查找-BST树/" data-id="cilxez590000o3shhk44w0gbq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/静态查找/" data-id="cilwb7j3h0001lghh71drkydu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/02/静态查找/" data-id="cilxez56u00013shhiei6xonj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -285,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Floyed/" data-id="cilwb7j99000ilghh0r8i7635" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Floyed/" data-id="cilxez58k000i3shh5o64lyld" class="article-share-link">Share</a>
       
       
     </footer>
@@ -327,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Dijkstra/" data-id="cilwb7j9g000jlghhnnnxvt2w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Dijkstra/" data-id="cilxez58k000j3shhv3m427h1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -368,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/图-有向无环图的关键路径/" data-id="cilwb7j94000glghhax90ifhf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/02/图-有向无环图的关键路径/" data-id="cilxez585000g3shhye8vtkpj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,47 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/01/图-有向无环图的拓扑排序/" data-id="cilwb7j8z000flghhw4gicv5e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Flex-Bison" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/01/Flex-Bison/" class="article-date">
-  <time datetime="2015-12-01T09:14:38.000Z" itemprop="datePublished">2015-12-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/01/Flex-Bison/">Flex Bison</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Flex和Bison简介<br>词法分析(lexical analysis或者scanning):把输入分割成一个个有意义的词块，称为记号(token)。<br>语法分析(syntax analysis或者parsing):确定这些记号是如何彼此关联的。</p>
-<p>词法分析就是在输入中寻找字符的模式(pattern)。</p>
-<p>正则表达式:regular expression简称为regex,regexp。<br>flex程序主要由一系列带有指令的正则表达式组成，这些指令确定了正则表达式匹配后相应的动作(action).</p>
-<p>flex程序包含三个部分，用%%号分割。<br>第一部分：包含声明和选项设置<br>第二部分：一系列的模式和动作<br>第三部分：一些与动作相关的历程</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/01/Flex-Bison/" data-id="cilwb7jb20014lghhttay1a3b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/01/图-有向无环图的拓扑排序/" data-id="cilxez585000f3shhrsg3ychk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -480,7 +478,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -490,6 +488,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/18/MFC常见问题/">MFC常见问题</a>
+          </li>
         
           <li>
             <a href="/2016/03/17/c-继承多态/">c++继承多态</a>
@@ -505,10 +507,6 @@
         
           <li>
             <a href="/2016/03/03/图的遍历-java实现/">图的遍历--java实现</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/02/nginx服务器的搭建/">nginx服务器的搭建</a>
           </li>
         
       </ul>
