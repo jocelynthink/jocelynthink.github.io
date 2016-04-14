@@ -65,6 +65,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/17/设计模式/" class="article-date">
+  <time datetime="2015-12-17T09:15:09.000Z" itemprop="datePublished">2015-12-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/17/设计模式/">设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#1.备忘录模式<br>备忘录对象是一个用来存储另一个对象内部状态的快照的对象。<br>备忘录模式的用意是在不破坏封装的调教下，将一个对象的状态捉住。<br>并外部化，存储起来，从而可以在将来合适的时候把则个对象还原到存储起来的状态。</p>
+<p>适用于场合：设计需要回放的软件，记录一下事物的状态。数据库备份，文档编辑，撤销，恢复</p>
+<p>设计备忘录三大步骤<br>1.设计记录的节点，存储记录， –&gt; memo<br>2.设计记录的存储，这要有vector，list，map，set，链表，图，数组，树… –&gt; Caretaker<br>3.操作记录的类，主要完成记录节点状态，设置节点状态，显示状态。 –&gt;Originator</p>
+<p>只能作为软件设计的一个节点</p>
+<p>#2.策略模式<br>针对一组算法，将每一个算法封装到具有共同接口的独立类中，从而使得它们可以相互替换。<br>策略模式使得算法可以在不影响到客户端的情况下发生变化。<br>策略模式把行为和环境分开。<br>环境类负责维持和查询行为类，各种算法在具体的策略类中提供。<br>由于算法和环境独立开来，算法的增减，修改都不会影响到环境和客户端。<br>依赖于多态</p>
+<p>实现：<br>策略的抽象类，接口，抽象类的指针可以访问所有子类的对象（纯虚函数）<br>实现的各种策略，各种策略的实现，都必须继承抽象类<br>策略的设置接口类，设置不同策略</p>
+<p>#3.简单工厂模式<br>消费者固定，服务场所固定，操作不同</p>
+<p>工厂模式：客户类和工厂类分开<br>消费者任何时候需要某种产品，只需要向工厂请求即可。<br>消费者无需修改就可以接纳新产品。<br>缺点：当产品修改时，工厂类也需要相应的修改。</p>
+<p>适用于：在一个客户端上</p>
+<p>实现：<br>基类存放数据<br>派生类有很多，派生类存放数据的操作<br>实现接口类，用静态函数实现调用各种派生类</p>
+<p>#4.工厂方法模式 –&gt; 多同样的数据进行不同的操作<br>消费者固定，服务场所不固定，操作不同</p>
+<p>核心工厂类不在负责所有产品的创建，而是将具体的工作交给子类去做，成为一个抽象工厂角色，<br>仅负责给出具体工厂类必须实现的接口，而不接触哪一个产品类应当被实例化的这种细节。</p>
+<p>适用于：网络上，要求可靠性的情况下</p>
+<p>实现：<br>基类存放数据<br>派生类有很多，派生类存放数据的操作<br>实现一个工厂基类，<br>派生工厂基类，调用不同的派生类。</p>
+<p>#5.抽象工厂模式  –&gt;不同的数据进行不同的操作<br>消费者不固定，服务场所不固定，操作不同</p>
+<p>工厂模式：客户类和工厂类分开<br>消费者任何时候需要某种产品，只需要向工厂请求即可。<br>消费者无需修改就可以接纳新产品。</p>
+<p>实现：<br>消费者不固定，工厂者不固定，（工厂根据消费者动作）<br>实现消费者抽象基类，消费者派生类的实现，实例化就是消费者<br>操作的抽象基类，实现派生类各种操作，实例化操作<br>工厂的抽象类，抽象类包含了两个抽象类的接口（消费者，操作）<br>抽象类实现了工厂类的抽象，实例化的派生类，实现工厂，<br>根据用户设置用户，根据操作设置操作</p>
+<p>#6.代理模式<br>代理模式给某一个对象提供一个代理对象，并由代理对象控制对源对象的引用。<br>代理就是一个人或一个机构代表另一个人或另一个机构采取行动。<br>某些情况下，客户不想或者不能够直接引用一个对象，代理对象可以在客户和目标对象直接起到中间作用。<br>客户端分辨不出代理主体对象与真实主题对象。<br>代理模式可以并不知道真正的被代理对象，而仅仅持有一个被代理对象的接口，这时候代理对象不能够创建被代理对象，<br>被代理对象必须有系统的其它角色代为创建并传入。</p>
+<p>#7.单例模式<br>单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例单例模式。<br>单例模式只应在有真正的“单一实例”的需求时才可使用。<br>迅雷</p>
+<p>#8.迭代器模式<br>迭代子模式：迭代子模式可以顺序访问一个聚集中的元素而不必暴露聚集的内部表象。<br>多个对象聚在一起形成的总体称之为聚集，聚集对象是能够包容一组对象的容器对象。</p>
+<p>迭代子模式将迭代逻辑封装到一个独立的子对象中，从而与聚集本身隔开。<br>迭代子模式简化了聚集的界面。<br>每一个聚集对象都可以有一个或一个以上的迭代子对象，<br>每一个迭代子的迭代状态可以是彼此独立的。<br>迭代算法可以独立于聚集角色变化。</p>
+<p>#7.访问者模式<br>访问者模式：访问者模式的目的是封装一些施加于某种数据结构元素之上的操作。<br>一旦这些操作需要修改的话，接受这个操作的数据结构可以保持不变。<br>访问者模式适用于数据结构相对未定的系统，<br>它把数据结构和作用于结构上的操作之间的耦合解脱开，使得操作集合可以相对自由的演化。<br>访问者模式使得增加新的操作变的很容易，就是增加一个新的访问者类。<br>访问者模式将有关的行为集中到一个访问者对象中，而不是分散到一个个的节点类中。<br>当使用访问者模式时，要将尽可能多的对象浏览逻辑放在访问者类中，而不是放到它的子类中。<br>访问者模式可以跨过几个类的等级结构访问属于不同的等级结构的成员类。</p>
+<p>情人节到了，要给每个MM送一束鲜花和一张卡片，<br>可是每个MM送的花都要针对她个人的特点，每张卡片也要根据个人的特点来挑，<br>我一个人哪搞得清楚，还是找花店老板和礼品店老板做一下Visitor，<br>让花店老板根据MM的特点选一束花，让礼品店老板也根据每个人特点选一张卡，<br>这样就轻松多了。</p>
+<p>访问者模式不需要改变基类，不依赖虚函数，<br>根据不同的需求，解决不同的问题</p>
+<p>#9.观察者模式<br>观察者模式：观察者模式定义了一种一队多的依赖关系，<br>让多个观察者对象同时监听某一个主题对象。<br>这个主题对象在状态上发生变化时，会通知所有观察者对象，<br>使他们能够自动更新自己。</p>
+<p>想知道咱们公司最新MM情报吗？加入公司的MM情报邮件组就行了，<br>直接发布给邮件组，我们作为订阅者（观察者）就可以及时收到情报啦。</p>
+<p>监视，观察者，都有一个基类，派生，实现不同的效果<br>监视者的类，管理所有的观察者，增加或者删除，发出消息，让观察者处理<br>观察者的类需要接受消息并处理</p>
+<p>#10.建造者模式</p>
+<p>#11.解释器模式<br>给定一个语言后，解释器模式可以定义出其文法的一种表示，并同时提供一个解释器。<br>客户端可以使用这个解释器来解释这个语言中的句子。<br>解释器模式将描述怎么样在有了一个简单的文法后，使用模式设计解释这些语句。<br>在解释器模式里面提到的语言是指任何解释器对象能够解释的任何组合。<br>在解释器模式中需要定义一个代表文法的命令类的等级结构，也就是一序列的组合规则。<br>每一个命令对象都有一个解释方法，代表对命令对象的解释。<br>命令对象的等级结构中的对象的任何排列组合都是一个语言。</p>
+<p>#12.命令模式<br>命令模式将一个请求或者操作封装到一个对象中。<br>把发出命令的责任和执行命令的责任分隔开，委派给不同的对象。<br>命令模式允许请求的一方和发送的一方独立开来，使得请求的一方不知道接受消息的一方的接口，更不必知道请求是怎么被接受，<br>以及操作是否执行，何时被执行以及是怎么被执行的。<br>系统支持命令的撤销。</p>
+<p>#13.模板模式<br>模板模式准备一个抽象类，将部分逻辑以具体方法以及具体构造子的形成实现，然后声明一些抽象方法来迫使子类实现剩余的逻辑。<br>不同的子类可以以不同的方式实现这些抽象方法，从而对剩余的逻辑有不同的放方法。<br>先制定一个顶级逻辑框架，而将逻辑的细节留给具体的子类去实现。</p>
+<p>#14.桥梁模式<br>将抽象化与实现化脱耦，使得二者可以独立的变化，<br>也就是说将他们之间的强关联变成弱关联，<br>也就是指在一个软件系统的抽象化和实现化之间使用组合<br>聚合关系而不是继承关系，从而使两者可以独立变化。</p>
+<p>#15.适配器模式<br>把一个类的接口变成客户端所期待的另一个接口，从而使得原本接口原因不匹配而无法一起工作的两个类能够一起工作。<br>适配类可以根据参数返还一个合适的实例给客户端。</p>
+<p>#16.外观模式<br>门面模式：外部与一个子系统的通信必须通过一个统一的门面对象进行。<br>门面模式提供一个高层次的接口，使得子系统更易于使用。<br>每一个子系统只有一个门面类，而且此门面类只有一个实例，<br>也就是说它是一个单例模式。但整个系统可以有多个门面类。</p>
+<p>#17.享元模式</p>
+<p>适用于优化内存</p>
+<p>#18.原型模式</p>
+<p>#19.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/17/设计模式/" data-id="cin0f8hzy0005b0hhlmzbbkx8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-约瑟夫环" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/08/约瑟夫环/" class="article-date">
@@ -92,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/08/约瑟夫环/" data-id="cimycoi2y0008qshhh6vz1rw7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/08/约瑟夫环/" data-id="cin0f8i0c0008b0hhnkqpvcn5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/08/汉诺塔问题/" data-id="cimycoi390009qshh0gvsum9c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/08/汉诺塔问题/" data-id="cin0f8i0f0009b0hhhv91jnz4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/06/B树实现/" data-id="cimycoi0c0000qshhfssmsh5f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/06/B树实现/" data-id="cin0f8huy0000b0hhzw135xzq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/06/动态插入-AVL树/" data-id="cimycoi5a000rqshh2hfrv1wn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/06/动态插入-AVL树/" data-id="cin0f8i2l000rb0hhaxjzy2z8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/05/迷宫问题/" data-id="cimycoi1z0003qshhx63vdenj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/05/迷宫问题/" data-id="cin0f8hzt0003b0hhep59hyvh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -278,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/05/动态查找-AVL树/" data-id="cimycoi58000qqshhydf22q5f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/05/动态查找-AVL树/" data-id="cin0f8i2h000qb0hh9bp29ggu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/04/排序/" data-id="cimycoi3l000bqshhhd4czcx8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/04/排序/" data-id="cin0f8i0s000bb0hhotvf8g7p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -355,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/03/动态查找-BST树/" data-id="cimycoi55000pqshhq89vtsv6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/03/动态查找-BST树/" data-id="cin0f8i2d000pb0hhozd9teuc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,44 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/静态查找/" data-id="cimycoi1c0001qshh2le9trj1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-图-最短路径-Floyed" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/02/图-最短路径-Floyed/" class="article-date">
-  <time datetime="2015-12-02T09:59:12.000Z" itemprop="datePublished">2015-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/02/图-最短路径-Floyed/">图-最短路径-Floyed</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Floyed算法：<br>基本思想：<br>如果从Vi到Vj有边，则从Vi到Vj存在一条长度为cost[i][j]的路径。<br>该路径不一定是最短路径，尚需进行n此次试探。首先考虑路径(Vi,V0,Vj)是否存在。<br>如果存在，则比较其路径长度。去长度较短者为从Vi到Vj的中间顶点的序号不大于0的最短路径。<br>…</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/图-最短路径-Floyed/" data-id="cimycoi4i000jqshhasuwl9xc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/02/静态查找/" data-id="cin0f8hz00001b0hhfifoh2am" class="article-share-link">Share</a>
       
       
     </footer>
@@ -463,7 +500,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -473,6 +510,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/14/js进阶篇1/">js进阶篇1</a>
+          </li>
         
           <li>
             <a href="/2016/04/13/js基础篇1/">js基础篇1</a>
@@ -488,10 +529,6 @@
         
           <li>
             <a href="/2016/03/18/MFC常见问题/">MFC常见问题</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/17/c-继承多态/">c++继承多态</a>
           </li>
         
       </ul>

@@ -65,6 +65,273 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js进阶篇1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/14/js进阶篇1/" class="article-date">
+  <time datetime="2016-04-14T15:08:14.000Z" itemprop="datePublished">2016-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/14/js进阶篇1/">js进阶篇1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="操作符优先级">操作符优先级</h3><p>操作符之间的优先级（高到低）:</p>
+<p>算术操作符 → 比较操作符 → 逻辑操作符 → “=”赋值符号</p>
+<h3 id="数组">数组</h3><p>创建数组语法：</p>
+<pre><code><span class="keyword">var</span> myarray=<span class="keyword">new</span> <span class="built_in">Array</span>();
+</code></pre><p>注意：<br>1.创建的新数组是空数组，没有值，如输出，则显示undefined。</p>
+<p>2.虽然创建数组时，指定了长度，但实际上数组都是变长的，也就是说即使指定了长度为8，仍然可以将元素存储在规定长度以外。</p>
+<p>我们还可以用简单的方法创建上面的数组和赋值：</p>
+<p>第一种方法：</p>
+<pre><code>var myarray = <span class="keyword">new</span> Array(<span class="number">66</span>,<span class="number">80</span>,<span class="number">90</span>,<span class="number">77</span>,<span class="number">59</span>);<span class="comment">//创建数组同时赋值</span>
+</code></pre><p>第二种方法：</p>
+<pre><code>var myarray = [<span class="number">66</span>,<span class="number">80</span>,<span class="number">90</span>,<span class="number">77</span>,<span class="number">59</span>];<span class="comment">//直接输入一个数组（称 “字面量数组”）</span>
+</code></pre><p>注意：数组存储的数据可以是任何类型（数字、字符、布尔值等）</p>
+<p>了解成员数量(数组属性length)</p>
+<p>如果我们想知道数组的大小，只需引用数组的一个属性length。Length属性表示数组的长度，即数组中元素的个数。</p>
+<p>同时，JavaScript<br>数组的length属性是可变的，这一点需要特别注意。</p>
+<h3 id="做判断(if语句)">做判断(if语句)</h3><p>if语句是基于条件成立才执行相应代码时使用的语句。</p>
+<p>语法:</p>
+<pre><code><span class="keyword">if</span><span class="comment">(条件)</span>
+{ 条件成立时执行代码}
+</code></pre><h3 id="二选一_（if…else语句）">二选一 （if…else语句）</h3><p>if…else语句是在指定的条件成立时执行代码，在条件不成立时执行else后的代码。</p>
+<p>语法:</p>
+<pre><code><span class="keyword">if</span>(条件)
+{ 条件成立时执行的代码}
+<span class="keyword">else</span>
+{条件不成立时执行的代码}
+</code></pre><h3 id="多种选择（Switch语句)">多种选择（Switch语句)</h3><p>当有很多种选项的时候，switch比if else使用更方便。</p>
+<p>语法:</p>
+<pre><code><span class="keyword">switch</span>(表达式)
+{
+<span class="keyword">case</span>值<span class="number">1</span>:
+  执行代码块 <span class="number">1</span>
+  <span class="keyword">break</span>;
+<span class="keyword">case</span>值<span class="number">2</span>:
+  执行代码块 <span class="number">2</span>
+  <span class="keyword">break</span>;
+...
+<span class="keyword">case</span>值n:
+  执行代码块 n
+  <span class="keyword">break</span>;
+<span class="keyword">default</span>:
+  与 <span class="keyword">case</span>值<span class="number">1</span> 、 <span class="keyword">case</span>值<span class="number">2.</span>..<span class="keyword">case</span>值n 不同时执行的代码
+}
+</code></pre><p>语法说明:</p>
+<pre><code><span class="keyword">Switch</span>必须赋初始值，值与每个<span class="keyword">case</span>值匹配。满足执行该 <span class="keyword">case</span> 后的所有语句，并用<span class="built_in">break</span>语句来阻止运行下一个<span class="keyword">case</span>。如所有<span class="keyword">case</span>值都不匹配，执行<span class="keyword">default</span>后的语句。
+</code></pre><h3 id="重复重复（for循环）">重复重复（for循环）</h3><p>很多事情不只是做一次，要重复做。如打印10份试卷，每次打印一份，重复这个动作，直到打印完成。这些事情，我们使用循环语句来完成，循环语句，就是重复执行一段代码。</p>
+<p>for语句结构：</p>
+<pre><code><span class="keyword">for</span>(初始化变量;循环条件;循环迭代)
+{     
+    循环语句 
+ }
+</code></pre><h3 id="反反复复(while循环)">反反复复(while循环)</h3><p>和for循环有相同功能的还有while循环, while循环重复执行一段代码，直到某个条件不再满足。</p>
+<p>while语句结构：</p>
+<pre><code><span class="keyword">while</span><span class="comment">(判断条件)</span>
+{
+    循环语句
+ }
+</code></pre><h3 id="来来回回(Do…while循环)">来来回回(Do…while循环)</h3><p>do while结构的基本原理和while结构是基本相同的，但是它保证循环体至少被执行一次。因为它是先执行代码，后判断条件，如果条件为真，继续循环。</p>
+<p>do…while语句结构：</p>
+<pre><code><span class="keyword">do</span>
+{
+    循环语句
+ }
+<span class="keyword">while</span><span class="comment">(判断条件)</span>
+</code></pre><h3 id="退出循环break">退出循环break</h3><p>在while、for、do…while、while循环中使用break语句退出当前循环，直接执行后面的代码。</p>
+<p>格式如下：</p>
+<pre><code><span class="keyword">for</span>(初始条件;判断条件;循环后条件值更新)
+{
+  <span class="keyword">if</span>(特殊情况)
+  {<span class="keyword">break</span>;}
+  循环代码
+}
+</code></pre><h3 id="继续循环continue">继续循环continue</h3><p>continue的作用是仅仅跳过本次循环，而整个循环体继续执行。</p>
+<p>语句结构：</p>
+<pre><code><span class="keyword">for</span>(初始条件;判断条件;循环后条件值更新)
+{
+  <span class="keyword">if</span>(特殊情况)
+  { <span class="keyword">continue</span>; }
+ 循环代码
+}
+</code></pre><h1 id="事件">事件</h1><h2 id="什么是事件">什么是事件</h2><p>JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为。 网页中的每个元素都可以产生某些可以触发 JavaScript 函数或程序的事件。</p>
+<p>比如说，当用户单击按钮或者提交表单数据时，就发生一个鼠标单击（onclick）事件，需要浏览器做出处理，返回给用户一个结果。</p>
+<p>主要事件：</p>
+<pre><code>事件                    说明
+onclick                鼠标单击事件
+onmouseover            鼠标经过事件
+onmouseout            鼠标移开事件
+onchange            文本内容改变事件
+onselect            文本框内容被选中事件
+onfocus                光标聚集
+onblur                光标离开
+onload                网页导入
+onunload            关闭网页
+</code></pre><h3 id="鼠标单击事件(_onclick_）">鼠标单击事件( onclick ）</h3><p>onclick是鼠标单击事件，当在网页上单击鼠标时，就会发生该事件。同时onclick事件调用的程序块就会被执行，通常与按钮一起使用。</p>
+<pre><code>&lt;<span class="keyword">form</span>&gt;
+   &lt;<span class="keyword">input</span> name=<span class="string">"button"</span> <span class="keyword">type</span>=<span class="string">"button"</span> value=<span class="string">"点击提交"</span> onclick=<span class="string">"add2()"</span> /&gt;
+&lt;/<span class="keyword">form</span>&gt;
+</code></pre><h3 id="鼠标经过事件（onmouseover）">鼠标经过事件（onmouseover）</h3><p>鼠标经过事件，当鼠标移到一个对象上时，该对象就触发onmouseover事件，并执行onmouseover事件调用的程序。</p>
+<h3 id="鼠标移开事件（onmouseout）">鼠标移开事件（onmouseout）</h3><p>鼠标移开事件，当鼠标移开当前对象时，执行onmouseout调用的程序。</p>
+<h3 id="光标聚焦事件（onfocus）">光标聚焦事件（onfocus）</h3><p>当网页中的对象获得聚点时，执行onfocus调用的程序就会被执行。</p>
+<h3 id="失焦事件（onblur）">失焦事件（onblur）</h3><p>onblur事件与onfocus是相对事件，当光标离开当前获得聚焦对象的时候，触发onblur事件，同时执行被调用的程序。</p>
+<h3 id="内容选中事件（onselect）">内容选中事件（onselect）</h3><p>选中事件，当文本框或者文本域中的文字被选中时，触发onselect事件，同时调用的程序就会被执行。</p>
+<h3 id="文本框内容改变事件（onchange）">文本框内容改变事件（onchange）</h3><p>通过改变文本框的内容来触发onchange事件，同时执行被调用的程序。</p>
+<h3 id="加载事件（onload）">加载事件（onload）</h3><p>事件会在页面加载完成后，立即发生，同时执行被调用的程序。<br>注意：</p>
+<ol>
+<li>加载页面时，触发onload事件，事件写在<body>标签内。 </body></li>
+<li>此节的加载页面，可理解为打开一个新页面时</li>
+</ol>
+<h3 id="卸载事件（onunload）">卸载事件（onunload）</h3><p>当用户退出页面时（页面关闭、页面刷新等），触发onUnload事件，同时执行被调用的程序。</p>
+<p>注意：不同浏览器对onunload事件支持不同。</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">   
+ <span class="built_in">window</span>.onunload = onunload_message;   
+ <span class="function"><span class="keyword">function</span> <span class="title">onunload_message</span>(<span class="params"></span>)</span>{   
+    alert(<span class="string">"您确定离开该网页吗？"</span>);   
+}   
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>  
+</code></pre><h1 id="JavaScript内置对象">JavaScript内置对象</h1><h2 id="什么是对象">什么是对象</h2><p><strong>JavaScript 中的所有事物都是对象</strong>，如:字符串、数值、数组、函数等，每个对象带有属性和方法。</p>
+<p><strong>对象的属性</strong>：反映该对象某些特定的性质的，如：字符串的长度、图像的长宽等；</p>
+<p><strong>对象的方法</strong>：能够在对象上执行的动作。例如，表单的“提交”(Submit)，时间的“获取”(getYear)等；</p>
+<p>JavaScript 提供多个内建对象，比如<code>String、Date、Array</code>等等，使用对象前先定义，如下使用数组对象：</p>
+<pre><code><span class="keyword">var</span> objectName =<span class="keyword">new</span> <span class="built_in">Array</span>();<span class="comment">//使用new关键字定义对象</span>
+</code></pre><p>或者</p>
+<pre><code><span class="variable"><span class="keyword">var</span> objectName</span> =[];
+</code></pre><p><strong>访问对象属性的语法:</strong></p>
+<pre><code><span class="tag">objectName</span><span class="class">.propertyName</span>
+</code></pre><p>如使用 Array 对象的 length 属性来获得数组的长度：</p>
+<p>var myarray=new Array(6);//定义数组对象<br>var myl=myarray.length;//访问数组长度length属性<br>以上代码执行后，myl的值将是：6</p>
+<p><strong>访问对象的方法：</strong></p>
+<pre><code>objectName.<span class="function"><span class="title">methodName</span><span class="params">()</span></span>
+</code></pre><p>如使用string 对象的 toUpperCase() 方法来将文本转换为大写：</p>
+<pre><code><span class="variable"><span class="keyword">var</span> mystr</span>=<span class="string">"Hello world!"</span>;<span class="comment">//创建一个字符串</span>
+<span class="variable"><span class="keyword">var</span> request</span>=mystr.toUpperCase(); <span class="comment">//使用字符串对象方法</span>
+</code></pre><p>以上代码执行后，request的值是：HELLO WORLD!</p>
+<h3 id="Date日期对象">Date日期对象</h3><p>日期对象可以储存任意一个日期，并且可以精确到毫秒数（1/1000 秒）。</p>
+<p>定义一个时间对象 :</p>
+<pre><code><span class="keyword">var</span> Udate=<span class="keyword">new</span> <span class="built_in">Date</span>(); 
+</code></pre><p>注意:使用关键字new，Date()的首字母必须大写。 </p>
+<p>使 Udate 成为日期对象，并且已有初始值：<strong>当前时间(当前电脑系统时间)</strong>。</p>
+<p>如果要自定义初始值，可以用以下方法：</p>
+<pre><code><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2012</span>, <span class="number">10</span>, <span class="number">1</span>);  <span class="comment">//2012年10月1日</span>
+<span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'Oct 1, 2012'</span>); <span class="comment">//2012年10月1日</span>
+</code></pre><p>我们最好使用下面介绍的“方法”来严格定义时间。</p>
+<p>访问方法语法：<strong>“&lt;日期对象&gt;.&lt;方法&gt;”</strong></p>
+<p>Date对象中处理时间和日期的常用方法：</p>
+<pre><code>方法名称                    功能描述
+get/<span class="function"><span class="title">setDate</span><span class="params">()</span></span>            返回/设置日期
+get/<span class="function"><span class="title">setFullyear</span><span class="params">()</span></span>        返回/设置年份，用四位数表示
+get/<span class="function"><span class="title">setYear</span><span class="params">()</span></span>            返回/设置年份
+get/<span class="function"><span class="title">setMouth</span><span class="params">()</span></span>            返回/设置月份。<span class="number">0</span>：一月
+get/<span class="function"><span class="title">setMinutes</span><span class="params">()</span></span>        返回/设置分钟数
+get/<span class="function"><span class="title">setSeconds</span><span class="params">()</span></span>        返回/设置秒钟数
+get/<span class="function"><span class="title">setTime</span><span class="params">()</span></span>            返回/设置时间(毫秒为单位)
+<span class="function"><span class="title">getDay</span><span class="params">()</span></span>                返回星期，<span class="number">0</span>表示星期天
+</code></pre><h3 id="返回星期方法">返回星期方法</h3><p>getDay() 返回星期，返回的是0-6的数字，0 表示星期天。如果要返回相对应“星期”。</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+  <span class="keyword">var</span> mydate=<span class="keyword">new</span> <span class="built_in">Date</span>();
+  <span class="keyword">var</span> weekday=[<span class="string">"星期日"</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>];
+  <span class="built_in">document</span>.write(<span class="string">"今天是："</span> + weekday[mydate.getDay()]);
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><h3 id="返回/设置时间方法">返回/设置时间方法</h3><p>get/setTime() 返回/设置时间，单位毫秒数，计算从 1970 年 1 月 1 日零时到日期对象所指的日期的毫秒数。</p>
+<p>如果将目前日期对象的时间推迟2小时，代码如下:<br>    <script type="text/javascript"><br>     var mydate=new Date();<br>      document.write(“当前时间：”+mydate+”<br>“);<br>      mydate.setTime( mydate.getTime()  + 2<em> 60 </em> 60 * 1000);<br>      document.write(“推迟二小时时间：” + mydate);<br>    </script></p>
+<h3 id="String_字符串对象">String 字符串对象</h3><p>在之前的学习中已经使用字符串对象了，定义字符串的方法就是直接赋值。比如：</p>
+<pre><code><span class="variable"><span class="keyword">var</span> mystr</span> = <span class="string">"I love JavaScript!"</span>
+</code></pre><p>定义mystr字符串后，我们就可以访问它的属性和方法。</p>
+<p><strong>访问字符串对象的属性length:</strong></p>
+<pre><code>stringObject.length; 返回该字符串的长度。
+
+<span class="variable"><span class="keyword">var</span> mystr</span>=<span class="string">"Hello World!"</span>;
+<span class="variable"><span class="keyword">var</span> myl</span>=mystr.length;
+</code></pre><p>以上代码执行后，myl 的值将是：12</p>
+<p><strong>访问字符串对象的方法：</strong></p>
+<p>使用 String 对象的 toUpperCase() 方法来将字符串小写字母转换为大写：</p>
+<pre><code><span class="variable"><span class="keyword">var</span> mystr</span>=<span class="string">"Hello world!"</span>;
+<span class="variable"><span class="keyword">var</span> mynum</span>=mystr.toUpperCase();
+</code></pre><h4 id="返回指定位置的字符**">返回指定位置的字符**</h4><p><strong>charAt() </strong>方法可返回指定位置的字符。返回的字符是长度为 1 的字符串。</p>
+<p>语法:</p>
+<pre><code>stringObject.<span class="function"><span class="title">charAt</span><span class="params">(index)</span></span>
+</code></pre><p><strong>index：必需、表示字符串中某个位置的数字，即字符在字符串中的下标。</strong></p>
+<p>注意：1.字符串中第一个字符的下标是 0。最后一个字符的下标为字符串长度减一（string.length-1）。</p>
+<p>2.如果参数 index 不在 0 与 string.length-1 之间，该方法将返回一个空字符串。</p>
+<h4 id="返回指定的字符串首次出现的位置">返回指定的字符串首次出现的位置</h4><p>indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。</p>
+<p>语法</p>
+<pre><code>stringObject.<span class="function"><span class="title">indexOf</span><span class="params">(substring, startpos)</span></span>
+</code></pre><h4 id="返回指定位置的字符">返回指定位置的字符</h4><p>charAt() 方法可返回指定位置的字符。返回的字符是长度为 1 的字符串。</p>
+<p>语法:</p>
+<pre><code>stringObject.<span class="function"><span class="title">charAt</span><span class="params">(index)</span></span>
+
+参数                        描述
+substring            必需。规定需检索的字符串值。
+startpos            可选的整数参数。规定在字符串中开始索引的位置。
+                    如果忽略，则将从字符串的首字符开始检索
+</code></pre><p>说明：</p>
+<p>1.该方法将从头到尾地检索字符串 stringObject，看它是否含有子串 substring。</p>
+<p>2.可选参数，从stringObject的startpos位置开始查找substring，如果没有此参数将从stringObject的开始位置查找。</p>
+<p>3.如果找到一个 substring，则返回 substring 的第一次出现的位置。stringObject 中的字符位置是从 0 开始的。</p>
+<p><strong>注意：</strong></p>
+<p><strong>1.indexOf() 方法区分大小写。</strong></p>
+<p><strong>2.如果要检索的字符串值没有出现，则该方法返回 -1。</strong></p>
+<h4 id="字符串分割split()">字符串分割split()</h4><p>split() 方法将字符串分割为字符串数组，并返回此数组。</p>
+<p>语法：</p>
+<pre><code>stringObject.<span class="function"><span class="title">split</span><span class="params">(separator,limit)</span></span>
+
+参数                    描述
+separator            必需，从该参数指定的地方分割stringObject
+limit                可选参数，分割的次数，如设置该参数，返回的子串不会多                    于这个参数指定的数组，如果无此参数为不限次数。
+</code></pre><p><strong>注意：如果把空字符串 (“”) 用作 separator，那么 stringObject 中的每个字符之间都会被分割。</strong></p>
+<h4 id="提取字符串substring()">提取字符串substring()</h4><p>substring() 方法用于提取字符串中介于两个指定下标之间的字符。</p>
+<p>语法:</p>
+<pre><code>stringObject.substring(starP<span class="keyword">os</span>,stopP<span class="keyword">os</span>) 
+
+参数                    描述
+startP<span class="keyword">os</span>            必需，一个非负的整数，开始位置
+stopP<span class="keyword">os</span>                可选，一个非负的整数，结束位置，
+                    如果省略则会返回子串一直到字符串对象的结尾
+</code></pre><p>注意：</p>
+<ol>
+<li><p>返回的内容是从 start开始(包含start位置的字符)到 stop-1 处的所有字符，其长度为 stop 减start。</p>
+</li>
+<li><p>如果参数 start 与 stop 相等，那么该方法返回的就是一个空串（即长度为 0 的字符串）。</p>
+</li>
+<li><p>如果 start 比 stop 大，那么该方法在提取子串之前会先交换这两个参数。</p>
+</li>
+</ol>
+<h4 id="提取指定数目的字符substr()">提取指定数目的字符substr()</h4><p>substr() 方法从字符串中提取从 startPos位置开始的<strong>指定数目</strong>的字符串。</p>
+<p>语法:</p>
+<pre><code>stringObject.<span class="keyword">substr</span>(startPos,<span class="keyword">length</span>)
+
+参数                    描述
+startPos            必需，要提取的子串的起始位置，必须是数值
+<span class="keyword">length</span>                可选。提取字符串的长度。如果省略一直提取到结束。
+</code></pre><p>注意：如果参数startPos是负数，从字符串的尾部开始算起的位置。也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。</p>
+<p>如果startPos为负数且绝对值大于字符串长度，startPos为0。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/14/js进阶篇1/" data-id="cin0f8i3t0011b0hhtgs7g2yp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-js基础篇1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/13/js基础篇1/" class="article-date">
@@ -239,7 +506,7 @@ fontSize             设置元素的字体大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/13/js基础篇1/" data-id="cimycoi5z0011qshhxqs9y0up" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/13/js基础篇1/" data-id="cin0f8i3w0012b0hh2pm0ed8g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,14 +551,10 @@ fontSize             设置元素的字体大小
 <li>javascript语句是发送给浏览器的命令。</li>
 </ul>
 <h2 id="变量命令规范">变量命令规范</h2><ul>
-<li><p>1.变量必须使用<strong>字母、下划线(_)</strong>或者<strong>美元符($)</strong>开始。</p>
-</li>
-<li><p>2.然后可以使用任意多个英文字母、<strong>数字</strong>、下划线(_)或者美元符($)组成。</p>
-</li>
-<li><p>3.不能使用JavaScript关键词与JavaScript保留字</p>
-</li>
-<li><p>4.变量区分大小写，需要先声明，后使用（规范推荐）</p>
-</li>
+<li>1.变量必须使用<strong>字母、下划线(_)</strong>或者<strong>美元符($)</strong>开始。</li>
+<li>2.然后可以使用任意多个英文字母、<strong>数字</strong>、下划线(_)或者美元符($)组成。</li>
+<li>3.不能使用JavaScript关键词与JavaScript保留字</li>
+<li>4.变量区分大小写，需要先声明，后使用（规范推荐）</li>
 </ul>
 <h2 id="if…else…">if…else…</h2><pre><code><span class="keyword">if</span>(条件)
 { 条件成立时执行的代码 }
@@ -423,7 +686,7 @@ fontSize             设置元素的字体大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/13/js基础篇/" data-id="cimycoi630012qshh1wupukrd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/13/js基础篇/" data-id="cin0f8i3y0013b0hhnpvxg2jf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +725,7 @@ fontSize             设置元素的字体大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/23/字符串操作/" data-id="cimycoi3o000cqshhqw6kxjwg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/23/字符串操作/" data-id="cin0f8i0u000cb0hhc85z4ka1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -521,7 +784,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/18/MFC常见问题/" data-id="cimycoi6g0017qshh4ddm5jor" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/18/MFC常见问题/" data-id="cin0f8i4n0018b0hh641afreg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -557,7 +820,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/17/c-继承多态/" data-id="cimycoi6e0016qshh8l8rzcwf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/17/c-继承多态/" data-id="cin0f8i4j0017b0hhkfz1vge2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -598,7 +861,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/17/c语言指针/" data-id="cimycoi6b0015qshhu2db1r4t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/17/c语言指针/" data-id="cin0f8i4a0016b0hhrhx2lc5f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -643,7 +906,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/10/继承-虚函数/" data-id="cimycoi2n0006qshhrvvncpcs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/10/继承-虚函数/" data-id="cin0f8i000006b0hhbyc6kpwv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -682,7 +945,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/03/图的遍历-java实现/" data-id="cimycoi3r000dqshh1q8lpv87" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/03/图的遍历-java实现/" data-id="cin0f8i0y000db0hha8mtl9nd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -726,81 +989,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/02/nginx服务器的搭建/" data-id="cimycoi5s000zqshhhauwwpa2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/17/设计模式/" class="article-date">
-  <time datetime="2015-12-17T09:15:09.000Z" itemprop="datePublished">2015-12-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/17/设计模式/">设计模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#1.备忘录模式<br>备忘录对象是一个用来存储另一个对象内部状态的快照的对象。<br>备忘录模式的用意是在不破坏封装的调教下，将一个对象的状态捉住。<br>并外部化，存储起来，从而可以在将来合适的时候把则个对象还原到存储起来的状态。</p>
-<p>适用于场合：设计需要回放的软件，记录一下事物的状态。数据库备份，文档编辑，撤销，恢复</p>
-<p>设计备忘录三大步骤<br>1.设计记录的节点，存储记录， –&gt; memo<br>2.设计记录的存储，这要有vector，list，map，set，链表，图，数组，树… –&gt; Caretaker<br>3.操作记录的类，主要完成记录节点状态，设置节点状态，显示状态。 –&gt;Originator</p>
-<p>只能作为软件设计的一个节点</p>
-<p>#2.策略模式<br>针对一组算法，将每一个算法封装到具有共同接口的独立类中，从而使得它们可以相互替换。<br>策略模式使得算法可以在不影响到客户端的情况下发生变化。<br>策略模式把行为和环境分开。<br>环境类负责维持和查询行为类，各种算法在具体的策略类中提供。<br>由于算法和环境独立开来，算法的增减，修改都不会影响到环境和客户端。<br>依赖于多态</p>
-<p>实现：<br>策略的抽象类，接口，抽象类的指针可以访问所有子类的对象（纯虚函数）<br>实现的各种策略，各种策略的实现，都必须继承抽象类<br>策略的设置接口类，设置不同策略</p>
-<p>#3.简单工厂模式<br>消费者固定，服务场所固定，操作不同</p>
-<p>工厂模式：客户类和工厂类分开<br>消费者任何时候需要某种产品，只需要向工厂请求即可。<br>消费者无需修改就可以接纳新产品。<br>缺点：当产品修改时，工厂类也需要相应的修改。</p>
-<p>适用于：在一个客户端上</p>
-<p>实现：<br>基类存放数据<br>派生类有很多，派生类存放数据的操作<br>实现接口类，用静态函数实现调用各种派生类</p>
-<p>#4.工厂方法模式 –&gt; 多同样的数据进行不同的操作<br>消费者固定，服务场所不固定，操作不同</p>
-<p>核心工厂类不在负责所有产品的创建，而是将具体的工作交给子类去做，成为一个抽象工厂角色，<br>仅负责给出具体工厂类必须实现的接口，而不接触哪一个产品类应当被实例化的这种细节。</p>
-<p>适用于：网络上，要求可靠性的情况下</p>
-<p>实现：<br>基类存放数据<br>派生类有很多，派生类存放数据的操作<br>实现一个工厂基类，<br>派生工厂基类，调用不同的派生类。</p>
-<p>#5.抽象工厂模式  –&gt;不同的数据进行不同的操作<br>消费者不固定，服务场所不固定，操作不同</p>
-<p>工厂模式：客户类和工厂类分开<br>消费者任何时候需要某种产品，只需要向工厂请求即可。<br>消费者无需修改就可以接纳新产品。</p>
-<p>实现：<br>消费者不固定，工厂者不固定，（工厂根据消费者动作）<br>实现消费者抽象基类，消费者派生类的实现，实例化就是消费者<br>操作的抽象基类，实现派生类各种操作，实例化操作<br>工厂的抽象类，抽象类包含了两个抽象类的接口（消费者，操作）<br>抽象类实现了工厂类的抽象，实例化的派生类，实现工厂，<br>根据用户设置用户，根据操作设置操作</p>
-<p>#6.代理模式<br>代理模式给某一个对象提供一个代理对象，并由代理对象控制对源对象的引用。<br>代理就是一个人或一个机构代表另一个人或另一个机构采取行动。<br>某些情况下，客户不想或者不能够直接引用一个对象，代理对象可以在客户和目标对象直接起到中间作用。<br>客户端分辨不出代理主体对象与真实主题对象。<br>代理模式可以并不知道真正的被代理对象，而仅仅持有一个被代理对象的接口，这时候代理对象不能够创建被代理对象，<br>被代理对象必须有系统的其它角色代为创建并传入。</p>
-<p>#7.单例模式<br>单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例单例模式。<br>单例模式只应在有真正的“单一实例”的需求时才可使用。<br>迅雷</p>
-<p>#8.迭代器模式<br>迭代子模式：迭代子模式可以顺序访问一个聚集中的元素而不必暴露聚集的内部表象。<br>多个对象聚在一起形成的总体称之为聚集，聚集对象是能够包容一组对象的容器对象。</p>
-<p>迭代子模式将迭代逻辑封装到一个独立的子对象中，从而与聚集本身隔开。<br>迭代子模式简化了聚集的界面。<br>每一个聚集对象都可以有一个或一个以上的迭代子对象，<br>每一个迭代子的迭代状态可以是彼此独立的。<br>迭代算法可以独立于聚集角色变化。</p>
-<p>#7.访问者模式<br>访问者模式：访问者模式的目的是封装一些施加于某种数据结构元素之上的操作。<br>一旦这些操作需要修改的话，接受这个操作的数据结构可以保持不变。<br>访问者模式适用于数据结构相对未定的系统，<br>它把数据结构和作用于结构上的操作之间的耦合解脱开，使得操作集合可以相对自由的演化。<br>访问者模式使得增加新的操作变的很容易，就是增加一个新的访问者类。<br>访问者模式将有关的行为集中到一个访问者对象中，而不是分散到一个个的节点类中。<br>当使用访问者模式时，要将尽可能多的对象浏览逻辑放在访问者类中，而不是放到它的子类中。<br>访问者模式可以跨过几个类的等级结构访问属于不同的等级结构的成员类。</p>
-<p>情人节到了，要给每个MM送一束鲜花和一张卡片，<br>可是每个MM送的花都要针对她个人的特点，每张卡片也要根据个人的特点来挑，<br>我一个人哪搞得清楚，还是找花店老板和礼品店老板做一下Visitor，<br>让花店老板根据MM的特点选一束花，让礼品店老板也根据每个人特点选一张卡，<br>这样就轻松多了。</p>
-<p>访问者模式不需要改变基类，不依赖虚函数，<br>根据不同的需求，解决不同的问题</p>
-<p>#9.观察者模式<br>观察者模式：观察者模式定义了一种一队多的依赖关系，<br>让多个观察者对象同时监听某一个主题对象。<br>这个主题对象在状态上发生变化时，会通知所有观察者对象，<br>使他们能够自动更新自己。</p>
-<p>想知道咱们公司最新MM情报吗？加入公司的MM情报邮件组就行了，<br>直接发布给邮件组，我们作为订阅者（观察者）就可以及时收到情报啦。</p>
-<p>监视，观察者，都有一个基类，派生，实现不同的效果<br>监视者的类，管理所有的观察者，增加或者删除，发出消息，让观察者处理<br>观察者的类需要接受消息并处理</p>
-<p>#10.建造者模式</p>
-<p>#11.解释器模式<br>给定一个语言后，解释器模式可以定义出其文法的一种表示，并同时提供一个解释器。<br>客户端可以使用这个解释器来解释这个语言中的句子。<br>解释器模式将描述怎么样在有了一个简单的文法后，使用模式设计解释这些语句。<br>在解释器模式里面提到的语言是指任何解释器对象能够解释的任何组合。<br>在解释器模式中需要定义一个代表文法的命令类的等级结构，也就是一序列的组合规则。<br>每一个命令对象都有一个解释方法，代表对命令对象的解释。<br>命令对象的等级结构中的对象的任何排列组合都是一个语言。</p>
-<p>#12.命令模式<br>命令模式将一个请求或者操作封装到一个对象中。<br>把发出命令的责任和执行命令的责任分隔开，委派给不同的对象。<br>命令模式允许请求的一方和发送的一方独立开来，使得请求的一方不知道接受消息的一方的接口，更不必知道请求是怎么被接受，<br>以及操作是否执行，何时被执行以及是怎么被执行的。<br>系统支持命令的撤销。</p>
-<p>#13.模板模式<br>模板模式准备一个抽象类，将部分逻辑以具体方法以及具体构造子的形成实现，然后声明一些抽象方法来迫使子类实现剩余的逻辑。<br>不同的子类可以以不同的方式实现这些抽象方法，从而对剩余的逻辑有不同的放方法。<br>先制定一个顶级逻辑框架，而将逻辑的细节留给具体的子类去实现。</p>
-<p>#14.桥梁模式<br>将抽象化与实现化脱耦，使得二者可以独立的变化，<br>也就是说将他们之间的强关联变成弱关联，<br>也就是指在一个软件系统的抽象化和实现化之间使用组合<br>聚合关系而不是继承关系，从而使两者可以独立变化。</p>
-<p>#15.适配器模式<br>把一个类的接口变成客户端所期待的另一个接口，从而使得原本接口原因不匹配而无法一起工作的两个类能够一起工作。<br>适配类可以根据参数返还一个合适的实例给客户端。</p>
-<p>#16.外观模式<br>门面模式：外部与一个子系统的通信必须通过一个统一的门面对象进行。<br>门面模式提供一个高层次的接口，使得子系统更易于使用。<br>每一个子系统只有一个门面类，而且此门面类只有一个实例，<br>也就是说它是一个单例模式。但整个系统可以有多个门面类。</p>
-<p>#17.享元模式</p>
-<p>适用于优化内存</p>
-<p>#18.原型模式</p>
-<p>#19.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/17/设计模式/" data-id="cimycoi2j0005qshha8u4hxeb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/02/nginx服务器的搭建/" data-id="cin0f8i3k000zb0hh47jrrjm8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -829,7 +1018,7 @@ pMain-&gt;DestroyWindow();
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -839,6 +1028,10 @@ pMain-&gt;DestroyWindow();
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/14/js进阶篇1/">js进阶篇1</a>
+          </li>
         
           <li>
             <a href="/2016/04/13/js基础篇1/">js基础篇1</a>
@@ -854,10 +1047,6 @@ pMain-&gt;DestroyWindow();
         
           <li>
             <a href="/2016/03/18/MFC常见问题/">MFC常见问题</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/17/c-继承多态/">c++继承多态</a>
           </li>
         
       </ul>
