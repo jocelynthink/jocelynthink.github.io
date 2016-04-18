@@ -65,6 +65,597 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS1-基本概念" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/18/JS1-基本概念/" class="article-date">
+  <time datetime="2016-04-18T08:02:12.000Z" itemprop="datePublished">2016-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/18/JS1-基本概念/">JS1-基本概念</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="语法">语法</h1><h2 id="ECMAScript中的一切都区分大小写">ECMAScript中的一切都区分大小写</h2><h2 id="严格模式_“use_strict”">严格模式 “use strict”</h2><ol>
+<li>为JavaScript定义了一中不同的解析和执行模型</li>
+<li>ECMAScript3中语法的一些不确定的行为得到处理，而且对于某些不安全的操作也会抛出错误。</li>
+<li>相当于编译指示。</li>
+</ol>
+<h2 id="关键字和保留字">关键字和保留字</h2><h3 id="关键字">关键字</h3><pre><code><span class="keyword">break</span>         <span class="keyword">do</span>            <span class="keyword">instanceof</span>        <span class="keyword">typeof</span>
+<span class="keyword">case</span>        <span class="keyword">else</span>        <span class="keyword">new</span>                <span class="keyword">var</span>
+<span class="keyword">catch</span>        finnally    <span class="keyword">return</span>            <span class="literal">void</span>
+<span class="keyword">continue</span>    <span class="keyword">for</span>            <span class="keyword">switch</span>            <span class="keyword">while</span>    
+<span class="keyword">debugger</span>*    <span class="keyword">function</span>    <span class="keyword">this</span>            <span class="keyword">with</span>    
+<span class="keyword">default</span>        <span class="keyword">if</span>            <span class="keyword">throw</span>
+<span class="keyword">delete</span>        <span class="keyword">in</span>            <span class="keyword">try</span>
+</code></pre><h3 id="保留字_ECMA-262_第3版">保留字 ECMA-262 第3版</h3><pre><code><span class="keyword">abstract</span>    enum        <span class="keyword">int</span>                <span class="keyword">short</span>
+<span class="keyword">boolean</span>        export        <span class="keyword">interface</span>        <span class="keyword">static</span>
+<span class="keyword">byte</span>        <span class="keyword">extends</span>        <span class="keyword">long</span>            <span class="keyword">super</span>
+<span class="keyword">char</span>        <span class="keyword">final</span>        <span class="keyword">native</span>            <span class="keyword">synchronized</span>
+<span class="keyword">class</span>        <span class="keyword">float</span>        <span class="keyword">package</span>            <span class="keyword">throws</span>
+const        goto        <span class="keyword">private</span>            <span class="keyword">transient</span>
+debugger    <span class="keyword">implements</span>    <span class="keyword">protected</span>        <span class="keyword">volatile</span>
+<span class="keyword">double</span>        <span class="keyword">import</span>        <span class="keyword">public</span>
+</code></pre><h3 id="保留字_ECMA-262_第5版_非严格模式">保留字 ECMA-262 第5版 非严格模式</h3><pre><code><span class="class"><span class="keyword">class</span>        <span class="title">enum</span>        <span class="keyword"><span class="keyword">extends</span></span>            <span class="title">super</span>
+</span>const        export        <span class="keyword">import</span>
+</code></pre><h3 id="保留字_ECMA-262_第5版_严格模式">保留字 ECMA-262 第5版 严格模式</h3><pre><code><span class="keyword">implements</span>    <span class="keyword">package</span>        <span class="keyword">public</span>
+<span class="keyword">interface</span>     <span class="keyword">private</span>        <span class="keyword">static</span>    
+let            <span class="keyword">protected</span>    yield
+eval         arguments
+</code></pre><h2 id="变量">变量</h2><ul>
+<li>松散类型：可以用来保存任何类型的数据。</li>
+<li>每个变量仅仅是一个用于保存值的占位符而已。</li>
+<li><strong>未初始化的变量保存一个undefined</strong>。</li>
+<li>var标示符定义的变量是局部变量，如果省略var则定义的是全局变量，这种声明全局变量的做法并不推荐，在严格模式下会抛出ReferenceError错误。</li>
+</ul>
+<h1 id="数据类型">数据类型</h1><h3 id="基本数据类型">基本数据类型</h3><ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>null</li>
+<li><p>undefined</p>
+<h3 id="对象">对象</h3></li>
+<li><p>object    —- Data</p>
+<pre><code>-<span class="ruby">--- <span class="constant">Array</span>
+</span>-<span class="ruby">--- <span class="constant">String</span>
+</span>-<span class="ruby">--- function</span>
+</code></pre></li>
+</ul>
+<h3 id="typeof_操作符_用来检测基本数据类型">typeof 操作符 用来检测基本数据类型</h3><p>对一个值使用typeof操作符可能返回下列某个字符串：</p>
+<ul>
+<li>“undefined” —这个值是为定义的</li>
+<li>“boolean” — 这个值是布尔值</li>
+<li>“string” — 这个值是字符串</li>
+<li>“number” —这个值是数值</li>
+<li>“object” —这是值是对象或者null</li>
+<li>“function” — 这个值是函数</li>
+</ul>
+<p><strong>注意：typeof 用来区分函数和其它的对象。</strong></p>
+<h3 id="undefined类型">undefined类型</h3><ol>
+<li>未经初始化的变量中保存一个undefined</li>
+<li>ECMAScript 第3版引入 为了正式区分空对象指针和未经初始化的变量。</li>
+<li>未定义的变量 会抛出一个错误。</li>
+<li>对未声明的变量调用delete不会导致错误，但是也没实际意思，在严格模式下，会发生错误。</li>
+<li><strong><em>对未声明的变量执行typeof操作符同样会返回undefined</em></strong>。</li>
+<li>最好显示地初始化所有变量</li>
+</ol>
+<h2 id="null类型">null类型</h2><ol>
+<li>null表示空指针</li>
+<li><p>undefined的值派生自null的值。</p>
+<pre><code><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>)
+<span class="literal">true</span>
+</code></pre></li>
+<li>定义变量准备在将来用于保存对象，那么最好将该变量初始化为null而不是其他值<strong>–&gt;</strong>直接检查null的值就知道相应的变量是否保存了一个对象的引用。</li>
+</ol>
+<h2 id="Boolean类型">Boolean类型</h2><ol>
+<li>两个字面值：<strong>true</strong> 和 <strong>false</strong></li>
+<li>区分大小</li>
+<li><p>将<strong>任何数据类型</strong>转换为布尔类型：<strong>转型函数Boolean()</strong></p>
+<p> 数据类型            转换为true的值            转换为false的值<br> Boolean            true                    false<br> String            任何非空字符串            “”（空字符串）<br> Number            任何非零数字值            0和NaN<br> Object            任何对象                    null<br> Undefined        n/a(not applicable不适用)undefined</p>
+<h2 id="Number类型">Number类型</h2></li>
+<li><p>使用IEEE754格式来表示整数和浮点数值</p>
+</li>
+<li>八进制     0开头</li>
+<li>十六进制    0x开头</li>
+<li>正零（+0）和负零（-0）被认为相等</li>
+</ol>
+<h3 id="浮点数值">浮点数值</h3><ol>
+<li>浮点数值需要的内存是保存整数值的两倍</li>
+<li>如果小数点后面没有数值或者浮点数本身就是一个整数，那么该值会被转换为整数。</li>
+<li>极大的值或极小的值—–e表示法：e前面的数值乘以整数次幂。</li>
+<li>将小数点后面带有6个零以上的浮点数值转换为e表示法。</li>
+<li>在浮点数精度为17位小数，在进行算术运算时，其精度远不如整数。例如，在计算0.1+0.2的结果不是0.3，而是0.30000000000000004。（这是舍入是通病）</li>
+<li><p><strong>永远不要测试某个特定的浮点数值。</strong></p>
+<pre><code>onsole.<span class="built_in">log</span>(<span class="number">0.1</span>+<span class="number">0.2</span>)
+<span class="number">0.30000000000000004</span>
+
+<span class="keyword">if</span>( <span class="number">0.1</span> + <span class="number">0.2</span> = <span class="number">0.3</span>){<span class="comment">//永远不要这样做测试</span>
+    ...
+}
+</code></pre></li>
+</ol>
+<h3 id="数值范围">数值范围</h3><pre><code>最小整数        <span class="built_in">Number</span>.MIN_VALUE        <span class="number">5e-324</span>
+最大整数        <span class="built_in">Number</span>.MAX_VALUE        <span class="number">1.79769311348623157e+308</span>
+如果超过最大值，则自动转换为特殊的<span class="literal">Infinity</span>值
+如果超过最小值，则自动转换为特殊的-<span class="literal">Infinity</span>值
+<span class="built_in">Number</span>.NAGTIVE_INFINITY 得到 负<span class="literal">Infinity</span> 
+<span class="built_in">Number</span>.POSTIVE_INFINITY 得到 正<span class="literal">Infinity</span>
+这个两个属性分别保存着-<span class="literal">Infinity</span>和<span class="literal">Infinity</span>
+</code></pre><h4 id="isFinite()函数，用于检测一个数值是不是有穷的">isFinite()函数，用于检测一个数值是不是有穷的</h4><h3 id="NaN">NaN</h3><ol>
+<li>Not a Number 非数值。</li>
+<li>表示一个未来要返回数值的操作数为返回数值的情况（这样就不会抛出错误了）。</li>
+<li>任何涉及NaN的操作都会返回NaN</li>
+<li>NaN与任何值都不相等，包括NaN本身。</li>
+<li>isNaN()函数，判断这是参数是否”不是数值”。任何不能被转换为数值的值，都会返回—true</li>
+<li>isNaN()适用于对象，在基于对象调用isNaN()函数时，先调用对象的valueOf()方法，确定返回值是否可以转换为数值，如果不能，再调用对象的toString()方法，在测试返回值。</li>
+</ol>
+<h3 id="数值转换">数值转换</h3><h4 id="Number()">Number()</h4><p>转换规则：</p>
+<ol>
+<li>Boolean值：　true–&gt;1,false–&gt;0;</li>
+<li>数字值–&gt;简单传入和返回</li>
+<li>null–&gt;0</li>
+<li>undefined–&gt;NaN</li>
+<li><p>字符串：</p>
+<ol>
+<li>只包含数字，则转换为十进制数值，前导零被忽略</li>
+<li>包含有效的浮点，则转换为浮点数字，前导零被忽略</li>
+<li>包含有效的十六进制，则转换为相同大小的十进制</li>
+<li>为空-&gt;0</li>
+<li><p>包含其它的格式-&gt;NaN</p>
+<pre><code><span class="function"><span class="title">Number</span><span class="params">(<span class="string">"0xf"</span>)</span></span> <span class="comment">//15</span>
+<span class="function"><span class="title">Number</span><span class="params">(<span class="string">"hell"</span>)</span></span><span class="comment">//NaN</span>
+<span class="function"><span class="title">Number</span><span class="params">(<span class="string">"000011"</span>)</span></span><span class="comment">//11</span>
+<span class="function"><span class="title">Number</span><span class="params">(<span class="string">"true"</span>)</span></span><span class="comment">//NaN</span>
+<span class="function"><span class="title">Number</span><span class="params">(true)</span></span><span class="comment">//1</span>
+<span class="function"><span class="title">Number</span><span class="params">(<span class="string">""</span>)</span></span><span class="comment">//0</span>
+</code></pre></li>
+</ol>
+</li>
+<li><p><strong>一元字符的操作与Number()函数相同</strong></p>
+</li>
+</ol>
+<h4 id="parseInt()">parseInt()</h4><ol>
+<li>如果第一个字符不是数字字符或者负号，则返回—&gt;NaN</li>
+<li>如果是空字符串—&gt;NaN</li>
+<li>如果第一个是数字，那么会继续解析第二个字符，直到解析完所有后续字符或者遇到了一个非数字字符。</li>
+<li><p>ECMAScript 3和5在处理八进制字面值存在歧义</p>
+<pre><code><span class="built_in">parseInt</span>(<span class="string">"070"</span>)  <span class="comment">//ECMAScript 3认为是56 ECMAScript 5 认为是70</span>
+<span class="built_in">parseInt</span>(<span class="string">""</span>)  <span class="comment">//NaN</span>
+<span class="built_in">parseInt</span>(<span class="string">"1234blue"</span>); <span class="comment">//1234</span>
+<span class="built_in">parseInt</span>(<span class="string">""</span>) <span class="comment">// NaN</span>
+<span class="built_in">parseInt</span>(<span class="number">22.5</span>) <span class="comment">//22</span>
+<span class="built_in">parseInt</span>(<span class="string">"OxA"</span>) <span class="comment">//NaN</span>
+<span class="built_in">parseInt</span>(<span class="string">"0xA"</span>) <span class="comment">//10</span>
+<span class="built_in">parseInt</span>(<span class="string">"0xf"</span>) <span class="comment">//15</span>
+</code></pre></li>
+<li>建议：无论在什么情况下，都要指明基数。</li>
+<li>  parseInt(“10”,2)//2<br>  parseInt(“10”,8)<br>  8<br>  parseInt(“10”,10)<br>  10<br>  parseInt(“10”,16)<br>  16</li>
+</ol>
+<h4 id="parseFloat()">parseFloat()</h4><ol>
+<li>如果第一个是数字，那么会继续解析第二个字符，直到解析完所有后续字符或者遇到了一个非数字字符。</li>
+<li>字符串中第一个小数点是有效的，而第二个小数点是无效的，后面的字符将被忽略</li>
+<li>始终会忽略前导0，十六进制的数始终转换为0，所以只解析十进制值。</li>
+<li><p>如果包含可解析的整数，那么就返回整数。</p>
+<pre><code><span class="function"><span class="title">parseFloat</span><span class="params">(<span class="string">"1234blue"</span>)</span></span> <span class="comment">//1234</span>
+<span class="function"><span class="title">parseFloat</span><span class="params">(<span class="string">"0xA"</span>)</span></span> <span class="comment">//0</span>
+<span class="function"><span class="title">parseFloat</span><span class="params">(<span class="string">"22.5"</span>)</span></span> <span class="comment">//22.5</span>
+<span class="function"><span class="title">parseFloat</span><span class="params">(<span class="string">"22.34.4"</span>)</span></span> <span class="comment">//22.34</span>
+<span class="function"><span class="title">parseFloat</span><span class="params">(<span class="string">"098.4"</span>)</span></span> <span class="comment">//98.4</span>
+<span class="function"><span class="title">parseFloat</span><span class="params">(<span class="string">"3.125e7"</span>)</span></span> <span class="comment">//31250000</span>
+</code></pre></li>
+</ol>
+<h2 id="String类型">String类型</h2><ol>
+<li>表示零或多个16为Unicode字符组成的字符序列，即字符串。</li>
+<li>双引号和单引号在ECMAScript中没有区别</li>
+</ol>
+<h3 id="字符串字面量">字符串字面量</h3><pre><code>字面值        含义
+<span class="string">\n</span>            换行
+<span class="string">\t</span>            制表
+<span class="string">\b</span>            退格
+<span class="string">\r</span>            回车
+<span class="string">\f</span>            进纸
+<span class="string">\\</span>            斜杠
+<span class="string">\'</span>            单引号
+<span class="string">\"</span>            双引号
+<span class="string">\xnn</span>        以十六进制代码nn表示一个字符
+<span class="string">\unnnn</span>        以十六进制nnnn表示一个Unicode字符
+</code></pre><p> 字符串字面值可以出现在字符串中的任意位置，而且被作为一个字符来解析：</p>
+<pre><code><span class="tag">var</span> text = <span class="string">"This is the letter sigma: \u03a3."</span>
+text<span class="class">.length</span> <span class="comment">//28</span>
+
+<span class="tag">var</span> text = <span class="string">"This is the letter sigma: ."</span>
+text<span class="class">.length</span> <span class="comment">//27</span>
+</code></pre><p>length 返回 字符数包括16位字符的数目。</p>
+<p>如果包含双字节字符，length属性可能不会精确的返回字符串中的字符数目。</p>
+<h3 id="字符串特点">字符串特点</h3><p>字符串是不可变的。</p>
+<h3 id="转换为字符串">转换为字符串</h3><ol>
+<li>toString()方法</li>
+<li>null 和 undefined 没有toString()方法 <ul>
+<li>null-&gt;null</li>
+<li>undefined-&gt;undefined;</li>
+</ul>
+</li>
+<li><p>参数：输出数值的基数。默认是10进制返回</p>
+<p>  var num = 10<br>  num.toString() //“10”<br>  num.toString(2) //“1010”<br>  num.toString(8) //“12”<br>  num.toString(16) //“a”<br>  num.toString(10) //“10”</p>
+<p>  String(10) //“10”<br>  String(true) //“true”<br>  String(null) //“null”<br>  var value;<br>  String(value) //“undefined”</p>
+</li>
+</ol>
+<h2 id="Object类型">Object类型</h2><ol>
+<li>对象：数据和功能的集合</li>
+<li>在ECMAScript中，Object类型是所有它的实例基础。即，Object类型所具有的任何属性和方法也同样适用于更具体的对象。</li>
+</ol>
+<h3 id="Object对象的属性和方法">Object对象的属性和方法</h3><ul>
+<li>constructor：保存着用于创建当前对象的函数。</li>
+<li>hasOwnProperty(propertyName)：用于检查给定的属性在当前对象中是否存在。</li>
+<li>isPrototypeOf(object)：用于检查传入的对象是否是当前对象的原型。</li>
+<li>propertyIsEnumerable(propertyName)：用于检差给定的属性是否能够使用for-in语句来枚举。</li>
+<li>toLacaleString():返回对象的字符串表示</li>
+<li>toString()：返回对象的字符表示</li>
+<li>valueOf():返回对象的字符串、数值或布尔值表示。</li>
+</ul>
+<h1 id="操作符">操作符</h1><h2 id="一元操作符">一元操作符</h2><h3 id="++，–">++，–</h3><p>前置：变量在求值之前改变。</p>
+<p>后置：包含它们的语句被求值之后才执行。</p>
+<h3 id="一元加减操作符">一元加减操作符</h3><h4 id="+">+</h4><ol>
+<li>对于数值不会产生任何影响</li>
+<li>非数值，会像Number()函数一样执行转换。</li>
+</ol>
+<h4 id="-">-</h4><ol>
+<li>用于表示负数</li>
+<li>非数值，会像Number()函数一样执行转换。</li>
+</ol>
+<h3 id="位操作符">位操作符</h3><ol>
+<li>按内存中表示的数值的位来操作数值。</li>
+<li>ECMAScript中所有的数值都是以IEEE-754 64位格式存储，但是位操作并不直接操作64位值。</li>
+<li>先将64位值—&gt;32为整数—&gt;执行操作—&gt;64位值。</li>
+<li>有符号数：前31位表示数值，第32位表示符号位。(0 正数 ； 1 负数)</li>
+<li>对特殊的NaN和infinity值应用位操作，会被当成0来处理。</li>
+</ol>
+<h4 id="按位非(NOT)_~">按位非(NOT) ~</h4><p>本质: 操作数的负值减-1</p>
+<h4 id="按位与(AND)_&amp;">按位与(AND) &amp;</h4><h4 id="按位或(OR)_|">按位或(OR) |</h4><h4 id="按位异或_^">按位异或 ^</h4><h4 id="左移_&lt;&lt;_相当于乘2_不会影响符号位">左移 &lt;&lt; 相当于乘2  不会影响符号位</h4><h4 id="有符号右移_&gt;&gt;_相当于除2_保留符号位">有符号右移 &gt;&gt; 相当于除2  保留符号位</h4><h4 id="无符号右移_&gt;&gt;&gt;">无符号右移 &gt;&gt;&gt;</h4><p>无符号右移，以0填充空位</p>
+<p>无符号右移，会把负数的二进制当成正数的二进制。会导致无符号右移的结果非常大</p>
+<h3 id="布尔操作符">布尔操作符</h3><h4 id="逻辑非_!">逻辑非  !</h4><p>规则：</p>
+<pre><code><span class="number">1.</span>    对象--&gt;<span class="literal">false</span>;
+<span class="number">2.</span>    空字符串--&gt;<span class="literal">true</span>;
+<span class="number">3.</span>    非空字符串---&gt;<span class="literal">false</span>;
+<span class="number">4.</span>    <span class="number">0</span>---&gt;<span class="literal">true</span>;
+<span class="number">5.</span>    非零数值---&gt;<span class="literal">false</span>;
+<span class="number">6.</span>    null--&gt;<span class="literal">true</span>;
+<span class="number">7.</span>    NaN--&gt;<span class="literal">true</span>;
+<span class="number">8.</span>    undefined --&gt;<span class="literal">true</span>;
+<span class="number">9.</span>    
+</code></pre><h4 id="逻辑与_&amp;&amp;">逻辑与 &amp;&amp;</h4><p>规则：</p>
+<ol>
+<li>第一个操作数是对象—&gt;第二个操作数</li>
+<li>第二次操作数是对象—&gt;在第一个操作数求值结果为true的情况下，才会返回该对象</li>
+<li>如果两个操作数都是对象–&gt;返回第二个操作数</li>
+<li>一个是null–&gt;null</li>
+<li>一个是NaN—&gt;NaN</li>
+<li>一个是undefined—&gt;undefined</li>
+</ol>
+<p>**牢记：</p>
+<ol>
+<li>短路操作</li>
+<li><p>不能在逻辑与操作中使用未定义的值。**</p>
+<h4 id="逻辑或">逻辑或</h4><p>规则：</p>
+</li>
+<li><p>第一个操作数是对象—&gt;第一个操作数</p>
+</li>
+<li>第一个操作数的求值结果为false—&gt;第二个操作数</li>
+<li>如果两个都是对象—–&gt;返回第一个对象</li>
+<li>两个都是null—-&gt;null</li>
+<li>两个都是NaN—-&gt;NaN</li>
+<li>两个都是undefined—-&gt;undefined</li>
+</ol>
+<p><strong>牢记：<br>1.短路操作<br>2.利用逻辑或可以避免为变量赋予null或undefined值。<br>3.不能在逻辑或中出现使用未定义的值。</strong></p>
+<h3 id="乘性操作符">乘性操作符</h3><p>非数值的情况下回执行自动的类型转换</p>
+<h4 id="乘法_*">乘法 *</h4><p>规则</p>
+<ol>
+<li>操作数都是数值的情况下，执行常规乘法。超过范围的话Infinity和-Infinity</li>
+<li>NaN–&gt;NaN</li>
+<li>Infinity * 0 -&gt;NaN</li>
+<li>Infinity * 非0 —&gt;Infinity 或 -Infinity</li>
+<li>Infinity * Infinity –&gt;Infinity</li>
+<li><p>不是数值，转换为数值 Number()。</p>
+<h4 id="除法_/">除法 /</h4><p>规则</p>
+</li>
+<li><p>操作数都是数值的情况下，执行常规除法。超过范围的话Infinity和-Infinity</p>
+</li>
+<li>NaN–&gt;NaN</li>
+<li>Infinity / 0 -&gt;NaN</li>
+<li>Infinity / Infinity –&gt;NaN</li>
+<li>Infinity / 非0 —&gt;Infinity 或 -Infinity</li>
+<li><p>不是数值，转换为数值 Number()。</p>
+<h4 id="求模_%">求模 %</h4><p>规则：</p>
+</li>
+<li><p>操作数都是数值的情况下，执行常规求模。</p>
+</li>
+<li>有限大  % 无穷大 –&gt;NaN</li>
+<li>0 % 有限大 —&gt;NaN</li>
+<li>Infinity % Infinity –&gt;NaN</li>
+<li>无穷大 % 有限大—-&gt;被除数</li>
+<li>Infinity % 非0 —&gt;Infinity 或 -Infinity</li>
+<li>被除数为0—-&gt;0</li>
+<li><p>不是数值，转换为数值 Number()。</p>
+<h3 id="加性操作符">加性操作符</h3><h4 id="加法">加法</h4><p>规则：</p>
+</li>
+<li><p>如果一个操作数是NaN–&gt;NaN</p>
+</li>
+<li>Infinity + Infinity –&gt; Infinity</li>
+<li>-Infinity + -Infinity –&gt; -Infinity</li>
+<li>Infinity + -Infinity –&gt;NaN</li>
+<li>+0 + +0 –&gt;+0</li>
+<li>-0 + -0 –&gt; -0</li>
+<li>+0 + -0 –&gt;+0</li>
+<li>如果两个都是是字符串—-&gt;  两个操作符拼接</li>
+<li>如果只有一个字符串，将另一个转换为字符串，然后将两个字符拼接起来。</li>
+<li>如果有一个操作符是对象、数值或布尔值，则调用他们的toString()方法，然后应用上述规则</li>
+<li><p>对于undefined和null调用字符串取得字符串的”undefinied”和”null”</p>
+<h4 id="减法">减法</h4></li>
+<li><p>如果一个操作数是NaN–&gt;NaN</p>
+</li>
+<li>Infinity - Infinity –&gt; NaN</li>
+<li>-Infinity - -Infinity –&gt; NaN</li>
+<li>Infinity - -Infinity –&gt;Infinity</li>
+<li>-Infinity - -Infinity —&gt;-Infinity</li>
+<li>+0 - +0 –&gt;+0</li>
+<li>-0 - -0 –&gt; +0</li>
+<li>+0 - -0 –&gt;-0</li>
+<li>如果只有一个字符串、布尔值、null或undefined，则先在后台执行Number()函数转换为数值，在应用上述规则</li>
+<li>如果有一个操作符是对象，则调用他们的valueOf()方法取得该对象的数值，然后应用上述规则。如果没有valueOf()方法，则调用toString()方法。</li>
+</ol>
+<h3 id="关系操作符">关系操作符</h3><h4 id="&lt;、&gt;、&lt;=、&gt;=">&lt;、&gt;、&lt;=、&gt;=</h4><p>规则：</p>
+<ol>
+<li>如果两个操作数都是数值–&gt;执行比较</li>
+<li>如果两个操作符都是字符串–&gt;比较字符编码</li>
+<li>一个是数值–&gt;将另一个转换为数值，比较</li>
+<li>一个是对象–&gt;调用对象的valueOf()方法，如果没有valueOf()方法，则调用toString()方法。</li>
+<li>如果是布尔值–&gt;转换为数值，比较</li>
+</ol>
+<p>注意：</p>
+<p><strong>大写字母的字母编码全部辖域小写字符的字符编码</strong><br><strong>toLowerCase()全部转换为小写，再比较</strong><br>两个数字字符串比较</p>
+<pre><code><span class="keyword">var</span> <span class="literal">result</span> = <span class="string">"23"</span> &lt; <span class="string">"3"</span> //<span class="literal">true</span>
+<span class="keyword">var</span> <span class="literal">result</span> = <span class="string">"23"</span> &lt; <span class="number">3</span> //<span class="literal">false</span>
+<span class="keyword">var</span> <span class="literal">result</span> = <span class="string">"a"</span> &lt; <span class="number">3</span> //<span class="literal">false</span>
+<span class="keyword">var</span> <span class="literal">result</span> = <span class="type">NaN</span> &lt; <span class="number">3</span> //<span class="literal">false</span>
+<span class="keyword">var</span> <span class="literal">result</span> = <span class="type">NaN</span> &gt;= <span class="number">3</span> //<span class="literal">false</span>
+</code></pre><p>如何数与NaN比较，都是false</p>
+<h3 id="相等_==_和_不相等_!=">相等 ==  和 不相等 !=</h3><p>比较之前转换操作数规则：</p>
+<ol>
+<li>一个是boolean值–&gt;转换为数值比较</li>
+<li>一个是字符串，另一个数数值–&gt;字符串转换为数值</li>
+<li>一个是对象，另一个不是–&gt;调用对象的valueOf()方法</li>
+</ol>
+<p>比较规则：</p>
+<ol>
+<li>null 和 undefined是相等的</li>
+<li>不能将null和undefined转换其它任何值</li>
+<li>有一个是NaN—&gt;相等返回false</li>
+<li>两个都是NaN—&gt;向德国返回false</li>
+<li>都是对象–&gt;比较是不是同一对象</li>
+</ol>
+<pre><code><span class="literal">true</span> == <span class="number">1</span>
+<span class="literal">true</span>
+<span class="literal">true</span>==<span class="number">2</span>
+<span class="literal">false</span>
+<span class="literal">undefined</span> == <span class="number">0</span>
+<span class="literal">false</span>
+<span class="literal">null</span> == <span class="number">0</span>
+<span class="literal">false</span>
+<span class="literal">undefined</span> == <span class="literal">null</span>
+<span class="literal">true</span>
+<span class="literal">false</span>==<span class="number">0</span>
+<span class="literal">true</span>
+<span class="string">"5"</span>==<span class="number">5</span>
+<span class="literal">true</span>
+<span class="literal">NaN</span> == <span class="literal">NaN</span>
+<span class="literal">false</span>
+<span class="literal">NaN</span> != <span class="literal">NaN</span>
+<span class="literal">true</span>
+<span class="number">5</span> == <span class="literal">NaN</span>
+<span class="literal">false</span>
+</code></pre><h3 id="全等和不全等">全等和不全等</h3><p>比较之前不转换操作数。</p>
+<pre><code><span class="literal">null</span> === <span class="literal">undefined</span>
+<span class="literal">false</span>
+</code></pre><h3 id="条件操作符_?_:">条件操作符 ? :</h3><pre><code>boolean_expression ? <span class="literal">true</span>_value : <span class="literal">false</span>_value;
+</code></pre><h3 id="赋值操作符_=">赋值操作符 =</h3><pre><code>*=
+<span class="comment">/=</span>
+<span class="tag">%</span>=
++=
+-<span class="ruby">=
+</span>&lt;&lt;=
+&gt;&gt;=
+&gt;&gt;&gt;=
+</code></pre><h3 id="逗号操作符">逗号操作符</h3><ol>
+<li>在一条语句中执行多个操作数</li>
+<li>用于赋值</li>
+<li><p>返回表达式中的最后一项</p>
+<p> var num  = (4,1,2,3,0) //0</p>
+</li>
+</ol>
+<h1 id="语句">语句</h1><ol>
+<li>if语句</li>
+<li>do-while语句</li>
+<li>while语句</li>
+<li>for语句<br><strong>ECAMScript不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到。</strong></li>
+<li><p>for-in语句：精准迭代语句<br> for (property in expression)</p>
+<pre><code>    statement
+
+<span class="keyword">for</span>(<span class="keyword">var</span> propName <span class="keyword">in</span> <span class="built_in">window</span>){
+    <span class="built_in">document</span>.write(propName)
+}
+</code></pre><p> for-in循环输出的属性名的顺序是不可预测的。<br> 迭代的对象的变量值为null和undefined，for-in语句会抛出错误。<br> ECAMScript 5中对这种情况，不抛出错误，只是不执行循环体。</p>
+</li>
+<li><p>label语句：在代码中添加标签<br> label：statement</p>
+</li>
+<li>break和continue语句</li>
+<li><p>with语句：将代码的作用域设置到一个特定的对象中。</p>
+<pre><code>with <span class="list">(<span class="keyword">expression</span>)</span> statement<span class="comment">;</span>
+</code></pre><p> 严格模式下不允许使用with语句。</p>
+</li>
+<li>switch语句<br> switch语句可以使用任何数据类型<br> case的值不一定是常量，可以是变量，甚至是表达式<br> 比较的时候，使用的是全等操作符。</li>
+</ol>
+<h1 id="函数">函数</h1><pre><code><span class="function"><span class="keyword">function</span> <span class="title">functionName</span><span class="params">(arg0,arg1,<span class="rest_arg">...argN</span>)</span></span>{
+    statements
+}
+</code></pre><ol>
+<li>不必指定返回值</li>
+<li>任何函数在任何时候都可以通过return语句后要返回的值来实现返回值。</li>
+<li>位于return语句后的代码不会执行</li>
+<li><p>严格模式下：</p>
+<ul>
+<li>不能吧函数命名为eval和arguments</li>
+<li>不能把参数命名为eval和arguments</li>
+<li>不能出现两个函数命名参数同名的情况。<h2 id="理解参数">理解参数</h2></li>
+</ul>
+</li>
+<li><p>ECMAScript中参数在内部是用一个数组来表示的。函数接受到始终是这个数组，而不关心数组中包含哪些参数。</p>
+</li>
+<li>在函数体内通过arguments对象来访问这个参数数组，从而获取传递给函数的每一个参数。</li>
+<li>arguments[0]…arguments.length</li>
+<li>arguments的值永远与对应的命名参数值保持同步。但是不是说两个值会访问相同的内存空间，他们的内存空间是互相独立的，值保持同步。</li>
+<li>没有传递值的命名参数将自动赋予undefined值。</li>
+<li>严格模式下：重写arguments的值会导致语法错误。</li>
+</ol>
+<h3 id="没有重载">没有重载</h3><p>通过检查传入函数中参数的类型和数量并作出不同的反应，可以模仿方法的重载。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/18/JS1-基本概念/" data-id="cin5prt080019m0hhczz4bro6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS0-简单介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/18/JS0-简单介绍/" class="article-date">
+  <time datetime="2016-04-18T01:43:59.000Z" itemprop="datePublished">2016-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/18/JS0-简单介绍/">JS-简单介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="脚本语言">脚本语言</h1><p>常见的<strong>客户端脚本语言</strong>有：javascript，VBScript；</p>
+<p>常见的<strong>服务器端脚本语言</strong>有：PHP，jsp，asp。</p>
+<h1 id="历史">历史</h1><p>1995 —- JavaScript</p>
+<p>1997 —- ECMAScript ： Euripean Computer Manufacturers Association（欧洲计算机制造商协会）</p>
+<h1 id="本质">本质</h1><p> 一种专为与网页交互而设计的脚本语言</p>
+<h1 id="局限性">局限性</h1><h1 id="JavaScript组成部分">JavaScript组成部分</h1><ul>
+<li>核心（ECMAScrip）</li>
+<li>文档对象模型（DOM）</li>
+<li>浏览器对象模型（BOM）</li>
+</ul>
+<h2 id="1-_ECMAScript">1. ECMAScript</h2><ol>
+<li>ECMA-262只是定义这门语言的基础，而在此基础上可以构建更完善的脚本语言。</li>
+<li>常见的web浏览器只是ECMAAcript可能实现的宿主环境之一。</li>
+<li>其它的宿主环境包括Node(一种服务器端JavaScript平台)和Adobe Flash。</li>
+<li>ECMA-262组成部分：<ol>
+<li>语法</li>
+<li>类型</li>
+<li>语句</li>
+<li>关键字</li>
+<li>保留字</li>
+<li>操作符</li>
+<li>对象</li>
+</ol>
+</li>
+</ol>
+<h3 id="ECMAScript的版本">ECMAScript的版本</h3><p>ECMA-262的最近一般第5版，发布于2009年</p>
+<h3 id="ECMAScript兼容">ECMAScript兼容</h3><p>要想兼容ECMA-262：<br>    1.支持ECMA-262描述的所有“类型、值、对象、属性和函数以及程序句法和语义”<br>    2.支持Unicode字符标准<br>兼容扩展：<br>    1.添加更多的类型、值、对象、属性和函数<br>    2.添加”程序和正则表达式语法”</p>
+<h3 id="web浏览器对ECMAScript的支持">web浏览器对ECMAScript的支持</h3><p>2008年，IE、Firefox、Safari、Chrome、Opera全部做到了与ECMA-262兼容。</p>
+<h2 id="文档对象模型(DOM)">文档对象模型(DOM)</h2><pre><code>文档对象模型：是针对<span class="built_in">XML</span>但经过扩展用于HTML的应用程序编程接口（API）
+DOM把整个页面映射为一个多层节点结构。
+</code></pre><h3 id="DOM1级">DOM1级</h3><p>主要目标：映射文档结构<br>组成：    </p>
+<ul>
+<li>DOM核心(DOM Core)–如何映射基于XML的文档结果，一遍简化对文档中                            任意部分的访问和操作。</li>
+<li>DOM HTML–DOM核心的基础上加以扩展，添加了针对HTML的对象和方法。</li>
+</ul>
+<h3 id="DOM2级">DOM2级</h3><p>扩展：<br>    对鼠标和用户界面事件、范围、遍历（迭代DOM文档的方法）等细分模块<br>    通过对象接口增加了对CSS(Cascading Style Sheets)的支持。<br>新模块：</p>
+<ul>
+<li>DOM视图(DOM Views):定义了跟踪不同文档的接口</li>
+<li>DOM事件(DOM Events):定义了事件和事件的处理接口</li>
+<li>DOM样式(DOM Style):定义了基于CSS为元素应用样式的接口</li>
+<li>DOM遍历和范围(DOM Traversal and Range):定义了变量和操作文档树的接口。</li>
+</ul>
+<h3 id="DOM3级">DOM3级</h3><p>扩展：</p>
+<ul>
+<li>引入了统一的方式加载和保存文档的方法–DOM Load and Save</li>
+<li>新增了验证文档的方法 DOM Validation</li>
+<li>DOM核心扩展，支持XML1.0</li>
+</ul>
+<h2 id="浏览器对象模型(BOM)_Browser_Object_Model">浏览器对象模型(BOM) Browser Object Model</h2><p>支持可<strong>访问和操作浏览器窗口</strong>的浏览器对象(BOM)</p>
+<p>只处理浏览器窗口和框架</p>
+<p>html5增加了BOM规范</p>
+<ul>
+<li>弹出新浏览器的功能</li>
+<li>移动、缩放和关闭浏览器窗口的功能</li>
+<li>提过浏览器信息信息的navigator对象</li>
+<li>提过浏览器加载页面的详细信息的location对象</li>
+<li>提供用户显示器分辨率详细信息的screen对象</li>
+<li>对cookies的支持</li>
+<li>想XMLHtpRequest和IE的ActiveXObject这样的自定义对象</li>
+</ul>
+<h1 id="在HTML中使用JavaScript">在HTML中使用JavaScript</h1><h2 id="&lt;script&gt;属性"><code>&lt;script&gt;</code>属性</h2><ul>
+<li><strong>async</strong>可选:表示立即下载脚本，但不应妨碍页面中的其它操作。h5中增加，只支持外部脚本，不保证按照指定它们的先后顺序执行。为了异步的加载页面其它内容。异步脚本不要在加载期间修改DOM。</li>
+<li><strong>charset</strong>可选：表示通过src属性指定的代码的字符集。</li>
+<li><strong>defer</strong>可选：表示脚本可以延迟到文档完全被解析和显示之后再执行。保证它们按照顺序执行。</li>
+<li><strong>language</strong> 已废弃。</li>
+<li><strong>src</strong>可选：表示要执行代码的外部文件。</li>
+<li><strong>type</strong>可选：表示编写代码使用的脚本语言的内容类型。</li>
+</ul>
+<p>使用方式：<br>1.直接在页面中嵌入JavaScript代码<br>2.包含外部JavaScript代码</p>
+<p>##标签的位置##</p>
+<h3 id="放在&lt;head&gt;元素中">放在<code>&lt;head&gt;</code>元素中</h3><p>优点：把所有外部文件（包括CSS文件和JavaScript文件）的引用都放在相同的地方。</p>
+<p>缺点：</p>
+<p>1.在文档的<head>元素中包含所有JavaScript文件，必须等到全部的JavaScript代码都被下载，解析和执行完成以后，才能开始呈现页面的内容。</head></p>
+<p>2.导致浏览器在呈现页面时出现明显的延迟，延迟期间浏览器将是一片空白。</p>
+<h3 id="放在&lt;body&gt;元素中页面的内容后面">放在<code>&lt;body&gt;</code>元素中页面的内容后面</h3><p>优点：在解析包含的JavaScript代码之前，页面的内容将完全呈现在浏览器中，浏览器显示空白页的时间缩短而感到页面打开的速度加快。</p>
+<h2 id="延迟脚本_defer属性">延迟脚本 defer属性</h2><h2 id="异步脚本_async">异步脚本 async</h2><h1 id="文档模式">文档模式</h1><h2 id="混杂模式(quirks_mode)">混杂模式(quirks mode)</h2><h2 id="标准模式(standards_mode)">标准模式(standards mode)</h2><pre><code><span class="comment">&lt;!-- HTML 5--&gt;</span>
+<span class="tag">&lt;<span class="title">!DOCTYLE</span> <span class="attribute">html</span>&gt;</span>
+</code></pre><h2 id="准标准模式">准标准模式</h2><p><code>&lt;noscript&gt;</code>元素可以指定在不支持脚本的浏览器中代替显示的内容，但是在启用了脚本的情况下，浏览器不会显示<code>&lt;noscript&gt;</code>元素中任何内容。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/18/JS0-简单介绍/" data-id="cin5prt0a001am0hhmfa48l1j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-js进阶篇2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/17/js进阶篇2/" class="article-date">
@@ -804,7 +1395,7 @@ Document对象的body属性对应HTML文档的&lt;body&gt;标签
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/17/js进阶篇2/" data-id="cin42895e0011qchhxswwx0sq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/17/js进阶篇2/" data-id="cin5prszp0011m0hhggwxusr1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1080,7 +1671,7 @@ startPos            必需，要提取的子串的起始位置，必须是数值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/14/js进阶篇1/" data-id="cin42895j0012qchhr9z9j6r2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/14/js进阶篇1/" data-id="cin5prszr0012m0hhy02mvl28" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1260,7 +1851,7 @@ fontSize             设置元素的字体大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/13/js基础篇/" data-id="cin42895l0013qchh8zi55dcq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/13/js基础篇/" data-id="cin5prszs0013m0hh2s2n3cyk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1299,7 +1890,7 @@ fontSize             设置元素的字体大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/23/字符串操作/" data-id="cin428938000cqchh980cenxe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/23/字符串操作/" data-id="cin5prsxm000cm0hhm864sgdo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1358,7 +1949,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/18/MFC常见问题/" data-id="cin42895x0018qchhuj4e3k9s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/18/MFC常见问题/" data-id="cin5prt050018m0hhilsyuw4c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1394,7 +1985,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/17/c-继承多态/" data-id="cin42895u0017qchhjt2y8xx3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/17/c-继承多态/" data-id="cin5prt020017m0hhgaaec5zp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1435,7 +2026,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/17/c语言指针/" data-id="cin42895s0016qchhv3fphyi2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/17/c语言指针/" data-id="cin5prszz0016m0hhnb9a63e0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1480,90 +2071,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/10/继承-虚函数/" data-id="cin42892p0006qchh3konbzjj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-图的遍历-java实现" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/03/图的遍历-java实现/" class="article-date">
-  <time datetime="2016-03-03T14:10:01.000Z" itemprop="datePublished">2016-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/03/图的遍历-java实现/">图的遍历--java实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在看数据结构，之前用c实现，现在用java实现图的算法</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Graph &#123;</span><br><span class="line">	<span class="keyword">private</span> final <span class="keyword">int</span> V;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> E;</span><br><span class="line">	<span class="keyword">private</span> Bag&lt;Integer&gt;[]  adj;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(<span class="keyword">int</span> V)</span></span>&#123;</span><br><span class="line">		StdOut.println(V);</span><br><span class="line">		<span class="keyword">this</span>.V = V;</span><br><span class="line">		<span class="keyword">this</span>.E = <span class="number">0</span>;</span><br><span class="line">		adj = (Bag&lt;Integer&gt;[]) <span class="keyword">new</span> Bag[V];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>;v &lt; V;v++)&#123;</span><br><span class="line">			adj[v]  = <span class="keyword">new</span> Bag&lt;Integer&gt;();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(In in)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">this</span>(in.readInt());</span><br><span class="line">		<span class="keyword">int</span> E = in.readInt();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>;i &lt; E;i ++)&#123;</span><br><span class="line">			<span class="keyword">int</span> v = in.readInt();</span><br><span class="line">			<span class="keyword">int</span> w = in.readInt();</span><br><span class="line">			addEdge(v,w);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">V</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> V;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">E</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> E;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">		adj[v].add(w);</span><br><span class="line">		adj[w].add(v);</span><br><span class="line">		E++;</span><br><span class="line">	&#125;</span><br><span class="line">	Iterable&lt;Integer&gt; adj(<span class="keyword">int</span> v)&#123;</span><br><span class="line">		<span class="keyword">return</span> adj[v];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">		String s = V + <span class="string">" vertices"</span> + E+<span class="string">" edges\n"</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>;v &lt; V;v++)&#123;</span><br><span class="line">			s += v + <span class="string">": "</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> w:<span class="keyword">this</span>.adj(v))</span><br><span class="line">				s+= w + <span class="string">" "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">degree</span><span class="params">(Graph G,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> degree = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> w : G.adj(v))</span><br><span class="line">			degree++;</span><br><span class="line">		<span class="keyword">return</span> degree;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxDegree</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V();v++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(degree(G,v) &gt; max)</span><br><span class="line">				max = degree(G,v);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> max;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">avgDegree</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">2.0</span>*G.E()/G.V();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">numberOfSelfLoops</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> w : G.adj(v))</span><br><span class="line">				<span class="keyword">if</span>(v==w)</span><br><span class="line">					count ++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> count/<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>再次基础上，实现深度优先搜索遍历<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BreadthFirstPaths</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span>[] marked;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span>[] edgeTo;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> s;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BreadthFirstPaths</span><span class="params">(Graph G,<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">		marked = <span class="keyword">new</span> <span class="keyword">boolean</span>[G.V()];</span><br><span class="line">		edgeTo = <span class="keyword">new</span> <span class="keyword">int</span>[G.V()];</span><br><span class="line">		<span class="keyword">this</span>.s = s;</span><br><span class="line">		bfs(G,s);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(Graph G,<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">		Queue&lt;Integer&gt; queue = <span class="keyword">new</span> Queue&lt;Integer&gt;();</span><br><span class="line">		marked[s] = <span class="keyword">true</span>;</span><br><span class="line">		queue.enqueue(s);</span><br><span class="line">		<span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">			<span class="keyword">int</span> v = queue.dequeue();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> w : G.adj(v))&#123;</span><br><span class="line">				<span class="keyword">if</span>(!marked[w])</span><br><span class="line">				&#123;</span><br><span class="line">					edgeTo[w] = v;</span><br><span class="line">					marked[w] = <span class="keyword">true</span>;</span><br><span class="line">					queue.enqueue(w);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">hasPathTo</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> marked[v];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> Iterable&lt;Integer&gt; pathTo(<span class="keyword">int</span> v)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!hasPathTo(v))</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		Stack&lt;Integer&gt; path = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x = v; x != s; x = edgeTo[x])&#123;</span><br><span class="line">			path.push(x);</span><br><span class="line">		&#125;</span><br><span class="line">		path.push(s);</span><br><span class="line">		<span class="keyword">return</span> path;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Graph G = <span class="keyword">new</span> Graph(<span class="keyword">new</span> In(args[<span class="number">0</span>]));</span><br><span class="line">		<span class="keyword">int</span> s = Integer.parseInt(args[<span class="number">1</span>]);</span><br><span class="line">		BreadthFirstPaths search = <span class="keyword">new</span> BreadthFirstPaths(G,s);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; G.V(); v++)&#123;</span><br><span class="line">			StdOut.print(s + <span class="string">" to "</span> + v + <span class="string">": "</span>);</span><br><span class="line">			<span class="keyword">if</span>(search.hasPathTo(v))&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> x : search.pathTo(v))</span><br><span class="line">					<span class="keyword">if</span>(x==s) </span><br><span class="line">						StdOut.print(x);</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">						StdOut.print(<span class="string">"-"</span> + x);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				StdOut.print(<span class="string">"null"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			StdOut.println();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/03/图的遍历-java实现/" data-id="cin42893a000dqchhjwp3yvl5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-nginx服务器的搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/02/nginx服务器的搭建/" class="article-date">
-  <time datetime="2016-03-02T13:24:19.000Z" itemprop="datePublished">2016-03-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/nginx服务器的搭建/">nginx服务器的搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>系统<br>ubuntu14.04</li>
-</ol>
-<p>2.安装依赖的软件包<br>1)首先可以更新一下源 sudo apt-get update<br>2)安装pcre<br>     sudo apt-get install libpcre3 libpcre3-dev<br>3)安装zlib<br>     sudo apt-get install zlib1g-dev<br>3)安装 openssl<br>     ubuntu14.04 默认安装了 openssl</p>
-<p>3.下载 nginx源码包 nginx-1.9.12.tar.gz</p>
-<p>4.创建目录，并下载解压<br>     tar -zxvf nginx-1.9.12.tar.gz</p>
-<p>5.解压之后，目录下有个configure可执行文件<br>在目录下输入 ./configure生成makefile文件</p>
-<p>6.开始编译文件，输入 make install 可以完成安装</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/02/nginx服务器的搭建/" data-id="cin428956000zqchhm5f8esgz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/10/继承-虚函数/" data-id="cin5prsx50006m0hhv5dz9bia" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1592,7 +2100,7 @@ pMain-&gt;DestroyWindow();
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1604,6 +2112,14 @@ pMain-&gt;DestroyWindow();
       <ul>
         
           <li>
+            <a href="/2016/04/18/JS1-基本概念/">JS1-基本概念</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/18/JS0-简单介绍/">JS-简单介绍</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/17/js进阶篇2/">js进阶篇2</a>
           </li>
         
@@ -1613,14 +2129,6 @@ pMain-&gt;DestroyWindow();
         
           <li>
             <a href="/2016/04/13/js基础篇/">js基础篇1</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/23/字符串操作/">字符串操作</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/18/MFC常见问题/">MFC常见问题</a>
           </li>
         
       </ul>
