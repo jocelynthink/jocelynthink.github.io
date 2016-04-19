@@ -65,6 +65,108 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS3-引用类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/18/JS3-引用类型/" class="article-date">
+  <time datetime="2016-04-18T14:41:01.000Z" itemprop="datePublished">2016-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/18/JS3-引用类型/">JS3-引用类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/18/JS3-引用类型/" data-id="cin640ob20019eshh0iejk3ol" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS2-变量、作用域和内存问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/18/JS2-变量、作用域和内存问题/" class="article-date">
+  <time datetime="2016-04-18T14:40:18.000Z" itemprop="datePublished">2016-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/18/JS2-变量、作用域和内存问题/">JS2-变量、作用和内存问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基本类型和引用类型的值">基本类型和引用类型的值</h1><h3 id="引用类型可以为其添加动态的属性和方法。">引用类型可以为其添加动态的属性和方法。</h3><h2 id="检测类型_instanceof">检测类型 instanceof</h2><ol>
+<li>在检测引用类型的值时，typeOf用处不大</li>
+<li>如果想知道它是什么类型的对象： instanceof</li>
+<li>基本类型不是对象</li>
+<li>所有引用类型的值都是Object的实例</li>
+<li>对正则表达式应用typeof的时候，不同的浏览器返回的不一样，chrome 7 返回function，IE和firefox返回object</li>
+</ol>
+<h2 id="执行环境和作用域">执行环境和作用域</h2><ol>
+<li>每个执行环境都有与之相关的—&gt;变量对象（variable object）。环境中定义的所有变量和函数都保存在这个对象中。</li>
+<li>全局执行环境—-&gt;web中window对象</li>
+<li>每个函数都有自己的<strong>执行环境</strong>—&gt;当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。</li>
+<li>当代码在一个环境中执行时，会创建变量对象的一个作用链(scope chain)</li>
+<li>作用域链的作用：保证对执行环境有权访问的所有变量和函数的有序访问。</li>
+<li>作用域链的前端：当前执行环境的代码所在环境的变量对象。下一个变量对象：来自包含环境，而在下一个来自下一个包含环境…一直延续到全局环境。</li>
+<li>标示符解析是沿着作用域链一级一级搜索标示符的过程。</li>
+<li>内部环境可以通过作用域链访问所有的外部环境，但外部环境不能访问内部环境中的任何变量和函数。<h3 id="延长作用域链">延长作用域链</h3></li>
+</ol>
+<p>1.try-catch语句的catch块<br>2.with语句</p>
+<h3 id="没有块级作用域">没有块级作用域</h3><h2 id="垃圾收集">垃圾收集</h2><p>找出那些不在继续使用的变量，然后释放其占用的内存。<br>垃圾回收器会按照固定的时间间隔周期地执行这一操作。</p>
+<h3 id="标记无用变量的策略">标记无用变量的策略</h3><h4 id="标记清楚_（mark-and-sweep）">标记清楚 （mark-and-sweep）</h4><p>当进入环境时，标记为“进入环境”<br>当离开环境时，标记为“离开环境”</p>
+<h4 id="引用计数（refernce_counting）">引用计数（refernce counting）</h4><p>跟踪记录每个值被引用的次数<br>问题：循环引用</p>
+<h3 id="性能问题">性能问题</h3><p>触发垃圾收集的变量分配、字面量和数组元素的临界值被调整为动态修改。</p>
+<h3 id="内存管理">内存管理</h3><p>确保占用最少的内存可以让页面获得更好的性能<br>优化内存的最佳方式：为执行中的代码只保存必要的数据。一旦数据不再有用，最好通过将其值设置为null来释放期引用，<strong>解除引用（dereferencing）</strong><br>解除引用的真正作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。</p>
+<h1 id="总结">总结</h1><ol>
+<li>基本数据类型在内存中占据固定大小的空间，因此被保存在栈内存中</li>
+<li>引用类型的值是对象，保存在堆内存中</li>
+<li>从一个变量想另一个变量复制引用类型的值，会创建这个值的一个副本</li>
+<li>从一个变量想另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终指向同一个对象。</li>
+<li>包含引用类型的值的变量实际上并不是对象本身，而是一个指向对象的指针。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/18/JS2-变量、作用域和内存问题/" data-id="cin640ob4001aeshhk9g8uom2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS1-基本概念" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/18/JS1-基本概念/" class="article-date">
@@ -532,7 +634,7 @@ text<span class="class">.length</span> <span class="comment">//27</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/18/JS1-基本概念/" data-id="cin5prt080019m0hhczz4bro6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/18/JS1-基本概念/" data-id="cin640ob6001beshhf5fch7wh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -646,7 +748,7 @@ DOM把整个页面映射为一个多层节点结构。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/18/JS0-简单介绍/" data-id="cin5prt0a001am0hhmfa48l1j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/18/JS0-简单介绍/" data-id="cin640ob8001ceshhepm0bc6p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -755,24 +857,43 @@ pow(x,y）        返回x的y次幂
 <p>length 用法：<strong>&lt;数组对象&gt;.length</strong>；返回：数组的长度，即数组里有多少个元素。它等于数组里最后一个元素的下标加一。</p>
 <p><strong>数组方法：</strong></p>
 <pre><code>方法                描述
-<span class="function"><span class="title">concat</span><span class="params">()</span></span>        连接两个或更多的数组，并返回结果
-<span class="function"><span class="title">join</span><span class="params">()</span></span>            把数组的所有元素放入一个字符串。元素通过制定的分隔符进行分                                隔
-<span class="function"><span class="title">pop</span><span class="params">()</span></span>            删除并返回数组的最后一个元素
-<span class="function"><span class="title">push</span><span class="params">()</span></span>            向数组的末尾添加一个或更多元素，并返回新的长度
-<span class="function"><span class="title">reverse</span><span class="params">()</span></span>        颠倒数组中元素的顺序
-<span class="function"><span class="title">shift</span><span class="params">()</span></span>            删除并返回数组的第一个元素
-<span class="function"><span class="title">slice</span><span class="params">()</span></span>            从某个已有的数组返回特定的元素
-<span class="function"><span class="title">sort</span><span class="params">()</span></span>            对数组的元素进行排序
-<span class="function"><span class="title">splice</span><span class="params">()</span></span>        删除元素，并向数组添加新元素
+<span class="comment">/*检测数组*/</span>
+<span class="function"><span class="title">isArray</span><span class="params">()</span></span>        确定某个值到底是不是数组
 <span class="function"><span class="title">toSource</span><span class="params">()</span></span>        返回该对象的源代码
+<span class="comment">/*转换方法*/</span>
 <span class="function"><span class="title">toString</span><span class="params">()</span></span>        把数组转换为字符串，并返回结果
 <span class="function"><span class="title">toLocaleString</span><span class="params">()</span></span>把数组转换为本地数组，并返回结果
-<span class="function"><span class="title">unshift</span><span class="params">()</span></span>        向数组的开头添加一个或更多元素，并返回新的长度
 <span class="function"><span class="title">valueOf</span><span class="params">()</span></span>        返回数组对象的原始值
+<span class="function"><span class="title">join</span><span class="params">()</span></span>            把数组的所有元素放入一个字符串。元素通过制定的分隔符进行分隔
+<span class="comment">/*栈方法*/</span>
+<span class="function"><span class="title">pop</span><span class="params">()</span></span>            删除并返回数组的最后一个元素
+<span class="function"><span class="title">push</span><span class="params">()</span></span>            向数组的末尾添加一个或更多元素，并返回新的长度
+<span class="comment">/*队列方法 结合shift()和push()可以向队列一样使用数组*/</span>
+<span class="function"><span class="title">shift</span><span class="params">()</span></span>            删除并返回数组的第一个元素
+<span class="comment">/*队列方法 同时使用unshift()和pop()可以从相反的方法模拟队列*/</span>
+<span class="function"><span class="title">unshift</span><span class="params">()</span></span>        向数组的开头添加一个或更多元素，并返回新的长度
+<span class="comment">/*重排列方法*/</span>
+<span class="function"><span class="title">sort</span><span class="params">()</span></span>            对数组的元素进行排序
+<span class="function"><span class="title">reverse</span><span class="params">()</span></span>        颠倒数组中元素的顺序
+<span class="comment">/*操作方法*/</span>
+<span class="function"><span class="title">concat</span><span class="params">()</span></span>        连接两个或更多的数组，并返回结果
+<span class="function"><span class="title">slice</span><span class="params">()</span></span>            从某个已有的数组返回特定的元素
+<span class="function"><span class="title">splice</span><span class="params">()</span></span>        删除元素，并向数组添加新元素
+<span class="comment">/*下面是ECMPScript 5 中的新方法*/</span>
+<span class="comment">/*位置方法*/</span>
+<span class="function"><span class="title">indexOf</span><span class="params">()</span></span>
+<span class="function"><span class="title">lastIndexOf</span><span class="params">()</span></span>  
+<span class="comment">/*迭代方法*/</span>
+<span class="function"><span class="title">every</span><span class="params">()</span></span>
+<span class="function"><span class="title">filter</span><span class="params">()</span></span>
+<span class="function"><span class="title">forEach</span><span class="params">()</span></span>
+<span class="function"><span class="title">map</span><span class="params">()</span></span>
+<span class="function"><span class="title">some</span><span class="params">()</span></span>
+<span class="comment">/*归并方法*/</span>
+<span class="function"><span class="title">reduce</span><span class="params">()</span></span>
+<span class="function"><span class="title">reduceRight</span><span class="params">()</span></span>
 </code></pre><h3 id="数组连接concat()">数组连接concat()</h3><p>concat() 方法用于连接两个或多个数组。此方法返回一个新数组，不改变原来的数组。</p>
-<p>语法</p>
-<pre><code>arrayObject.<span class="function"><span class="title">concat</span><span class="params">(array1,array2,...,arrayN)</span></span>
-</code></pre><p>参数说明：<br>    array1        要连接的第一个数组<br>    …            …<br>    arrayN        第N个数组</p>
+<p>语法<br>    arrayObject.concat(array1,array2,…,arrayN)<br>参数说明：<br>    array1        要连接的第一个数组<br>    …            …<br>    arrayN        第N个数组</p>
 <h3 id="指定分隔符连接数组元素join()">指定分隔符连接数组元素join()</h3><p>join()方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的。</p>
 <p>语法：</p>
 <pre><code>arrayObject.<span class="function"><span class="title">join</span><span class="params">(分隔符)</span></span>
@@ -802,7 +923,9 @@ separator        可选，指定要使用的分隔符
 </ol>
 <p>2.如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
 <ol>
-<li>String.slice() 与 Array.slice() 相似。</li>
+<li></li>
+<li></li>
+<li>.slice() 与 Array.slice() 相似。</li>
 </ol>
 <h3 id="数组排序sort()">数组排序sort()</h3><p>sort()方法使数组中的元素按照一定的顺序排列。</p>
 <p>语法:</p>
@@ -1395,7 +1518,7 @@ Document对象的body属性对应HTML文档的&lt;body&gt;标签
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/17/js进阶篇2/" data-id="cin5prszp0011m0hhggwxusr1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/17/js进阶篇2/" data-id="cin640oai0011eshh68g4i8e8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1671,7 +1794,7 @@ startPos            必需，要提取的子串的起始位置，必须是数值
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/14/js进阶篇1/" data-id="cin5prszr0012m0hhy02mvl28" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/14/js进阶篇1/" data-id="cin640oak0012eshhrpekwfqp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1851,7 +1974,7 @@ fontSize             设置元素的字体大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/13/js基础篇/" data-id="cin5prszs0013m0hh2s2n3cyk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/13/js基础篇/" data-id="cin640oam0013eshhrgxxoa36" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1890,7 +2013,7 @@ fontSize             设置元素的字体大小
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/23/字符串操作/" data-id="cin5prsxm000cm0hhm864sgdo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/23/字符串操作/" data-id="cin640o8m000ceshh30pjrhgr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1949,7 +2072,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/18/MFC常见问题/" data-id="cin5prt050018m0hhilsyuw4c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/18/MFC常见问题/" data-id="cin640ob00018eshh7et9wkb2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1985,93 +2108,7 @@ pMain-&gt;DestroyWindow();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/17/c-继承多态/" data-id="cin5prt020017m0hhgaaec5zp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-c语言指针" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/17/c语言指针/" class="article-date">
-  <time datetime="2016-03-17T01:44:25.000Z" itemprop="datePublished">2016-03-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/17/c语言指针/">c语言笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>存储类型：存储变量值的内存类型。<br>变量的存储类型决定变量何时创建、何时销毁、以及它的值将保持多久。</p>
-<p>变量的缺省的存储类型取决与它的声明位置。<br>在任何代码之外声明的变量–&gt;</p>
-<p>C语言可以通过函数指针实现泛型编程，能实现与类型无关的模板</p>
-<p>回调函数(callback function)<br>因为用户把一个函数指针作为参数传递给其他函数，后者将“回调”用户的函数<br>任何时候，如果你编写的函数必须能够在不同的时刻执行不同类型的工作或者执行职能由函数调用者定义的工作，可以使用回调函数。<br>void * : 表示指向未知类型的指针</p>
-<p>转移表:是一个函数指针数组</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/17/c语言指针/" data-id="cin5prszz0016m0hhnb9a63e0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-继承-虚函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/10/继承-虚函数/" class="article-date">
-  <time datetime="2016-03-10T01:21:23.000Z" itemprop="datePublished">2016-03-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/10/继承-虚函数/">继承-虚函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.OOP<br>2.定义基类和派生类<br>可以将基类的指针或引用绑定到派生类对象上，<br>当使用基类的引用(或指针)时，实际上，我们并不清楚该引用(或指针)所绑定对象的真实类型。</p>
-<p>静态类型static type：在编译时总是已知的<br>动态类型dynamic type：变量或表达式在内存中的对象类型，动态类型知道运行时才可知。</p>
-<p>不存在从基类向派生类的自动类型转换。</p>
-<p>派生类向基类的自动转换只对指针或引用类型有效，实际上是在调用某个函数。</p>
-<p>当我们用一个派生对象为一个基类对象初始化或赋值时，只有该派生类对象中的基类部分会被拷贝、移动或赋值，它的派生类部分将被忽略掉。</p>
-<p>想要理解在具有继承关系的类之间发生的类型转换：<br>1）从派生类向基类的类型转换只对指针或引用有效。<br>2）基类向派生类不存在隐式类型转换。<br>3）和任何其它成员一样，派生类向基类的转换也可能会由于访问权限受限而变得不可行。</p>
-<p>3.虚函数</p>
-<p>c++ 必须将基类的两种函数区别开<br>1）基类希望派生类进行覆盖的函数。–&gt;虚函数–&gt;动态绑定<br>2）基类希望派生类直接集成而不要改变的函数。<br>如果没有声明为虚函数，则解析过程发生在编译时而非运行时。</p>
-<p>虚函数都必须有定义：<br>我们必须为每一个虚函数都提供定义，而不管它是否被用到了，这是因为连编译器也无法确定到底会使用哪个虚函数。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/10/继承-虚函数/" data-id="cin5prsx50006m0hhv5dz9bia" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/17/c-继承多态/" data-id="cin640oax0017eshhpjgh1p2r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2100,7 +2137,7 @@ pMain-&gt;DestroyWindow();
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -2112,6 +2149,14 @@ pMain-&gt;DestroyWindow();
       <ul>
         
           <li>
+            <a href="/2016/04/18/JS3-引用类型/">JS3-引用类型</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/18/JS2-变量、作用域和内存问题/">JS2-变量、作用和内存问题</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/18/JS1-基本概念/">JS1-基本概念</a>
           </li>
         
@@ -2121,14 +2166,6 @@ pMain-&gt;DestroyWindow();
         
           <li>
             <a href="/2016/04/17/js进阶篇2/">js进阶篇2</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/14/js进阶篇1/">js进阶篇1</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/13/js基础篇/">js基础篇1</a>
           </li>
         
       </ul>

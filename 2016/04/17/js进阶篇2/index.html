@@ -27,7 +27,7 @@
   document.write(myabs);
 &amp;lt;/script&amp;gt;
 注意：">
-<meta property="og:updated_time" content="2016-04-17T04:15:26.898Z">
+<meta property="og:updated_time" content="2016-04-18T13:51:04.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js进阶篇2">
 <meta name="twitter:description" content="Math对象Math对象，提供对数据的数学计算。
@@ -187,24 +187,43 @@ pow(x,y）        返回x的y次幂
 <p>length 用法：<strong>&lt;数组对象&gt;.length</strong>；返回：数组的长度，即数组里有多少个元素。它等于数组里最后一个元素的下标加一。</p>
 <p><strong>数组方法：</strong></p>
 <pre><code>方法                描述
-<span class="function"><span class="title">concat</span><span class="params">()</span></span>        连接两个或更多的数组，并返回结果
-<span class="function"><span class="title">join</span><span class="params">()</span></span>            把数组的所有元素放入一个字符串。元素通过制定的分隔符进行分                                隔
-<span class="function"><span class="title">pop</span><span class="params">()</span></span>            删除并返回数组的最后一个元素
-<span class="function"><span class="title">push</span><span class="params">()</span></span>            向数组的末尾添加一个或更多元素，并返回新的长度
-<span class="function"><span class="title">reverse</span><span class="params">()</span></span>        颠倒数组中元素的顺序
-<span class="function"><span class="title">shift</span><span class="params">()</span></span>            删除并返回数组的第一个元素
-<span class="function"><span class="title">slice</span><span class="params">()</span></span>            从某个已有的数组返回特定的元素
-<span class="function"><span class="title">sort</span><span class="params">()</span></span>            对数组的元素进行排序
-<span class="function"><span class="title">splice</span><span class="params">()</span></span>        删除元素，并向数组添加新元素
+<span class="comment">/*检测数组*/</span>
+<span class="function"><span class="title">isArray</span><span class="params">()</span></span>        确定某个值到底是不是数组
 <span class="function"><span class="title">toSource</span><span class="params">()</span></span>        返回该对象的源代码
+<span class="comment">/*转换方法*/</span>
 <span class="function"><span class="title">toString</span><span class="params">()</span></span>        把数组转换为字符串，并返回结果
 <span class="function"><span class="title">toLocaleString</span><span class="params">()</span></span>把数组转换为本地数组，并返回结果
-<span class="function"><span class="title">unshift</span><span class="params">()</span></span>        向数组的开头添加一个或更多元素，并返回新的长度
 <span class="function"><span class="title">valueOf</span><span class="params">()</span></span>        返回数组对象的原始值
+<span class="function"><span class="title">join</span><span class="params">()</span></span>            把数组的所有元素放入一个字符串。元素通过制定的分隔符进行分隔
+<span class="comment">/*栈方法*/</span>
+<span class="function"><span class="title">pop</span><span class="params">()</span></span>            删除并返回数组的最后一个元素
+<span class="function"><span class="title">push</span><span class="params">()</span></span>            向数组的末尾添加一个或更多元素，并返回新的长度
+<span class="comment">/*队列方法 结合shift()和push()可以向队列一样使用数组*/</span>
+<span class="function"><span class="title">shift</span><span class="params">()</span></span>            删除并返回数组的第一个元素
+<span class="comment">/*队列方法 同时使用unshift()和pop()可以从相反的方法模拟队列*/</span>
+<span class="function"><span class="title">unshift</span><span class="params">()</span></span>        向数组的开头添加一个或更多元素，并返回新的长度
+<span class="comment">/*重排列方法*/</span>
+<span class="function"><span class="title">sort</span><span class="params">()</span></span>            对数组的元素进行排序
+<span class="function"><span class="title">reverse</span><span class="params">()</span></span>        颠倒数组中元素的顺序
+<span class="comment">/*操作方法*/</span>
+<span class="function"><span class="title">concat</span><span class="params">()</span></span>        连接两个或更多的数组，并返回结果
+<span class="function"><span class="title">slice</span><span class="params">()</span></span>            从某个已有的数组返回特定的元素
+<span class="function"><span class="title">splice</span><span class="params">()</span></span>        删除元素，并向数组添加新元素
+<span class="comment">/*下面是ECMPScript 5 中的新方法*/</span>
+<span class="comment">/*位置方法*/</span>
+<span class="function"><span class="title">indexOf</span><span class="params">()</span></span>
+<span class="function"><span class="title">lastIndexOf</span><span class="params">()</span></span>  
+<span class="comment">/*迭代方法*/</span>
+<span class="function"><span class="title">every</span><span class="params">()</span></span>
+<span class="function"><span class="title">filter</span><span class="params">()</span></span>
+<span class="function"><span class="title">forEach</span><span class="params">()</span></span>
+<span class="function"><span class="title">map</span><span class="params">()</span></span>
+<span class="function"><span class="title">some</span><span class="params">()</span></span>
+<span class="comment">/*归并方法*/</span>
+<span class="function"><span class="title">reduce</span><span class="params">()</span></span>
+<span class="function"><span class="title">reduceRight</span><span class="params">()</span></span>
 </code></pre><h3 id="数组连接concat()">数组连接concat()</h3><p>concat() 方法用于连接两个或多个数组。此方法返回一个新数组，不改变原来的数组。</p>
-<p>语法</p>
-<pre><code>arrayObject.<span class="function"><span class="title">concat</span><span class="params">(array1,array2,...,arrayN)</span></span>
-</code></pre><p>参数说明：<br>    array1        要连接的第一个数组<br>    …            …<br>    arrayN        第N个数组</p>
+<p>语法<br>    arrayObject.concat(array1,array2,…,arrayN)<br>参数说明：<br>    array1        要连接的第一个数组<br>    …            …<br>    arrayN        第N个数组</p>
 <h3 id="指定分隔符连接数组元素join()">指定分隔符连接数组元素join()</h3><p>join()方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的。</p>
 <p>语法：</p>
 <pre><code>arrayObject.<span class="function"><span class="title">join</span><span class="params">(分隔符)</span></span>
@@ -234,7 +253,9 @@ separator        可选，指定要使用的分隔符
 </ol>
 <p>2.如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
 <ol>
-<li>String.slice() 与 Array.slice() 相似。</li>
+<li></li>
+<li></li>
+<li>.slice() 与 Array.slice() 相似。</li>
 </ol>
 <h3 id="数组排序sort()">数组排序sort()</h3><p>sort()方法使数组中的元素按照一定的顺序排列。</p>
 <p>语法:</p>
@@ -827,7 +848,7 @@ Document对象的body属性对应HTML文档的&lt;body&gt;标签
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/17/js进阶篇2/" data-id="cin5prszp0011m0hhggwxusr1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/17/js进阶篇2/" data-id="cin640oai0011eshh68g4i8e8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -870,7 +891,7 @@ Document对象的body属性对应HTML文档的&lt;body&gt;标签
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -882,6 +903,14 @@ Document对象的body属性对应HTML文档的&lt;body&gt;标签
       <ul>
         
           <li>
+            <a href="/2016/04/18/JS3-引用类型/">JS3-引用类型</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/18/JS2-变量、作用域和内存问题/">JS2-变量、作用和内存问题</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/18/JS1-基本概念/">JS1-基本概念</a>
           </li>
         
@@ -891,14 +920,6 @@ Document对象的body属性对应HTML文档的&lt;body&gt;标签
         
           <li>
             <a href="/2016/04/17/js进阶篇2/">js进阶篇2</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/14/js进阶篇1/">js进阶篇1</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/13/js基础篇/">js基础篇1</a>
           </li>
         
       </ul>
