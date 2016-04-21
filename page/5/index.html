@@ -65,6 +65,121 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-二叉树-借助于队列的层次遍历版本实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/25/二叉树-借助于队列的层次遍历版本实现/" class="article-date">
+  <time datetime="2015-11-25T04:00:06.000Z" itemprop="datePublished">2015-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/25/二叉树-借助于队列的层次遍历版本实现/">二叉树-借助于队列的层次遍历版本实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>广度优先遍历或层次遍历(level-order traversal)中，确定节点访问次序的原则概括为：先上后下，先左后右。</p>
+<p>实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BinNode&#123;</span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	<span class="keyword">struct</span> BinNode *lchild, *rchild;</span><br><span class="line">&#125;BinNode, *BinTree;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> BinTree QElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> QNode&#123;</span><br><span class="line">	QElemType data;</span><br><span class="line">	<span class="keyword">struct</span> QNode *next;</span><br><span class="line">&#125;QNode, *QueuePtr;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;</span><br><span class="line">	QueuePtr front;</span><br><span class="line">	QueuePtr rear;</span><br><span class="line">&#125;LinkQueue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">InitQueue</span><span class="params">(LinkQueue &amp;Q)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EnQueue</span><span class="params">(LinkQueue &amp;Q, QElemType e)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DeQueue</span><span class="params">(LinkQueue &amp;Q, QElemType &amp;e)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueEmpty</span><span class="params">(LinkQueue Q)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//'#'表示根节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createBinTree</span><span class="params">(BinTree &amp;T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch;</span><br><span class="line">	scanf_s(<span class="string">"%c"</span>, &amp;ch);</span><br><span class="line">	<span class="keyword">if</span> (ch == <span class="string">'#'</span>)&#123;</span><br><span class="line">		T = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!(T = (BinNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BinNode))))&#123;</span><br><span class="line">			<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		T-&gt;data = ch;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"数据%c\n"</span>, T-&gt;data);</span><br><span class="line">		createBinTree(T-&gt;lchild);</span><br><span class="line">		createBinTree(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*递归实现二叉树的遍历方法*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrderTraverse</span><span class="params">(BinTree &amp;T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (T)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>, T-&gt;data);</span><br><span class="line">		preOrderTraverse(T-&gt;lchild);</span><br><span class="line">		preOrderTraverse(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*二叉树的层次遍历*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LevelOrderTraverse</span><span class="params">(BinTree &amp;T)</span></span>&#123;</span><br><span class="line">	LinkQueue Q;</span><br><span class="line">	InitQueue(Q);</span><br><span class="line">	</span><br><span class="line">	EnQueue(Q, T);</span><br><span class="line">	<span class="keyword">while</span> (!QueueEmpty(Q))&#123;</span><br><span class="line">		BinTree p;</span><br><span class="line">		DeQueue(Q,p);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>, p-&gt;data);</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;lchild)</span><br><span class="line">			EnQueue(Q,p-&gt;lchild);</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;rchild)&#123;</span><br><span class="line">			EnQueue(Q,p-&gt;rchild);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	BinTree T;</span><br><span class="line">	createBinTree(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"递归版本的先序遍历"</span>);</span><br><span class="line">	preOrderTraverse(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"层次遍历版本:\n"</span>);</span><br><span class="line">	LevelOrderTraverse(T);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">InitQueue</span><span class="params">(LinkQueue &amp;Q)</span></span>&#123;</span><br><span class="line">	Q.front = Q.rear = (QueuePtr)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));</span><br><span class="line">	<span class="keyword">if</span> (!Q.front)</span><br><span class="line">		<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">	Q.front-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EnQueue</span><span class="params">(LinkQueue &amp;Q, QElemType e)</span></span>&#123;</span><br><span class="line">	QueuePtr p = (QueuePtr)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));</span><br><span class="line">	<span class="keyword">if</span> (!p)&#123;</span><br><span class="line">		<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	Q.rear-&gt;next = p;</span><br><span class="line">	Q.rear = p;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DeQueue</span><span class="params">(LinkQueue &amp;Q, QElemType &amp;e)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	QueuePtr p = Q.front-&gt;next;</span><br><span class="line">	e = p-&gt;data;</span><br><span class="line">	Q.front-&gt;next = p-&gt;next;</span><br><span class="line">	<span class="keyword">if</span> (Q.rear == p)</span><br><span class="line">		Q.rear = Q.front;</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QueueEmpty</span><span class="params">(LinkQueue Q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (Q.front-&gt;next ==<span class="literal">NULL</span> &amp;&amp;  Q.rear-&gt;next == <span class="literal">NULL</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/25/二叉树-借助于队列的层次遍历版本实现/" data-id="cinaeqty8000uhkhhznrsh584" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-队列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/25/队列/" class="article-date">
+  <time datetime="2015-11-25T03:52:38.000Z" itemprop="datePublished">2015-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/25/队列/">队列实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>队列(queue): 一种先进先出(first in first out)FIFO的线性表<br>只允许在表的一端进行插入，而在表的另一端删除元素。</p>
+<p>实现：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">typedef <span class="built_in">int</span> QElemType<span class="comment">;</span></span><br><span class="line">typedef struct QNode&#123;</span><br><span class="line">	QElemType data<span class="comment">;</span></span><br><span class="line">	struct QNode *<span class="keyword">next</span><span class="comment">;</span></span><br><span class="line">&#125;QNode, *QueuePtr<span class="comment">; </span></span><br><span class="line">typedef struct&#123;</span><br><span class="line">	QueuePtr front<span class="comment">;</span></span><br><span class="line">	QueuePtr rear<span class="comment">;</span></span><br><span class="line">&#125;LinkQueue<span class="comment">;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> InitQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line">	Q.front = Q.rear = (QueuePtr)malloc(sizeof(QNode))<span class="comment">;</span></span><br><span class="line">	<span class="keyword">if</span> (!Q.front)</span><br><span class="line">		<span class="keyword">exit</span>(-<span class="number">1</span>)<span class="comment">;</span></span><br><span class="line">	Q.front-&gt;<span class="keyword">next</span> = <span class="literal">NULL</span><span class="comment">;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> EnQueue(LinkQueue &amp;Q, QElemType e)&#123;</span><br><span class="line">	QueuePtr p = (QueuePtr)malloc(sizeof(QNode))<span class="comment">;</span></span><br><span class="line">	<span class="keyword">if</span> (!p)&#123;</span><br><span class="line">		<span class="keyword">exit</span>(-<span class="number">1</span>)<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e<span class="comment">;</span></span><br><span class="line">	p-&gt;<span class="keyword">next</span> = <span class="literal">NULL</span><span class="comment">;</span></span><br><span class="line">	Q.rear-&gt;<span class="keyword">next</span> = p<span class="comment">;</span></span><br><span class="line">	Q.rear = p<span class="comment">;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> DeQueue(LinkQueue &amp;Q, QElemType &amp;e)&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span><span class="comment">;</span></span><br><span class="line">	QueuePtr p = Q.front-&gt;<span class="keyword">next</span><span class="comment">;</span></span><br><span class="line">	e = p-&gt;data<span class="comment">;</span></span><br><span class="line">	Q.front-&gt;<span class="keyword">next</span> = p-&gt;<span class="keyword">next</span><span class="comment">;</span></span><br><span class="line">	<span class="keyword">if</span> (Q.rear == p)</span><br><span class="line">		Q.rear = Q.front<span class="comment">;</span></span><br><span class="line">	free(p)<span class="comment">;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> DestroyQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line">	<span class="keyword">while</span> (Q.front)&#123;</span><br><span class="line">		Q.rear = Q.front-&gt;<span class="keyword">next</span><span class="comment">;</span></span><br><span class="line">		free(Q.front)<span class="comment">;</span></span><br><span class="line">		Q.front = Q.rear<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> ClearQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line">	Q.front = Q.rear<span class="comment">;</span></span><br><span class="line">	Q.front-&gt;<span class="keyword">next</span> = <span class="literal">NULL</span><span class="comment">;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> QueueEmpty(LinkQueue Q)&#123;</span><br><span class="line">	<span class="keyword">return</span> (Q.front-&gt;<span class="keyword">next</span> ==<span class="literal">NULL</span> &amp;&amp;  Q.rear-&gt;<span class="keyword">next</span> == <span class="literal">NULL</span>) ? <span class="number">1</span> : <span class="number">0</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">int</span> QueueLength(LinkQueue Q)&#123;</span><br><span class="line">	<span class="built_in">int</span> length=<span class="number">0</span><span class="comment">;</span></span><br><span class="line">	QueuePtr p = Q.front-&gt;<span class="keyword">next</span><span class="comment">;</span></span><br><span class="line">	<span class="keyword">while</span> (p)&#123;</span><br><span class="line">		length++<span class="comment">;</span></span><br><span class="line">		p = p-&gt;<span class="keyword">next</span><span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> length<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">int</span> GetHead(LinkQueue &amp;Q, QElemType &amp;e)&#123;</span><br><span class="line">	e = Q.front-&gt;<span class="keyword">next</span>-&gt;data<span class="comment">;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">int</span> QueueTraverse(LinkQueue Q, <span class="built_in">int</span> (*visit)(QueuePtr p))&#123;</span><br><span class="line">	QueuePtr p = Q.front-&gt;<span class="keyword">next</span><span class="comment">;</span></span><br><span class="line">	<span class="keyword">while</span>(p)&#123;</span><br><span class="line">		visit(p)<span class="comment">;</span></span><br><span class="line">		p = p-&gt;<span class="keyword">next</span><span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	printf(<span class="string">"\n"</span>)<span class="comment">;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">int</span> data_output(QueuePtr p)&#123;</span><br><span class="line">	printf(<span class="string">"%d  "</span>, p-&gt;data)<span class="comment">;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">int</span> main()&#123;</span><br><span class="line">	<span class="built_in">int</span> data,data2<span class="comment">;</span></span><br><span class="line">	LinkQueue Q<span class="comment">;</span></span><br><span class="line">	InitQueue(Q)<span class="comment">;</span></span><br><span class="line">	<span class="built_in">int</span> a[<span class="number">5</span>] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;<span class="comment">;</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span><span class="comment">; i &lt; 5; i++)&#123;</span></span><br><span class="line">		EnQueue(Q, i)<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	QueueTraverse(Q, data_output)<span class="comment">;</span></span><br><span class="line">	DeQueue(Q, data)<span class="comment">;</span></span><br><span class="line">	printf(<span class="string">"出队%d\n"</span>, data)<span class="comment">;</span></span><br><span class="line">	QueueTraverse(Q, data_output)<span class="comment">;</span></span><br><span class="line">	printf(<span class="string">"长度%d\n"</span>, QueueLength(Q))<span class="comment">;</span></span><br><span class="line">	<span class="keyword">if</span> (!(GetHead(Q, data2)))&#123;</span><br><span class="line">		printf(<span class="string">"error"</span>)<span class="comment">;</span></span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span><span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	printf(<span class="string">"头结点%d\n"</span>, data2)<span class="comment">;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/25/队列/" data-id="cinaeqtsu0002hkhhkuqdvjff" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-线索二叉树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/24/线索二叉树/" class="article-date">
+  <time datetime="2015-11-24T07:51:15.000Z" itemprop="datePublished">2015-11-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/24/线索二叉树/">线索二叉树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>线性化：对一个非线性结构进行线性化操作，使得每个结点在这个线性序列中有且仅有一个直接前驱和直接后继。<br>方法：在每个结点上增加两个指针域fwd和bkwd，分别指示结点在任一次遍历序列时得到的前驱和后继信息。</p>
+<p>LTag：0： lchild域指示结点的左孩子 1 ：lchild域指示结点的前驱；<br>RTag：0： rchild域指示结点的右孩子 1： rchild域指示结点的后继。</p>
+<p>以这种结构构成的二叉链表作为二叉树的的存储结构，叫做线索链表，其中指向结点前驱和后继的指针，叫做线索。<br>加上线索的二叉树称之为线索二叉树。<br>线索话：对二叉树以某种次序遍历使其变为线索二叉树的过程。<br>在线索树上进行遍历，只要先找到序列中的第一个结点，然后依次找到结点的后继直至其后继为空为止。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"></span><br><span class="line">//输入是：abc<span class="comment">##de#f##g###</span></span><br><span class="line"></span><br><span class="line">typedef enum &#123; Link, Thread &#125; PointerTag; //Link==<span class="number">0</span> 指针 Thread==<span class="number">1</span>线索</span><br><span class="line"></span><br><span class="line">typedef struct B<span class="keyword">in</span>ThrNode</span><br><span class="line">&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct B<span class="keyword">in</span>ThrNode *lchild, *rchild;</span><br><span class="line">	PointerTag LTag, RTag;</span><br><span class="line">&#125;B<span class="keyword">in</span>ThrNode, *B<span class="keyword">in</span>ThrTree;</span><br><span class="line">B<span class="keyword">in</span>ThrTree pre;</span><br><span class="line"></span><br><span class="line">//<span class="string">'#'</span>表示根节点</span><br><span class="line">void createB<span class="keyword">in</span>Tree(B<span class="keyword">in</span>ThrTree &amp;T)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	scanf_s(<span class="string">"%c"</span>, &amp;ch);</span><br><span class="line">	<span class="keyword">if</span> (ch == <span class="string">'#'</span>)&#123;</span><br><span class="line">		T = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!(T = (B<span class="keyword">in</span>ThrNode*)malloc(sizeof(B<span class="keyword">in</span>ThrNode))))&#123;</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		T-&gt;data = ch;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"数据%c\n"</span>, T-&gt;data);</span><br><span class="line">		createB<span class="keyword">in</span>Tree(T-&gt;lchild);</span><br><span class="line">		createB<span class="keyword">in</span>Tree(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void <span class="keyword">in</span>Threading(B<span class="keyword">in</span>ThrTree p)&#123;</span><br><span class="line">	<span class="keyword">if</span> (p)&#123;</span><br><span class="line">		<span class="keyword">in</span>Threading(p-&gt;lchild);// 左子树线索化</span><br><span class="line">		<span class="keyword">if</span> (!p-&gt;lchild)&#123;       //前驱线索化</span><br><span class="line">			p-&gt;LTag = Thread;</span><br><span class="line">			p-&gt;lchild = pre;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			p-&gt;LTag = Link;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!pre-&gt;rchild)&#123;      //后继线索化</span><br><span class="line">			pre-&gt;RTag = Thread;</span><br><span class="line">			pre-&gt;rchild = p;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			pre-&gt;RTag = Link;</span><br><span class="line">		&#125;</span><br><span class="line">		pre = p;</span><br><span class="line">		<span class="keyword">in</span>Threading(p-&gt;rchild); //右子树线索化</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int InOrderThreading(B<span class="keyword">in</span>ThrTree &amp;Thrt, B<span class="keyword">in</span>ThrTree T)&#123;</span><br><span class="line">	<span class="keyword">if</span> (!(Thrt = (B<span class="keyword">in</span>ThrTree)malloc(sizeof(B<span class="keyword">in</span>ThrNode))))</span><br><span class="line">		<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">	Thrt-&gt;LTag = Link;   //建立结点</span><br><span class="line">	Thrt-&gt;RTag = Thread;</span><br><span class="line">	Thrt-&gt;rchild = Thrt;   //右指针回退</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!T)</span><br><span class="line">		Thrt-&gt;lchild = Thrt;  //若二叉树空，则左指针回退</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		Thrt-&gt;lchild = T;</span><br><span class="line">		pre = Thrt;</span><br><span class="line">		<span class="keyword">in</span>Threading(T);         //中序遍历进行中序线索化</span><br><span class="line">		pre-&gt;rchild = Thrt;     //最后一个结点线索化</span><br><span class="line">		pre-&gt;RTag = Thread;</span><br><span class="line">		Thrt-&gt;rchild = pre; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">int output_data(B<span class="keyword">in</span>ThrTree T)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n%s\t%c\t%s"</span>, T-&gt;LTag == Link ? <span class="string">"Link"</span> : <span class="string">"Thread"</span>, T-&gt;data, T-&gt;RTag == <span class="number">0</span> ? <span class="string">"Link"</span> : <span class="string">"Thread"</span>);</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">int InOrderTravese_Thr(B<span class="keyword">in</span>ThrTree T,int (*visit)(B<span class="keyword">in</span>ThrTree h))&#123;</span><br><span class="line">	B<span class="keyword">in</span>ThrTree p;</span><br><span class="line">	p = T-&gt;lchild;</span><br><span class="line">	<span class="keyword">while</span> (p != T)&#123;</span><br><span class="line">		<span class="keyword">while</span> (p-&gt;LTag == Link)</span><br><span class="line">			p = p-&gt;lchild;</span><br><span class="line">		visit(p);</span><br><span class="line">		<span class="keyword">while</span> (p-&gt;RTag == Thread &amp;&amp; p-&gt;rchild != T)&#123;</span><br><span class="line">			p = p-&gt;rchild;</span><br><span class="line">			visit(p);</span><br><span class="line">		&#125;</span><br><span class="line">		p = p-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	B<span class="keyword">in</span>ThrTree T, Thrt;</span><br><span class="line">	createB<span class="keyword">in</span>Tree(T);</span><br><span class="line">	<span class="keyword">if</span> (!InOrderThreading(Thrt, T))&#123;</span><br><span class="line">		<span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!InOrderTravese_Thr(Thrt,output_data))&#123;</span><br><span class="line">		<span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/24/线索二叉树/" data-id="cinaeqttc0007hkhhwq772f2g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-二叉树-借助栈的非递归版本实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/23/二叉树-借助栈的非递归版本实现/" class="article-date">
@@ -94,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/23/二叉树-借助栈的非递归版本实现/" data-id="cin7jnb8c000tuchho7mcgqc5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/23/二叉树-借助栈的非递归版本实现/" data-id="cinaeqty5000thkhh6gs98t3s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="cin7jnb69000auchha0crwciy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="cinaeqttw000ahkhh1bod8ffg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="cin7jnb8a000suchh0gtf36jd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="cinaeqty3000shkhhyctaqzy1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="cin7jnb990014uchhkff05c4u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="cinaeqtzl0014hkhhhzz71tl1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="cin7jnb5s0004uchh3e5idvm0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="cinaeqtt00004hkhhjwf8cyz0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -313,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="cin7jnb8i000vuchhd6ty0gi6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="cinaeqtyc000vhkhhnb3ewoco" class="article-share-link">Share</a>
       
       
     </footer>
@@ -352,179 +467,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="cin7jnb8m000wuchhn32hkqfq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-unix-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/01/unix-2/" class="article-date">
-  <time datetime="2015-11-01T08:53:25.000Z" itemprop="datePublished">2015-11-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/01/unix-2/">unix-2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>不带缓存  指的是每个read和write都调用内核中的一个系统调用。</p>
-<h3 id="文件描述符">文件描述符</h3><pre><code><span class="number">1.</span>  对于内核而言 ，所有打开文件都是由文件描述符应用。文件描述符是一个非负整数。当打开一个现存文件或者创建一个新文件时，内核向进程返回一个文件描述符。。
-<span class="number">2.</span>  UNIX shell使用文件描述符<span class="number">0</span>与进程的标准输入相结合；文件描述符<span class="number">1</span>与进程的标准输出相结合，文件描述符<span class="number">2</span>与标准出错相结合。
-<span class="number">3.</span>  在POSIX<span class="number">.1</span>中，在头文件&lt;unistd.h&gt; 中， <span class="number">0</span> ----STDIN_FILENO,<span class="number">1</span> -----STDOUT_FILENO ,<span class="number">2</span> -----STDERR_FILENO.
-</code></pre><h3 id="open函数">open函数</h3><pre><code><span class="number">1.</span> 功能：打开或创建一个文件；
-<span class="number">2.</span> 在&lt;fcntl.h&gt;中定义： O_RDONLY 只读打开；O_WRONLY 只写打开 ； O_RDWR  读、写打开。
-<span class="number">3.</span> O_APPEND 每次都写到文件的尾端；O_CREAT 若此文件不存在则创建他； O_EXCL 如果同时指定了O_CREAT，则出错；O_TRUNC 清空；O_NONBLOCK 设置后续的IO操作为非阻塞；O_SYNC 每次IO操作都等到物理I/O操作完成。
-<span class="number">4.</span> 由open返回的文件描述符一定是最小的未用的操作符数字。
-<span class="number">5.</span> 文件名 NAME_MAX是<span class="number">14</span>，当文件名的长度超过<span class="number">14</span>的时候，由_POSIX_NO_TRUNC来决定是截取文件名或返回出出错，其值为真，返回初出错。
-</code></pre><h3 id="creat函数">creat函数</h3><pre><code><span class="number">1.</span> 功能：创建一个新文件。
-<span class="number">2.</span> 相当于等效的：open（pathname,O_WRONLY|O_CREAT|O_TRUNC，mode）；
-</code></pre><h3 id="close_函数">close 函数</h3><pre><code><span class="number">1.</span> 功能：关闭一个文件
-<span class="number">2.</span> 关闭一个文件时也释放该进程在该文件上的所有记录锁。
-</code></pre><h3 id="lseek函数">lseek函数</h3><pre><code><span class="number">1.</span> <span class="keyword">off_t</span> lseek(<span class="keyword">int</span> fileds,<span class="keyword">off_t</span> offset,<span class="keyword">int</span> whence);
-<span class="number">2.</span> 判断lseek的值是否为-<span class="number">1</span>，来确定文件的偏移是否正确
-<span class="number">3.</span> whence是SEEK_SET：该文件的位移量设置为距文件开始处offset个字节；
-<span class="number">4.</span> whence是SEEK_CUR：相对于当前位置的偏移量；
-<span class="number">5.</span> whence是SEEK_END：相对文件尾端的位移量。
-</code></pre><h3 id="read函数">read函数</h3><pre><code><span class="number">1.</span> 功能：从打开文件中读取数据
-<span class="number">2.</span> <span class="keyword">ssize_t</span> read(in fileds,<span class="keyword">void</span> buff,<span class="keyword">size_t</span> nbytes);
-<span class="number">3.</span> read成功，则返回读到的字节数，如果已经到达文件的尾端，则返回<span class="number">0</span>；
-<span class="number">4.</span> <span class="preprocessor">### write函数</span>
-</code></pre><p>功能：向文件写数据</p>
-<pre><code><span class="number">1.</span> <span class="keyword">ssize_t</span> write(<span class="keyword">int</span> fielses,<span class="keyword">const</span> <span class="keyword">void</span> buff,<span class="keyword">size_t</span> nbytes);
-<span class="number">2.</span> write出错的一个常见原因是：磁盘已写满，或者超过了对一个给定进程的文件长度限制。
-<span class="number">3.</span> 通常是O_APPEND的选项，每次写操作之前，将文件位移量设置在文件的当前结尾处。
-</code></pre><h3 id="文件共享">文件共享</h3><pre><code>文件描述符标志：只用于一个进程的一个描述符
-文件状态标志：适用于指向该给定文件表项的任何进程中的所有描述符。
-</code></pre><h3 id="原子操作">原子操作</h3><pre><code><span class="number">1.</span> 添加至一个文件
-<span class="number">2.</span> 任何一个要求多于<span class="number">1</span>个函数调用的操作都不能成为原子操作，因为在两个函数调用之间，内核可能会临时挂起该进程。
-<span class="number">3.</span> 原子操作指的是由多步组成的操作，如果该操作原子地执行，则或者执行完所有步，或者一步也不执行，不可能只执行所有步的一个子集。
-</code></pre><h3 id="dup和dup2函数">dup和dup2函数</h3><pre><code><span class="number">1</span>. int <span class="function"><span class="title">dup</span><span class="params">(int filedes)</span></span>
-<span class="number">2</span>. int <span class="function"><span class="title">dup2</span><span class="params">(int filedes,int filedes2)</span></span>
-<span class="number">3</span>. 由dup返回的新文件描述符一定是当前可用文件描述符中最小的数值。
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/01/unix-2/" data-id="cin7jnb8r000xuchhdv3i47lt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-unix-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/28/unix-1/" class="article-date">
-  <time datetime="2015-10-28T13:48:54.000Z" itemprop="datePublished">2015-10-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/28/unix-1/">unix-1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="UNIX基本知识1">UNIX基本知识1</h2><ol>
-<li>每个进程都一个工程目录(working directory),或称为当前工作目录 (current working)。所有相对路径名都是从工作目录开始解释。进程可以用chdir函数更改其工作目录。</li>
-<li>0个或者多个以斜线分隔的文件名序列构成路径名。以斜线开头的路径名称称为绝对路径名，否则为相对路径名。</li>
-<li>文件描述符是一个小的非负整数，内核用以标示一个特定进程正在访问的文件。</li>
-<li>每当运行一个新的程序时，所有的shell都会为其打开三个文件描述符：标准输入、标准输出以及标准出错。可以这三个描述符重定向到某一文件：<br>ls &gt; file.lst</li>
-<li>在<unistd.h>中定义：<br>标准输入文件描述符：STDIN_FILENO    0<br>标准输出文件描述符：STDOUT_FILENO  1</unistd.h></li>
-<li>在<stdio.h>中定义：<br>标准输入文件：stdin<br>标准输出文件：stdout</stdio.h></li>
-<li>程序(program)是存放磁盘文件中的可执行文件。使用6个exec函数中的一个由内核将程序读入存储器、并使其执行。<br>程序的执行实例被称为进程（process）。某些操作系统用任务表示正在被执行的程序。<br>每个UNIX进程都一定有一个唯一的数字标示符，称为进程ID（process ID）。进程ID总是一非负整数。<br>getid()：获取进程ＩＤ；</li>
-<li><unistd.h>保护了许多UNIX系统服务的函数原型</unistd.h></li>
-<li>gituid ： 返回用户ID<br>gitgid ：返回组ID</li>
-<li>UNIX三个版本：ANSI C，POSIX，XPG3；<br>ANSI：美国国家标准学会，它是由制造商和用户组成的非赢利性组织。<br>POSIX：计算机环境的可移植操作系统界面（Protable Operating System Interface of Computer Environment）<br>XPG3：X/Open是一个国际计算机制造商，提出来一个7卷本可移植性指南X/Open Portability Guide 。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cin7jnb8t000yuchhkk2agh4c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-makedown" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/23/makedown/" class="article-date">
-  <time datetime="2015-10-23T07:40:59.000Z" itemprop="datePublished">2015-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/23/makedown/">makedown</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Markdown语法规范">Markdown语法规范</h2><h3 id="特殊字符自动转换">特殊字符自动转换</h3><pre><code>在html中，有两个字符需要特殊处理：&lt;  和 &amp;。
-&lt; 符号用于起始标签， &amp; 符号用于标记HTML实体。
-要使用原型的话，必须使用 &amp;lt<span class="comment">; 和 &amp;amp;</span>
-
-在makedown中，可以直接使用&lt; 和 &amp;，makedown会自动将其装换为html能识别的特殊字符
-</code></pre><h3 id="段落和换行">段落和换行</h3><pre><code>一个Makedown段落是由一个或多个连续的文本行组成，它的前后要有一个以上的空行。不同段落不该用空格和制表符来缩进。
-如果确实要依赖Makedown来插入<span class="tag">&lt;<span class="title">br</span>/&gt;</span>标签的话，在插入处先按入两个以上的空格然后回车。
-</code></pre><h3 id="标题">标题</h3><pre><code><span class="string">'='</span> 最高阶标题
-<span class="string">'-'</span> 第二阶标题
-<span class="string">'#'</span> 在行首插入<span class="number">1</span>到<span class="number">6</span>个<span class="preprocessor">#，对应的标题<span class="number">1</span>到<span class="number">6</span>阶</span>
-</code></pre><h3 id="区块引用Blockquotes">区块引用Blockquotes</h3><pre><code><span class="string">'&gt;'</span> 在每行的最前面加入&gt;,或者在整个段落的最前面加上&gt;，区块引用可以嵌套，也可以是使用其他的Makedown语法，表壳标题、列表、代码区块等。
-</code></pre><h3 id="列表">列表</h3><pre><code>Makedown支持有序列表和无序列表；
-无序列表使用星号、加号或者减号最为列表标记：*，+，-；
-有序列表则使用数字接着一个英文句点：<span class="number">1.</span> ,<span class="number">2.</span> ,...；
-列表标记通常放在最左边，但是其实也可以缩进，最多<span class="number">3</span>个空格；
-项目标记后面则一定要接着至少一个空格或制表符。
-在列表内项目内放进引用，那&gt;就需要缩进；
-如果要放代码区块的话，该区块就需要缩进两侧。
-</code></pre><h3 id="代码区块">代码区块</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cin7jnb8y0010uchh8juqldr9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="cinaeqtyg000whkhh0mjdu05h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -553,7 +496,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -565,23 +508,23 @@
       <ul>
         
           <li>
+            <a href="/2016/04/21/JS7-BOM/">JS7-BOM</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/JS6-函数表达式/">JS-6函数表达式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/JS5-面向对象的程序设计/">JS-5面向对象的程序设计</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/19/JS4-引用对象/">JS4-引用对象</a>
           </li>
         
           <li>
             <a href="/2016/04/18/JS3-笔记/">JS3-引用类型</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/18/JS2-变量、作用域和内存问题/">JS2-变量、作用和内存问题</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/18/JS1-基本概念/">JS1-基本概念</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/18/JS0-简单介绍/">JS0-简单介绍</a>
           </li>
         
       </ul>
