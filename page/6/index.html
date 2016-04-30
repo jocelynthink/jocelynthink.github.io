@@ -65,6 +65,264 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-栈实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/23/栈实现/" class="article-date">
+  <time datetime="2015-11-23T12:06:07.000Z" itemprop="datePublished">2015-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/23/栈实现/">栈实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>栈：限定仅在表尾进行插入或删除操作的线性表。<br>特点：先进后出(last in first out)LIFO</p>
+<p>实现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define STACK_INIT_SIZE 100</span></span><br><span class="line"><span class="comment">#define STACKINCREMENT 10</span></span><br><span class="line"></span><br><span class="line">typedef struct SqStack&#123;</span><br><span class="line">	char *base;</span><br><span class="line">	char *top;</span><br><span class="line">	int stacksize;</span><br><span class="line">&#125;SqStack;</span><br><span class="line"></span><br><span class="line">int InitStack(SqStack &amp;S);</span><br><span class="line">int DestroyStack(SqStack &amp;S);</span><br><span class="line">int ClearStack(SqStack &amp;S);</span><br><span class="line">int StackEmpty(SqStack &amp;S);</span><br><span class="line">int StackLength(SqStack S);</span><br><span class="line">int GetTop (SqStack &amp;S,char &amp;e);</span><br><span class="line">int Push(SqStack &amp;S,char &amp;e);</span><br><span class="line">int Pop(SqStack &amp;S,char &amp;e);</span><br><span class="line">int StackTraverse(SqStack S);</span><br><span class="line"></span><br><span class="line">int InitStack(SqStack &amp;S)&#123;</span><br><span class="line">	S.base = (char *) malloc (STACK_INIT_SIZE * sizeof(char));</span><br><span class="line">	<span class="keyword">if</span>(!S.base)</span><br><span class="line">		<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">	S.top = S.base;</span><br><span class="line">	S.stacksize = STACK_INIT_SIZE;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int GetTop(SqStack &amp;S,char &amp;e)&#123;</span><br><span class="line">	<span class="keyword">if</span>(S.top == S.base)</span><br><span class="line">		<span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">	e = *(S.top -<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int push(SqStack &amp;S,char &amp;e)&#123;</span><br><span class="line">	<span class="keyword">if</span>(S.top - S.base &gt;= S.stacksize)&#123;</span><br><span class="line">		S.base = (char *) realloc(S.base,(S.stacksize + STACKINCREMENT)*sizeof(char));</span><br><span class="line">		<span class="keyword">if</span>(!S.base)</span><br><span class="line">			<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">		S.top = S.base + S.stacksize;</span><br><span class="line">		S.stacksize += STACKINCREMENT;</span><br><span class="line">	&#125;</span><br><span class="line">	*S.top++ = e;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">int Pop(SqStack &amp;S,char &amp;e)&#123;</span><br><span class="line">	<span class="keyword">if</span>(S.top == S.base)</span><br><span class="line">		<span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">	e = *--S.top;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int StackLength(SqStack S)&#123;</span><br><span class="line">	<span class="built_in">return</span> S.top - S.base;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int StackTraverse(SqStack S)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	<span class="keyword">for</span>(int i = <span class="number">0</span>;i &lt; StackLength(S);i++)&#123;</span><br><span class="line">		ch = *(S.top - <span class="number">1</span> - i);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c "</span>,ch);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int StackEmpty(SqStack &amp;S)&#123;</span><br><span class="line">	<span class="keyword">if</span>(S.top == S.base)&#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int ClearStack(SqStack &amp;S)&#123;</span><br><span class="line">	 S.top = S.base; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int DestroyStack(SqStack &amp;S)&#123;</span><br><span class="line">	free(S.base);</span><br><span class="line">	S.base = NULL;</span><br><span class="line">	S.top = NULL;</span><br><span class="line">	S.stacksize = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	char ch;</span><br><span class="line">	int i;</span><br><span class="line">	SqStack S;</span><br><span class="line">	InitStack(S);</span><br><span class="line">	char a[<span class="number">5</span>]=&#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		push(S,a[i]);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	StackTraverse(S);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,StackLength(S));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">	/*清空栈*/</span><br><span class="line">	<span class="keyword">while</span>( !StackEmpty(S) )&#123;</span><br><span class="line">		Pop(S,ch);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c "</span>,ch);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/23/栈实现/" data-id="cinn6de9y000ae0hhtam9gzyp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-二叉树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/20/二叉树/" class="article-date">
+  <time datetime="2015-11-20T09:00:39.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/二叉树/">二叉树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>二叉树(Binary Tree)：<br>特点：每个结点至多只有两棵子树。<br>      二叉树的子树有左右之分，其次序不能任意颠倒。</p>
+<p>完全二叉树：<br>定义：深度为k的，有n个结点的二叉树，当且仅当其每一个结点都与深度为k的满二叉树中的编号1至n的结点一一对应。<br>特点：</p>
+<p>二叉树的性质：<br>性质1：在二叉树的第i层上至多有2的i-1次方个结点。<br>性质2：深度为k的二叉树至多有2的k次方减1个结点。<br>性质3：对任何一棵二叉树T,如果其终端结点数为n0，度为2的节点数为n2，则n0=n2+1；<br>性质4：具有n个结点的完全二叉树的深度为log2n取下整加1。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BinNode&#123;</span><br><span class="line">	<span class="keyword">char</span> data;</span><br><span class="line">	<span class="keyword">struct</span> BinNode *lchild,*rchild;</span><br><span class="line">&#125;BinNode,*BinTree;</span><br><span class="line"></span><br><span class="line"><span class="comment">//'#'表示根节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createBinTree</span><span class="params">(BinTree &amp;T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;ch);</span><br><span class="line">	<span class="keyword">if</span>(ch == <span class="string">'#'</span>)&#123;</span><br><span class="line">		T = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!(T = (BinNode*) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BinNode))))&#123;</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		T-&gt;data = ch;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"数据%c\n"</span>, T-&gt;data);</span><br><span class="line">		createBinTree(T-&gt;lchild);</span><br><span class="line">		createBinTree(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*递归实现二叉树的遍历方法*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrderTraverse</span><span class="params">(BinTree &amp;T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);</span><br><span class="line">		preOrderTraverse(T-&gt;lchild);</span><br><span class="line">		preOrderTraverse(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTravese</span><span class="params">(BinTree &amp;T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T)&#123;</span><br><span class="line">		InOrderTravese(T-&gt;lchild);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);</span><br><span class="line">		InOrderTravese(T-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BackOrderTraverse</span><span class="params">(BinTree &amp;T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T)&#123;</span><br><span class="line">		BackOrderTraverse(T-&gt;lchild);</span><br><span class="line">		BackOrderTraverse(T-&gt;rchild);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>,T-&gt;data);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	BinTree T;</span><br><span class="line">	createBinTree(T);</span><br><span class="line">	preOrderTraverse(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	InOrderTravese(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	BackOrderTraverse(T);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/20/二叉树/" data-id="cinn6deb9000se0hhqn4czqex" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/20/hello-world/" class="article-date">
+  <time datetime="2015-11-20T08:55:24.015Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/20/hello-world/" data-id="cinn6deca0014e0hhx3w12lim" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-赫夫曼树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/20/赫夫曼树/" class="article-date">
+  <time datetime="2015-11-20T07:09:50.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/赫夫曼树/">赫夫曼树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>赫夫曼树(Huffman)，又称最优树，是一类带权路径长度最短的树。<br>路径长度：从树中一个结点到另一个结点之间的分支构成这两个结点之间的路径，路径上的分支数目称为路径长度。<br>树的路径长度：是从树根到每一个结点的路径长度之和。<br>树的带权路径长度：所有叶子节点的带权路径长度之和。</p>
+<p>构造赫夫曼树的算法：<br>1）根据给定的n个权值{w1,w2,…,w3}构成n棵二叉树的集合F={T1,T2,…Tn}，其中每棵二叉树Ti中只有一个带权为wi的根结点，其左右子树均为空。<br>2）在F中选取两个根结点的权值最小的树作为左右子树构造一颗新的二叉树，且置新的二叉树的根节点的权值为其左右树上根节点的权值之和。<br>3）在F中删除这两棵树，同时将新得到的二叉树加入F中。<br>4）重复（2）（3），直到F只含一棵树为止。这棵树便是赫夫曼树。</p>
+<p>算法实现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string.h&gt;</span></span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">	unsigned int weight;</span><br><span class="line">	unsigned int parent,lchild,rchild;</span><br><span class="line">&#125;NTNode,*HuffmanTree;</span><br><span class="line"></span><br><span class="line">typedef char * * HuffmanCode;</span><br><span class="line">void HuffmanCoding(HuffmanTree &amp;HT,HuffmanCode &amp;HC,int *w,int n);</span><br><span class="line">void Select(HuffmanTree &amp;HT,int i);</span><br><span class="line"></span><br><span class="line">int s1,s2;</span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()&#123;</span><br><span class="line">	HuffmanTree HT;</span><br><span class="line">	HuffmanCode HC;</span><br><span class="line">	int *w,n,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"输入待编码的个数\n"</span>);</span><br><span class="line">	scanf(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"></span><br><span class="line">	w = (int*) malloc(n*sizeof(int));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; n;i ++)&#123;</span><br><span class="line">		scanf(<span class="string">"%d"</span>,&amp;w[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	HuffmanCoding(HT,HC,w,n);</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= n;i ++)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d(%d):%s\n"</span>,i,w[i-<span class="number">1</span>],HC[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void HuffmanCoding(HuffmanTree &amp;HT,HuffmanCode &amp;HC,int *w,int n)&#123;</span><br><span class="line">	<span class="keyword">if</span>(n &lt;= <span class="number">1</span>)</span><br><span class="line">		<span class="built_in">return</span>;</span><br><span class="line">	int m = <span class="number">2</span>*n-<span class="number">1</span>;</span><br><span class="line">	/*分配存储空间*/</span><br><span class="line">	HT =(HuffmanTree)malloc((m+<span class="number">1</span>) *sizeof(NTNode));</span><br><span class="line">	HuffmanTree p = HT+<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (int i = <span class="number">1</span>; i &lt;= n; ++i,++p,++w)</span><br><span class="line">	&#123;</span><br><span class="line">		(*p).weight = (*w);</span><br><span class="line">		(*p).parent = <span class="number">0</span>;</span><br><span class="line">		(*p).lchild = <span class="number">0</span>;</span><br><span class="line">		(*p).rchild = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(int i = n+<span class="number">1</span>; i&lt;=m;++i)&#123;</span><br><span class="line">		(*p).weight = <span class="number">0</span>;</span><br><span class="line">		(*p).parent = <span class="number">0</span>;</span><br><span class="line">		(*p).lchild = <span class="number">0</span>;</span><br><span class="line">		(*p).rchild = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(int i = n+<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		Select(HT,i-<span class="number">1</span>);</span><br><span class="line">		HT[s1].parent = i;</span><br><span class="line">		HT[s2].parent = i;</span><br><span class="line">		HT[i].lchild = s1;</span><br><span class="line">		HT[i].rchild = s2;</span><br><span class="line">		HT[i].weight = HT[s1].weight + HT[s2].weight;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/*从叶子到根逆向求每个字符的赫夫曼编码*/</span><br><span class="line">/*	HC = (HuffmanCode)malloc((n+<span class="number">1</span>)*sizeof(char *));</span><br><span class="line">	char* <span class="built_in">cd</span> = (char *)malloc(n*sizeof(char));</span><br><span class="line">	<span class="built_in">cd</span>[n-<span class="number">1</span>] = <span class="string">'\0'</span>;</span><br><span class="line">	int start;</span><br><span class="line">	<span class="keyword">for</span>(int i = <span class="number">1</span>;i &lt;= n;++i)&#123;</span><br><span class="line">		start = n-<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(int c = i,f = HT[i].parent; f!=<span class="number">0</span>; c = f,f= HT[f].parent)&#123;</span><br><span class="line">			<span class="keyword">if</span>(HT[f].lchild == c)&#123;</span><br><span class="line">				<span class="built_in">cd</span>[--start]=<span class="string">'0'</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="built_in">cd</span>[--start]=<span class="string">'1'</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		HC[i] = (char *)malloc((n-start)*sizeof(char));</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,n-start);</span><br><span class="line">		strcpy(HC[i],&amp;<span class="built_in">cd</span>[start]);</span><br><span class="line">	&#125;</span><br><span class="line">	free(<span class="built_in">cd</span>);</span><br><span class="line">*/	</span><br><span class="line">	/*无栈非递归遍历赫夫曼树，求赫夫曼编码*/</span><br><span class="line">	HC = (HuffmanCode)malloc((n+<span class="number">1</span>)*sizeof(char *));</span><br><span class="line">	int p1 = m;</span><br><span class="line">	int cdlen = <span class="number">0</span>;</span><br><span class="line">	char * <span class="built_in">cd</span> = (char *)malloc(n * sizeof(char));</span><br><span class="line">	<span class="keyword">for</span> (int i = <span class="number">1</span>; i &lt;=m; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		HT[i].weight = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(p1)&#123;</span><br><span class="line">		<span class="keyword">if</span>(HT[p1].weight == <span class="number">0</span>)&#123;</span><br><span class="line">			HT[p1].weight = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(HT[p1].lchild != <span class="number">0</span>)&#123;</span><br><span class="line">				p1 = HT[p1].lchild;</span><br><span class="line">				<span class="built_in">cd</span>[cdlen++] = <span class="string">'0'</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(HT[p1].rchild == <span class="number">0</span> )&#123;</span><br><span class="line">				HC[p1] = (char *) malloc((cdlen+<span class="number">1</span>) * sizeof(char));</span><br><span class="line">				<span class="built_in">cd</span>[cdlen] = <span class="string">'\0'</span>;</span><br><span class="line">				strcpy(HC[p1],<span class="built_in">cd</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(HT[p1].weight == <span class="number">1</span>)&#123;</span><br><span class="line">			HT[p1].weight = <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span>(HT[p1].rchild !=<span class="number">0</span>)&#123;</span><br><span class="line">				p1=HT[p1].rchild;</span><br><span class="line">				<span class="built_in">cd</span>[cdlen++] = <span class="string">'1'</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				HT[p1].weight  = <span class="number">0</span>;</span><br><span class="line">				p1 = HT[p1].parent;</span><br><span class="line">				--cdlen;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Select(HuffmanTree &amp;HT,int n)&#123;</span><br><span class="line">	int i ,j;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!HT[i].parent)&#123;</span><br><span class="line">			s1 = i;</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>( j = i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!HT[j].parent)&#123;</span><br><span class="line">			s2 = j;</span><br><span class="line">			<span class="built_in">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>((HT[s1].weight &gt; HT[i].weight )&amp;&amp;(!HT[i].parent) &amp;&amp;(s2 != i))&#123;</span><br><span class="line">			s1 = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(j = <span class="number">1</span>; j&lt;=n;j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>( (HT[s2].weight &gt; HT[j].weight )&amp;&amp;(!HT[j].parent) &amp;&amp;(s1 != j))&#123;</span><br><span class="line">			s2 = j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,s1,s2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/20/赫夫曼树/" data-id="cinn6de9d0004e0hhpokrwg4o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-unix-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/12/unix-4/" class="article-date">
+  <time datetime="2015-11-12T06:40:02.000Z" itemprop="datePublished">2015-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/12/unix-4/">unix-4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="stat、fstat、lstat函数">stat、fstat、lstat函数</h3><p>#include <sys types.h=""></sys></p>
+<p>#include <sys stat.h=""><br>int stat(const char pathname,struct state <em>buf);<br>int fstat(int filedes,struct stat </em>buf);<br>int lstat(const char pathname ,struct stat *buf);<br>给定一个pathname，<br>stat函数返回一个与此命令文件有关的信息结构；<br>fstat函数获得已在描述符filedes上打开的文件的有关信息。<br>lstat类似于stat，但是当命令的文件是一个符号连接时，lstat返回符号连接的有关信息，而不是由符号连接引用的文件信息。</sys></p>
+<h3 id="文件类型">文件类型</h3><pre><code><span class="bullet">* </span>普遍文件（regular file）
+<span class="bullet">* </span>目录文件（deirctory file）
+<span class="bullet">* </span>字符特殊文件（character special file）
+<span class="bullet">* </span>块特殊文件（block special file）
+<span class="bullet">* </span>FIFO
+<span class="bullet">* </span>套接口（socket）
+<span class="bullet">* </span>符号连接（symbolic link）
+</code></pre><p>文件类型信息包含在stat结构的st_mode成员中。</p>
+<h3 id="设置-用户-ID和设置-组-ID">设置-用户-ID和设置-组-ID</h3><h3 id="文件存取许可">文件存取许可</h3><h3 id="内核测试文件的时候过程">内核测试文件的时候过程</h3><h3 id="access函数">access函数</h3><p>在open打开一个文件时，内核以进程的有效用户ID和有效组ID为基础执行其存取许可测试。<br>access函数按实际用户ID和实际组ID进行存取许可测试。</p>
+<h3 id="umask函数">umask函数</h3><p>umask函数为进程设置文件方式方式创建屏蔽字，并返回以前的值。</p>
+<h3 id="chmod和fchmod函数">chmod和fchmod函数</h3><p>chmod函数在指定文件上进行操作。<br>fchmod函数则对已打开的文件进行操作。<br>chmod函数更新的只是i节点最近一次被更改的时间，ls -l列出的是最后修改文件内容的时间<br>chmod函数在下列条件下将自动清除两个许可权位：<br>     1.如果我们试图设置普通文件的粘住位(S_ISVTX)，而且有没有超级用户的优先权，那么mode中的粘住位将自动被关闭；<br>     2.新创建文件的组ID可能不是调用进程所属的组。</p>
+<h3 id="粘住位">粘住位</h3><h3 id="chown_fchown_和fchown函数">chown fchown  和fchown函数</h3><p>可用于更改文件的用户ID和组ID<br>lchown更改符号连接本身的所有者，而不是该符号连接所指向的文件。<br>wc -c 文件名<br>返回文件的长度</p>
+<h3 id="文件截短">文件截短</h3><p>truncate(const char pathname,off_t length);<br>ftruncate(int filedes,offt_t length)<br>link : 创建一个向现存文件连接的方法；<br>int link(const char pathname，const char new pathname);<br>unlink：删除一个现存的目录项<br>int unlink（const char pathname）；<br>remove：解除对一个文件或目录的连接。<br>rename：文件或目录用人那么更名。<br>int rename(const char pathname,const char newname);</p>
+<h3 id="符号连接">符号连接</h3><h3 id="文件的时间">文件的时间</h3><p>utime函数：文件的存取和修改时间<br>int utime(const char pathname ,const struct utimebuf);<br>struct utimbuf{<br>     time_t acime;<br>     time_t modtime;<br>}</p>
+<p>mkdir函数 创建目录，   . 和..目录是自动创建的。所指定的文件存取许可权mode由进程的文件方式创建屏蔽字修改。<br>rmdir函数 删除目录；<br>int mkdir(const char pathname,mode_t mode);</p>
+<h3 id="读目录">读目录</h3><p>对某个目录具有存取许可权的任一用户都可以读该目录 ,但是只有内核才能写目录。</p>
+<p>DIR <em> opendir(const char pathname)；<br>struct dirent </em> readdir（DIR）;<br>void rewinddir（DIR dp<em>）；<br>int closedir(DIR dp </em>);</p>
+<p>struct dirent{<br>     ino_t d_ino;<br>     char d_name[NAME_MAX+1];<br>}</p>
+<p>###chdir,fchdir和getcwd函数<br>每个进程都有一个当前工作目录，此目录是搜索所有相对路径名的起点。</p>
+<h3 id="st_dev_st_rdev">st_dev　st_rdev</h3><p>每个文件系统都由其主、次设备号；</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/12/unix-4/" data-id="cinn6debl000ve0hhkygseqy9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-unix-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/05/unix-3/" class="article-date">
+  <time datetime="2015-11-05T08:46:53.000Z" itemprop="datePublished">2015-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/05/unix-3/">unix-3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最基本的编译文件方法<br>g++ -c xxx.cpp -o xxx<br>./xxx<br>C++编译多个文件 makefile</p>
+<p>逐步编译：<br>g++ -c APCluster.cppAPCluster.h //生成APCluster.o 中间文件<br>g++ -c example.cppAPCluster.h  //生成example.o中间文件<br>g++ -o main APCluster.o example.o</p>
+<p>makefile:<br>GNU的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，上面编译对应的makefile如下：<br>main: APCluster.oexample.o        //main为最终可执行文件<br> g++ -o main APCluster.o example.o //或者g++APCluster.o example.o-omain应该也行<br>APCluster.o :APCluster.cppAPCluster.h   //定义依赖关系<br> g++ -c APCluster.cppAPCluster.h   //如何生成目标文件的操作系统命令，一定要以一个tab键作为开头,<br>                                   //-c只激活预处理，编译，和汇编，也就是他只把程序做成obj文件*.o<br>example.o: example.cpp APCluster.h<br> g++ -c example.cppAPCluster.h    //APCluster.h可以不要，因为上句已经指明，会自动链接<br>clean:                             //定义makeclean指令<br> rm main APCluster.o example.o<br>我们可以把这个内容保存在名字为“makefile”或“Makefile”的文件中，然后在该目录下直接输入命令“make”就可以生成执行文件edit。如果要删除执行文件和所有的中间目标文件，那么，只要简单地执行一下“make clean”就可以了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/05/unix-3/" data-id="cinn6debq000we0hhaxwlq74q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-unix-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/01/unix-2/" class="article-date">
@@ -125,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/01/unix-2/" data-id="cinaeqtyo000xhkhhn4oce0t9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/01/unix-2/" data-id="cinn6debw000xe0hhr2hot0fc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cinaeqtyr000yhkhhprg4o2bt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/28/unix-1/" data-id="cinn6deby000ye0hh0gbs95oe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cinaeqtz60010hkhhj6v9t41o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/23/makedown/" data-id="cinn6dec20010e0hhaatae5wc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/10/22/github/" data-id="cinaeqtzp0015hkhhpw7urqkz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/10/22/github/" data-id="cinn6decc0015e0hhja520kye" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +556,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -310,23 +568,23 @@
       <ul>
         
           <li>
-            <a href="/2016/04/21/JS7-BOM/">JS7-BOM</a>
+            <a href="/2016/04/30/JS20/">JS20-JSON</a>
           </li>
         
           <li>
-            <a href="/2016/04/21/JS6-函数表达式/">JS-6函数表达式</a>
+            <a href="/2016/04/30/JS13/">JS13--表单脚本</a>
           </li>
         
           <li>
-            <a href="/2016/04/21/JS5-面向对象的程序设计/">JS-5面向对象的程序设计</a>
+            <a href="/2016/04/30/JS11/">JS11--DOM2和DOM3</a>
           </li>
         
           <li>
-            <a href="/2016/04/19/JS4-引用对象/">JS4-引用对象</a>
+            <a href="/2016/04/30/JS10/">JS10--DOM扩展</a>
           </li>
         
           <li>
-            <a href="/2016/04/18/JS3-笔记/">JS3-引用类型</a>
+            <a href="/2016/04/30/JS9/">JS9--DOM</a>
           </li>
         
       </ul>

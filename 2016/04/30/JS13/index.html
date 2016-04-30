@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS13--表单脚本 | make everyday conut--Jocelyn Blag</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基础知识元素HTMLFormElment元素继承了HTMLElment。自己独特的属性和方法：
+acceptCharsetaction
+提交表单submit重置表单 reset表单字段，elments属性属性
+disabled
+form
+name
+readOnly
+tabIndex
+type
+value
+
+方法：
+focus()
+blur()
+属性：
+html5 autofocus属性
+
+表单支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS13--表单脚本">
+<meta property="og:url" content="http://yoursite.com/2016/04/30/JS13/index.html">
+<meta property="og:site_name" content="make everyday conut--Jocelyn Blag">
+<meta property="og:description" content="基础知识元素HTMLFormElment元素继承了HTMLElment。自己独特的属性和方法：
+acceptCharsetaction
+提交表单submit重置表单 reset表单字段，elments属性属性
+disabled
+form
+name
+readOnly
+tabIndex
+type
+value
+
+方法：
+focus()
+blur()
+属性：
+html5 autofocus属性
+
+表单支持">
+<meta property="og:updated_time" content="2016-04-30T13:18:17.729Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS13--表单脚本">
+<meta name="twitter:description" content="基础知识元素HTMLFormElment元素继承了HTMLElment。自己独特的属性和方法：
+acceptCharsetaction
+提交表单submit重置表单 reset表单字段，elments属性属性
+disabled
+form
+name
+readOnly
+tabIndex
+type
+value
+
+方法：
+focus()
+blur()
+属性：
+html5 autofocus属性
+
+表单支持">
+  
+    <link rel="alternative" href="/atom.xml" title="make everyday conut--Jocelyn Blag" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">make everyday conut--Jocelyn Blag</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Persistence, Patience, Hard Work.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS13" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/30/JS13/" class="article-date">
+  <time datetime="2016-04-30T13:14:52.000Z" itemprop="datePublished">2016-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS13--表单脚本
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基础知识">基础知识</h1><p><form>元素<br>HTMLFormElment元素继承了HTMLElment。<br>自己独特的属性和方法：</form></p>
+<p>acceptCharset<br>action</p>
+<h2 id="提交表单submit">提交表单submit</h2><h2 id="重置表单_reset">重置表单 reset</h2><h2 id="表单字段，elments属性">表单字段，elments属性</h2><pre><code>属性
+disabled
+<span class="tag">form</span>
+name
+readOnly
+tabIndex
+type
+value
+
+方法：
+<span class="function"><span class="title">focus</span><span class="params">()</span></span>
+<span class="function"><span class="title">blur</span><span class="params">()</span></span>
+属性：
+html5 autofocus属性
+
+表单支持的事件
+blur
+change
+focus
+</code></pre><h1 id="文本框脚本">文本框脚本</h1><ol>
+<li><code>&lt;input&gt;</code>元素的单行文本框 size特征，可以指定文本框中能够显示的字符数。value特征，可以设置文本框的初始值，maxlength特征用于指定文本框中的可接受的最大字符数。rows和cols特征指定大小。</li>
+<li><code>&lt;textarea&gt;</code>元素的多行文本框。</li>
+<li>value中保存着读取或设置的文本框的值。</li>
+<li>最好不使用DOM方法</li>
+</ol>
+<h2 id="选择文本">选择文本</h2><p>方法：<br>select()<br>对应一个select事件，在选择了文本框中的文本时，就会出发select事件</p>
+<h2 id="取得选择的文本">取得选择的文本</h2><p>属性：<br>selectionStart和selectionEnd</p>
+<h3 id="选择部分文本框">选择部分文本框</h3><p>setSelectionRange()方法</p>
+<h2 id="过滤文本">过滤文本</h2><ol>
+<li>阻止keypress的默认行为</li>
+<li>操作剪贴板<br> 6个事件：<br> beforecopy<br> copy<br> beforecut<br> cut<br> beforepaste<br> paste</li>
+</ol>
+<p>访问剪贴板的数据：<br>    使用clipboardData对象<br>    getData()<br>    setData()<br>    clearData()</p>
+<pre><code><span class="function"><span class="title">getClipboardText</span><span class="params">()</span></span>
+<span class="function"><span class="title">setClopboardText</span><span class="params">()</span></span>   
+</code></pre><h2 id="自动切换焦点">自动切换焦点</h2><p>tabForword() 比较maxlength特性</p>
+<h2 id="html5约束">html5约束</h2><h3 id="必填字段">必填字段</h3><p>required属性</p>
+<h3 id="其它输入类型">其它输入类型</h3><p>type=”email”<br>type=”url”<br>    number<br>    range<br>    datatime<br>    datetime-local<br>    date<br>    month<br>    week<br>    time<br>    min<br>    max<br>    step</p>
+<pre><code><span class="function"><span class="title">stepUp</span><span class="params">()</span></span>
+<span class="function"><span class="title">stepDown</span><span class="params">()</span></span>
+</code></pre><h3 id="输入模式">输入模式</h3><pre><code><span class="setting">pattern=<span class="value"><span class="string">""</span></span></span>
+</code></pre><h3 id="检测有效性_##">检测有效性 ##</h3><pre><code><span class="function"><span class="title">checkValidity</span><span class="params">()</span></span>根据前面的约束
+validity属性 告诉为什么有效或无效
+</code></pre><h3 id="禁用验证">禁用验证</h3><pre><code>novalidatae属性
+formnovaliddate属性
+</code></pre><h1 id="选择框脚本">选择框脚本</h1><pre><code>&lt;<span class="keyword">select</span>&gt;
+&lt;option&gt;
+选择框的<span class="keyword">value</span>属性由当前相中项决定
+在DOM中每个&lt;option&gt;元素都有一个HTMLOptionElement对象表示。
+<span class="built_in">index</span>
+label
+selected    
+text 选项的文本
+<span class="keyword">value</span> 选项的值
+
+change只有再选中了选择就会触发。
+</code></pre><p> 支持的方法：<br>add(newOption,relOption)<br>multiple<br>options<br>remove(index)<br>selectedindex<br>size</p>
+<h3 id="选择选项">选择选项</h3><ol>
+<li>对于只允许现在一项的选择框，选中项使用slectedIndex属性<br>可以获取或修改选择的项</li>
+<li><p>可以通过slected=true来现在某一项。</p>
+</li>
+<li><p>运行多选的选择框 selected属性，</p>
+</li>
+<li>getSelectedOptions</li>
+</ol>
+<h3 id="添加选项">添加选项</h3><ol>
+<li>使用DOM方式</li>
+<li>使用Option构造函数来创建新选项。Option(text,value(可选))</li>
+<li>使用选择框的add()方法。</li>
+<li>insertBefor()方法</li>
+</ol>
+<h3 id="移除选项">移除选项</h3><ol>
+<li>使用DOM方法removeChild()</li>
+<li>使用选择框的remove()方法</li>
+<li>将选择值设置为null</li>
+</ol>
+<h3 id="移动重排选择">移动重排选择</h3><p>使用DOM的appendChild()方法<br>inertBefore()<br>appendChild()</p>
+<h1 id="表达序列化">表达序列化</h1><p>表达发送给服务器过程：</p>
+<ol>
+<li>对表达字段的名称和值进行URL编码，使用和号&amp;分割</li>
+<li>不发送禁用的表达字段</li>
+<li>只发送勾选的复选框和单选框</li>
+<li>不发送type为reset和botton的按钮</li>
+<li>多选选择框的每个选中的值单独一个条目</li>
+<li>在单击提交按钮提交表单的情况下，也会发送提交按钮，否则不发送提交按钮。</li>
+<li><select>元素的值，就是选中的<option>元素的value特性的值。如果</option><option>元素没有value特性，则是</option><option>元素的文本值。</option></select></li>
+</ol>
+<h1 id="富文本编辑">富文本编辑</h1><ol>
+<li>iframe</li>
+<li>contnteditable属性</li>
+</ol>
+<h3 id="操作富文本">操作富文本</h3><p>document.execCommand()</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/30/JS13/" data-id="cinn6ded7001ie0hhl144t8k7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/30/JS20/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS20-JSON
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/30/JS11/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS11--DOM2和DOM3</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/04/30/JS20/">JS20-JSON</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/JS13/">JS13--表单脚本</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/JS11/">JS11--DOM2和DOM3</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/JS10/">JS10--DOM扩展</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/JS9/">JS9--DOM</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 jocelynthink<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
