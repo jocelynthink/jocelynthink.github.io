@@ -15,31 +15,16 @@
 
 
 
-<meta name="description" content="理解对象ECMA-262中把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数”。对象相当于一组没有特定顺序的值。
-对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。
-想象成散列表：无非是一组名值对，其中值可以是数据或函数。
-属性类型数据属性数据属性包含一个数据值的位置。在这个位置可以读取和写入值。
-
-[[Configurable]]:表示能否通过delete删除属性从而重">
+<meta name="description" content="面向对象的程序设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS-5面向对象的程序设计">
+<meta property="og:title" content="JS5-面向对象的程序设计">
 <meta property="og:url" content="http://yoursite.com/2016/04/21/JS5-面向对象的程序设计/index.html">
 <meta property="og:site_name" content="make everyday conut--Jocelyn Blag">
-<meta property="og:description" content="理解对象ECMA-262中把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数”。对象相当于一组没有特定顺序的值。
-对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。
-想象成散列表：无非是一组名值对，其中值可以是数据或函数。
-属性类型数据属性数据属性包含一个数据值的位置。在这个位置可以读取和写入值。
-
-[[Configurable]]:表示能否通过delete删除属性从而重">
-<meta property="og:updated_time" content="2016-04-21T14:51:37.481Z">
+<meta property="og:description" content="面向对象的程序设计">
+<meta property="og:updated_time" content="2016-06-13T13:23:48.251Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS-5面向对象的程序设计">
-<meta name="twitter:description" content="理解对象ECMA-262中把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数”。对象相当于一组没有特定顺序的值。
-对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。
-想象成散列表：无非是一组名值对，其中值可以是数据或函数。
-属性类型数据属性数据属性包含一个数据值的位置。在这个位置可以读取和写入值。
-
-[[Configurable]]:表示能否通过delete删除属性从而重">
+<meta name="twitter:title" content="JS5-面向对象的程序设计">
+<meta name="twitter:description" content="面向对象的程序设计">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -71,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JS-5面向对象的程序设计 | make everyday conut--Jocelyn Blag</title>
+<title>JS5-面向对象的程序设计 | make everyday conut--Jocelyn Blag</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -203,7 +188,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form/">form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL/">AVL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BT/">BT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bison/">Bison</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MFC/">MFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c语言/">c语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form/">form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/huffman/">huffman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix/">unix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
                     </div>
                 </section>
                 
@@ -301,7 +286,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JS-5面向对象的程序设计
+      JS5-面向对象的程序设计
     </h1>
   
 
@@ -309,8 +294,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -318,7 +311,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="理解对象">理解对象</h1><p>ECMA-262中把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数”。<br>对象相当于一组没有特定顺序的值。</p>
+        <h2 id="理解对象">理解对象</h2><p>ECMA-262中把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数”。<br>对象相当于一组没有特定顺序的值。</p>
 <p>对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。</p>
 <p>想象成散列表：无非是一组名值对，其中值可以是数据或函数。</p>
 <h3 id="属性类型">属性类型</h3><h4 id="数据属性">数据属性</h4><p>数据属性包含一个数据值的位置。在这个位置可以读取和写入值。</p>
@@ -398,8 +391,7 @@
 <span class="built_in">console</span>.log(descriptor.enumerable);<span class="comment">//false</span>
 <span class="built_in">console</span>.log(<span class="keyword">typeof</span> descriptor.get); <span class="comment">//function</span>
 </code></pre><h3 id="读取属性的特征">读取属性的特征</h3><p>Object.getOwnPropertyDesciptor()<br>参数： 属性所在的对象，要读取属性描述符的属性名称</p>
-<h2 id="创建对象">创建对象</h2><p>##1. Object构造函数 ##</p>
-<pre><code><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();
+<h2 id="创建对象">创建对象</h2><h3 id="Object构造函数">Object构造函数</h3><pre><code><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();
 person.name = <span class="string">"Nicholas"</span>
 person.age = <span class="number">29</span>;
 person.job = <span class="string">"software Enginner"</span>;
@@ -407,7 +399,7 @@ person.job = <span class="string">"software Enginner"</span>;
 person.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
     alert(<span class="keyword">this</span>.name);
 }
-</code></pre><h2 id="2-_对象字面值">2. 对象字面值</h2><pre><code><span class="keyword">var</span> person = {
+</code></pre><h3 id="对象字面值">对象字面值</h3><pre><code><span class="keyword">var</span> person = {
     name :<span class="string">"Nicholas"</span>,
     age:<span class="number">29</span>,
     job:<span class="string">"software Engineer"</span>,
@@ -416,7 +408,7 @@ person.sayName = <span class="function"><span class="keyword">function</span>(<s
         alert(<span class="keyword">this</span>.name):
     }
 }
-</code></pre><h2 id="3-_工厂模式">3. 工厂模式</h2><p>用函数来封装以特定接口穿件对象的细节</p>
+</code></pre><h3 id="工厂模式">工厂模式</h3><p>用函数来封装以特定接口穿件对象的细节</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name,age,job</span>)</span>{
     <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();
     o.name = name;
@@ -430,7 +422,7 @@ person.sayName = <span class="function"><span class="keyword">function</span>(<s
 
 <span class="keyword">var</span> person1 = createPerson(<span class="string">"Nicholas"</span>,<span class="number">29</span>,<span class="string">"software Engineer"</span>);
 </code></pre><p>优点：解决了创建多个相似对象的问题<br>缺点：没有解决对象识别的问题，即怎样知道一个对象的类型。</p>
-<h2 id="4-_构造函数模式">4. 构造函数模式</h2><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>{
+<h3 id="构造函数模式">构造函数模式</h3><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>{
     <span class="keyword">this</span>.name = name;
     <span class="keyword">this</span>.age = age;
     <span class="keyword">this</span>.job = job;
@@ -468,7 +460,7 @@ person.sayName = <span class="function"><span class="keyword">function</span>(<s
 <span class="built_in">console</span>.log(person1 <span class="keyword">instanceof</span> Person); <span class="comment">//true</span>
 <span class="built_in">console</span>.log(person1.sayName == person2.sayName);<span class="comment">//true</span>
 </code></pre><p>5.把sayName()对象定义到全局作用域中，虽然可以解决上述问题，但是问题：<br>    1）在全局作用域中定义的同一个对象实例上只能被某个对象调用，这样全局作用域有点名不副实;<br>    2）如果对象需要定义很多方法，那么就要定义很多全局函数，自定义的引用类型没有封装的意义了。</p>
-<h2 id="5-_原型模式">5. 原型模式</h2><h1 id="只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数原型对象。">只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数原型对象。</h1><h1 id="在默认情况下，所有的对象原型会自动创建一个constructor(构造函数)属性，这个属性是一个指向prototype属性所在函数的指针。">在默认情况下，所有的对象原型会自动创建一个constructor(构造函数)属性，这个属性是一个指向prototype属性所在函数的指针。</h1><h1 id="每个函数在调用时，都会取得两个特殊变量_:this_和arguments">每个函数在调用时，都会取得两个特殊变量 :this 和arguments</h1><p>每个函数都有一个prototype(原型属性)，是一个指针，指向一个对象。</p>
+<h3 id="原型模式">原型模式</h3><p><strong>只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数原型对象。</strong><br><strong>在默认情况下，所有的对象原型会自动创建一个constructor(构造函数)属性，这个属性是一个指向prototype属性所在函数的指针。</strong><br><strong> 每个函数在调用时，都会取得两个特殊变量 :this 和arguments </strong><br><strong>每个函数都有一个prototype(原型属性)，是一个指针，指向一个对象。</strong></p>
 <p>用途：包含可以由特定类型的所有实例共享的属性和方法。</p>
 <p>prototype是通过调用构造函数而创建的那个对象实例的原型对象。</p>
 <p>优点：可以让所有对象实例化它包含的属性和方法。</p>
@@ -578,7 +570,7 @@ Person.prototype = {
 <li>共享对于函数适合，但是对于基本的属性值就不适合了。</li>
 <li>实例一般都是要用于属于自己的全部属性的。</li>
 </ol>
-<h2 id="6-_组合使用构造函数模式和原型模式">6. 组合使用构造函数模式和原型模式</h2><p>构造函数模式用于定义实例属性</p>
+<h3 id="组合使用构造函数模式和原型模式">组合使用构造函数模式和原型模式</h3><p>构造函数模式用于定义实例属性</p>
 <p>原型模式用于定义方法和共享的属性。</p>
 <p>使用这种模式还可以像构造函数中传入参数。</p>
 <p>可以定义引用类型的模式。</p>
@@ -600,7 +592,7 @@ person1.friends.push(<span class="string">"Van"</span>);
 <span class="built_in">console</span>.log(person1.friends); <span class="comment">//["shelby", "court", "Van"]</span>
 <span class="built_in">console</span>.log(person2.friends); <span class="comment">//["shelby", "court"]</span>
 <span class="built_in">console</span>.log(person1.friends == person2.friends); <span class="comment">//false</span>
-</code></pre><h2 id="7-_动态原型模式">7. 动态原型模式</h2><p>可以通过检查某个应该存在的方法是否有效，来决定是否需要初始化原型。<br>使用动态原型，不能使用对象字面值重写原型。</p>
+</code></pre><h3 id="动态原型模式">动态原型模式</h3><p>可以通过检查某个应该存在的方法是否有效，来决定是否需要初始化原型。<br>使用动态原型，不能使用对象字面值重写原型。</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>{
     <span class="keyword">this</span>.name = name;
     <span class="keyword">this</span>.age = age;
@@ -614,7 +606,7 @@ person1.friends.push(<span class="string">"Van"</span>);
 }
 <span class="keyword">var</span> friend = <span class="keyword">new</span> Person(<span class="string">"Nicholas"</span>,<span class="number">29</span>,<span class="string">"Software Engineer"</span>);
 friend.sayName();
-</code></pre><h2 id="8-寄生构造函数模式">8.寄生构造函数模式</h2><p>创建一个函数，该函数的作用仅仅是封装创建对象的代码，然后在返回新创建的对象。</p>
+</code></pre><h3 id="寄生构造函数模式">寄生构造函数模式</h3><p>创建一个函数，该函数的作用仅仅是封装创建对象的代码，然后在返回新创建的对象。</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)
 </span>{
     <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();
@@ -633,7 +625,7 @@ friend.sayName();
 <li>适用情况：创建一个具有额外方法的特殊的对象。</li>
 <li>不能依赖instanceof操作符来确定对象类型</li>
 </ol>
-<h2 id="9-稳妥构造函数模式">9.稳妥构造函数模式</h2><p>稳妥对象：没有公共属性，而且其方法也不引用this的对象<br>适合情况：在一些安全的环境中，或者在防止防护局被其它应用程序改动时使用。</p>
+<h3 id="稳妥构造函数模式">稳妥构造函数模式</h3><p>稳妥对象：没有公共属性，而且其方法也不引用this的对象<br>适合情况：在一些安全的环境中，或者在防止防护局被其它应用程序改动时使用。</p>
 <p>与寄生模式不同处：</p>
 <ol>
 <li>新创建的实例方法不引用this</li>
@@ -649,7 +641,7 @@ o.sayName = <span class="function"><span class="keyword">function</span>(<span c
 </code></pre><p> }<br> var friend = Person(“Nicholas”,29,”Software Engineer”);<br> friend.sayName();</p>
 </li>
 </ol>
-<h1 id="继承">继承</h1><p>##1. 原型链 ##<br>利用原型链让一个引用类型继承另一个引用类型的属性和方法。</p>
+<h2 id="继承">继承</h2><h3 id="原型链">原型链</h3><p>利用原型链让一个引用类型继承另一个引用类型的属性和方法。</p>
 <p>每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都会包含一个指向原型对象的内部指针。</p>
 <pre><code>    <span class="comment">/*原型链 */</span>
 <span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>)</span>{
@@ -677,7 +669,7 @@ SubType.prototype.getSubValue = <span class="function"><span class="keyword">fun
 <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.isPrototypeOf(instance));<span class="comment">//true</span>
 <span class="built_in">console</span>.log(SubType.prototype.isPrototypeOf(instance));<span class="comment">//true</span>
 <span class="built_in">console</span>.log(SuperType.prototype.isPrototypeOf(instance));<span class="comment">//true</span>
-</code></pre><h3 id="确定原型和实例的关系">确定原型和实例的关系</h3><h4 id="instanceof操作符">instanceof操作符</h4><h4 id="isPrototypeOf()方法">isPrototypeOf()方法</h4><p><strong>注意：</strong></p>
+</code></pre><h4 id="确定原型和实例的关系">确定原型和实例的关系</h4><h4 id="instanceof操作符">instanceof操作符</h4><h4 id="isPrototypeOf()方法">isPrototypeOf()方法</h4><p><strong>注意：</strong></p>
 <p><strong>给原型添加方法的代码一定要放在替换原型的语句之后。</strong></p>
 <p><strong>使用原型链实现继承时，不能使用对象字面值创建原型方法。</strong></p>
 <p><strong>问题：</strong></p>
@@ -687,7 +679,7 @@ SubType.prototype.getSubValue = <span class="function"><span class="keyword">fun
 <li><p>在创建子类型的实例时，不能向超类型的构造函数传递参数。</p>
 </li>
 </ol>
-<h2 id="2-借用构造函数">2.借用构造函数</h2><p>在子类构造函数的内部调用超类构造函数。</p>
+<h3 id="借用构造函数">借用构造函数</h3><p>在子类构造函数的内部调用超类构造函数。</p>
 <pre><code><span class="comment">/*借用构造函数*/</span>
 <span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>)</span>{
     <span class="keyword">this</span>.color = [<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>];
@@ -703,7 +695,7 @@ instance1.color.push(<span class="string">"Black"</span>);
 <span class="built_in">console</span>.log(instance2.color);  <span class="comment">//["red", "blue", "green"]</span>
 </code></pre><p>优势：在子类构造函数中向超累构造函数传递参数。</p>
 <p>缺点：函数复用无从谈起。</p>
-<h2 id="3-_组合继承">3. 组合继承</h2><p>伪经典继承，将原型链和借用构造函数的技术组合到一起。</p>
+<h3 id="组合继承">组合继承</h3><p>伪经典继承，将原型链和借用构造函数的技术组合到一起。</p>
 <p>使用原型链实现对原型属性和方法的集成，而通过借用构造函数来实现对实例属性的集成。</p>
 <p>缺点：会两次调用超类型构造函数。一次在创建子对象原型的时候，另一次是在子类型构造函数内部。</p>
 <p>子类型会包含超类型对象的全部实例属性，但我们不得不在调用子类型构造函数时从写这些属性。</p>
@@ -740,7 +732,7 @@ instance1.color.push(<span class="string">"Black"</span>);
  <span class="built_in">console</span>.log(instance2);
  instance2.sayName();
  instance2.sayAge();
-</code></pre><h2 id="4-原型式继承">4.原型式继承</h2><p> 借助原型可以基于已有的对象创建新对象，同时还不想必因此创建自定义类型。</p>
+</code></pre><h3 id="原型式继承">原型式继承</h3><p> 借助原型可以基于已有的对象创建新对象，同时还不想必因此创建自定义类型。</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>{
     <span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>{}
     F.prototype = o;
@@ -784,7 +776,7 @@ instance1.color.push(<span class="string">"Black"</span>);
  <span class="built_in">console</span>.log(yetAnotherPerson);
  <span class="built_in">console</span>.log(person);
 </code></pre><p><strong>缺点：包含引用类型的属性始终都会共享相应的值。</strong></p>
-<h2 id="5-寄生式继承">5.寄生式继承</h2><p>创建一个仅用于封装继承过程的函数，该函数在内部以某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象。</p>
+<h3 id="寄生式继承">寄生式继承</h3><p>创建一个仅用于封装继承过程的函数，该函数在内部以某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象。</p>
 <pre><code><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span><span class="params">(original)</span></span>{
      <span class="keyword">var</span> <span class="keyword">clone</span>  = object(original);
      <span class="keyword">clone</span>.syahi = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
@@ -793,7 +785,7 @@ instance1.color.push(<span class="string">"Black"</span>);
      <span class="keyword">return</span> <span class="keyword">clone</span>;
  }
 </code></pre><p>为对象添加函数，不能复用而降低效率。</p>
-<h2 id="6-寄生组合式继承">6.寄生组合式继承</h2><p>由于组合模式的缺点，两次调用超类的构造函数。</p>
+<h3 id="寄生组合式继承">寄生组合式继承</h3><p>由于组合模式的缺点，两次调用超类的构造函数。</p>
 <p>寄生组合模式：借用构造函数来继承属性，通过原型链的混成形式来继承方法。</p>
 <p>基本思想：不必为指定子类型的原型而调用超类型的构造函数，我们所需要的就是超类型的一个副本而已。</p>
 <pre><code><span class="comment">/*寄生组合式模式*/</span>
@@ -844,12 +836,12 @@ instance1.color.push(<span class="string">"Black"</span>);
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/04/21/JS5-面向对象的程序设计/">JS-5面向对象的程序设计</a></p>
+        <p><span>本文标题:</span><a href="/2016/04/21/JS5-面向对象的程序设计/">JS5-面向对象的程序设计</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jocelynthink</a></p>
         <p><span>发布时间:</span>2016-04-21, 22:50:02</p>
-        <p><span>最后更新:</span>2016-04-21, 22:51:37</p>
+        <p><span>最后更新:</span>2016-06-13, 21:23:48</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/04/21/JS5-面向对象的程序设计/" title="JS-5面向对象的程序设计">http://yoursite.com/2016/04/21/JS5-面向对象的程序设计/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/21/JS5-面向对象的程序设计/" title="JS5-面向对象的程序设计">http://yoursite.com/2016/04/21/JS5-面向对象的程序设计/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/04/21/JS5-面向对象的程序设计/　　作者: jocelynthink" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -882,7 +874,7 @@ instance1.color.push(<span class="string">"Black"</span>);
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#理解对象"><span class="toc-number">1.</span> <span class="toc-text">理解对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性类型"><span class="toc-number">1.0.1.</span> <span class="toc-text">属性类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据属性"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">数据属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问器属性"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">访问器属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义多个属性"><span class="toc-number">1.0.2.</span> <span class="toc-text">定义多个属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取属性的特征"><span class="toc-number">1.0.3.</span> <span class="toc-text">读取属性的特征</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建对象"><span class="toc-number">1.1.</span> <span class="toc-text">创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-_对象字面值"><span class="toc-number">1.2.</span> <span class="toc-text">2. 对象字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-_工厂模式"><span class="toc-number">1.3.</span> <span class="toc-text">3. 工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-_构造函数模式"><span class="toc-number">1.4.</span> <span class="toc-text">4. 构造函数模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-_原型模式"><span class="toc-number">1.5.</span> <span class="toc-text">5. 原型模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数原型对象。"><span class="toc-number">2.</span> <span class="toc-text">只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数原型对象。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在默认情况下，所有的对象原型会自动创建一个constructor(构造函数)属性，这个属性是一个指向prototype属性所在函数的指针。"><span class="toc-number">3.</span> <span class="toc-text">在默认情况下，所有的对象原型会自动创建一个constructor(构造函数)属性，这个属性是一个指向prototype属性所在函数的指针。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#每个函数在调用时，都会取得两个特殊变量_:this_和arguments"><span class="toc-number">4.</span> <span class="toc-text">每个函数在调用时，都会取得两个特殊变量 :this 和arguments</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#constructor构造函数"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">constructor构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isPrototypeOf()_确定对象之间是否存在原型的关系"><span class="toc-number">4.0.0.2.</span> <span class="toc-text">isPrototypeOf() 确定对象之间是否存在原型的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-getPrototypeOf()_返回实际对象的原型"><span class="toc-number">4.0.0.3.</span> <span class="toc-text">Object.getPrototypeOf() 返回实际对象的原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hasOwnProperty()_检测一个属性是否属于实例中，还是存在与原型中。只在给定属性存在于对象实例中时，返回true"><span class="toc-number">4.0.0.4.</span> <span class="toc-text">hasOwnProperty() 检测一个属性是否属于实例中，还是存在与原型中。只在给定属性存在于对象实例中时，返回true</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getOwnPropertyDescriptor()_只能用于实例属性，要取得原型对象的描述符，必须直接在原型对象上调用getOwnPropertyDescriptor()方法"><span class="toc-number">4.0.0.5.</span> <span class="toc-text">getOwnPropertyDescriptor() 只能用于实例属性，要取得原型对象的描述符，必须直接在原型对象上调用getOwnPropertyDescriptor()方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型与in操作符"><span class="toc-number">4.0.1.</span> <span class="toc-text">原型与in操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#in_操作符"><span class="toc-number">4.0.1.1.</span> <span class="toc-text">in 操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-keys()"><span class="toc-number">4.0.1.2.</span> <span class="toc-text">Object.keys()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-getOwnPropertyNames()"><span class="toc-number">4.0.1.3.</span> <span class="toc-text">Object.getOwnPropertyNames()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更简单的原型语法"><span class="toc-number">4.0.2.</span> <span class="toc-text">更简单的原型语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原型链式动态"><span class="toc-number">4.0.2.1.</span> <span class="toc-text">原型链式动态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元素对象的原型"><span class="toc-number">4.0.2.2.</span> <span class="toc-text">元素对象的原型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型对象的问题"><span class="toc-number">4.0.3.</span> <span class="toc-text">原型对象的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-_组合使用构造函数模式和原型模式"><span class="toc-number">4.1.</span> <span class="toc-text">6. 组合使用构造函数模式和原型模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-_动态原型模式"><span class="toc-number">4.2.</span> <span class="toc-text">7. 动态原型模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-寄生构造函数模式"><span class="toc-number">4.3.</span> <span class="toc-text">8.寄生构造函数模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-稳妥构造函数模式"><span class="toc-number">4.4.</span> <span class="toc-text">9.稳妥构造函数模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#继承"><span class="toc-number">5.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#确定原型和实例的关系"><span class="toc-number">5.0.1.</span> <span class="toc-text">确定原型和实例的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#instanceof操作符"><span class="toc-number">5.0.1.1.</span> <span class="toc-text">instanceof操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isPrototypeOf()方法"><span class="toc-number">5.0.1.2.</span> <span class="toc-text">isPrototypeOf()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-借用构造函数"><span class="toc-number">5.1.</span> <span class="toc-text">2.借用构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-_组合继承"><span class="toc-number">5.2.</span> <span class="toc-text">3. 组合继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-原型式继承"><span class="toc-number">5.3.</span> <span class="toc-text">4.原型式继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-寄生式继承"><span class="toc-number">5.4.</span> <span class="toc-text">5.寄生式继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-寄生组合式继承"><span class="toc-number">5.5.</span> <span class="toc-text">6.寄生组合式继承</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#理解对象"><span class="toc-number">1.</span> <span class="toc-text">理解对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性类型"><span class="toc-number">1.1.</span> <span class="toc-text">属性类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据属性"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问器属性"><span class="toc-number">1.1.2.</span> <span class="toc-text">访问器属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义多个属性"><span class="toc-number">1.2.</span> <span class="toc-text">定义多个属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取属性的特征"><span class="toc-number">1.3.</span> <span class="toc-text">读取属性的特征</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建对象"><span class="toc-number">2.</span> <span class="toc-text">创建对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Object构造函数"><span class="toc-number">2.1.</span> <span class="toc-text">Object构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象字面值"><span class="toc-number">2.2.</span> <span class="toc-text">对象字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂模式"><span class="toc-number">2.3.</span> <span class="toc-text">工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数模式"><span class="toc-number">2.4.</span> <span class="toc-text">构造函数模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型模式"><span class="toc-number">2.5.</span> <span class="toc-text">原型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#constructor构造函数"><span class="toc-number">2.5.1.</span> <span class="toc-text">constructor构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isPrototypeOf()_确定对象之间是否存在原型的关系"><span class="toc-number">2.5.2.</span> <span class="toc-text">isPrototypeOf() 确定对象之间是否存在原型的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-getPrototypeOf()_返回实际对象的原型"><span class="toc-number">2.5.3.</span> <span class="toc-text">Object.getPrototypeOf() 返回实际对象的原型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hasOwnProperty()_检测一个属性是否属于实例中，还是存在与原型中。只在给定属性存在于对象实例中时，返回true"><span class="toc-number">2.5.4.</span> <span class="toc-text">hasOwnProperty() 检测一个属性是否属于实例中，还是存在与原型中。只在给定属性存在于对象实例中时，返回true</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getOwnPropertyDescriptor()_只能用于实例属性，要取得原型对象的描述符，必须直接在原型对象上调用getOwnPropertyDescriptor()方法"><span class="toc-number">2.5.5.</span> <span class="toc-text">getOwnPropertyDescriptor() 只能用于实例属性，要取得原型对象的描述符，必须直接在原型对象上调用getOwnPropertyDescriptor()方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型与in操作符"><span class="toc-number">2.6.</span> <span class="toc-text">原型与in操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#in_操作符"><span class="toc-number">2.6.1.</span> <span class="toc-text">in 操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-keys()"><span class="toc-number">2.6.2.</span> <span class="toc-text">Object.keys()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-getOwnPropertyNames()"><span class="toc-number">2.6.3.</span> <span class="toc-text">Object.getOwnPropertyNames()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更简单的原型语法"><span class="toc-number">2.7.</span> <span class="toc-text">更简单的原型语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原型链式动态"><span class="toc-number">2.7.1.</span> <span class="toc-text">原型链式动态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元素对象的原型"><span class="toc-number">2.7.2.</span> <span class="toc-text">元素对象的原型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型对象的问题"><span class="toc-number">2.8.</span> <span class="toc-text">原型对象的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合使用构造函数模式和原型模式"><span class="toc-number">2.9.</span> <span class="toc-text">组合使用构造函数模式和原型模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态原型模式"><span class="toc-number">2.10.</span> <span class="toc-text">动态原型模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寄生构造函数模式"><span class="toc-number">2.11.</span> <span class="toc-text">寄生构造函数模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#稳妥构造函数模式"><span class="toc-number">2.12.</span> <span class="toc-text">稳妥构造函数模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#继承"><span class="toc-number">3.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原型链"><span class="toc-number">3.1.</span> <span class="toc-text">原型链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#确定原型和实例的关系"><span class="toc-number">3.1.1.</span> <span class="toc-text">确定原型和实例的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#instanceof操作符"><span class="toc-number">3.1.2.</span> <span class="toc-text">instanceof操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isPrototypeOf()方法"><span class="toc-number">3.1.3.</span> <span class="toc-text">isPrototypeOf()方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#借用构造函数"><span class="toc-number">3.2.</span> <span class="toc-text">借用构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合继承"><span class="toc-number">3.3.</span> <span class="toc-text">组合继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型式继承"><span class="toc-number">3.4.</span> <span class="toc-text">原型式继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寄生式继承"><span class="toc-number">3.5.</span> <span class="toc-text">寄生式继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寄生组合式继承"><span class="toc-number">3.6.</span> <span class="toc-text">寄生组合式继承</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn,
@@ -913,7 +905,7 @@ instance1.color.push(<span class="string">"Black"</span>);
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JS-5面向对象的程序设计　| make everyday conut--Jocelyn Blag　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JS5-面向对象的程序设计　| make everyday conut--Jocelyn Blag　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -929,7 +921,7 @@ instance1.color.push(<span class="string">"Black"</span>);
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" data-thread-key="2016/04/21/JS5-面向对象的程序设计/" data-title="JS-5面向对象的程序设计" data-url="http://yoursite.com/2016/04/21/JS5-面向对象的程序设计/"></div>
+    <div class="ds-thread" data-thread-key="2016/04/21/JS5-面向对象的程序设计/" data-title="JS5-面向对象的程序设计" data-url="http://yoursite.com/2016/04/21/JS5-面向对象的程序设计/"></div>
     <script>
         var duoshuoQuery = {short_name:"jocelyn"};
         var loadComment = function(){
@@ -966,7 +958,7 @@ instance1.color.push(<span class="string">"Black"</span>);
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/JS22-javascript高级程序设计代码/">JS22-javascript高级程序设计代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/JS21-Ajax与Comet/">JS21-Ajax与Comet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS20-JSON/">JS20-JSON</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS13-表单脚本/">JS13--表单脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS11-DOM2-DOM3/">JS11--DOM2和DOM3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS10-DOM扩展/">JS10--DOM扩展</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS9-DOM/">JS9--DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS8-客户端能力检测/">JS8--客户端能力检测</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS7-BOM/">JS7-BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS6-函数表达式/">JS-6函数表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS5-面向对象的程序设计/">JS-5面向对象的程序设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/19/JS4-引用对象/">JS4-引用对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS3-笔记/">JS3-引用类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS2-变量、作用域和内存问题/">JS2-变量、作用和内存问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS1-基本概念/">JS1-基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS0-简单介绍/">JS0-简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/17/js进阶篇2/">js进阶篇2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/14/js进阶篇1/">js进阶篇1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/js基础篇/">js基础篇1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/字符串操作/">字符串操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/MFC常见问题/">MFC常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/17/c-继承多态/">c++继承多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/17/c语言指针/">c语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/10/继承-虚函数/">继承-虚函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/03/图的遍历-java实现/">图的遍历--java实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/02/nginx服务器的搭建/">nginx服务器的搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/17/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/08/约瑟夫环/">约瑟夫环</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/08/汉诺塔问题/">汉诺塔问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/06/B树实现/">B树实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/06/动态插入-AVL树/">动态插入-AVL数</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/迷宫问题/">迷宫问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/动态查找-AVL树/">动态查找-AVL树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/04/排序/">排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/03/动态查找-BST树/">动态查找-BST树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/静态查找/">静态查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-最短路径-Floyed/">图-最短路径-Floyed</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-最短路径-Dijkstra/">图-最短路径-Dijkstra</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-有向无环图的关键路径/">图-有向无环图的关键路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/01/图-有向无环图的拓扑排序/">图--有向无环图的拓扑排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/01/Flex-Bison/">Flex Bison</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/图-关节点和重连通分量/">图--关节点和重连通分量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/图-最小生成树-Kruskal算法/">图--最小生成树--Kruskal算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-最小生成树-Prim算法/">图--最小生成树-PRIM算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-无向图的连通分量和生成树实现/">图--无向图的连通分量和生成树实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-有向图的强连通分量实现/">图--有向图的强连通分量实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/26/图-邻接表深度广度遍历实现/">图--邻接表深度广度遍历实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/图/">图--邻接矩阵实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/二叉树-借助于队列的层次遍历版本实现/">二叉树-借助于队列的层次遍历版本实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/队列/">队列实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/24/线索二叉树/">线索二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/二叉树-借助栈的非递归版本实现/">二叉树--借助栈的非递归版本实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/栈实现/">栈实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/二叉树/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/赫夫曼树/">赫夫曼树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/12/unix-4/">unix-4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/05/unix-3/">unix-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/01/unix-2/">unix-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/28/unix-1/">unix-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/makedown/">makedown</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/22/github/">github</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/JS22-javascript高级程序设计代码/">JS22-javascript高级程序设计代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/JS21-Ajax与Comet/">JS21-Ajax与Comet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS20-JSON/">JS20-JSON</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS13-表单脚本/">JS13--表单脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS11-DOM2-DOM3/">JS11--DOM2和DOM3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS10-DOM扩展/">JS10--DOM扩展</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS9-DOM/">JS9--DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS8-客户端能力检测/">JS8--客户端能力检测</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS7-BOM/">JS7-BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS6-函数表达式/">JS-6函数表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS5-面向对象的程序设计/">JS5-面向对象的程序设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/19/JS4-引用对象/">JS4-引用对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS3-笔记/">JS3-引用类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS2-变量、作用域和内存问题/">JS2-变量、作用和内存问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS1-基本概念/">JS1-基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS0-简单介绍/">JS0-简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/17/js进阶篇2/">js进阶篇2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/14/js进阶篇1/">js进阶篇1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/js基础篇/">js基础篇1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/字符串操作/">字符串操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/MFC常见问题/">MFC常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/17/c-继承多态/">c++继承多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/17/c语言指针/">c语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/10/继承-虚函数/">继承-虚函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/03/图的遍历-java实现/">图的遍历--java实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/02/nginx服务器的搭建/">nginx服务器的搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/17/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/08/约瑟夫环/">约瑟夫环</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/08/汉诺塔问题/">汉诺塔问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/06/B树实现/">B树实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/06/动态插入-AVL树/">动态插入-AVL数</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/迷宫问题/">迷宫问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/动态查找-AVL树/">动态查找-AVL树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/04/排序/">排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/03/动态查找-BST树/">动态查找-BST树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/静态查找/">静态查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-最短路径-Floyed/">图-最短路径-Floyed</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-最短路径-Dijkstra/">图-最短路径-Dijkstra</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-有向无环图的关键路径/">图-有向无环图的关键路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/01/图-有向无环图的拓扑排序/">图--有向无环图的拓扑排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/01/Flex-Bison/">Flex Bison</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/图-关节点和重连通分量/">图--关节点和重连通分量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/图-最小生成树-Kruskal算法/">图--最小生成树--Kruskal算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-最小生成树-Prim算法/">图--最小生成树-PRIM算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-无向图的连通分量和生成树实现/">图--无向图的连通分量和生成树实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-有向图的强连通分量实现/">图--有向图的强连通分量实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/26/图-邻接表深度广度遍历实现/">图--邻接表深度广度遍历实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/图/">图--邻接矩阵实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/二叉树-借助于队列的层次遍历版本实现/">二叉树-借助于队列的层次遍历版本实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/队列/">队列实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/24/线索二叉树/">线索二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/二叉树-借助栈的非递归版本实现/">二叉树--借助栈的非递归版本实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/栈实现/">栈实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/二叉树/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/赫夫曼树/">赫夫曼树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/12/unix-4/">unix-4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/05/unix-3/">unix-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/01/unix-2/">unix-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/28/unix-1/">unix-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/makedown/">makedown</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/22/github/">github</a></li></ul>
 
 
 

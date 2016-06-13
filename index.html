@@ -192,7 +192,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form/">form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVL/">AVL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BT/">BT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bison/">Bison</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MFC/">MFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c语言/">c语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/form/">form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/huffman/">huffman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix/">unix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图/">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
                     </div>
                 </section>
                 
@@ -374,11 +374,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              
-                <p><Excerpt in index | 首页摘要><br>Ajax : Asynchronous JavaScript + XML</p>
-<ul>
-<li>
-              
+              Ajax : Asynchronous JavaScript + XML
           
       
      
@@ -446,36 +442,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="JSON">JSON</h1><p><strong>JSON:JavaScript Object Notation，javascript对象表示法</strong></p>
-<p>JSON可以直接传递给eval()</p>
-<p>JSON是javascript语法的子集。</p>
-<h2 id="语法">语法</h2><p>三种类型的值：</p>
-<ol>
-<li><strong>简单值</strong>：字符串、数值、布尔值和null；不支持undefined</li>
-<li><strong>对象</strong>：表示的是一组无序的键值对儿。每个键值对儿中的值可以是简单值，也可以是复杂数据类型的值。</li>
-<li><strong>数组</strong>：表示一组有序的值的列表，可以通过数值索引来访问其中的值。数组的值可以是任意类型的—简单值，对象或数组。</li>
-</ol>
-<p>JOSN是一种表示结构化数据的格式。</p>
-<p>注意：<br><strong>JSON字符串必须使用双引号；</strong></p>
-<p><strong>JSON的属性名也要加分号</strong></p>
-<h2 id="对象">对象</h2><p>JSON中对象：</p>
-<p>JSON中要求给属性加引号：<br>{<br>    “name”：”Nicholas”,<br>    “age”:29<br>}</p>
-<p>和javascript对象比较：</p>
-<ol>
-<li>没有变量声明</li>
-<li>没有末尾的分号</li>
-</ol>
-<p>属性的值可以简单之，也可以是复杂数据类型</p>
-<h2 id="数组">数组</h2><p>[25,”hi”,true]</p>
-<h2 id="解析与序列化">解析与序列化</h2><p>可以吧JSON数据结构解析为有用的javascript对象。</p>
-<p>序列号JSON</p>
-<ol>
-<li>JSON.stringify()</li>
-<li>toJSON()对象的方法</li>
-<li>parser()</li>
-</ol>
-<p>shim : <a href="https://github.com/douglascrockford/JSON-js" target="_blank" rel="external">https://github.com/douglascrockford/JSON-js</a></p>
-
+              JSON:JavaScript Object Notation，javascript对象表示法
+          
       
      
     </div>
@@ -493,6 +461,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/">json</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2016/04/30/JS20-JSON/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -538,11 +510,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              
-                <p><Excerpt in index | 首页摘要><br>表单是由<code>&lt;form&gt;</code>元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。</p>
-<ul>
-<li>
-              
+              表单是由form元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。
           
       
      
@@ -610,126 +578,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="DOM2级核心和_DOM2级视图_以及_DOM2级HTML_的变化">DOM2级核心和 DOM2级视图 以及 DOM2级HTML 的变化</h1><h2 id="1-针对XML命名空间的变化">1.针对XML命名空间的变化</h2><h2 id="2-其它">2.其它</h2><h3 id="2-1DcoumentType">2.1DcoumentType</h3><p>新增方法<br>    文档声明中的信息<br>    publicId<br>    systemId<br>    internalSubset</p>
-<h3 id="2-2_Document类型的变化">2.2 Document类型的变化</h3><pre><code><span class="function"><span class="title">importNode</span><span class="params">()</span></span> 文档中取得一个节点，然后倒入到另一个文档，使其成为这个文档的一部分。
-
- DOM2级核心：
-document.implementation对象 新增 
-    <span class="function"><span class="title">createDcoumentType</span><span class="params">()</span></span>  创建一个新的节点，只在创建一个新的文档类型是有用
-    <span class="function"><span class="title">createDocument</span><span class="params">()</span></span>     创建新文档
-
-DOM2级HTML：
-document<span class="class">.implementation</span>
-    <span class="function"><span class="title">createHTMLDocument</span><span class="params">()</span></span>  用于创建一个完整的HTML文档
-
-DOM2级视图：
-defaultView属性，保存着一个指针，指向拥有给定文档的窗口
-</code></pre><h3 id="2-3Node类型的变化">2.3Node类型的变化</h3><pre><code><span class="function"><span class="title">isSupported</span><span class="params">()</span></span>方法    用于确定当前节点具有什么能力
-特性名和版本号
-
-DOM3级,元素比较方法：
-相等：两个节点是相同的类型，具有相等的属性
-相同：两个节点引用的是同一个对象。
-<span class="function"><span class="title">isSameNode</span><span class="params">()</span></span>
-<span class="function"><span class="title">isEqualNode</span><span class="params">()</span></span>
-
-DOM3级: 为DOM添加格外数据的新方法
-<span class="function"><span class="title">getUserData</span><span class="params">()</span></span>
-<span class="function"><span class="title">setUserData</span><span class="params">()</span></span>
-</code></pre><h3 id="2-4框架的变化">2.4框架的变化</h3><pre><code> 框架 HTMLFrameElement
-内嵌框架    HTMLIFrameElement
-新的属性：contextDocument指向框架内容的文档对象。
-</code></pre><h1 id="DOM_2级样式">DOM 2级样式</h1><h2 id="1-访问元素的样式–style对象">1.访问元素的样式–style对象</h2><ol>
-<li>style对象是CSSStyleDeclaration的实例</li>
-<li>对于使用段划线的CSS属性名，必须将其转换为驼峰式，才能通过JavaScript访问。</li>
-<li>float是javascript的保留字，所有不能用在属性名，将其转换成cssFloat，sytleFloat(IE)</li>
-<li>标准模式下，所有度量值都必须指定一个度量单位。</li>
-<li><p>DOM2级支持的样式</p>
-<p> cssText      style特征中css代码<br> length        css属性的个数<br> parentRule    CSS信息的CSSRule对象<br> getPropertyCSSValue(propertyName)     返回包含给定属性的CSSValue对象<br>  getPropertyPriority(propertyName)     返回是否使用了！important<br> getPropertyValue(propertyName)        返回给定属性的字符串值<br> item(inexe)            返回给定位置的CSS属性名称<br> removeProperty(propretyName)    从样式中删除给定属性<br> setProperty(propertyName,value,priority)：将给定属性设置为相应的值。</p>
-</li>
-<li><p>计算样式<br> document.defaultView<br> 方法<br> getComputedStyle()方法 返回CSSStyleDeclaration对象<br>所有计算样式都是只读的。不能修改计算后样式对象中的CSS属性。</p>
-</li>
-</ol>
-<h2 id="2-操作样式表—CSSStyleSheet类型">2.操作样式表—CSSStyleSheet类型</h2><p>包含通过<code>&lt;link&gt;</code>元素包含的样式表和<code>&lt;style&gt;</code>元素中定义的样式表。<br>这个两个元素分别由HTMLLinkElement和HTMLStyleElement类型表示。</p>
-<p>CSSStyleSheet类型更为通用，CSSStyleSheet是一套只读接口，有一个属性除外。</p>
-<p>CSSStyleSheet继承自StyleSheet(一个基础接口来定义非CSS样式表)<br>其StyleSheet的属性：</p>
-<pre><code>disabled：表示样式是否被禁用
-href
-media
-ownerNode
-parentStyleSheet
-<span class="built_in">title</span>
-<span class="built_in">type</span>
-</code></pre><p>除了disabled，其它样式都是只读的。</p>
-<p>CSSStyleSheet特有的：</p>
-<pre><code>cssRules
-ownerRule
-<span class="function"><span class="title">deleteRule</span><span class="params">(index)</span></span>
-<span class="function"><span class="title">insertRule</span><span class="params">(rule,index)</span></span>
-</code></pre><p>应用于文档的所有样式表都是通过document.styleSheets集合来表示的。</p>
-<h4 id="CSS规则">CSS规则</h4><p>cssText<br>parentRule<br>parentSytleSheet<br>style<br>type</p>
-<h4 id="创建规则">创建规则</h4><p>isertRule()</p>
-<p>addRule()(IE)</p>
-<h4 id="删除规则">删除规则</h4><p>deleteRule()</p>
-<p>removeRule()(IE)</p>
-<h1 id="DOM_2级_遍历">DOM 2级 遍历</h1><h3 id="偏移量">偏移量</h3><ol>
-<li>offsetHeight     元素在垂直方法上占用的空间大小</li>
-<li>offsetWidth        元素在水平方法上占用的空间大小</li>
-<li>offsetLeft        元素的左外边距包含至左内边框之间的像素距离</li>
-<li>offsetTop        元素的右外边距包含至上内边框之间的像素距离</li>
-<li>offsetParent</li>
-</ol>
-<h3 id="客户区大小">客户区大小</h3><p>元素内容及其内边距所占据的空间大小。</p>
-<p>clientWidth 元素内容区宽度加左右内边距宽度<br>clientHeight    元素内容区高度加上上下内边距宽度</p>
-<h3 id="滚动大小">滚动大小</h3><p>包含滚动内容的元素的大小。</p>
-<p>scrollHeight<br>scrollWidth<br>scrollLeft<br>scrollTop</p>
-<h1 id="DOM_2级_遍历-1">DOM 2级 遍历</h1><p>NodeIterator<br>TreeWalker<br>对于给定的起点对DOM结构执行深度优先的遍历操作。</p>
-<h3 id="NodeIterator">NodeIterator</h3><ol>
-<li>使用document.createNodeIterator()方法创建实例</li>
-</ol>
-<p>参数：<br>    root<br>    whatToShow<br>    filter<br>    entityReferExpansion</p>
-<p>whatToShow掩码位<br>NodeFilter是一个抽象类型，不能直接创建其实例<br>NodeFilter中的类型定义</p>
-<ol>
-<li>NodeFilter.SHOW_ALL</li>
-<li>NodeFilter.SHOW_ELEMENT</li>
-<li>NodeFilter.SHOW_ATTRIBUTE</li>
-<li>NodeFilter.SHOW_CDATA_SECTION</li>
-<li>NodeFilter.SHOW_ENTITY_REFERENCE</li>
-<li>NodeFilter.SHOW_ENTITY</li>
-<li>NodeFilter.SHOW_PROCESSING_INSTRAUCTION</li>
-<li>NodeFilter.SHOW_COMMENT</li>
-<li>NodeFilter.SHOW_DOCUMENT</li>
-<li>NodeFilter.SHOW_DOCUMENT_TYPE</li>
-<li>NodeFilter.SHOW_DOCUMENT_FRAGMENT</li>
-<li>NodeFilter.SHOW_NOTATOIN</li>
-</ol>
-<p>NodeFilter中的方法<br>acceptNode()</p>
-<p>过滤器的返回值：</p>
-<ol>
-<li>NodeFilter.FILTER_ACCEPT 应该访问给定的节点</li>
-<li>NodeFilter.FILTER_SKIP    不应该访问给定的节点<br>NodeIterator方法</li>
-<li>nextNode()</li>
-<li>previousNode()</li>
-</ol>
-<h3 id="TreeWalker">TreeWalker</h3><p>更高级版本<br>创建 document.createTreeWalker()<br>除了nextNode()和previousNode()外，提供的方法</p>
-<pre><code><span class="function"><span class="title">parentNode</span><span class="params">()</span></span>
-<span class="function"><span class="title">firstChild</span><span class="params">()</span></span>
-<span class="function"><span class="title">lastChild</span><span class="params">()</span></span>
-<span class="function"><span class="title">nextSibling</span><span class="params">()</span></span>
-<span class="function"><span class="title">previousSibling</span><span class="params">()</span></span>
-</code></pre><p>过滤器的返回值：<br>NodeFilter.FILTER_ACCEPT  应该访问给定的节点<br>NodeFilter.FILTER_SKIP        跳过给定的节点继续前进到子树中的下一个节点。<br>NodeFilter.FILTER_REJECT    跳过相应的节点以及该节点的整个子树。</p>
-<p>属性：<br>currentNode任何遍历方法在上一次遍历中返回的节点。可以修改遍历继续进行的起点</p>
-<h1 id="DOM_2级_范围">DOM 2级　范围</h1><p>范围可以选择文档中的一个区域，而不必考虑节点的界限。</p>
-<p>document.createRange()</p>
-<p>属性提供了当前范围在文档中的位置</p>
-<ol>
-<li>startContainer</li>
-<li>startOffset</li>
-<li>endContainer</li>
-<li>commonAncestorContainer</li>
-</ol>
-<p>方法<br>    selectNode()<br>    selectNodeContents()</p>
-
+              DOM2和DOM3在DOM1的基础上引入了更多的交互能力，也支持了更好高级的XML特征
+          
       
      
     </div>
@@ -747,6 +597,10 @@ ownerRule
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2016/04/30/JS11-DOM2-DOM3/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -792,60 +646,8 @@ ownerRule
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="DOM扩展">DOM扩展</h1><p>两个方法：</p>
-<ol>
-<li>Selectors API(选择器API)</li>
-<li>HTML5</li>
-</ol>
-<h2 id="选择符API">选择符API</h2><p>Selectors API :让浏览器支持原生的CSS查询。</p>
-<h3 id="1-querySelector()">1.querySelector()</h3><p>Level1 中 接受一个CSS选择符，返回与该模式匹配的第一个元素，如果没有找到返回null。<br>可以通过Document、Element访问</p>
-<h3 id="2-querySelectorAll()">2.querySelectorAll()</h3><p>Level1中 接受一个CSS选择符，返回与该模式匹配的所有元素，一个NodeList实例，如果没有找到返回null。</p>
-<p>底层类似于一组元素的快照。<br> 可以使用item()或者方括号</p>
-<p>可以通过Document、Element访问</p>
-<h3 id="matchesSelector()方法">matchesSelector()方法</h3><p>Level 2 中新增的<br>接受一个CSS选择符，如果调用元素与该元素匹配，返回true，否则，返回false。</p>
-<h2 id="元素遍历">元素遍历</h2><p>Element Traversal API为DOM元素添加了一下5个属性：<br>可以不用担心空白节点。</p>
-<ol>
-<li>childElementCount</li>
-<li>firstElementChild</li>
-<li>lastElementChild</li>
-<li>previousElementSibling</li>
-<li>nextEementSibling</li>
-</ol>
-<h1 id="HTML5">HTML5</h1><h2 id="1-getElementsByClassName()">1.getElementsByClassName()</h2><p>接受一个包含多个类名的字符串，返回带有指定类的所有元素的NodeList。类名的先后顺序不重要。</p>
-<h2 id="2-_classList属性">2. classList属性</h2><p>在操作类名是，需要通过className属性添加、删除和替换类型。</p>
-<p>是新集合类型DOMTokenList的实例。</p>
-<p>方法：<br>add(value)<br>contains(value)<br>remove(value)<br>toggle(value)</p>
-<h2 id="3-_焦点管理">3. 焦点管理</h2><p>document.activeElement属性始终保存DOM中当前焦点的元素。</p>
-<p>document.hasDocus()方法用于确定文档是否获取了焦点。</p>
-<h3 id="4-HTMLDocuement的变化">4.HTMLDocuement的变化</h3><ol>
-<li><p>readyState属性–&gt;实现一个文档是否已经加载完毕</p>
-<ul>
-<li>loading：正则加载文档</li>
-<li>complete：已经加载完文档</li>
-</ul>
-</li>
-<li><p>兼容模式 compatMode属性 告诉开发人员浏览器使用了哪种渲染模式。</p>
-<ul>
-<li>CSS1Compat：标准模式</li>
-<li>BackCompat：混杂模式</li>
-</ul>
-</li>
-<li><p>head属性</p>
-<ul>
-<li>引用head元素<h3 id="5-字符集属性">5.字符集属性</h3></li>
-</ul>
-</li>
-<li>charset属性：表示文档中实际使用的字符集，也可以用来定义新字符集</li>
-<li>defaultCharset：表示根据默认浏览器即操作系统的设计，当前文档默认的字符集属性是什么。</li>
-</ol>
-<h3 id="6-自动以数据属性">6.自动以数据属性</h3><ol>
-<li>要加前缀data-</li>
-<li>通过dataset属性来访问自定义属性的值。</li>
-<li>dataset属性是DOMStringMap的一个实例。名值对。</li>
-</ol>
-<h3 id="7-插入标记">7.插入标记</h3><h4 id="1-_innerHTML属性">1. innerHTML属性</h4><h4 id="2-_outerHTML属性">2. outerHTML属性</h4><h4 id="3-_insertAdjacentHTML()方法">3. insertAdjacentHTML()方法</h4><p>第一个元素：<br>beforebegin<br>afterbegin<br>beforeend<br>afterend</p>
-<h4 id="4-内存与性能问题">4.内存与性能问题</h4><h3 id="8-scrollIntoView()方法">8.scrollIntoView()方法</h3><p>在所有HTML元素上调用，通过滚动浏览器窗口或某个容器元素，调用元素就可以出现在视口中。</p>
-<h1 id="专有扩展">专有扩展</h1>
+              DOM节点类型学习
+          
       
      
     </div>
@@ -853,8 +655,20 @@ ownerRule
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/04/30/JS10-DOM扩展/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -900,252 +714,8 @@ ownerRule
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="节点层次">节点层次</h1><h2 id="1-_Node类型">1. Node类型</h2><p>所有节点类型都继承自Node</p>
-<p>节点类型：</p>
-<ol>
-<li>元素节点</li>
-<li>文本节点</li>
-<li>属性节点</li>
-<li><h3 id="节点类型">节点类型</h3> 属性            说明<br> nodeType    表明节点类型 Node类型中定义了12个数值常量表示节点类型<br> nodeName    保存元素的标签名<br> nodeValue    </li>
-</ol>
-<h3 id="节点关系">节点关系</h3><p>NodeList对象，一种类数组对象，用于保存一组有序的节点。<br>基于DOM结构动态执行查询的结果</p>
-<pre><code>属性            说明
-childNodes    返回NodeList对象 访问的话，可以用方括号[num]和<span class="function"><span class="title">item</span><span class="params">(num)</span></span>
-parentNode    指向文档树中的父节点
-previousSibling    
-nextSibling
-firstChild
-lastChild        
-ownerDocument    指向整个文档的文档节点
-方法
-<span class="function"><span class="title">hasChildNodes</span><span class="params">()</span></span>    在节点包含一或多个子节点的情况下返回true
-</code></pre><h3 id="节点操作">节点操作</h3><ol>
-<li><p>插入</p>
-<pre><code>方法
-<span class="function"><span class="title">appendChild</span><span class="params">()</span></span>    用于向childNodes列表的末尾添加一个节点，返回新增节点
-<span class="function"><span class="title">insertBefore</span><span class="params">()</span></span>  参数(要插入的节点，参照节点)
-</code></pre><p>任何DOM节点不能同时出现在文档的多个位置上。<br>如果传入的节点已经试文档的一部分，那结果就是该节点从原来的位置转移到新位置。</p>
-</li>
-<li><p>移除</p>
-<pre><code>方法
-<span class="function"><span class="title">replaceChild</span><span class="params">()</span></span>
-<span class="function"><span class="title">reomveChild</span><span class="params">()</span></span>
-</code></pre></li>
-</ol>
-<p>上述四个方法都是某个节点的子节点，必须取得其父节点。</p>
-<ol>
-<li><p>其它方法</p>
-<pre><code>方法
-<span class="function"><span class="title">cloneNode</span><span class="params">()</span></span>    用于创建调用这个方法的节点的一个完全相同的副本
-<span class="function"><span class="title">normalize</span><span class="params">()</span></span>    处理文档树中的文本节点 主要处理空文本节点，和连续出现的两个空文本节点。
-</code></pre><h2 id="2-_Document类型">2. Document类型</h2></li>
-</ol>
-<p>document对象是HTMLDocument(继承自Document)的一个实例，表示整个HTML页面。</p>
-<p>document对象是window对象的一个属性</p>
-<p>document节点特征：</p>
-<ol>
-<li>nodeType=9</li>
-<li>nodeName=”#document”</li>
-<li>nodeValue = null</li>
-<li>parentNode = null</li>
-<li>ownerDocument = null</li>
-<li>其子节点可能是一个DocumentType(最多一个)、Element(最多一个)、ProcessingInstruction或Comment。</li>
-</ol>
-<h3 id="文档的子节点">文档的子节点</h3><pre><code>属性                    说明
-documentElement        始终指向HTML页面中的<span class="tag">&lt;<span class="title">html</span>&gt;</span>元素
-body                直接指向<span class="tag">&lt;<span class="title">body</span>&gt;</span>元素
-doctype                取得对<span class="doctype">&lt;!DOCTYPE&gt;</span>的引用，浏览器支持不一致
-注释，不同浏览器的处理也不一致
-</code></pre><h3 id="文档信息">文档信息</h3><pre><code>属性            说明
-titile        包含着<span class="variable">&lt;title&gt;</span>元素中的文本，显示在浏览器窗口的标题栏或标签页
-/<span class="keyword">*</span>网页请求有关<span class="keyword">*</span>/    
-URL            包含页面完整的URL            
-domain        包含页面的域名
-referrer    保存着链接到当前页面的那个URL，没有的话是空字符串
-/<span class="keyword">*</span>上述三个职业domain可以设置，如果这回为不包含的域，将出错。如果域名一开始是松散的，就不能将它设置为紧绷的。<span class="keyword">*</span>/
-</code></pre><h3 id="查找元素">查找元素</h3><pre><code>方法
-<span class="function"><span class="title">getElementById</span><span class="params">()</span></span>
-<span class="function"><span class="title">getElementsByTagName</span><span class="params">()</span></span>  返回包含零个或多个元素的NodeList，在HTML文档中会返回HTMLCollection。可以通过方括号[num] 或者 <span class="function"><span class="title">item</span><span class="params">(num)</span></span>访问，还有length属性，<span class="function"><span class="title">namedItem</span><span class="params">()</span></span>方法，听过元素的namedItem特征取得集合中的项。提过了按名称访问[<span class="string">"name"</span>].
-<span class="function"><span class="title">getElementsByName</span><span class="params">()</span></span>
-</code></pre><h3 id="特殊集合">特殊集合</h3><p>这些集合都是HTMLCollection对象</p>
-<pre><code> document<span class="class">.anchors</span>    包含文档中所有带name特性的&lt;a&gt;元素
-document<span class="class">.applets</span>    包含文档中的所有de&lt;applet&gt;元素怒，不建议使用
-document<span class="class">.forms</span>        包含文档中所有的&lt;form&gt;元素
-document<span class="class">.images</span>        包含文档中所有的&lt;img&gt;元素
-document<span class="class">.links</span>        包含文档中所有的href特征的&lt;a&gt;元素
-</code></pre><h3 id="DOM一致性检测">DOM一致性检测</h3><pre><code>属性
-document<span class="class">.implementation</span> DOM1级提供了一个方法<span class="function"><span class="title">hasFeature</span><span class="params">()</span></span>
-</code></pre><h3 id="文档写入">文档写入</h3><pre><code><span class="function"><span class="title">write</span><span class="params">()</span></span>
-<span class="function"><span class="title">writel</span><span class="params">()</span></span>
-<span class="function"><span class="title">open</span><span class="params">()</span></span>
-<span class="function"><span class="title">close</span><span class="params">()</span></span>
-</code></pre><h2 id="3-_Element类型">3. Element类型</h2><p>用于表现XML或HTML元素，提供对元素标签名、子节点即特征的访问。</p>
-<p>Elment节点特征：</p>
-<ol>
-<li>nodeType = 1</li>
-<li>nodeName = “元素标签名”</li>
-<li>nodeValue = null</li>
-<li>parentNode = Document 或Element</li>
-<li>其子节点可能是 Element、Text、Comment、ProcessingInstruction、CDATASection或EntityReference.</li>
-</ol>
-<h3 id="HTML元素">HTML元素</h3><p>html元素存在的标准特征，可以获得或者设置这些标准特征<br>    属性<br>    id<br>    titile<br>    lang<br>    dir<br>    className</p>
-<p>所有的HTML元素都是由HTMLElement或者更具体的子类型来表示的。</p>
-<p>page263</p>
-<h3 id="取得特征">取得特征</h3><p>操作特征的3个方法</p>
-<pre><code>方法
-<span class="function"><span class="title">getAtrribute</span><span class="params">()</span></span>
-<span class="function"><span class="title">setAtrribute</span><span class="params">()</span></span>  特征名和特征值
-<span class="function"><span class="title">removeAtrribute</span><span class="params">()</span></span>
-</code></pre><p>注意：</p>
-<ol>
-<li>特征名不区分大小写。</li>
-<li>html5规范：自定义的特征应该加上data-前缀以便验证</li>
-</ol>
-<p>两类特殊的属性，在用属性访问和通过getAtrribute()访问的值不相同</p>
-<ol>
-<li>style<ul>
-<li>通过getAttribut()访问，返回的是style包含的css文本</li>
-<li>通过属性访问，则会返回一个对象 </li>
-</ul>
-</li>
-<li>像onclick这样的事件处理函数，<ul>
-<li>通过getAttribute访问，会返回字符串</li>
-<li>通过属性访问，会返回javascript函数</li>
-</ul>
-</li>
-</ol>
-<h3 id="设置特征">设置特征</h3><p>在DOM元素添加一个自定义的属性，该属性不会自动成为元素的特征，IE除外</p>
-<h3 id="attributes属性">attributes属性</h3><p>Element类型是使用attributes属性的唯一一个DOM节点类型</p>
-<p>NamedNodeMap 是一个动态几何</p>
-<p>元素的每一个特性都是由一个Attr节点表示，每个节点都保存在NamedNodeMap对象中。</p>
-<h4 id="NamedNodeMap方法">NamedNodeMap方法</h4><pre><code>方法
-<span class="function"><span class="title">getNamedItem</span><span class="params">(name)</span></span>
-<span class="function"><span class="title">removeNamedItem</span><span class="params">(name)</span></span>
-<span class="function"><span class="title">setNameItem</span><span class="params">(node)</span></span>
-<span class="function"><span class="title">item</span><span class="params">(pos)</span></span>
-</code></pre><p>遍历元素的特征是，attributes属性很有用</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">outputAtrributes</span>(<span class="params">element</span>)</span>{
-    <span class="keyword">var</span> pairs = <span class="keyword">new</span> <span class="built_in">Array</span>(),
-            attrName,
-            attrValue,
-            i,
-            len;
-        <span class="keyword">for</span>(i = <span class="number">0</span>,len=element.attributes.length;i &lt; len ;i ++){
-            attrName = element.attributes[i].nodeName;
-            attrValue = element.attributes[i].nodeValue;
-            <span class="keyword">if</span>(element.attributes[i].specified){  <span class="comment">//兼容IE</span>
-                pairs.push(attrName +<span class="string">"=\""</span>+ attrValue + <span class="string">"\""</span>);
-            }
-        }
-        <span class="keyword">return</span> pairs.join(<span class="string">" "</span>);
-    }
-</code></pre><h3 id="创建元素">创建元素</h3><pre><code><span class="function"><span class="title">createElement</span><span class="params">()</span></span> 参数：要创建元素的标签名
-</code></pre><h3 id="元素的子节点">元素的子节点</h3><ol>
-<li>存在childNodes中，</li>
-<li>IE和其它浏览器在处理空白的方式上面不同，要注意这点差别</li>
-<li>可以在getElementsByTagName()方法的前面加上元素，表示这个元素的子节点和后代节点</li>
-</ol>
-<h2 id="4-_Text类型">4. Text类型</h2><p>文本节点由Text类型表示，包含可以照字面解释的纯文本内容。</p>
-<p>text节点具有的特征：</p>
-<ol>
-<li>nodeType = 3</li>
-<li>nodeName = “#text”</li>
-<li>nodeValue = “节点所包含的文本”</li>
-<li>parentNode = Element</li>
-<li>不支持(没有)子节点</li>
-</ol>
-<p>Text属性和方法</p>
-<pre><code>属性
-nodeValue 访问Text节点中包含的文本
-data   访问Text节点中包含的文本
-length    保存着节点中字符的数目
-
-方法
-<span class="function"><span class="title">appendData</span><span class="params">(text)</span></span>
-<span class="function"><span class="title">deleteData</span><span class="params">(offset,count)</span></span>
-<span class="function"><span class="title">insertData</span><span class="params">(offset,text)</span></span>
-<span class="function"><span class="title">replaceData</span><span class="params">(offset,count,text)</span></span>
-<span class="function"><span class="title">splitText</span><span class="params">(offset)</span></span>
-<span class="function"><span class="title">substringData</span><span class="params">(offset,count)</span></span>
-</code></pre><h3 id="创建文本节点">创建文本节点</h3><pre><code><span class="function"><span class="title">createTextNode</span><span class="params">()</span></span>
-</code></pre><h3 id="DOM规范化文本节点">DOM规范化文本节点</h3><p>相邻文本节点合并的方法，由Node类型定义，normalize()</p>
-<p>浏览器在解析文档时永远不会创建相邻的文本节点。这种情况之后作为执行DOM操作的结果出现。</p>
-<h3 id="分割文本节点">分割文本节点</h3><p>Text类提供了一个相反的的方法：splitText()，将一个文本节点分割成两个文本节点，即按照指定的位置分割nodeValue的值。</p>
-<p>分割文本节点是从文本节点中提取数据的一种常用DOM解析技术</p>
-<h2 id="5-_Comment类型">5. Comment类型</h2><p>注释在DOM中通过Comment类型来表示。</p>
-<p>Comment节点的特征：</p>
-<ol>
-<li>nodeType = 8</li>
-<li>nodeName= “#comment”</li>
-<li>nodeValue = “注释内容”</li>
-<li>parentNode = Document 或 Element</li>
-<li>不支持（没有）子节点</li>
-</ol>
-<p>Comment类型和Text类型继承相同的基类，用于除了splictText()方法之外的所有方法。</p>
-<p>createComment()传递注释文本，创建注释节点</p>
-<h2 id="6-_CDATASection类型">6.  CDATASection类型</h2><p>只针对基于XML的文档，表示的是CDATA区域<br>特征：</p>
-<ol>
-<li>nodeType = 4</li>
-<li>nodeName = “#cdata-section”</li>
-<li>nodeValue = CDATA区域内容</li>
-<li>parentNode = Document或Element</li>
-<li>不支持(没有)子节点</li>
-</ol>
-<p>多数浏览器会把CDATA区域错误地解析为Comment或Element。<br>真正的xml文档，可以通过document.createCDataSection()来创建CDATA区域。</p>
-<h2 id="7-_DocumentType类型">7. DocumentType类型</h2><p>仅有Firefox、Safari、Opera支持它。<br>包含着与文档的doctype有关的信息</p>
-<p>特征</p>
-<ol>
-<li>nodeType = 10</li>
-<li>nodeName = doctype</li>
-<li>nodeValue= null</li>
-<li>parentNode= Document</li>
-<li>不支持(没有)子节点</li>
-</ol>
-<p>DOM1级不支持动态创建</p>
-<p>DOM1级属性：</p>
-<pre><code><span class="built_in">name</span>
-<span class="built_in">entities</span>
-natations
-</code></pre><h2 id="8-_DocumentFragment类型">8.  DocumentFragment类型</h2><p>DocumentFragment类型在文档中没有对应的标记。</p>
-<p>是一种轻量级的文档，可以包含和控制节点，但不会像完整的文档那样占用额外资源。<br>文档片段用于不会成为文档树的一部分</p>
-<p>特征：</p>
-<ol>
-<li>nodeType = 11</li>
-<li>nodeName = “#document-fragment”</li>
-<li>nodeValue = null</li>
-<li>parentNode = null</li>
-<li>子节点= Element、ProcessingInstruction、Comment、Text、CDATASection、EntityReference</li>
-</ol>
-<h2 id="9-Attr类型">9.Attr类型</h2><p>元素的特征在DOM中以Attr类型来表示。</p>
-<p>特征：</p>
-<ol>
-<li>nodeType = 2</li>
-<li>nodeName = 特征名称</li>
-<li>nodeValue = 特征的值</li>
-<li>parentNode = null</li>
-<li>在HTML中不支持（没哟）子节点</li>
-<li>在XML中子节点可以是Text或EntityReference</li>
-</ol>
-<p>不认为是DOM文档树的一部分</p>
-<p>属性：<br>    name<br>    value<br>    specified 用于区别特性是否在代码中指定的，还是默认的</p>
-<p>方法：<br>    createAtrribute()传入特征名称并创建新的节点。</p>
-<h2 id="动态样式">动态样式</h2><p>动态样式：在页面刚加载时不存在的样式。在页面加载完成之后添加到页面中</p>
-<p>将<link>元素添加到<head>而不是</head><body>元素中，才能保证浏览器中行为一致。</body></p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">loadStyles</span>(<span class="params">url</span>)</span>{
-    <span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);
-    link.rel = <span class="string">"stylesheet"</span>;
-    link.type = <span class="string">"text/css"</span>;
-    link.href = url;
-    <span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];
-    head.appendChild(link);
-}
-</code></pre><p>注意：加载外部样式文件的过程是异步的，也就加载样式与执行javaScript代码的过程没有固定的次序。</p>
-<p>使用<style>来动态的加载样式。</p>
-<h3 id="操作表格">操作表格</h3><p><table>元素的属性和方法：<br>caption<br>tBodies<br>tFoot<br>tHead<br>rows<br>createTHead()<br>createTFoot()<br>createCaption()<br>deleteTHead()<br>deleteTFoot()<br>deleteCaption()<br>deleteCaption()<br>insertRow(pos)</p>
-<p><tbody>元素的属性和方法<br>rows<br>deleteRow(pos)<br>insertRow(pos)</p>
-<p><tr>元素的属性和方法<br>cells<br>deleteCell(pos)<br>insertCell(pos)</p>
-<h3 id="使用NodeList">使用NodeList</h3><p>DOM是javascript开销最大的部分，NodeList对象是动态的，所以尽量减少DOM操作。</p>
-</style></p>
+              DOM节点类型学习
+          
       
      
     </div>
@@ -1153,8 +723,20 @@ natations
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/04/30/JS9-DOM/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1200,23 +782,8 @@ natations
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="客户端检测">客户端检测</h1><p>只要能找到通用的方法，优先采取更通用的方法。</p>
-<h1 id="能力检测">能力检测</h1><p>识别浏览器的能力</p>
-<p>两个重要概念：</p>
-<ol>
-<li>先检测达成目的的最常用的特这，可以保证代码最优化。</li>
-<li>必须测试实际要用到的特性。</li>
-<li>能力检测对于想要知道某个特性是否会按适当方式行事非常有用。</li>
-<li>尽量使用typeof操作符进行能力检测。</li>
-<li>isHostMethod()</li>
-<li>根据浏览器不同将能力组合起来更可取。</li>
-</ol>
-<h1 id="怪癖检测">怪癖检测</h1><p>目标是识别浏览器的特殊行为。</p>
-<p>想要知道浏览器存在什么缺陷。</p>
-<p>个别浏览器独有的，而且存在的bug</p>
-<p>怪癖会进行代码运行，所有，建议在脚本的一开始就执行此类检测。</p>
-<h2 id="用户代理检测">用户代理检测</h2><p>五大引擎：IE、Gecko、WebKit、KHTML、Opera.<br>JavaScript引擎</p>
-
+              客户端能力检测
+          
       
      
     </div>
@@ -1224,8 +791,20 @@ natations
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/04/30/JS8-客户端能力检测/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1271,104 +850,8 @@ natations
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="window对象">window对象</h1><p>BOM的核心，表示浏览器的一个实例。</p>
-<p>所有在全局中声明的变量、函数都会变成window对象。</p>
-<p>全局变量不能delete操作符删除<br>直接在window对象上的定义的属性是可以用delete删除的。</p>
-<p>尝试访问为声明的变量会抛出错误，但是通过查询window对象，可以知道某个可能未声明的变量是否存在。</p>
-<h2 id="窗口关系和框架">窗口关系和框架</h2><p>如果页面中包含框架，则每个框架都拥有自己的window对象，并且保持在frames集合中。在frame集合中，可以通过数值索引或者框架名称来访问相应的window对象。</p>
-<p>每个window对象都有一个name属性，其中包含框架的名称。</p>
-<ol>
-<li>top表示顶层框架</li>
-<li>parent对象始终指向当前框架的直接上层。</li>
-<li>self，始终指向window对象。</li>
-</ol>
-<h2 id="窗口位置">窗口位置</h2><p>不同浏览器的支持不一样<br>screenLeft：窗口相当于屏幕左边的位置<br>screeTop : 窗口相对于屏幕上边的位置<br>screenX<br>screenY</p>
-<p>兼容解决方法：</p>
-<pre><code><span class="keyword">var</span> leftPos = (<span class="keyword">typeof</span> <span class="built_in">window</span>.screenLeft == <span class="string">"number"</span>) ? <span class="built_in">window</span>.screenLeft : <span class="built_in">window</span>.screenX;
-<span class="keyword">var</span> topPos = (<span class="keyword">typeof</span> <span class="built_in">window</span>.screenTop == <span class="string">"number"</span>) ? <span class="built_in">window</span>.screenTop : <span class="built_in">window</span>.screenY;
-</code></pre><p>moveTo()<br>moveBy()将出安康精确的移到一个新位置。<br>不适用框架，只能对最外层window对象使用</p>
-<h2 id="窗口大小">窗口大小</h2><p>不同浏览器的支持不一样，所有，无法确定浏览器串口本身的大小，可以取得页面视口的大小。</p>
-<p>兼容解决方案</p>
-<pre><code><span class="keyword">var</span> pageWidth = <span class="built_in">window</span>.innerWidth,
-    pageHeight = <span class="built_in">window</span>.innerHeight;
-
-<span class="keyword">if</span>(<span class="keyword">typeof</span> pageWidth != <span class="string">"number"</span>){
-    <span class="keyword">if</span>(<span class="built_in">document</span>.compatMode == <span class="string">"CSS1Compat"</span>){
-        pageWidth = <span class="built_in">document</span>.documentElement.clientWidth;
-        pageHeight = <span class="built_in">document</span>.documentElement.clientHeight;
-    }<span class="keyword">else</span>{
-        pageWidth = <span class="built_in">document</span>.body.clientWidth;
-        pageHeight = <span class="built_in">document</span>.body.clientHeight;
-    }
-}
-</code></pre><p>resizeTo()<br>resizeBy() 可以调整浏览器窗口的大小。<br>不适用框架，只能对最外层window对象使用</p>
-<h2 id="导航和打开新窗口">导航和打开新窗口</h2><p>open() 可以导航到一个特定URL，也可以打开一个新的浏览器窗口。</p>
-<p>参数：要加载的URL、窗口目标、一个特性字符串以及一个表示新页面是否取代浏览器历史记录中当前加载页面的布尔值。<br>返回：一个指向新窗口的引用</p>
-<p>可以关闭使用open打开的窗口，但是原始窗口不行</p>
-<p>新创建的window对象都有一个opener属性，保存着打开它的原始窗口对象，原始窗口没有这样的指针。</p>
-<p>将opener设置为null告诉浏览器新创建的标签不需要与打开它的标签页通信。</p>
-<h3 id="安全限制和弹出窗口屏蔽程序">安全限制和弹出窗口屏蔽程序</h3><p>检测返回值是否为null确定新弹出的窗口是否被屏蔽，并将其封装到一个try-catch块中。</p>
-<h2 id="间歇调用和超时调用">间歇调用和超时调用</h2><p>javaScript单线程语言。</p>
-<p>超时调用—&gt;在指定的时间过后执行代码–&gt;setTimeout()—&gt;clearTimeout()取消</p>
-<p>间歇调用—&gt;每个指定的时间就执行一次代码–&gt;setInterval()—&gt;clearInterval()取消</p>
-<p>javascript任务队列，会把任务添加到队列中顺序执行.</p>
-<p>一般使用超时调用来模拟间歇调用是一种最佳的模式</p>
-<p>最好不要使用间歇调用：一个间歇调用可能会在前一个间歇调用结束之前启动。</p>
-<h2 id="系统对话框">系统对话框</h2><p>下面这三个是同步和模态的，显示这些对话框的时候代码会停止执行，而关掉这些对话框后代码又恢复执行。</p>
-<ol>
-<li>alert()</li>
-<li>confirm()</li>
-<li>prompt()</li>
-</ol>
-<p>下面的是异步显示的，能够将控制权立即交换给脚本。</p>
-<ol>
-<li>window.print()</li>
-<li>window.find()</li>
-</ol>
-<h1 id="location对象">location对象</h1><ol>
-<li>提供了与当前窗口中加载的文档有关的信息，还提供了一些导航的功能。</li>
-<li>可以将URL解析为独立的片段</li>
-<li><p>location对象及时window对象也是document对象。他们引用的是同一个对象。</p>
-<pre><code>属性名        例子            说明
-<span class="title">hash</span>    
-<span class="title">host</span>    
-<span class="title">hostname</span>    
-<span class="title">href</span>
-<span class="foreign"><span class="keyword">port</span></span>
-<span class="title">protocol</span>
-<span class="title">search</span>
-</code></pre></li>
-<li><p>查询字符串参数 —page207</p>
-</li>
-<li>location.assign(“<a href="http://www.baidu.com&quot;);立即打开新URL并在浏览器的历史记录中生成一条记录。" target="_blank" rel="external">http://www.baidu.com&quot;);立即打开新URL并在浏览器的历史记录中生成一条记录。</a></li>
-<li>每次修改location的属性(hash除外),页面都会以新的URL重新加载。</li>
-<li>repalce()方法，会导航到URL，但是不会在历史记录中生成新记录。</li>
-<li>reload()时不传递然和参数，页面就好以最有效的方式重新加载。 reload(true)会强制从服务器重新加载。之后的代码可能会不执行，取决于网络延迟或系统资源等因素，最好将其放在最好一行。</li>
-</ol>
-<h1 id="navigator对象">navigator对象</h1><p>识别客户端浏览器的事实标准。<br>可以检测网页浏览器的类型。</p>
-<h2 id="检测插件">检测插件</h2><ol>
-<li><p>非IE可以用plugins数组，其中包含属性：</p>
-<p> 属性名        描述<br> name        插件的名字<br> description 插件的文件名<br> filename    插件的文件名<br> length        插件所处理的MIME类型数量</p>
-</li>
-<li><p>检测插件程序—-page211</p>
-</li>
-<li>每个插件本身也是一个MimeType对象的数组。可以通过方括号访问。</li>
-<li>IE插件 专有的ActiveXObject类型，并且要知道其COM标示符。—-page212</li>
-<li>兼容插件检测方法—-page212</li>
-</ol>
-<h2 id="注册处理程序">注册处理程序</h2><p>registerContentHandler()<br>registerProtocalHandler() 可以让一个站点指明它可以处理特定类型的信息。</p>
-<p>参数：<br>    要处理的MIME类型、可以处理该MIME类型的页面的URL、以及应用程序的名称。</p>
-<p>#screen对象 #</p>
-<p>在编程中用处不大的，表明客户端的能力。</p>
-<h1 id="history对象">history对象</h1><p>保存着用户上网的历史记录，从窗口被打开的那一刻算起。</p>
-<p>每个浏览器窗口、每个标签乃至每个框架，都有自己的history对象与特定的window对象关联。</p>
-<pre><code>方法
-<span class="function"><span class="title">go</span><span class="params">()</span></span>
-<span class="function"><span class="title">back</span><span class="params">()</span></span>
-<span class="function"><span class="title">forward</span><span class="params">()</span></span>
- 属性
-length
-</code></pre>
+              BOM节点类型学习
+          
       
      
     </div>
@@ -1376,8 +859,20 @@ length
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BOM/">BOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/04/21/JS7-BOM/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1423,59 +918,8 @@ length
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="创建函数">创建函数</h3><ol>
-<li><p>函数声明</p>
-<p>  function functionName(arg0,arg1,arg2)<br>  {</p>
-<pre><code><span class="comment">//函数体</span>
-</code></pre><p>  }<br>函数有一个name属性，可以访问函数名</p>
-<p><strong>函数声明提升</strong>：在执行代码之前会先读取函数声明。可以吧函数声明放在调用它的语句后面。</p>
-</li>
-<li><p>函数表达式</p>
-<p>  var functionName = function(arg0,arg1,arg2)<br>  {</p>
-<pre><code><span class="comment">//函数体</span>
-</code></pre><p>  };<br>匿名函数 拉姆达函数 其name属性为空</p>
-</li>
-</ol>
-<p><strong>匿名函数的执行环境具有全局性</strong></p>
-<h2 id="1-_递归">1. 递归</h2><h4 id="1-使用arguments-callee()来指向正在执行的函数指针">1.使用arguments.callee()来指向正在执行的函数指针</h4><p>严格模式下不能用</p>
-<h4 id="2-使用命名函数表达式来达成相同的结果">2.使用命名函数表达式来达成相同的结果</h4><pre><code>var factorial = (<span class="function">function <span class="title">f</span><span class="params">(num)</span></span>{
-    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>){
-        <span class="keyword">return</span> <span class="number">1</span>;
-    }<span class="keyword">else</span>{
-        <span class="keyword">return</span> <span class="function">num * <span class="title">f</span><span class="params">(num-<span class="number">1</span>)</span></span>;
-    }
-});
-</code></pre><h1 id="2-闭包">2.闭包</h1><p><strong>闭包是有权访问另一个函数作用域中的变量的函数。</strong></p>
-<h2 id="创建闭包">创建闭包</h2><p>方法：在一个函数内部创建另一个函数。</p>
-<h1 id="3-_模仿块级作用域">3. 模仿块级作用域</h1><p>javascript中没有块级作用域</p>
-<p>可以用匿名函数来模仿块级作用域</p>
-<pre><code><span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">{
-    // 这里是块级作用域
-}</span>)</span><span class="list">()</span><span class="comment">;</span>
-</code></pre><h1 id="4-_私有变量">4. 私有变量</h1><p>包括：函数参数、局部变量和函数内部定义的其它函数。</p>
-<h3 id="静态私有变量">静态私有变量</h3><pre><code>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-     <span class="keyword">var</span> name = <span class="string">""</span>;
-     Person = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>{
-         name = value;
-     };
-     Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-         <span class="keyword">return</span> name;
-     };
-     Person.prototype.setName = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>{
-         name = value;
-     };
- })();
-
- <span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"Nicholas"</span>);
- <span class="built_in">console</span>.log(person1.getName()); <span class="comment">//"Nichoalse"</span>
- person1.setName(<span class="string">"Greg"</span>); 
- <span class="built_in">console</span>.log(person1.getName());<span class="comment">//Greg</span>
-
- <span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">"Micheal"</span>);
- <span class="built_in">console</span>.log(person1.getName()); <span class="comment">//Micheal</span>
- <span class="built_in">console</span>.log(person2.getName());<span class="comment">//Micheal</span>
-</code></pre><p>变量name是一个静态的、由所有实例共享的属性。</p>
-<h3 id="模块模式">模块模式</h3><h3 id="增强的模块模式">增强的模块模式</h3>
+              函数表达式学习
+          
       
      
     </div>
@@ -1483,8 +927,20 @@ length
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/04/21/JS6-函数表达式/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
