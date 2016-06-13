@@ -471,16 +471,9 @@ User-&lt;span class=&quot;built_in&quot;&gt;Agent&lt;/span&gt;
     <link href="http://yoursite.com/2016/04/30/JS20-JSON/"/>
     <id>http://yoursite.com/2016/04/30/JS20-JSON/</id>
     <published>2016-04-30T13:15:02.000Z</published>
-    <updated>2016-06-13T08:24:46.115Z</updated>
+    <updated>2016-06-13T11:39:13.778Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;br&gt;JSON:JavaScript Object Notation，javascript对象表示法&lt;/excerpt&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
-
-&lt;/the&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;JSON&quot;&gt;JSON&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;JSON:JavaScript Object Notation，javascript对象表示法&lt;/strong&gt;&lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;JSON&quot;&gt;JSON&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;JSON:JavaScript Object Notation，javascript对象表示法&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;JSON可以直接传递给eval()&lt;/p&gt;
 &lt;p&gt;JSON是javascript语法的子集。&lt;/p&gt;
 &lt;h2 id=&quot;语法&quot;&gt;语法&lt;/h2&gt;&lt;p&gt;三种类型的值：&lt;/p&gt;
@@ -513,13 +506,13 @@ User-&lt;span class=&quot;built_in&quot;&gt;Agent&lt;/span&gt;
     
     <summary type="html">
     
-      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt;&lt;br&gt;JSON:JavaScript Object Notation，javascript对象表示法&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
+      &lt;h1 id=&quot;JSON&quot;&gt;JSON&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;JSON:JavaScript Object Notation，javascript对象表示法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;JSON可以直接传递给eval()&lt;/p&gt;
+&lt;p&gt;JSON是javascript语法
     
     </summary>
     
-      <category term="javascript" scheme="http://yoursite.com/categories/javascript/"/>
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
@@ -533,16 +526,14 @@ User-&lt;span class=&quot;built_in&quot;&gt;Agent&lt;/span&gt;
     <link href="http://yoursite.com/2016/04/30/JS13-%E8%A1%A8%E5%8D%95%E8%84%9A%E6%9C%AC/"/>
     <id>http://yoursite.com/2016/04/30/JS13-表单脚本/</id>
     <published>2016-04-30T13:14:52.000Z</published>
-    <updated>2016-06-13T09:45:51.026Z</updated>
+    <updated>2016-06-13T11:33:38.171Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;br&gt;表单是由&lt;form&gt;元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。&lt;/form&gt;&lt;/excerpt&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;br&gt;表单是由&lt;code&gt;&amp;lt;form&amp;gt;&lt;/code&gt;元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。&lt;/excerpt&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
-
-&lt;/the&gt;&lt;/li&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&quot;基础知识&quot;&gt;基础知识&lt;/h1&gt;&lt;p&gt;&lt;form&gt;元素&lt;br&gt;HTMLFormElment元素继承了HTMLElment。&lt;br&gt;自己独特的属性和方法：&lt;/form&gt;&lt;/p&gt;
+&lt;h1 id=&quot;基础知识&quot;&gt;基础知识&lt;/h1&gt;&lt;p&gt;&lt;code&gt;&amp;lt;form&amp;gt;&lt;/code&gt;元素HTMLFormElment元素继承了HTMLElment。&lt;br&gt;自己独特的属性和方法：&lt;/p&gt;
 &lt;p&gt;acceptCharset&lt;br&gt;action&lt;/p&gt;
 &lt;h2 id=&quot;提交表单submit&quot;&gt;提交表单submit&lt;/h2&gt;&lt;h2 id=&quot;重置表单_reset&quot;&gt;重置表单 reset&lt;/h2&gt;&lt;h2 id=&quot;表单字段，elments属性&quot;&gt;表单字段，elments属性&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;属性
 disabled
@@ -576,8 +567,13 @@ focus
 &lt;li&gt;阻止keypress的默认行为&lt;/li&gt;
 &lt;li&gt;操作剪贴板&lt;br&gt; 6个事件：&lt;br&gt; beforecopy&lt;br&gt; copy&lt;br&gt; beforecut&lt;br&gt; cut&lt;br&gt; beforepaste&lt;br&gt; paste&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;访问剪贴板的数据：&lt;br&gt;    使用clipboardData对象&lt;br&gt;    getData()&lt;br&gt;    setData()&lt;br&gt;    clearData()&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;getClipboardText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;访问剪贴板的数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使用clipboardData对象
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;getData&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;setData&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;clearData&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;getClipboardText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;setClopboardText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;   
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;自动切换焦点&quot;&gt;自动切换焦点&lt;/h2&gt;&lt;p&gt;tabForword() 比较maxlength特性&lt;/p&gt;
 &lt;h2 id=&quot;html5约束&quot;&gt;html5约束&lt;/h2&gt;&lt;h3 id=&quot;必填字段&quot;&gt;必填字段&lt;/h3&gt;&lt;p&gt;required属性&lt;/p&gt;
@@ -600,8 +596,14 @@ text 选项的文本
 &lt;span class=&quot;keyword&quot;&gt;value&lt;/span&gt; 选项的值
 
 change只有再选中了选择就会触发。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 支持的方法：&lt;br&gt;add(newOption,relOption)&lt;br&gt;multiple&lt;br&gt;options&lt;br&gt;remove(index)&lt;br&gt;selectedindex&lt;br&gt;size&lt;/p&gt;
-&lt;h3 id=&quot;选择选项&quot;&gt;选择选项&lt;/h3&gt;&lt;ol&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 支持的方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(newOption,relOption)&lt;/span&gt;&lt;/span&gt;
+multiple
+options
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(index)&lt;/span&gt;&lt;/span&gt;
+selectedindex
+size
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;选择选项&quot;&gt;选择选项&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;对于只允许现在一项的选择框，选中项使用slectedIndex属性&lt;br&gt;可以获取或修改选择的项&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;可以通过slected=true来现在某一项。&lt;/p&gt;
 &lt;/li&gt;
@@ -629,7 +631,7 @@ change只有再选中了选择就会触发。
 &lt;li&gt;不发送type为reset和botton的按钮&lt;/li&gt;
 &lt;li&gt;多选选择框的每个选中的值单独一个条目&lt;/li&gt;
 &lt;li&gt;在单击提交按钮提交表单的情况下，也会发送提交按钮，否则不发送提交按钮。&lt;/li&gt;
-&lt;li&gt;&lt;select&gt;元素的值，就是选中的&lt;option&gt;元素的value特性的值。如果&lt;/option&gt;&lt;option&gt;元素没有value特性，则是&lt;/option&gt;&lt;option&gt;元素的文本值。&lt;/option&gt;&lt;/select&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt;元素的值，就是选中的&lt;code&gt;&amp;lt;option&amp;gt;&lt;/code&gt;元素的value特性的值。如果&lt;code&gt;&amp;lt;option&amp;gt;&lt;/code&gt;元素没有value特性，则是&lt;code&gt;&amp;lt;option&amp;gt;&lt;/code&gt;元素的文本值。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id=&quot;富文本编辑&quot;&gt;富文本编辑&lt;/h1&gt;&lt;ol&gt;
 &lt;li&gt;iframe&lt;/li&gt;
@@ -640,13 +642,13 @@ change只有再选中了选择就会触发。
     
     <summary type="html">
     
-      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt;&lt;br&gt;表单是由&lt;form&gt;元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。&lt;/p&gt;
+      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt;&lt;br&gt;表单是由&lt;code&gt;&amp;lt;form&amp;gt;&lt;/code&gt;元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
     
     </summary>
     
-      <category term="javascript" scheme="http://yoursite.com/categories/javascript/"/>
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="form" scheme="http://yoursite.com/tags/form/"/>
@@ -660,7 +662,7 @@ change只有再选中了选择就会触发。
     <link href="http://yoursite.com/2016/04/30/JS11-DOM2-DOM3/"/>
     <id>http://yoursite.com/2016/04/30/JS11-DOM2-DOM3/</id>
     <published>2016-04-30T13:14:35.000Z</published>
-    <updated>2016-04-30T13:18:31.418Z</updated>
+    <updated>2016-06-13T09:57:50.331Z</updated>
     
     <content type="html">&lt;h1 id=&quot;DOM2级核心和_DOM2级视图_以及_DOM2级HTML_的变化&quot;&gt;DOM2级核心和 DOM2级视图 以及 DOM2级HTML 的变化&lt;/h1&gt;&lt;h2 id=&quot;1-针对XML命名空间的变化&quot;&gt;1.针对XML命名空间的变化&lt;/h2&gt;&lt;h2 id=&quot;2-其它&quot;&gt;2.其它&lt;/h2&gt;&lt;h3 id=&quot;2-1DcoumentType&quot;&gt;2.1DcoumentType&lt;/h3&gt;&lt;p&gt;新增方法&lt;br&gt;    文档声明中的信息&lt;br&gt;    publicId&lt;br&gt;    systemId&lt;br&gt;    internalSubset&lt;/p&gt;
 &lt;h3 id=&quot;2-2_Document类型的变化&quot;&gt;2.2 Document类型的变化&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;importNode&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; 文档中取得一个节点，然后倒入到另一个文档，使其成为这个文档的一部分。
@@ -789,6 +791,12 @@ ownerRule
     
     </summary>
     
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="DOM" scheme="http://yoursite.com/tags/DOM/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
