@@ -529,127 +529,6 @@ User-&lt;span class=&quot;built_in&quot;&gt;Agent&lt;/span&gt;
   </entry>
   
   <entry>
-    <title>JS13--表单脚本</title>
-    <link href="http://yoursite.com/2016/04/30/JS13-%E8%A1%A8%E5%8D%95%E8%84%9A%E6%9C%AC/"/>
-    <id>http://yoursite.com/2016/04/30/JS13-表单脚本/</id>
-    <published>2016-04-30T13:14:52.000Z</published>
-    <updated>2016-06-13T07:32:46.706Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;br&gt;表单是由&lt;form&gt;元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。&lt;/form&gt;&lt;/excerpt&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
-
-&lt;/the&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;基础知识&quot;&gt;基础知识&lt;/h1&gt;&lt;p&gt;&lt;form&gt;元素&lt;br&gt;HTMLFormElment元素继承了HTMLElment。&lt;br&gt;自己独特的属性和方法：&lt;/form&gt;&lt;/p&gt;
-&lt;p&gt;acceptCharset&lt;br&gt;action&lt;/p&gt;
-&lt;h2 id=&quot;提交表单submit&quot;&gt;提交表单submit&lt;/h2&gt;&lt;h2 id=&quot;重置表单_reset&quot;&gt;重置表单 reset&lt;/h2&gt;&lt;h2 id=&quot;表单字段，elments属性&quot;&gt;表单字段，elments属性&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;属性
-disabled
-&lt;span class=&quot;tag&quot;&gt;form&lt;/span&gt;
-name
-readOnly
-tabIndex
-type
-value
-
-方法：
-&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;focus&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;blur&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-属性：
-html5 autofocus属性
-
-表单支持的事件
-blur
-change
-focus
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;文本框脚本&quot;&gt;文本框脚本&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt;元素的单行文本框 size特征，可以指定文本框中能够显示的字符数。value特征，可以设置文本框的初始值，maxlength特征用于指定文本框中的可接受的最大字符数。rows和cols特征指定大小。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt;元素的多行文本框。&lt;/li&gt;
-&lt;li&gt;value中保存着读取或设置的文本框的值。&lt;/li&gt;
-&lt;li&gt;最好不使用DOM方法&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;选择文本&quot;&gt;选择文本&lt;/h2&gt;&lt;p&gt;方法：&lt;br&gt;select()&lt;br&gt;对应一个select事件，在选择了文本框中的文本时，就会出发select事件&lt;/p&gt;
-&lt;h2 id=&quot;取得选择的文本&quot;&gt;取得选择的文本&lt;/h2&gt;&lt;p&gt;属性：&lt;br&gt;selectionStart和selectionEnd&lt;/p&gt;
-&lt;h3 id=&quot;选择部分文本框&quot;&gt;选择部分文本框&lt;/h3&gt;&lt;p&gt;setSelectionRange()方法&lt;/p&gt;
-&lt;h2 id=&quot;过滤文本&quot;&gt;过滤文本&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;阻止keypress的默认行为&lt;/li&gt;
-&lt;li&gt;操作剪贴板&lt;br&gt; 6个事件：&lt;br&gt; beforecopy&lt;br&gt; copy&lt;br&gt; beforecut&lt;br&gt; cut&lt;br&gt; beforepaste&lt;br&gt; paste&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;访问剪贴板的数据：&lt;br&gt;    使用clipboardData对象&lt;br&gt;    getData()&lt;br&gt;    setData()&lt;br&gt;    clearData()&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;getClipboardText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;setClopboardText&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;   
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;自动切换焦点&quot;&gt;自动切换焦点&lt;/h2&gt;&lt;p&gt;tabForword() 比较maxlength特性&lt;/p&gt;
-&lt;h2 id=&quot;html5约束&quot;&gt;html5约束&lt;/h2&gt;&lt;h3 id=&quot;必填字段&quot;&gt;必填字段&lt;/h3&gt;&lt;p&gt;required属性&lt;/p&gt;
-&lt;h3 id=&quot;其它输入类型&quot;&gt;其它输入类型&lt;/h3&gt;&lt;p&gt;type=”email”&lt;br&gt;type=”url”&lt;br&gt;    number&lt;br&gt;    range&lt;br&gt;    datatime&lt;br&gt;    datetime-local&lt;br&gt;    date&lt;br&gt;    month&lt;br&gt;    week&lt;br&gt;    time&lt;br&gt;    min&lt;br&gt;    max&lt;br&gt;    step&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;stepUp&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;stepDown&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;输入模式&quot;&gt;输入模式&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;setting&quot;&gt;pattern=&lt;span class=&quot;value&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;检测有效性_##&quot;&gt;检测有效性 ##&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;checkValidity&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;根据前面的约束
-validity属性 告诉为什么有效或无效
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;禁用验证&quot;&gt;禁用验证&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;novalidatae属性
-formnovaliddate属性
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;选择框脚本&quot;&gt;选择框脚本&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;&lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt;&amp;gt;
-&amp;lt;option&amp;gt;
-选择框的&lt;span class=&quot;keyword&quot;&gt;value&lt;/span&gt;属性由当前相中项决定
-在DOM中每个&amp;lt;option&amp;gt;元素都有一个HTMLOptionElement对象表示。
-&lt;span class=&quot;built_in&quot;&gt;index&lt;/span&gt;
-label
-selected    
-text 选项的文本
-&lt;span class=&quot;keyword&quot;&gt;value&lt;/span&gt; 选项的值
-
-change只有再选中了选择就会触发。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 支持的方法：&lt;br&gt;add(newOption,relOption)&lt;br&gt;multiple&lt;br&gt;options&lt;br&gt;remove(index)&lt;br&gt;selectedindex&lt;br&gt;size&lt;/p&gt;
-&lt;h3 id=&quot;选择选项&quot;&gt;选择选项&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;对于只允许现在一项的选择框，选中项使用slectedIndex属性&lt;br&gt;可以获取或修改选择的项&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;可以通过slected=true来现在某一项。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;运行多选的选择框 selected属性，&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;getSelectedOptions&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;添加选项&quot;&gt;添加选项&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;使用DOM方式&lt;/li&gt;
-&lt;li&gt;使用Option构造函数来创建新选项。Option(text,value(可选))&lt;/li&gt;
-&lt;li&gt;使用选择框的add()方法。&lt;/li&gt;
-&lt;li&gt;insertBefor()方法&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;移除选项&quot;&gt;移除选项&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;使用DOM方法removeChild()&lt;/li&gt;
-&lt;li&gt;使用选择框的remove()方法&lt;/li&gt;
-&lt;li&gt;将选择值设置为null&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;移动重排选择&quot;&gt;移动重排选择&lt;/h3&gt;&lt;p&gt;使用DOM的appendChild()方法&lt;br&gt;inertBefore()&lt;br&gt;appendChild()&lt;/p&gt;
-&lt;h1 id=&quot;表达序列化&quot;&gt;表达序列化&lt;/h1&gt;&lt;p&gt;表达发送给服务器过程：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;对表达字段的名称和值进行URL编码，使用和号&amp;amp;分割&lt;/li&gt;
-&lt;li&gt;不发送禁用的表达字段&lt;/li&gt;
-&lt;li&gt;只发送勾选的复选框和单选框&lt;/li&gt;
-&lt;li&gt;不发送type为reset和botton的按钮&lt;/li&gt;
-&lt;li&gt;多选选择框的每个选中的值单独一个条目&lt;/li&gt;
-&lt;li&gt;在单击提交按钮提交表单的情况下，也会发送提交按钮，否则不发送提交按钮。&lt;/li&gt;
-&lt;li&gt;&lt;select&gt;元素的值，就是选中的&lt;option&gt;元素的value特性的值。如果&lt;/option&gt;&lt;option&gt;元素没有value特性，则是&lt;/option&gt;&lt;option&gt;元素的文本值。&lt;/option&gt;&lt;/select&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;富文本编辑&quot;&gt;富文本编辑&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;iframe&lt;/li&gt;
-&lt;li&gt;contnteditable属性&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;操作富文本&quot;&gt;操作富文本&lt;/h3&gt;&lt;p&gt;document.execCommand()&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt;&lt;br&gt;表单是由&lt;form&gt;元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>JS11--DOM2和DOM3</title>
     <link href="http://yoursite.com/2016/04/30/JS11-DOM2-DOM3/"/>
     <id>http://yoursite.com/2016/04/30/JS11-DOM2-DOM3/</id>
@@ -4526,6 +4405,48 @@ fontSize             设置元素的字体大小
       &lt;p&gt;串(String)(或字符串是由零个或多个字符串组成的有限序列)。&lt;/p&gt;
 &lt;p&gt;串中任意个连续的字符组成的子序列称为该串的子串。&lt;br&gt;包含子串的串相应的称为串。&lt;br&gt;通常称字符在序列中的序号为该字符在串中的位置。&lt;/p&gt;
 &lt;p&gt;串的最小操作子集： 串赋值、串比较、求串
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MFC常见问题</title>
+    <link href="http://yoursite.com/2016/03/18/MFC%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/03/18/MFC常见问题/</id>
+    <published>2016-03-18T07:44:46.000Z</published>
+    <updated>2016-03-18T07:58:19.855Z</updated>
+    
+    <content type="html">&lt;p&gt;在MFC程序中，可以用以下几种方法来获取命令行参数。&lt;br&gt;为方便说明，我们假设执行了命令：C:\test\app.exe -1 -2&lt;/p&gt;
+&lt;p&gt;方法一&lt;br&gt;::GetCommandLine();&lt;br&gt;将获取到 “C:\test\app.exe”  -1 -2&lt;/p&gt;
+&lt;p&gt;方法二&lt;br&gt;for (int i=0;i&amp;lt;&lt;strong&gt;argc;i++)&lt;br&gt;{
+&lt;/strong&gt;argv[i];&lt;br&gt;将依次得到C:\test\app.exe  -1  -2&lt;br&gt;}&lt;/p&gt;
+&lt;p&gt;方法三&lt;br&gt;AfxGetApp()-&amp;gt;m_lpCmdLine;&lt;br&gt;将获取到 -1 -2&lt;/p&gt;
+&lt;p&gt;让MFC程序在命令行运行，并传入参数，之后直接自动退出程序&lt;/p&gt;
+&lt;p&gt;1.MFC主窗口调用某个子dialog&lt;br&gt;int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct){&lt;br&gt;    SetTimer(1, 1000, 0);&lt;br&gt;}&lt;br&gt;2.利用向导添加WM_TIMER的事件处理函数。&lt;br&gt;void CMainFrame::OnTimer(UINT nIDEvent)&lt;br&gt;{&lt;br&gt;    //首先停止计数器&lt;br&gt;    KillTimer(1);&lt;br&gt;    /&lt;em&gt;添加你想要调用的子Dialog,并执行子Dialog&lt;/em&gt;/&lt;br&gt;    PetriNetMC plg;&lt;br&gt;    plg.DoModal();&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CFrameWn&lt;span class=&quot;number&quot;&gt;d::&lt;/span&gt;OnTimer(nIDEvent)&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;3.在子Dialog的类中，利用向导添加OnInitDialog()函数，就是在显示Dialog前处理一下问题&lt;br&gt;BOOL PetriNetMC::OnInitDialog(){&lt;br&gt;    CDialog::OnInitDialog();&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;/*这句话，可以获取父窗口的指针*/&lt;/span&gt;
+CMainFrame *&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;pMain&lt;/span&gt;=&lt;span class=&quot;params&quot;&gt;(CMainFrame*)&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;AfxGetApp&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;-&amp;gt;&lt;/span&gt;m_pMainWnd;
+&lt;span class=&quot;comment&quot;&gt;/*添加要处理的事件*/&lt;/span&gt;
+
+&lt;span class=&quot;comment&quot;&gt;/*可以不用显示子窗口，直接退出程序*/&lt;/span&gt;
+pMain-&amp;gt;DestroyWindow();
+
+&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; TRUE; 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;注意：&lt;br&gt;在这个过程中，可以从命令行获取参数，存入到父窗口即主窗口的成员变量中，在子窗口中调用pMain-&amp;gt;xxx就可以获取该成员变量。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;总结：&lt;br&gt;以上，就可以实现，在命令行直接调用一个MFC程序，并且自动执行，最后自动退出程序。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在MFC程序中，可以用以下几种方法来获取命令行参数。&lt;br&gt;为方便说明，我们假设执行了命令：C:\test\app.exe -1 -2&lt;/p&gt;
+&lt;p&gt;方法一&lt;br&gt;::GetCommandLine();&lt;br&gt;将获取到 “C:\test\app.exe”  -1 -2&lt;/p
     
     </summary>
     
