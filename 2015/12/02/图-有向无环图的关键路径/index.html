@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
-  <meta charset="utf-8">
-  
-  <title>图-有向无环图的关键路径 | make everyday conut--Jocelyn Blag</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AOE网：边表示活动的网。AOE网：是一个带权的有向无环图，顶点表示事件，弧表示活动，权表示活动的持续时间。AOE网可以用来估算工程的完成时间。网中只有一个入读为零的点(源点)，一个出度为零的点(汇点)。
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="jocelynthink" />
+
+
+
+<meta name="description" content="AOE网：边表示活动的网。AOE网：是一个带权的有向无环图，顶点表示事件，弧表示活动，权表示活动的持续时间。AOE网可以用来估算工程的完成时间。网中只有一个入读为零的点(源点)，一个出度为零的点(汇点)。
 研究的问题：1）完成整项工程至少需要多少时间            2)哪些活动是影响工程进度的关键？
 路径长度最长的路径叫做关键路径(Critical Path)。
 算法描述：1）输入e条弧，">
@@ -24,63 +34,261 @@
 研究的问题：1）完成整项工程至少需要多少时间            2)哪些活动是影响工程进度的关键？
 路径长度最长的路径叫做关键路径(Critical Path)。
 算法描述：1）输入e条弧，">
-  
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
     <link rel="alternative" href="/atom.xml" title="make everyday conut--Jocelyn Blag" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>图-有向无环图的关键路径 | make everyday conut--Jocelyn Blag</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
 
 </head>
 <body>
   <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">make everyday conut--Jocelyn Blag</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Persistence, Patience, Hard Work.</a>
-        </h2>
-      
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jocelynthink</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Persistence, Patience, Work hard, Play Hard.</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:huangkaijun@hotmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/2018854933/" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/jocelynthink" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa Twitter" target="_blank" href="/#" title="Twitter"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jocelynthink</a></h1>
       </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jocelynthink</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Persistence, Patience, Work hard, Play Hard.</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:huangkaijun@hotmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/2018854933/" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/jocelynthink" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa Twitter" target="_blank" href="/#" title="Twitter"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-图-有向无环图的关键路径" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/02/图-有向无环图的关键路径/" class="article-date">
-  <time datetime="2015-12-02T01:03:35.000Z" itemprop="datePublished">2015-12-02</time>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-图-有向无环图的关键路径" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/02/图-有向无环图的关键路径/" class="article-date">
+      <time datetime="2015-12-02T01:03:35.000Z" itemprop="datePublished">2015-12-02</time>
 </a>
-    
-  </div>
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -92,9 +300,18 @@
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <p>AOE网：边表示活动的网。<br>AOE网：是一个带权的有向无环图，顶点表示事件，弧表示活动，权表示活动的持续时间。<br>AOE网可以用来估算工程的完成时间。<br>网中只有一个入读为零的点(源点)，一个出度为零的点(汇点)。</p>
 <p>研究的问题：1）完成整项工程至少需要多少时间<br>            2)哪些活动是影响工程进度的关键？</p>
 <p>路径长度最长的路径叫做关键路径(Critical Path)。</p>
@@ -102,118 +319,209 @@
 <p>实现：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;stdio.<span class="keyword">h</span>&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;stdlib.<span class="keyword">h</span>&gt;</span><br><span class="line"><span class="comment">/*栈 在拓扑排序的时候用到了*/</span></span><br><span class="line">#define STACK_INIT_SIZE 100</span><br><span class="line">#define STACKINCREMENT 10</span><br><span class="line"></span><br><span class="line">typedef struct SqStack</span><br><span class="line">&#123;</span><br><span class="line">	int *base;</span><br><span class="line">	int *top;</span><br><span class="line">	int stacksize;</span><br><span class="line">&#125;SqStack;</span><br><span class="line"></span><br><span class="line">void InitStack(SqStack &amp;S);</span><br><span class="line">void Push(SqStack &amp;S, int <span class="keyword">e</span>);</span><br><span class="line">void Pop(SqStack &amp;S, int &amp;<span class="keyword">e</span>);</span><br><span class="line">int StackEmpty(SqStack S);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//图的邻接表存储表示</span></span><br><span class="line">#define MAX_VERTEX_NUM 20</span><br><span class="line">#define <span class="keyword">INF</span> INT_MAX</span><br><span class="line">typedef int InfoType;</span><br><span class="line">typedef int VertexType;</span><br><span class="line">typedef struct ArcNode&#123;</span><br><span class="line">	int adjvex; <span class="comment">//邻接点序号</span></span><br><span class="line">	int value; <span class="comment">//表示边的权值</span></span><br><span class="line">	struct ArcNode* nexttarc; <span class="comment">//下一条边的顶点</span></span><br><span class="line">	InfoType *info;</span><br><span class="line">&#125;;</span><br><span class="line">typedef struct VNode&#123;</span><br><span class="line">	VertexType data;    <span class="comment">//顶点信息 </span></span><br><span class="line">	ArcNode *firsttarc;  <span class="comment">//指向第一条边节点</span></span><br><span class="line">&#125;VNode, AdjList[MAX_VERTEX_NUM];  <span class="comment">//单链表的头结点类型</span></span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">	AdjList Vertices;   <span class="comment">//单链表头结点数组</span></span><br><span class="line">	int vexnum, arcnum;  <span class="comment">//实际的顶点数vexnum 边数arcnum</span></span><br><span class="line">&#125;ALGraph;</span><br><span class="line"></span><br><span class="line">int visited[MAX_VERTEX_NUM];</span><br><span class="line">int finished[MAX_VERTEX_NUM];</span><br><span class="line">int <span class="keyword">count</span>;</span><br><span class="line">#define LENGTH 9</span><br><span class="line">#define ARCLENGTH 11</span><br><span class="line"></span><br><span class="line">typedef struct Minimum&#123;</span><br><span class="line">	VertexType adjvex;</span><br><span class="line">	int lowcost;</span><br><span class="line">	int flag;</span><br><span class="line">&#125;Minimum, closedge[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//拓扑排序数组</span></span><br><span class="line"><span class="comment">//int graph[LENGTH][LENGTH] = &#123;</span></span><br><span class="line"><span class="comment">//	INF, 1, 1, 1, INF, INF,</span></span><br><span class="line"><span class="comment">//	INF, INF, INF, INF, INF, INF,</span></span><br><span class="line"><span class="comment">//	INF, 1, INF, INF, 1, INF,</span></span><br><span class="line"><span class="comment">//	INF, INF, INF, INF, 1, INF,</span></span><br><span class="line"><span class="comment">//	INF, INF, INF, INF, INF, INF,</span></span><br><span class="line"><span class="comment">//	INF, INF, INF, 1, 1, INF</span></span><br><span class="line"><span class="comment">//&#125;;</span></span><br><span class="line"></span><br><span class="line">int <span class="keyword">graph</span>[LENGTH][LENGTH] = &#123;</span><br><span class="line">	<span class="keyword">INF</span>, 6, 4, 5, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>,</span><br><span class="line">	<span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>,1, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>,</span><br><span class="line">	<span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>,1, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>,</span><br><span class="line">	<span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, 2, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>,</span><br><span class="line">	<span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, 9, 7, <span class="keyword">INF</span>,</span><br><span class="line">	<span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, 4, <span class="keyword">INF</span>,</span><br><span class="line">	<span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, 2,</span><br><span class="line">	<span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, 4,</span><br><span class="line">	<span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>, <span class="keyword">INF</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int indegree[MAX_VERTEX_NUM];</span><br><span class="line">int ve[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="comment">//确定节点u在图中的编号</span></span><br><span class="line">int LocateVex(ALGraph <span class="keyword">G</span>, VertexType <span class="keyword">u</span>)&#123;</span><br><span class="line">	int i;</span><br><span class="line">	<span class="keyword">for</span> (i = 0; i &lt; <span class="keyword">G</span>.vexnum; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">G</span>.Vertices[i].data == <span class="keyword">u</span>)</span><br><span class="line">			<span class="keyword">return</span> i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -1;</span><br><span class="line">&#125;</span><br><span class="line">int FirstAdjVex(ALGraph <span class="keyword">G</span>, VertexType <span class="keyword">u</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> LocateVex(<span class="keyword">G</span>, <span class="keyword">G</span>.Vertices[<span class="keyword">u</span>].firsttarc-&gt;adjvex);</span><br><span class="line">&#125;</span><br><span class="line">int NextAdjVex(ALGraph <span class="keyword">G</span>, VertexType v, VertexType w)&#123;</span><br><span class="line">	<span class="keyword">return</span> 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void FindInDegree(ALGraph <span class="keyword">G</span>)&#123;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; <span class="keyword">G</span>.vexnum; i++)&#123;</span><br><span class="line">		indegree[i] = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int k;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; <span class="keyword">G</span>.vexnum; ++i)&#123;</span><br><span class="line">		ArcNode *p = <span class="keyword">G</span>.Vertices[i].firsttarc;</span><br><span class="line">		<span class="keyword">while</span> (p)&#123;</span><br><span class="line">			k = LocateVex(<span class="keyword">G</span>, p-&gt;adjvex);</span><br><span class="line">			indegree[k] ++;</span><br><span class="line">			p = p-&gt;nexttarc;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int TopologicalOrder(ALGraph <span class="keyword">G</span>,SqStack &amp;T)&#123;</span><br><span class="line"></span><br><span class="line">	ArcNode * p;</span><br><span class="line">	FindInDegree(<span class="keyword">G</span>);</span><br><span class="line">	SqStack S;</span><br><span class="line">	InitStack(S);</span><br><span class="line">	int i;</span><br><span class="line">	<span class="keyword">for</span> (i = 0; i &lt; <span class="keyword">G</span>.vexnum; ++i)&#123;</span><br><span class="line">		<span class="keyword">if</span> (!indegree[i])</span><br><span class="line">			Push(S, i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = 0; i &lt; <span class="keyword">G</span>.vexnum; ++i)&#123;</span><br><span class="line">		ve[i] = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int <span class="keyword">count</span> = 0;</span><br><span class="line">	<span class="keyword">while</span> (!StackEmpty(S))&#123;</span><br><span class="line">		int k;</span><br><span class="line">		Pop(S, i);</span><br><span class="line">		Push(T, i);</span><br><span class="line">	<span class="comment">//	printf("%d %d\n", i, G.Vertices[i].data);</span></span><br><span class="line">		++<span class="keyword">count</span>;</span><br><span class="line">		p = <span class="keyword">G</span>.Vertices[i].firsttarc;</span><br><span class="line">		<span class="keyword">while</span> (p)&#123;</span><br><span class="line">			k = LocateVex(<span class="keyword">G</span>, p-&gt;adjvex);</span><br><span class="line">			<span class="keyword">if</span> (!(--indegree[k]))</span><br><span class="line">				Push(S, k);</span><br><span class="line">			<span class="keyword">if</span> (ve[i] + (p-&gt;value) &gt; ve[k])</span><br><span class="line">				ve[k] = ve[i] + p-&gt;value;</span><br><span class="line">			p = p-&gt;nexttarc;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">count</span> &lt; <span class="keyword">G</span>.vexnum)</span><br><span class="line">		<span class="keyword">return</span> -1;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int CriticalPath(ALGraph <span class="keyword">G</span>)&#123;</span><br><span class="line">	SqStack T;</span><br><span class="line">	ArcNode *p;</span><br><span class="line">	InitStack(T);</span><br><span class="line">	<span class="keyword">if</span> (TopologicalOrder(<span class="keyword">G</span>,T)==-1)</span><br><span class="line">		<span class="keyword">return</span> -1;</span><br><span class="line">	int vl[MAX_VERTEX_NUM];</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; <span class="keyword">G</span>.vexnum; i++)&#123;</span><br><span class="line">		vl[i] = ve[<span class="keyword">G</span>.vexnum-1];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int j,k,dut,ee,el,<span class="keyword">d</span>;</span><br><span class="line">	<span class="keyword">char</span> tag;</span><br><span class="line">	<span class="keyword">while</span> (!StackEmpty(T))&#123;</span><br><span class="line">		Pop(T, j);</span><br><span class="line">		<span class="keyword">for</span> ( p = <span class="keyword">G</span>.Vertices[j].firsttarc; p ; p = p-&gt;nexttarc)&#123;</span><br><span class="line">			k = LocateVex(<span class="keyword">G</span>, p-&gt;adjvex);</span><br><span class="line">			dut = p-&gt;value;</span><br><span class="line">			<span class="keyword">if</span> (vl[k] - dut &lt; vl[j])</span><br><span class="line">				vl[j] = vl[k] - dut;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//printf("%d\n", vl[j]);</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (j = 0; j &lt; <span class="keyword">G</span>.vexnum; ++j)&#123;</span><br><span class="line">		<span class="keyword">for</span> (p = <span class="keyword">G</span>.Vertices[j].firsttarc; p; p = p-&gt;nexttarc)&#123;</span><br><span class="line">			k = LocateVex(<span class="keyword">G</span>, p-&gt;adjvex);</span><br><span class="line">			dut = p-&gt;value;</span><br><span class="line">			ee = ve[j];</span><br><span class="line">			el = vl[k] - dut;</span><br><span class="line">			tag = (ee == el) ? '*' : '-';</span><br><span class="line">			printf(<span class="string">"%d %d %d %d %d %c\n"</span>, <span class="keyword">G</span>.Vertices[j].data,p-&gt;adjvex, dut, ee, el, tag);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*深度优先搜索遍历DFS*/</span></span><br><span class="line">void DFS(ALGraph <span class="keyword">G</span>, int v)&#123;</span><br><span class="line">	visited[v] = true;</span><br><span class="line">	printf(<span class="string">"v%d--&gt;"</span>, <span class="keyword">G</span>.Vertices[v].data);</span><br><span class="line">	ArcNode *p = <span class="keyword">G</span>.Vertices[v].firsttarc;</span><br><span class="line">	<span class="keyword">while</span> (p != NULL)&#123;</span><br><span class="line">		int k = LocateVex(<span class="keyword">G</span>, p-&gt;adjvex);</span><br><span class="line">		<span class="keyword">if</span> (!visited[k])&#123;</span><br><span class="line">			DFS(<span class="keyword">G</span>, k);</span><br><span class="line">		&#125;</span><br><span class="line">		p = p-&gt;nexttarc;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void DFSTraverse(ALGraph <span class="keyword">G</span>)&#123;</span><br><span class="line">	<span class="keyword">for</span> (int v = 0; v &lt; <span class="keyword">G</span>.vexnum; ++v)&#123;</span><br><span class="line">		visited[v] = false;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (int v = 0; v &lt; <span class="keyword">G</span>.vexnum; ++v)&#123;</span><br><span class="line">		<span class="keyword">if</span> (!visited[v])&#123;</span><br><span class="line">			DFS(<span class="keyword">G</span>, v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void CreateGraph(ALGraph &amp;<span class="keyword">G</span>)&#123;</span><br><span class="line">	<span class="keyword">G</span>.vexnum = LENGTH;</span><br><span class="line">	<span class="keyword">G</span>.arcnum = ARCLENGTH;</span><br><span class="line">	<span class="comment">//初始化顶点的信息</span></span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; <span class="keyword">G</span>.vexnum; i++)&#123;</span><br><span class="line">		<span class="keyword">G</span>.Vertices[i].data = i + 1;</span><br><span class="line">		<span class="keyword">G</span>.Vertices[i].firsttarc = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; LENGTH; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (int j = LENGTH - 1; j &gt;= 0; j--)&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">graph</span>[i][j] != <span class="keyword">INF</span>)&#123;</span><br><span class="line">				ArcNode* p = (ArcNode*)malloc(sizeof(ArcNode));</span><br><span class="line">				p-&gt;adjvex = j + 1;</span><br><span class="line">				p-&gt;value = <span class="keyword">graph</span>[i][j];</span><br><span class="line">				p-&gt;nexttarc = <span class="keyword">G</span>.Vertices[i].firsttarc;</span><br><span class="line">				<span class="keyword">G</span>.Vertices[i].firsttarc = p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void DisplayerGraph(ALGraph &amp;<span class="keyword">G</span>)&#123;</span><br><span class="line">	int i = 0;</span><br><span class="line">	ArcNode *p;</span><br><span class="line">	<span class="keyword">for</span> (i = 0; i &lt; <span class="keyword">G</span>.vexnum; i++)&#123;</span><br><span class="line">		printf(<span class="string">"顶点[V%d]的邻接边 "</span>, <span class="keyword">G</span>.Vertices[i].data);</span><br><span class="line">		p = <span class="keyword">G</span>.Vertices[i].firsttarc;</span><br><span class="line">		<span class="keyword">while</span> (p)&#123;</span><br><span class="line">			printf(<span class="string">"--&gt;(%d,%d)"</span>, p-&gt;adjvex, p-&gt;value);</span><br><span class="line">			p = p-&gt;nexttarc;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(<span class="string">"--&gt;(^)\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	ALGraph  *<span class="keyword">G</span>;</span><br><span class="line">	<span class="keyword">G</span> = (ALGraph*)malloc(sizeof(ALGraph));</span><br><span class="line">	CreateGraph(*<span class="keyword">G</span>);</span><br><span class="line">	DisplayerGraph(*<span class="keyword">G</span>);</span><br><span class="line">	printf(<span class="string">"深度优先搜索：\n"</span>);</span><br><span class="line">	DFSTraverse(*<span class="keyword">G</span>);</span><br><span class="line">	printf(<span class="string">"^\n关键路径\n"</span>);</span><br><span class="line">	CriticalPath(*<span class="keyword">G</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void InitStack(SqStack &amp;S)</span><br><span class="line">&#123;</span><br><span class="line">	S.base = (int *)malloc(STACK_INIT_SIZE*sizeof(int));</span><br><span class="line">	<span class="keyword">if</span> (!S.base)</span><br><span class="line">		<span class="keyword">exit</span>(-1);</span><br><span class="line">	S.top = S.base;</span><br><span class="line">	S.stacksize = STACK_INIT_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Push(SqStack &amp;S, int <span class="keyword">e</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> ((S.top - S.base) &gt;= S.stacksize)</span><br><span class="line">	&#123;</span><br><span class="line">		S.base = (int *)realloc(S.base, (S.stacksize + STACKINCREMENT)*sizeof(int));</span><br><span class="line">		<span class="keyword">if</span> (S.base)</span><br><span class="line">			<span class="keyword">exit</span>(-1);</span><br><span class="line">		S.top = S.base + S.stacksize;</span><br><span class="line">		S.stacksize += STACKINCREMENT;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">	*S.top++ = e;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Pop(SqStack &amp;S, int &amp;<span class="keyword">e</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (S.base == S.top)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">e</span> = *--S.top;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int StackEmpty(SqStack S)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (S.top == S.base)</span><br><span class="line">		<span class="keyword">return</span> 1;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
+     
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/02/图-有向无环图的关键路径/" data-id="cinvqw8lp000h2khhl7mqyrz5" class="article-share-link">Share</a>
-      
-      
-    </footer>
+    
   </div>
   
     
-<nav id="article-nav">
-  
-    <a href="/2015/12/02/图-最短路径-Dijkstra/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/12/02/图-有向无环图的关键路径/">图-有向无环图的关键路径</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jocelynthink</a></p>
+        <p><span>发布时间:</span>2015-12-02, 09:03:35</p>
+        <p><span>最后更新:</span>2015-12-02, 14:41:13</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/12/02/图-有向无环图的关键路径/" title="图-有向无环图的关键路径">http://yoursite.com/2015/12/02/图-有向无环图的关键路径/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2015/12/02/图-有向无环图的关键路径/　　作者: jocelynthink" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
         
-          图-最短路径-Dijkstra
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/12/02/图-最短路径-Dijkstra/">
+                    图-最短路径-Dijkstra
+                </a>
+            </div>
         
-      </div>
-    </a>
-  
-  
-    <a href="/2015/12/01/图-有向无环图的拓扑排序/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">图--有向无环图的拓扑排序</div>
-    </a>
-  
-</nav>
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/12/01/图-有向无环图的拓扑排序/">
+                    图--有向无环图的拓扑排序
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
 
-</section>
-        
-          <aside id="sidebar">
-  
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li></ul>
-    </div>
-  </div>
+</div>
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/05/06/JS22-javascript高级程序设计代码/">JS22-javascript高级程序设计代码</a>
-          </li>
-        
-          <li>
-            <a href="/2016/05/06/JS21-Ajax与Comet/">JS21-Ajax与Comet</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/30/JS20-JSON/">JS20-JSON</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/30/JS13-表单脚本/">JS13--表单脚本</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/30/JS11-DOM2-DOM3/">JS11--DOM2和DOM3</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-  
-</aside>
+<script>
+    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+</script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"图-有向无环图的关键路径　| make everyday conut--Jocelyn Blag　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" data-thread-key="2015/12/02/图-有向无环图的关键路径/" data-title="图-有向无环图的关键路径" data-url="http://yoursite.com/2015/12/02/图-有向无环图的关键路径/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jocelyn"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
         
-      </div>
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/12/02/图-最短路径-Dijkstra/" title="上一篇: 图-最短路径-Dijkstra">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/12/01/图-有向无环图的拓扑排序/" title="下一篇: 图--有向无环图的拓扑排序">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/JS22-javascript高级程序设计代码/">JS22-javascript高级程序设计代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/JS21-Ajax与Comet/">JS21-Ajax与Comet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS20-JSON/">JS20-JSON</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS13-表单脚本/">JS13--表单脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS11-DOM2-DOM3/">JS11--DOM2和DOM3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS10-DOM扩展/">JS10--DOM扩展</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS9-DOM/">JS9--DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/30/JS8-客户端能力检测/">JS8--客户端能力检测</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS7-BOM/">JS7-BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS6-函数表达式/">JS-6函数表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/JS5-面向对象的程序设计/">JS-5面向对象的程序设计</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/19/JS4-引用对象/">JS4-引用对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS3-笔记/">JS3-引用类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS2-变量、作用域和内存问题/">JS2-变量、作用和内存问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS1-基本概念/">JS1-基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/JS0-简单介绍/">JS0-简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/17/js进阶篇2/">js进阶篇2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/14/js进阶篇1/">js进阶篇1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/js基础篇/">js基础篇1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/字符串操作/">字符串操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/MFC常见问题/">MFC常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/17/c-继承多态/">c++继承多态</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/17/c语言指针/">c语言笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/10/继承-虚函数/">继承-虚函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/03/图的遍历-java实现/">图的遍历--java实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/02/nginx服务器的搭建/">nginx服务器的搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/17/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/08/约瑟夫环/">约瑟夫环</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/08/汉诺塔问题/">汉诺塔问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/06/B树实现/">B树实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/06/动态插入-AVL树/">动态插入-AVL数</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/迷宫问题/">迷宫问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/动态查找-AVL树/">动态查找-AVL树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/04/排序/">排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/03/动态查找-BST树/">动态查找-BST树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/静态查找/">静态查找</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-最短路径-Floyed/">图-最短路径-Floyed</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-最短路径-Dijkstra/">图-最短路径-Dijkstra</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/02/图-有向无环图的关键路径/">图-有向无环图的关键路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/01/图-有向无环图的拓扑排序/">图--有向无环图的拓扑排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/01/Flex-Bison/">Flex Bison</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/图-关节点和重连通分量/">图--关节点和重连通分量</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/29/图-最小生成树-Kruskal算法/">图--最小生成树--Kruskal算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-最小生成树-Prim算法/">图--最小生成树-PRIM算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-无向图的连通分量和生成树实现/">图--无向图的连通分量和生成树实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/27/图-有向图的强连通分量实现/">图--有向图的强连通分量实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/26/图-邻接表深度广度遍历实现/">图--邻接表深度广度遍历实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/图/">图--邻接矩阵实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/二叉树-借助于队列的层次遍历版本实现/">二叉树-借助于队列的层次遍历版本实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/25/队列/">队列实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/24/线索二叉树/">线索二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/二叉树-借助栈的非递归版本实现/">二叉树--借助栈的非递归版本实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/23/栈实现/">栈实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/二叉树/">二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/20/赫夫曼树/">赫夫曼树</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/12/unix-4/">unix-4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/05/unix-3/">unix-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/01/unix-2/">unix-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/28/unix-1/">unix-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/makedown/">makedown</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/22/github/">github</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
       <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 jocelynthink<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 jocelynthink
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.0">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
     </div>
-  </div>
 </footer>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
-
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
   </div>
 </body>
 </html>
