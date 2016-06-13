@@ -15,37 +15,16 @@
 
 
 
-<meta name="description" content="DOM扩展两个方法：
-
-Selectors API(选择器API)
-HTML5
-
-选择符APISelectors API :让浏览器支持原生的CSS查询。
-1.querySelector()Level1 中 接受一个CSS选择符，返回与该模式匹配的第一个元素，如果没有找到返回null。可以通过Document、Element访问
-2.querySelectorAll()Level1中 接受一个CS">
+<meta name="description" content="表单是由元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS10--DOM扩展">
-<meta property="og:url" content="http://yoursite.com/2016/04/30/JS10-DOM扩展/index.html">
+<meta property="og:title" content="JS13--表单脚本">
+<meta property="og:url" content="http://yoursite.com/2016/04/30/JS13-表单脚本/index.html">
 <meta property="og:site_name" content="make everyday conut--Jocelyn Blag">
-<meta property="og:description" content="DOM扩展两个方法：
-
-Selectors API(选择器API)
-HTML5
-
-选择符APISelectors API :让浏览器支持原生的CSS查询。
-1.querySelector()Level1 中 接受一个CSS选择符，返回与该模式匹配的第一个元素，如果没有找到返回null。可以通过Document、Element访问
-2.querySelectorAll()Level1中 接受一个CS">
-<meta property="og:updated_time" content="2016-04-30T13:18:45.098Z">
+<meta property="og:description" content="表单是由元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。">
+<meta property="og:updated_time" content="2016-06-13T09:45:51.026Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS10--DOM扩展">
-<meta name="twitter:description" content="DOM扩展两个方法：
-
-Selectors API(选择器API)
-HTML5
-
-选择符APISelectors API :让浏览器支持原生的CSS查询。
-1.querySelector()Level1 中 接受一个CSS选择符，返回与该模式匹配的第一个元素，如果没有找到返回null。可以通过Document、Element访问
-2.querySelectorAll()Level1中 接受一个CS">
+<meta name="twitter:title" content="JS13--表单脚本">
+<meta name="twitter:description" content="表单是由元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -77,7 +56,7 @@ HTML5
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JS10--DOM扩展 | make everyday conut--Jocelyn Blag</title>
+<title>JS13--表单脚本 | make everyday conut--Jocelyn Blag</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -290,11 +269,11 @@ HTML5
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-JS10-DOM扩展" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS13-表单脚本" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/30/JS10-DOM扩展/" class="article-date">
-      <time datetime="2016-04-30T13:14:02.000Z" itemprop="datePublished">2016-04-30</time>
+      <a href="/2016/04/30/JS13-表单脚本/" class="article-date">
+      <time datetime="2016-04-30T13:14:52.000Z" itemprop="datePublished">2016-04-30</time>
 </a>
     </div>
   
@@ -307,7 +286,7 @@ HTML5
         
   
     <h1 class="article-title" itemprop="name">
-      JS10--DOM扩展
+      JS13--表单脚本
     </h1>
   
 
@@ -315,8 +294,16 @@ HTML5
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/form/">form</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -324,60 +311,108 @@ HTML5
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="DOM扩展">DOM扩展</h1><p>两个方法：</p>
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>表单是由<form>元素来表示的，在javascript中，表单对应的是HTMLFormElememnt类型。</form></excerpt></p>
+<ul>
+<li><a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+</the></li>
+</ul>
+<h1 id="基础知识">基础知识</h1><p><form>元素<br>HTMLFormElment元素继承了HTMLElment。<br>自己独特的属性和方法：</form></p>
+<p>acceptCharset<br>action</p>
+<h2 id="提交表单submit">提交表单submit</h2><h2 id="重置表单_reset">重置表单 reset</h2><h2 id="表单字段，elments属性">表单字段，elments属性</h2><pre><code>属性
+disabled
+<span class="tag">form</span>
+name
+readOnly
+tabIndex
+type
+value
+
+方法：
+<span class="function"><span class="title">focus</span><span class="params">()</span></span>
+<span class="function"><span class="title">blur</span><span class="params">()</span></span>
+属性：
+html5 autofocus属性
+
+表单支持的事件
+blur
+change
+focus
+</code></pre><h1 id="文本框脚本">文本框脚本</h1><ol>
+<li><code>&lt;input&gt;</code>元素的单行文本框 size特征，可以指定文本框中能够显示的字符数。value特征，可以设置文本框的初始值，maxlength特征用于指定文本框中的可接受的最大字符数。rows和cols特征指定大小。</li>
+<li><code>&lt;textarea&gt;</code>元素的多行文本框。</li>
+<li>value中保存着读取或设置的文本框的值。</li>
+<li>最好不使用DOM方法</li>
+</ol>
+<h2 id="选择文本">选择文本</h2><p>方法：<br>select()<br>对应一个select事件，在选择了文本框中的文本时，就会出发select事件</p>
+<h2 id="取得选择的文本">取得选择的文本</h2><p>属性：<br>selectionStart和selectionEnd</p>
+<h3 id="选择部分文本框">选择部分文本框</h3><p>setSelectionRange()方法</p>
+<h2 id="过滤文本">过滤文本</h2><ol>
+<li>阻止keypress的默认行为</li>
+<li>操作剪贴板<br> 6个事件：<br> beforecopy<br> copy<br> beforecut<br> cut<br> beforepaste<br> paste</li>
+</ol>
+<p>访问剪贴板的数据：<br>    使用clipboardData对象<br>    getData()<br>    setData()<br>    clearData()</p>
+<pre><code><span class="function"><span class="title">getClipboardText</span><span class="params">()</span></span>
+<span class="function"><span class="title">setClopboardText</span><span class="params">()</span></span>   
+</code></pre><h2 id="自动切换焦点">自动切换焦点</h2><p>tabForword() 比较maxlength特性</p>
+<h2 id="html5约束">html5约束</h2><h3 id="必填字段">必填字段</h3><p>required属性</p>
+<h3 id="其它输入类型">其它输入类型</h3><p>type=”email”<br>type=”url”<br>    number<br>    range<br>    datatime<br>    datetime-local<br>    date<br>    month<br>    week<br>    time<br>    min<br>    max<br>    step</p>
+<pre><code><span class="function"><span class="title">stepUp</span><span class="params">()</span></span>
+<span class="function"><span class="title">stepDown</span><span class="params">()</span></span>
+</code></pre><h3 id="输入模式">输入模式</h3><pre><code><span class="setting">pattern=<span class="value"><span class="string">""</span></span></span>
+</code></pre><h3 id="检测有效性_##">检测有效性 ##</h3><pre><code><span class="function"><span class="title">checkValidity</span><span class="params">()</span></span>根据前面的约束
+validity属性 告诉为什么有效或无效
+</code></pre><h3 id="禁用验证">禁用验证</h3><pre><code>novalidatae属性
+formnovaliddate属性
+</code></pre><h1 id="选择框脚本">选择框脚本</h1><pre><code>&lt;<span class="keyword">select</span>&gt;
+&lt;option&gt;
+选择框的<span class="keyword">value</span>属性由当前相中项决定
+在DOM中每个&lt;option&gt;元素都有一个HTMLOptionElement对象表示。
+<span class="built_in">index</span>
+label
+selected    
+text 选项的文本
+<span class="keyword">value</span> 选项的值
+
+change只有再选中了选择就会触发。
+</code></pre><p> 支持的方法：<br>add(newOption,relOption)<br>multiple<br>options<br>remove(index)<br>selectedindex<br>size</p>
+<h3 id="选择选项">选择选项</h3><ol>
+<li>对于只允许现在一项的选择框，选中项使用slectedIndex属性<br>可以获取或修改选择的项</li>
+<li><p>可以通过slected=true来现在某一项。</p>
+</li>
+<li><p>运行多选的选择框 selected属性，</p>
+</li>
+<li>getSelectedOptions</li>
+</ol>
+<h3 id="添加选项">添加选项</h3><ol>
+<li>使用DOM方式</li>
+<li>使用Option构造函数来创建新选项。Option(text,value(可选))</li>
+<li>使用选择框的add()方法。</li>
+<li>insertBefor()方法</li>
+</ol>
+<h3 id="移除选项">移除选项</h3><ol>
+<li>使用DOM方法removeChild()</li>
+<li>使用选择框的remove()方法</li>
+<li>将选择值设置为null</li>
+</ol>
+<h3 id="移动重排选择">移动重排选择</h3><p>使用DOM的appendChild()方法<br>inertBefore()<br>appendChild()</p>
+<h1 id="表达序列化">表达序列化</h1><p>表达发送给服务器过程：</p>
 <ol>
-<li>Selectors API(选择器API)</li>
-<li>HTML5</li>
+<li>对表达字段的名称和值进行URL编码，使用和号&amp;分割</li>
+<li>不发送禁用的表达字段</li>
+<li>只发送勾选的复选框和单选框</li>
+<li>不发送type为reset和botton的按钮</li>
+<li>多选选择框的每个选中的值单独一个条目</li>
+<li>在单击提交按钮提交表单的情况下，也会发送提交按钮，否则不发送提交按钮。</li>
+<li><select>元素的值，就是选中的<option>元素的value特性的值。如果</option><option>元素没有value特性，则是</option><option>元素的文本值。</option></select></li>
 </ol>
-<h2 id="选择符API">选择符API</h2><p>Selectors API :让浏览器支持原生的CSS查询。</p>
-<h3 id="1-querySelector()">1.querySelector()</h3><p>Level1 中 接受一个CSS选择符，返回与该模式匹配的第一个元素，如果没有找到返回null。<br>可以通过Document、Element访问</p>
-<h3 id="2-querySelectorAll()">2.querySelectorAll()</h3><p>Level1中 接受一个CSS选择符，返回与该模式匹配的所有元素，一个NodeList实例，如果没有找到返回null。</p>
-<p>底层类似于一组元素的快照。<br> 可以使用item()或者方括号</p>
-<p>可以通过Document、Element访问</p>
-<h3 id="matchesSelector()方法">matchesSelector()方法</h3><p>Level 2 中新增的<br>接受一个CSS选择符，如果调用元素与该元素匹配，返回true，否则，返回false。</p>
-<h2 id="元素遍历">元素遍历</h2><p>Element Traversal API为DOM元素添加了一下5个属性：<br>可以不用担心空白节点。</p>
-<ol>
-<li>childElementCount</li>
-<li>firstElementChild</li>
-<li>lastElementChild</li>
-<li>previousElementSibling</li>
-<li>nextEementSibling</li>
+<h1 id="富文本编辑">富文本编辑</h1><ol>
+<li>iframe</li>
+<li>contnteditable属性</li>
 </ol>
-<h1 id="HTML5">HTML5</h1><h2 id="1-getElementsByClassName()">1.getElementsByClassName()</h2><p>接受一个包含多个类名的字符串，返回带有指定类的所有元素的NodeList。类名的先后顺序不重要。</p>
-<h2 id="2-_classList属性">2. classList属性</h2><p>在操作类名是，需要通过className属性添加、删除和替换类型。</p>
-<p>是新集合类型DOMTokenList的实例。</p>
-<p>方法：<br>add(value)<br>contains(value)<br>remove(value)<br>toggle(value)</p>
-<h2 id="3-_焦点管理">3. 焦点管理</h2><p>document.activeElement属性始终保存DOM中当前焦点的元素。</p>
-<p>document.hasDocus()方法用于确定文档是否获取了焦点。</p>
-<h3 id="4-HTMLDocuement的变化">4.HTMLDocuement的变化</h3><ol>
-<li><p>readyState属性–&gt;实现一个文档是否已经加载完毕</p>
-<ul>
-<li>loading：正则加载文档</li>
-<li>complete：已经加载完文档</li>
-</ul>
-</li>
-<li><p>兼容模式 compatMode属性 告诉开发人员浏览器使用了哪种渲染模式。</p>
-<ul>
-<li>CSS1Compat：标准模式</li>
-<li>BackCompat：混杂模式</li>
-</ul>
-</li>
-<li><p>head属性</p>
-<ul>
-<li>引用head元素<h3 id="5-字符集属性">5.字符集属性</h3></li>
-</ul>
-</li>
-<li>charset属性：表示文档中实际使用的字符集，也可以用来定义新字符集</li>
-<li>defaultCharset：表示根据默认浏览器即操作系统的设计，当前文档默认的字符集属性是什么。</li>
-</ol>
-<h3 id="6-自动以数据属性">6.自动以数据属性</h3><ol>
-<li>要加前缀data-</li>
-<li>通过dataset属性来访问自定义属性的值。</li>
-<li>dataset属性是DOMStringMap的一个实例。名值对。</li>
-</ol>
-<h3 id="7-插入标记">7.插入标记</h3><h4 id="1-_innerHTML属性">1. innerHTML属性</h4><h4 id="2-_outerHTML属性">2. outerHTML属性</h4><h4 id="3-_insertAdjacentHTML()方法">3. insertAdjacentHTML()方法</h4><p>第一个元素：<br>beforebegin<br>afterbegin<br>beforeend<br>afterend</p>
-<h4 id="4-内存与性能问题">4.内存与性能问题</h4><h3 id="8-scrollIntoView()方法">8.scrollIntoView()方法</h3><p>在所有HTML元素上调用，通过滚动浏览器窗口或某个容器元素，调用元素就可以出现在视口中。</p>
-<h1 id="专有扩展">专有扩展</h1>
+<h3 id="操作富文本">操作富文本</h3><p>document.execCommand()</p>
+
       
      
     </div>
@@ -386,13 +421,13 @@ HTML5
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/04/30/JS10-DOM扩展/">JS10--DOM扩展</a></p>
+        <p><span>本文标题:</span><a href="/2016/04/30/JS13-表单脚本/">JS13--表单脚本</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jocelynthink</a></p>
-        <p><span>发布时间:</span>2016-04-30, 21:14:02</p>
-        <p><span>最后更新:</span>2016-04-30, 21:18:45</p>
+        <p><span>发布时间:</span>2016-04-30, 21:14:52</p>
+        <p><span>最后更新:</span>2016-06-13, 17:45:51</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/04/30/JS10-DOM扩展/" title="JS10--DOM扩展">http://yoursite.com/2016/04/30/JS10-DOM扩展/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/04/30/JS10-DOM扩展/　　作者: jocelynthink" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/30/JS13-表单脚本/" title="JS13--表单脚本">http://yoursite.com/2016/04/30/JS13-表单脚本/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/04/30/JS13-表单脚本/　　作者: jocelynthink" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -405,15 +440,15 @@ HTML5
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/04/30/JS11-DOM2-DOM3/">
-                    JS11--DOM2和DOM3
+                <a href="/2016/04/30/JS20-JSON/">
+                    JS20-JSON
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/04/30/JS9-DOM/">
-                    JS9--DOM
+                <a href="/2016/04/30/JS11-DOM2-DOM3/">
+                    JS11--DOM2和DOM3
                 </a>
             </div>
         
@@ -424,7 +459,7 @@ HTML5
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM扩展"><span class="toc-number">1.</span> <span class="toc-text">DOM扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#选择符API"><span class="toc-number">1.1.</span> <span class="toc-text">选择符API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-querySelector()"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.querySelector()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-querySelectorAll()"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.querySelectorAll()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#matchesSelector()方法"><span class="toc-number">1.1.3.</span> <span class="toc-text">matchesSelector()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元素遍历"><span class="toc-number">1.2.</span> <span class="toc-text">元素遍历</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5"><span class="toc-number">2.</span> <span class="toc-text">HTML5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-getElementsByClassName()"><span class="toc-number">2.1.</span> <span class="toc-text">1.getElementsByClassName()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-_classList属性"><span class="toc-number">2.2.</span> <span class="toc-text">2. classList属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-_焦点管理"><span class="toc-number">2.3.</span> <span class="toc-text">3. 焦点管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-HTMLDocuement的变化"><span class="toc-number">2.3.1.</span> <span class="toc-text">4.HTMLDocuement的变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-字符集属性"><span class="toc-number">2.3.2.</span> <span class="toc-text">5.字符集属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-自动以数据属性"><span class="toc-number">2.3.3.</span> <span class="toc-text">6.自动以数据属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-插入标记"><span class="toc-number">2.3.4.</span> <span class="toc-text">7.插入标记</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-_innerHTML属性"><span class="toc-number">2.3.4.1.</span> <span class="toc-text">1. innerHTML属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-_outerHTML属性"><span class="toc-number">2.3.4.2.</span> <span class="toc-text">2. outerHTML属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_insertAdjacentHTML()方法"><span class="toc-number">2.3.4.3.</span> <span class="toc-text">3. insertAdjacentHTML()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-内存与性能问题"><span class="toc-number">2.3.4.4.</span> <span class="toc-text">4.内存与性能问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-scrollIntoView()方法"><span class="toc-number">2.3.5.</span> <span class="toc-text">8.scrollIntoView()方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#专有扩展"><span class="toc-number">3.</span> <span class="toc-text">专有扩展</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础知识"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#提交表单submit"><span class="toc-number">1.1.</span> <span class="toc-text">提交表单submit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重置表单_reset"><span class="toc-number">1.2.</span> <span class="toc-text">重置表单 reset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表单字段，elments属性"><span class="toc-number">1.3.</span> <span class="toc-text">表单字段，elments属性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文本框脚本"><span class="toc-number">2.</span> <span class="toc-text">文本框脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#选择文本"><span class="toc-number">2.1.</span> <span class="toc-text">选择文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取得选择的文本"><span class="toc-number">2.2.</span> <span class="toc-text">取得选择的文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择部分文本框"><span class="toc-number">2.2.1.</span> <span class="toc-text">选择部分文本框</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤文本"><span class="toc-number">2.3.</span> <span class="toc-text">过滤文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动切换焦点"><span class="toc-number">2.4.</span> <span class="toc-text">自动切换焦点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html5约束"><span class="toc-number">2.5.</span> <span class="toc-text">html5约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#必填字段"><span class="toc-number">2.5.1.</span> <span class="toc-text">必填字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其它输入类型"><span class="toc-number">2.5.2.</span> <span class="toc-text">其它输入类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入模式"><span class="toc-number">2.5.3.</span> <span class="toc-text">输入模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检测有效性_##"><span class="toc-number">2.5.4.</span> <span class="toc-text">检测有效性 ##</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁用验证"><span class="toc-number">2.5.5.</span> <span class="toc-text">禁用验证</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择框脚本"><span class="toc-number">3.</span> <span class="toc-text">选择框脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择选项"><span class="toc-number">3.0.1.</span> <span class="toc-text">选择选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加选项"><span class="toc-number">3.0.2.</span> <span class="toc-text">添加选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移除选项"><span class="toc-number">3.0.3.</span> <span class="toc-text">移除选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动重排选择"><span class="toc-number">3.0.4.</span> <span class="toc-text">移动重排选择</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表达序列化"><span class="toc-number">4.</span> <span class="toc-text">表达序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#富文本编辑"><span class="toc-number">5.</span> <span class="toc-text">富文本编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作富文本"><span class="toc-number">5.0.1.</span> <span class="toc-text">操作富文本</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn,
@@ -455,7 +490,7 @@ HTML5
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JS10--DOM扩展　| make everyday conut--Jocelyn Blag　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JS13--表单脚本　| make everyday conut--Jocelyn Blag　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -471,7 +506,7 @@ HTML5
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" data-thread-key="2016/04/30/JS10-DOM扩展/" data-title="JS10--DOM扩展" data-url="http://yoursite.com/2016/04/30/JS10-DOM扩展/"></div>
+    <div class="ds-thread" data-thread-key="2016/04/30/JS13-表单脚本/" data-title="JS13--表单脚本" data-url="http://yoursite.com/2016/04/30/JS13-表单脚本/"></div>
     <script>
         var duoshuoQuery = {short_name:"jocelyn"};
         var loadComment = function(){
@@ -494,7 +529,7 @@ HTML5
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/04/30/JS11-DOM2-DOM3/" title="上一篇: JS11--DOM2和DOM3">
+            <a href="/2016/04/30/JS20-JSON/" title="上一篇: JS20-JSON">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -502,7 +537,7 @@ HTML5
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/04/30/JS9-DOM/" title="下一篇: JS9--DOM">
+            <a href="/2016/04/30/JS11-DOM2-DOM3/" title="下一篇: JS11--DOM2和DOM3">
                 <i class="fa fa-angle-right"></i>
             </a>
         
