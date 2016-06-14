@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-14T14:54:29.859Z</updated>
+  <updated>2016-06-14T15:00:10.447Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://yoursite.com/2016/06/14/nodejs/"/>
     <id>http://yoursite.com/2016/06/14/nodejs/</id>
     <published>2016-06-14T01:07:58.000Z</published>
-    <updated>2016-06-14T14:54:29.859Z</updated>
+    <updated>2016-06-14T15:00:10.447Z</updated>
     
     <content type="html">&lt;p&gt;最近在学习Node.js,这是我学习过程中的思维导图&lt;/p&gt;
-&lt;h2 id=&quot;学习Node-js的思维导图&quot;&gt;学习Node.js的思维导图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/NodeJS.jpg&quot; alt=&quot;&amp;quot;Node.js思维导图&amp;quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;学习Node-js的思维导图&quot;&gt;学习Node.js的思维导图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/NodeJS.gif&quot; alt=&quot;&amp;quot;Node.js思维导图&amp;quot;&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
