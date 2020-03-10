@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>gdb tui 使用说明</title>
+    <url>/2020/03/10/gdb-tui-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<h2 id="gdbtui使用说明"><a href="#gdbtui使用说明" class="headerlink" title="gdbtui使用说明"></a>gdbtui使用说明</h2><p>功能：在使用gdb调试的时候，查看源码</p>
+<h3 id="打开TUI模式"><a href="#打开TUI模式" class="headerlink" title="打开TUI模式"></a>打开TUI模式</h3><ol>
+<li><p>方法一、使用gdbtui或者gdb-tui开始调试</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gdbtui -q sample</span><br></pre></td></tr></table></figure></div>
+
+</li>
+</ol>
+<blockquote>
+<p> 注：通过 <strong>gdb -p pid</strong> ，可以调试一个正在运行的进程</p>
+</blockquote>
+<ol start="2">
+<li>方法二、直接使用gdb调试代码，在需要的时候切换ctrl+x a调出gdbtui</li>
+</ol>
+<h3 id="TUI模式下的4个窗口"><a href="#TUI模式下的4个窗口" class="headerlink" title="TUI模式下的4个窗口"></a>TUI模式下的4个窗口</h3><ul>
+<li>(cmd)command 命令窗口</li>
+<li>(src)source 源代码窗口</li>
+<li>(asm)assembly 汇编代码窗口</li>
+<li>(reg)register 寄存器窗口</li>
+</ul>
+<h3 id="gdbtui相关的其他命令"><a href="#gdbtui相关的其他命令" class="headerlink" title="gdbtui相关的其他命令"></a>gdbtui相关的其他命令</h3><ul>
+<li><p>layout 修改窗口布局</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">help layout</span><br><span class="line">layout src</span><br><span class="line">layout asm</span><br><span class="line">layout split：显示源代码和汇编窗口</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>winheight 调整各个窗口的高度</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">help winheight</span><br><span class="line">winheight src +5</span><br><span class="line">winheight src -4</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>refresh 强制刷新gdbtui窗口，与ctrl + L快捷键相同</p>
+</li>
+<li><p>focus next / prev</p>
+<p>在默认设置下，方向键和PageUp PageDn 都是用来控制gdbtui的src窗口的，所以，我们常用的上下键用来显示前一条命令和后一条命令的功能就没有了， 不过这个时候我们可以通过<code>ctrl + n / ctrl +p</code> 来获取这个功能。</p>
+<blockquote>
+<p>当我们通过方向键调整了gdbtui 的src 窗口以后，可以通过<strong>update</strong>命令重新把焦点定位到当前执行的代码上</p>
+</blockquote>
+<p>我们可以通过focus命令来调整焦点位置，默认情况下是在src窗口，通过<code>focus next</code>命令， 焦点就移到cmd窗口了，这时候就可以像以前一样，通过方向键来切换到上一条命令和下一条命令。</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">help focus</span><br><span class="line">focus cmd</span><br><span class="line">focus src</span><br></pre></td></tr></table></figure></div>
+
+<p>焦点不在src窗口以后，我们就不同通过方向键来浏览源码了。</p>
+</li>
+</ul>
+<h3 id="查看寄存器"><a href="#查看寄存器" class="headerlink" title="查看寄存器"></a>查看寄存器</h3><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tui reg xx</span><br><span class="line">tui reg next</span><br></pre></td></tr></table></figure></div>
+
+<p>寄存器种类：general, float,system, vector,all, save,restore.</p>
+<h3 id="更新源代码"><a href="#更新源代码" class="headerlink" title="更新源代码"></a>更新源代码</h3><p>update：更新源代码窗口到当前运行点</p>
+<p>info win：显示正在显示的窗口大小</p>
+]]></content>
+      <tags>
+        <tag>gdb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>x86-64架构-过程调用</title>
+    <url>/2020/03/10/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="x84-64寄存器"><a href="#x84-64寄存器" class="headerlink" title="x84_64寄存器"></a>x84_64寄存器</h2><p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200307201721203.png" data-fancybox="group" data-caption="image-20200307201721203" class="fancybox"><img alt="image-20200307201721203" title="image-20200307201721203" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200307201721203.png" class="lazyload"></a></p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>程序可以用栈来管理它的过程所需要的存储空间，栈和程序寄存器存放着传递控制和数据、分配内存所需要的信息。</p>
+<p>x86-64的栈向低地址方向增长，而栈指针%rsp指向栈顶元素。</p>
+<p>当x86-64过程需要的存储空间超出寄存器能够存放的大小时，就会在栈上分配空间。这个部分被称为过程的<strong>栈帧</strong>（stack fram）。</p>
+<p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200307164847766.png" data-fancybox="group" data-caption="image-20200307164847766" class="fancybox"><img alt="image-20200307164847766" title="image-20200307164847766" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200307164847766.png" class="lazyload"></a></p>
+<h3 id="转移控制"><a href="#转移控制" class="headerlink" title="转移控制"></a>转移控制</h3><p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203438731.png" data-fancybox="group" data-caption="image-20200309203438731" class="fancybox"><img alt="image-20200309203438731" title="image-20200309203438731" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203438731.png" class="lazyload"></a></p>
+<p>call Q：指令为把地址A压入栈中，并将PC设置为Q的起始地址。压入的地址A被称为返回地址。</p>
+<h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309214901921.png" data-fancybox="group" data-caption="image-20200309214901921" class="fancybox"><img alt="image-20200309214901921" title="image-20200309214901921" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309214901921.png" class="lazyload"></a></p>
+<h3 id="数据传送（参数传递与返回值）"><a href="#数据传送（参数传递与返回值）" class="headerlink" title="数据传送（参数传递与返回值）"></a>数据传送（参数传递与返回值）</h3><p>x86-64中，可以通过<strong>寄存器</strong>最多传递<strong>6个整型</strong>参数。有顺序和数据类型大小的特殊要求！</p>
+<p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200307202620285.png" data-fancybox="group" data-caption="image-20200307202620285" class="fancybox"><img alt="image-20200307202620285" title="image-20200307202620285" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200307202620285.png" class="lazyload"></a></p>
+<p>如果一个函数大于6个整型参数，超出6个部分就要通过<strong>栈</strong>来传递。</p>
+<p>通过栈传递参数时，所有的数据大小都向<strong>8的倍数</strong>对齐。</p>
+<h3 id="栈上的局部存储"><a href="#栈上的局部存储" class="headerlink" title="栈上的局部存储"></a>栈上的局部存储</h3><h4 id="解决的问题"><a href="#解决的问题" class="headerlink" title="解决的问题"></a>解决的问题</h4><p>有些时候局部数据必须存储在内存中，常见的情况：</p>
+<ul>
+<li>寄存器不足够存放所有的本地数据</li>
+<li>对一个局部变量使用地址运算符“&amp;”，此时必须为它产生一个地址</li>
+<li>某些局部变量是数组或结构，因此必须能够通过数组或结构引用被访问到。</li>
+</ul>
+<h3 id="寄存器中的局部存储空间"><a href="#寄存器中的局部存储空间" class="headerlink" title="寄存器中的局部存储空间"></a>寄存器中的局部存储空间</h3><p>寄存器组是唯一被所有过程共享的资源。</p>
+<p>被调用者保存寄存器：寄存器%rbx、%rbp和%r12~%r15。</p>
+<p>调用者保存寄存器：所有其他的寄存器，除了栈指针%rsp。</p>
+<h3 id="递归过程"><a href="#递归过程" class="headerlink" title="递归过程"></a>递归过程</h3><h2 id="条件码寄"><a href="#条件码寄" class="headerlink" title="条件码寄"></a>条件码寄</h2><p>CF：进位标志，最近的操作使最高位产生了进位。可以用来检查无符号操作的溢出。</p>
+<p>ZF：零标志，最近的操作得出的结果为0。</p>
+<p>SF：符号标志，最近的操作得到的结果为负数。</p>
+<p>OF：溢出标志，最近的操作导致一个补码溢出（正溢出和负溢出）。</p>
+<h3 id="EFLAGS寄存器"><a href="#EFLAGS寄存器" class="headerlink" title="EFLAGS寄存器"></a>EFLAGS寄存器</h3><p>eflags寄存器包含一组状态标志、系统标志、以及控制标志。</p>
+<p>x86处理器初始化之后，eflags状态寄存器的状态值为0000 0002H。</p>
+<p>第1、3、5、15以及22到31位均被保留。</p>
+<p>若在中断或异常处理时发生任务切换，那么eflags寄存器的状态将被保存在TSS中。</p>
+<p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309193501560.png" data-fancybox="group" data-caption="image-20200309193501560" class="fancybox"><img alt="image-20200309193501560" title="image-20200309193501560" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309193501560.png" class="lazyload"></a></p>
+<h4 id="状态标志（Status-Flags）"><a href="#状态标志（Status-Flags）" class="headerlink" title="状态标志（Status Flags）"></a>状态标志（Status Flags）</h4><p>eflags寄存器的状态标志（0、2、4、6、7以及11位）指示算术指令（如ADD，SUB、MUL以及DIV指令）的结果，如下：</p>
+<ol>
+<li>CF(bit 0)[Carry Flag]：若算术操作产生的结果在最高有效位发生进位或者借位则将其置为1，反之清零。这个标志位指示无符号整型运算的溢出状态，这个标志同样在多倍精度运算中使用。</li>
+<li>PF(bit 2)[Parity flag]：如果结果的最低有效字节包含偶数个1位则该位置1，否则清零。</li>
+<li>AF(bit 4)[Adjust flag]：如果算术操作在结果的第3位发生进位或借位则将该标志置1，否则清零。这个标志位在BCD(binary-code decimal)算术运算中被使用。</li>
+<li>ZF(bit 6)[Zero flag]：若结果为0则置为1，反之清零。</li>
+<li>SF(bit 7)[Sign flag]：该标志被设置为有符号整型的最高有效位。（0–正，反之则负）。</li>
+<li>OF(bit 11)[Sign flag]：如果整型结果是较大的正数或较小的负数，并且无法匹配目的操作数时将该位置1，反之清零。这个标志为带符号整型运算指示溢出状态。</li>
+</ol>
+<h4 id="DF标志"><a href="#DF标志" class="headerlink" title="DF标志"></a>DF标志</h4><p> DF (bit 10)：控制串指令（MOVS，CMPS，SCAS，LODS以及STOS），设置DF标志使得串指令自动递减，清除该标志使得串指令自动递增。</p>
+<p>STD指令：设置DF标志</p>
+<p>CLD指令：清除DF标志</p>
+<h4 id="系统状态以及IOPL域"><a href="#系统状态以及IOPL域" class="headerlink" title="系统状态以及IOPL域"></a>系统状态以及IOPL域</h4><p>控制操作系统或是执行操作，它们不允许被应用程序所修改，作用如下：</p>
+<ol>
+<li>TF(bit 8)[Trap flag]：将该为设置为1以允许单步调试模式，清零则禁用该模式。</li>
+<li>IF(bit 9)[Interrupt enable flag]：该标志用于控制处理器对可屏蔽中断请求的响应。置为1响应屏蔽中断，反之则禁止可屏蔽中断。</li>
+<li>IOPL(bit12 和 bit13) [I/O privilege level field]：指示当前运行任务的I/O特权级，正在运行任务的当前特权级(CPL)必须小于或等于I/O特权级才能运行访问I/O地址空间。只能在CPL为0时才能通过POPF以及IRET指令修改。</li>
+<li>NT(bit14)[Nested task flag]：控制中断链和被调用任务。若当前任务与前一个执行任务相关则置为1，反之则清零。</li>
+<li>RF(bit 16)[Resume flag]：控制处理器对调试异常的响应。</li>
+<li>VM(bit 17)[Virtual-8086 mode flag]：置为1运行虚拟8086模式，清除则返回保护模式。</li>
+<li>AC(bit 18)[Alignment check flag]：该标志以及在CR0寄存器中的AM位置1时将允许内存引用的对齐检查，以上两个标志中至少有一个被清零则禁用对齐检查。</li>
+<li>VIF(bit 19)[Virtual Interrupt flag]：该标志是IF标志的虚拟镜像(Virtual image)，与VIP标志结合起来使用。使用这个标志以及VIP标志，并设置CR4控制寄存器中的VME标志就可以允许虚拟模式扩展(virtual mode extensions)。</li>
+<li>VIP(bit 20)[Virtual Interrupt pendding flag]：位置1以指示一个中断正在被挂起，当没有中断挂起时该位清零。</li>
+<li>ID(bit 21)[Identification flag]：指示了处理器对CPUID指令的支持。</li>
+</ol>
+<h2 id="MOV指令"><a href="#MOV指令" class="headerlink" title="MOV指令"></a>MOV指令</h2><p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309204732787.png" data-fancybox="group" data-caption="image-20200309204732787" class="fancybox"><img alt="image-20200309204732787" title="image-20200309204732787" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309204732787.png" class="lazyload"></a></p>
+<p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309202953658.png" data-fancybox="group" data-caption="image-20200309202953658" class="fancybox"><img alt="image-20200309202953658" title="image-20200309202953658" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309202953658.png" class="lazyload"></a></p>
+<h2 id="算术指令"><a href="#算术指令" class="headerlink" title="算术指令"></a>算术指令</h2><p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203043503.png" data-fancybox="group" data-caption="image-20200309203043503" class="fancybox"><img alt="image-20200309203043503" title="image-20200309203043503" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203043503.png" class="lazyload"></a></p>
+<p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203108064.png" data-fancybox="group" data-caption="image-20200309203108064" class="fancybox"><img alt="image-20200309203108064" title="image-20200309203108064" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203108064.png" class="lazyload"></a></p>
+<h2 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h2><p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203147059.png" data-fancybox="group" data-caption="image-20200309203147059" class="fancybox"><img alt="image-20200309203147059" title="image-20200309203147059" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203147059.png" class="lazyload"></a></p>
+<p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203216250.png" data-fancybox="group" data-caption="image-20200309203216250" class="fancybox"><img alt="image-20200309203216250" title="image-20200309203216250" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203216250.png" class="lazyload"></a></p>
+<p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203241987.png" data-fancybox="group" data-caption="image-20200309203241987" class="fancybox"><img alt="image-20200309203241987" title="image-20200309203241987" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203241987.png" class="lazyload"></a></p>
+<p><a href="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203322287.png" data-fancybox="group" data-caption="image-20200309203322287" class="fancybox"><img alt="image-20200309203322287" title="image-20200309203322287" data-src="/images/x86-64%E6%9E%B6%E6%9E%84-%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8/image-20200309203322287.png" class="lazyload"></a></p>
+]]></content>
+      <tags>
+        <tag>x86-64s</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/03/10/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">bash</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
